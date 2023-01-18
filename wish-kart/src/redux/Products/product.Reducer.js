@@ -7,6 +7,7 @@ let initialData = {
 }
 
 const ProductReducer = (state=initialData,{type,payload}) =>{
+    // console.log(type,payload)
 
     switch(type){
         case GET_PRODUCTS_LOADING:{
