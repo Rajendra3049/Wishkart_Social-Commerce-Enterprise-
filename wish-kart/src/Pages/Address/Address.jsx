@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Address = () => {
+function Address() {
   return (
     <div>
       

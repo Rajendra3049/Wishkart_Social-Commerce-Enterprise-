@@ -9,7 +9,12 @@ const Cart = () => {
     <>
       <Navbar2 />
       {/* <div className="cart-section"> */}
-        <Flex w={'72%'} gap={'10px'} margin={'20px auto'} >
+      <Box
+        w={"72%"}
+        gap={"10px"}
+        margin={"20px auto"}
+        display={{ base: "row", md: "row", lg: "flex" }}
+      >
         <div className="cart-first-section">
           <div className="cart-fisrt-section-item">
             <Flex
@@ -18,7 +23,7 @@ const Cart = () => {
               gap={"10px"}
               fontWeight={"600"}
             >
-              <Text>Cart</Text>|<Text>{1}{' '}Item</Text>
+              <Text>Cart</Text>|<Text>{1} Item</Text>
             </Flex>
           </div>
           <Card
@@ -31,7 +36,7 @@ const Cart = () => {
             <Image
               objectFit="cover"
               boxSize="90%"
-              w={{ base: "40%", md:"30%", lg: "18%" }}
+              w={{ base: "40%", md: "30%", lg: "18%" }}
               padding={"20px"}
               src={
                 "https://images.meesho.com/images/products/78591203/akim8_512.jpg"
@@ -43,7 +48,7 @@ const Cart = () => {
                 display="flex"
                 alignItems="center"
                 justifyContent="space-between"
-              
+                gap={{ base: "0", md: "90px", lg: "290px" }}
               >
                 <Text fontWeight={"600"}>Redmi Go Back cover</Text>
                 <Text color={"pink.400"} fontWeight={"600"}>
@@ -68,15 +73,16 @@ const Cart = () => {
               </Button>
             </Box>
           </Card>
-          <Flex 
-          borderRadius={'0 0 5px 5px'}
+          <Flex
+            borderRadius={"0 0 5px 5px"}
             borderWidth={"1px"}
             padding={"15px 5px"}
             align={"center"}
             justifyContent={"space-between"}
             fontWeight={"500"}
+            color={"gray"}
           >
-            <Text>Supplier :</Text>
+            <Text>Supplier : Today Enterprises</Text>
             <Text>Free Delivery</Text>
           </Flex>
         </div>
@@ -106,7 +112,12 @@ const Cart = () => {
               <Text>{"₹"}179</Text>
             </Flex>
 
-            <Button fontSize={"10px"} outline={"none"} padding={{base:'xs',md:'sm',lg:'1px 69px'}}>
+            <Button
+              fontSize={"10px"}
+              outline={"none"}
+              padding={{ base: "xs", md: "1px 162px", lg: "1px 69px" }}
+              m={"10px auto"}
+            >
               Clicking on ‘Continue’ will not deduct any money
             </Button>
 
@@ -114,7 +125,7 @@ const Cart = () => {
 
             <Button
               bg={"pink.400"}
-              padding={{base:'xs',md:'sm',lg:'1px 147px'}}
+              padding={{ base: "1px 95px", md: "1px 240px", lg: "1px 147px" }}
               color={"white"}
               borderRadius={"5px"}
               m={"10px auto"}
@@ -125,14 +136,15 @@ const Cart = () => {
           </Box>
           <Image
             h={"120px"}
-            w={"full"}
+            w={{ base: "full", md: "full", lg: '"full"' }}
+            m={"70px auto"}
             src={
               "https://images.meesho.com/images/marketing/1588578650850.webp"
             }
             objectFit={"cover"}
           />
         </div>
-        </Flex>
+      </Box>
       {/* </div> */}
     </>
   );
