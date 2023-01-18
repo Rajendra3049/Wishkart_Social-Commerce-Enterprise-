@@ -10,6 +10,7 @@ const SingleProduct = () => {
       style={{
         // border: "1px solid red",
         padding: "3%",
+        marginTop: "8%",
       }}
     >
       {/* inner Container */}
@@ -319,7 +320,7 @@ const SingleProduct = () => {
             }}
           >
             <h3
-              style={{ fontSize: "22px", marginTop: "2%", marginBottom: "3%" }}
+              style={{ fontSize: "28px", marginTop: "2%", marginBottom: "3%" }}
             >
               Product Details
             </h3>
