@@ -4,6 +4,14 @@ import {
   combineReducers,
   applyMiddleware,
 } from "redux";
-import thunk from "redux-thunk";
 
-// const store = legacy_createStore(rootReducer, applyMiddleware(thunk));
+import thunk from "redux-thunk";
+import ProductReducer from "./Products/product.Reducer.js";
+
+const rootReducer = combineReducers({
+  MangaeProducts:ProductReducer
+})
+
+const comp = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+
+export const store = legacy_createStore(rootReducer, comp(applyMiddleware(thunk)));
