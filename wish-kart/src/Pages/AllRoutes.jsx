@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import SingleProduct from "./SingleProduct";
 
 import { Otp } from "../components/signup/otp";
 import Admin from "./admin";
@@ -8,7 +9,8 @@ import Home from "./Home";
 export default function AllRoutes() {
   return (
     <Routes>
-      <Route path="/" element={<Home/>}/>
+      <Route path="/SingleProduct" element={<SingleProduct />} />
+      <Route path="/" element={<Home />} />
       <Route path="/signup" element={<SignUp />} />
       <Route path="/otp" element={<Otp />} />
       <Route path="/admin" element={<Admin />} />
