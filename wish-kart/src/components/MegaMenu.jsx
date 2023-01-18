@@ -22,7 +22,7 @@ import {
     ChevronRightIcon,
   } from '@chakra-ui/icons';
   
-  export default function WithSubnavigation() {
+  export default function MegaMenu() {
     const { isOpen, onToggle } = useDisclosure();
   
     return (
@@ -34,6 +34,7 @@ import {
           py={{ base: 2 }}
           px={{ base: 4 }}
           borderBottom={1}
+          
           borderStyle={'solid'}
         //   borderColor={useColorModeValue('gray.200', 'gray.900')}
           align={'center'}>
@@ -58,7 +59,7 @@ import {
     
             </Text>
   
-            <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
+            <Flex display={{ base: 'none', md: 'flex' }} ml={10} >
               <DesktopNav />
             </Flex>
           </Flex>
@@ -79,9 +80,9 @@ import {
     // const popoverContentBgColor = useColorModeValue('white', 'gray.800');
   
     return (
-      <Stack direction={'row'} spacing={4}>
+      <Stack direction={'row'} spacing={4} >
         {NAV_ITEMS.map((navItem) => (
-          <Box key={navItem.label}>
+          <Box key={navItem.label} >
             <Popover trigger={'hover'} placement={'bottom-start'}>
               <PopoverTrigger>
                 <Link
@@ -105,20 +106,20 @@ import {
   
               {navItem.children && (
                 <PopoverContent
-                  border={0}
+                
                   boxShadow={'xl'}
                   // bg={popoverContentBgColor}
                   p={4}
                   bg={"white"}
-                  
+                  display={"flex"}
                   rounded={'xl'}
                   minW={'2xl'}
                   minH={"400px"}>
-                  <Stack>
+                  <Flex>
                     {navItem.children.map((child) => (
                       <DesktopSubNav key={child.label} {...child} />
                     ))}
-                  </Stack>
+                  </Flex>
                 </PopoverContent>
               )}
             </Popover>
@@ -135,7 +136,7 @@ import {
         role={'group'}
         display={'block'}
 
-
+     
         p={2}
         rounded={'md'}
          _hover={{ bg: useColorModeValue('pink.50', 'gray.900') }}
@@ -144,7 +145,7 @@ import {
           <Box>
             <Text
               transition={'all .3s ease'}
-              //  _groupHover={{ color: 'pink.400' }}
+           
               color={"#f43397"}
               fontSize={["5px","10px","16px"]}
               fontWeight={500}>
@@ -175,6 +176,7 @@ import {
         p={4}
         display={{ md: 'none' }}>
         {NAV_ITEMS.map((navItem) => (
+          
           <MobileNavItem key={navItem.label} {...navItem} />
         ))}
       </Stack>
@@ -237,12 +239,7 @@ import {
     );
   };
   
-//   interface NavItem {
-//     label: string;
-//     subLabel?: string;
-//     children?: Array<NavItem>;
-//     href?: string;
-//   }
+
   
   const NAV_ITEMS = [
     {
@@ -274,6 +271,7 @@ import {
           href: '#',
         },
       ],
+      
     },
     {
         label: 'Men',
@@ -326,6 +324,16 @@ import {
           {
             label: 'Job Board',
             subLabel: 'Find your dream design job',
+            href: '#',
+          },
+          {
+            label: '',
+            subLabel: 'An exclusive list for contract work',
+            href: '#',
+          },
+          {
+            label: '',
+            subLabel: 'An exclusive list for contract work',
             href: '#',
           },
           {
