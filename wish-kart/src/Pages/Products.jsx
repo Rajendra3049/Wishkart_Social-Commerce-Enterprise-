@@ -1,17 +1,28 @@
-import { Heading } from "@chakra-ui/react"
+import { Box, grid, Heading, SimpleGrid } from "@chakra-ui/react"
+import { useEffect } from "react"
 import {useDispatch, useSelector} from "react-redux"
+import GridProduct from "../components/allProducts/gridProduct.jsx"
+import { getProducts } from "../Redux/products/product.action.js"
 
 const Products = ()=>{
-    let Products = useSelector((store)=>store.MangaeProducts)
+    let {loading,error,data} = useSelector((store)=>store.MangaeProducts)
     let dispatch = useDispatch()
+    console.log(data)
 
-    useSelector(()=>{
-        dispatch(Products)
-    })
+    useEffect(()=>{
+        getProducts(dispatch)
+    },[])
     return(
-        <div>
+        <Box>
             <Heading>Products</Heading>
-        </div>
+            <SimpleGrid columns={[2,2,3,4]} spacing={10}>
+                {
+                    data.map((el)=>{
+                        return <GridProduct key={el.id} props= {el}/>
+                    })
+                }
+            </SimpleGrid>
+        </Box>
     )
 }
 

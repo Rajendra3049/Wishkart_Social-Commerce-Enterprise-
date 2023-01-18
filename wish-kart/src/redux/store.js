@@ -6,7 +6,7 @@ import {
 } from "redux";
 
 import thunk from "redux-thunk";
-import ProductReducer from "./Products/product.Reducer.js";
+import ProductReducer from "./products/product.Reducer.js";
 
 const rootReducer = combineReducers({
   MangaeProducts:ProductReducer
