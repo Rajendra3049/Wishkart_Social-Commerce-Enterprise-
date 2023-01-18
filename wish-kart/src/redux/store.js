@@ -10,6 +10,7 @@ import thunk from "redux-thunk";
 import ProductReducer from "./Products/product.Reducer.js";
 import AuthReducer from "./Auth/Products/auth.Reducer.js";
 
+
 const rootReducer = combineReducers({
   MangaeProducts: ProductReducer,
 });
