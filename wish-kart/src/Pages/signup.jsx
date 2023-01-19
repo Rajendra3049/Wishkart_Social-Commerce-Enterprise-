@@ -2,27 +2,41 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 import style from "../styles/signup.module.css";
+import { useDispatch, useSelector } from "react-redux";
+
+import { Get_Users_Data } from "../redux/user/user.action";
 
 export default function SignUp() {
-  const [number, setNumber] = React.useState("");
+  // redux start
+  let { loading, error, isAuth, user } = useSelector(
+    (store) => store.UserManager
+  );
+  let dispatch = useDispatch();
+  // redux end
+
+  const [mobileNumber, setMobileNumber] = React.useState("");
   const navigate = useNavigate();
 
   // handle number input
   function HandleNumberChange(e) {
-    setNumber(e.target.value);
+    setMobileNumber(e.target.value);
   }
-  // console.log(number);
 
   // handle continue button
   function HandleSubmit() {
-    if (number.length == 10) {
-      localStorage.setItem("phone", number);
-      console.log(number);
+    if (mobileNumber.length == 10) {
+      dispatch(Get_Users_Data(mobileNumber));
+      localStorage.setItem("phone", mobileNumber);
+      console.log("Current User", mobileNumber);
       navigate("/otp");
     } else {
       window.alert("Enter Valid Number");
     }
   }
+
+  React.useEffect(() => {
+    console.log("user", user);
+  }, [dispatch]);
   return (
     <div className={style.sign_up}>
       <div className={style.main_box}>
@@ -49,7 +63,7 @@ export default function SignUp() {
                 placeholder="Phone Number"
                 required
                 maxLength="10"
-                value={number}
+                value={mobileNumber}
                 onChange={HandleNumberChange}
               />
             </div>
