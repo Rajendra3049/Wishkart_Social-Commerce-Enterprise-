@@ -19,7 +19,7 @@ import {
     HamburgerIcon,
     CloseIcon,
     ChevronDownIcon,
-    ChevronRightIcon,
+    // ChevronRightIcon,
   } from '@chakra-ui/icons';
   
   export default function MegaMenu() {
@@ -28,15 +28,17 @@ import {
     return (
       <Box>
         <Flex
-        //   bg={useColorModeValue('white', 'gray.800')}
+          bg={useColorModeValue('white', 'gray.800')}
           color={useColorModeValue('gray.600', 'white')}
           minH={'60px'}
           py={{ base: 2 }}
           px={{ base: 4 }}
-          borderBottom={1}
+          // borderBottom={1}
+    
+          boxShadow={"rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px"}
           
           borderStyle={'solid'}
-        //   borderColor={useColorModeValue('gray.200', 'gray.900')}
+          borderColor={useColorModeValue('gray.200', 'gray.900')}
           align={'center'}>
           <Flex
             flex={{ base: 1, md: 'auto' }}
@@ -45,7 +47,7 @@ import {
             <IconButton
               onClick={onToggle}
               icon={
-                isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon w={5} h={5} />
+                isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon w={10} h={10} />
               }
               variant={'ghost'}
               aria-label={'Toggle Navigation'}
@@ -77,10 +79,10 @@ import {
   const DesktopNav = () => {
     const linkColor = useColorModeValue('black', 'black');
     const linkHoverColor = useColorModeValue('#f43397', 'black');
-    // const popoverContentBgColor = useColorModeValue('white', 'gray.800');
+    const popoverContentBgColor = useColorModeValue('white', 'gray.800');
   
     return (
-      <Stack direction={'row'} spacing={4} >
+      <Stack direction={'row'} spacing={6} >
         {NAV_ITEMS.map((navItem) => (
           <Box key={navItem.label} >
             <Popover trigger={'hover'} placement={'bottom-start'}>
@@ -108,13 +110,13 @@ import {
                 <PopoverContent
                 
                   boxShadow={'xl'}
-                  // bg={popoverContentBgColor}
+                  bg={popoverContentBgColor}
                   p={4}
-                  bg={"white"}
+                  // bg={"white"}
                   display={"flex"}
                   rounded={'xl'}
-                  minW={'2xl'}
-                  minH={"400px"}>
+                  minW={'1120px'}
+                  minH={"300px"}>
                   <Flex>
                     {navItem.children.map((child) => (
                       <DesktopSubNav key={child.label} {...child} />
@@ -129,7 +131,7 @@ import {
     );
   };
   
-  const DesktopSubNav = ({ label, href, subLabel }) => {
+  const DesktopSubNav = ({ label, href, subLabel , subLabel1 , subLabel2 , subLabel3 , subLabel4 , subLabel5, subLabel6 , subLabel7 }) => {
     return (
       <Link
         href={href}
@@ -137,7 +139,7 @@ import {
         display={'block'}
 
      
-        p={2}
+        p={6}
         rounded={'md'}
          _hover={{ bg: useColorModeValue('pink.50', 'gray.900') }}
       >
@@ -151,7 +153,16 @@ import {
               fontWeight={500}>
               {label}
             </Text>
-            <Text fontSize={'sm'}>{subLabel}</Text>
+            <Box ml={"5%"}>
+            <Text fontSize={'15px'}  mt={'18px'} color={"gray"} _hover={{color:"black"}}>{subLabel}</Text>
+            <Text fontSize={'14px'}  mt={'10px'} color={"gray"} _hover={{color:"black"}} w={"150px"}>{subLabel1}</Text>
+            <Text fontSize={'14px'} mt={'10px'} color={"gray"} _hover={{color:"black"}} w={"140px"}>{subLabel2}</Text>
+            <Text fontSize={'14px'} mt={'10px'} color={"gray"} _hover={{color:"black"}}>{subLabel3}</Text>
+            <Text fontSize={'14px'} mt={'10px'} color={"gray"} _hover={{color:"black"}}>{subLabel4}</Text>
+            <Text fontSize={'14px'} mt={'10px'} color={"gray"} _hover={{color:"black"}}>{subLabel5}</Text>
+            <Text fontSize={'14px'} mt={'10px'} color={"gray"} _hover={{color:"black"}}>{subLabel6}</Text>
+            <Text fontSize={'14px'} mt={'10px'} color={"gray"} _hover={{color:"black"}}>{subLabel7}</Text>
+            </Box>
           </Box>
           <Flex
             transition={'all .3s ease'}
@@ -162,7 +173,7 @@ import {
             align={'center'}
             
             flex={1}>
-            <Icon  w={5} h={5} as={ChevronRightIcon} />
+            {/* <Icon  w={5} h={5} as={ChevronRightIcon} /> */}
           </Flex>
         </Stack>
       </Link>
@@ -172,7 +183,7 @@ import {
   const MobileNav = () => {
     return (
       <Stack
-        // bg={useColorModeValue('white', 'gray.800')}
+         bg={useColorModeValue('white', 'gray.800')}
         p={4}
         display={{ md: 'none' }}>
         {NAV_ITEMS.map((navItem) => (
@@ -200,6 +211,7 @@ import {
           }}>
           <Text
             fontWeight={600}
+            fontSize={12}
             color={useColorModeValue('black', 'black')}
             >
             {label}
@@ -223,7 +235,7 @@ import {
             borderLeft={1}
             borderStyle={'solid'}
           
-            // borderColor={useColorModeValue('gray.200', 'gray.700')}
+            borderColor={useColorModeValue('gray.200', 'gray.700')}
             align={'start'}>
             {children &&
               children.map((child) => (
@@ -246,13 +258,52 @@ import {
       label: 'Women Ethnic',
       children: [
         {
-          label: 'Explore Design Work',
-          subLabel: 'Trending Design to inspire you',
+          label: 'All Women Ethnic',
+          subLabel: 'View All',
           href: '#',
         },
         {
-          label: 'New & Noteworthy',
-          subLabel: 'Up-and-coming Designers',
+          label: 'Sarees',
+         subLabel :"All Sarees",
+         subLabel1 :"Silk Sarees",
+         subLabel2 :"Cotton Silk Sarees",
+         subLabel3 :"Cotton Sarees ",
+         subLabel4 :"Georgette Sarees",
+         subLabel5 :"Chiffon Sarees",
+         subLabel6 :"Satin Sarees",
+         subLabel7 :"Embroidered Sarees",
+      
+          href: '#',
+        },
+        {
+          label: 'Kurtis',
+          subLabel: "All Kurtis",
+          subLabel1: 'Anarkali Kurtis',
+          subLabel2 : 'Rayon Kurtis',
+          subLabel3 : 'Cotton Kurtis',
+          subLabel4: 'Embroidered Kurtis',
+          href: '#',
+        },
+        {
+          label: 'Kurta Sets',
+          subLabel: 'All Kurta Sets',
+          href: '#',
+        },
+        {
+          label: 'Suits and Dress Materials',
+          subLabel:'All Suits & Dress Material',
+          subLabel1:'Cotton Suits',
+          subLabel2:'Embroidered Suits',
+          subLabel3:'Chanderi Suits',
+          href: '#',
+        },
+        {
+          label: 'Other Ethnic',
+          subLabel:'Blouses',
+          subLabel1:'Dupattas',
+          subLabel2: 'Lehanga',
+          subLabel3: 'Gown',
+          subLabel4: 'Ethnic Bottomwear',
           href: '#',
         },
       ],
@@ -261,13 +312,32 @@ import {
       label: 'Women Western',
       children: [
         {
-          label: 'Job Board',
-          subLabel: 'Find your dream design job',
+          label: 'Top Wear',
+          subLabel: 'Tops',
+          subLabel1: 'Dresses',
+          subLabel2: 'Sweaters',
+          subLabel3: 'Jumpsuits',
           href: '#',
         },
         {
-          label: 'Freelance Projects',
-          subLabel: 'An exclusive list for contract work',
+          label: 'Bottom Wear',
+         subLabel:"Jeans",
+         subLabel1:'Jeggings',
+         subLabe2: 'Palazzos',
+         subLabel3: 'Shorts',
+         subLabel4 : 'Skirts',
+        href: '#',
+        },
+        {
+          label: 'Innner Wear',
+          subLabel: 'Bras',
+          subLabel1: 'Breifs',
+          href: '#',
+        },
+        {
+          label: 'Sleep Wear',
+          subLabel: 'Nightsuits',
+          subLabel1: 'Babydolls',
           href: '#',
         },
       ],
@@ -277,44 +347,108 @@ import {
         label: 'Men',
         children: [
           {
-            label: 'Job Board',
-            subLabel: 'Find your dream design job',
+          label: 'Top Wear',
+          subLabel:"All Top Wear",
+           subLabel1:"Tshirts",
+           subLabel2:" Shirts",
+           href: '#',
+          },
+          {
+            label: 'Bottom Wear',
+            subLabel: 'Track Pants',
+            subLabel1:'Jeans',
+            subLabel2:'Trousers',
             href: '#',
           },
           {
-            label: 'Freelance Projects',
-            subLabel: 'An exclusive list for contract work',
+            label: 'Mens Accessories',
+            subLabel: 'All Men Accessories',
+            subLabel1:'Watches',
+            subLabel2:'Belts',
+            subLabel3:'Wallets',
+            subLabel4:'Jewellery',
+            subLabel5:'Sunglasses',
+            subLabel6:'Bags',
             href: '#',
           },
+          {
+            label: 'Mens Footwear',
+            subLabel: 'All Men Accessories',
+            subLabel1:'Casual Shoes',
+            subLabel2:'Sports Shoes',
+            subLabel3:'Sandals',
+            subLabel4:'Jewellery',
+            subLabel5:'Formal Shoes',
+       
+            href: '#',
+          },
+          {
+            label:'Ethnic Wear',
+            subLabel: 'Men Kurtas',
+            subLabel1:'Ethnic Jackets',
+            href : '#',
+          },
+          {
+            label : 'Inner & Sleep Wear',
+            subLabel:'All Inner & Sleep Wear',
+            subLabel1:'Vests',
+          }
+
         ],
     },
         {
         label: 'Kids',
         children: [
           {
-            label: 'Job Board',
-            subLabel: 'Find your dream design job',
-            href: '#',
+            label: 'Boys & Girls 2+ Years',
+            subLabel: 'Dresses',
+            href :'#',
           },
           {
-            label: 'Freelance Projects',
-            subLabel: 'An exclusive list for contract work',
-           href: '#',
+            label: 'Infant 0-2 Years',
+            subLabel: 'Rompers',
+            href : '',
           },
+          {
+          label : 'Toys & Accessories',
+          subLabel : 'Soft Toys',
+          subLabel1:'Footwear',
+          subLabel2:'Stationery',
+          subLabel3:'Watches',
+          subLabel4:'Bags & Backpacks',
+         },
+         {
+          label:'Baby Care',
+          subLabel:'All Baby Care'
+         }
         ],
       } , 
        {
         label: 'Home & Kitchen',
         children: [
           {
-            label: 'Job Board',
-            subLabel: 'Find your dream design job',
-            href: '#',
+            label: 'Home Furnishing',
+            subLabel: 'Bedsheets',
+            subLabel1:'Doormats',
+            subLabel2:'Curtains & Sheers',
+            subLabel3:'Cushions & Cushion Covers',
+            subLabel4:'Mattress Protectors',
+        
           },
           {
-            label: 'Freelance Projects',
-            subLabel: 'An exclusive list for contract work',
-            href: '#',
+            label: 'Home Decor',
+            subLabel: 'All Home Decor',
+            subLabel1:'Stickers',
+            subLabel2:'Clocks',
+            subLabel3:'Showpieces',
+    
+          },
+          {
+            label: 'Kitchen & Dining',
+            subLabel: 'Kitchen Storage',
+            subLabel1:'Cookware & Bakeware',
+      
+    
           },
         ],
       },  
@@ -322,39 +456,59 @@ import {
         label: 'Beauty & Health',
         children: [
           {
-            label: 'Job Board',
-            subLabel: 'Find your dream design job',
+            label: 'Makeup',
+             subLabel: 'Face',
+             subLabel1: 'Eyes',
+             subLabel2: 'Lips',
+             subLabel3: 'Nails',
+             href: '#',
+          },
+          {
+            label: 'Wellness',
+            subLabel: 'Sanitizers',
+            subLabel1: 'Oral Care',
+            subLabel2: 'Feminine Hygiene',
             href: '#',
           },
           {
-            label: '',
-            subLabel: 'An exclusive list for contract work',
+            label: 'Skincare',
+            subLabel: 'Deodrants',
             href: '#',
           },
-          {
-            label: '',
-            subLabel: 'An exclusive list for contract work',
-            href: '#',
-          },
-          {
-            label: '',
-            subLabel: 'An exclusive list for contract work',
-            href: '#',
-          },
+  
         ],
       },
       {
         label: 'Bags & Footwear',
         children: [
           {
-            label: 'Job Board',
-            subLabel: 'Find your dream design job',
+            label: 'Women Bags',
+            subLabel: 'All Women Bags',
+            subLabel1:'Handbags',
+            subLabel2:'Clutches',
+            subLabel3:'Slingbags',
             href: '#',
           },
           {
-            label: 'Freelance Projects',
-            subLabel: 'An exclusive list for contract work',
-            href: '#',
+            label: 'Men Bags',
+            subLabel: 'All Men Bags',
+            subLabel1:'Men Wallets',
+          href: '#',
+          },
+          {
+            label: 'Men Footwear',
+            subLabel: 'Sports Shoes',
+            subLabel1:'Casual Shoes',
+            subLabel2:'Formal Shoes',
+            subLabel3:'Sandals',
+          href: '#',
+          },
+          {
+            label: 'Women Footwear',
+            subLabel: 'Flats',
+            subLabel1:'Bellies',
+            subLabel2:'Jutties',
+          href: '#',
           },
         ],
       },
@@ -362,13 +516,25 @@ import {
         label: 'Jewellery & Accessories',
         children: [
           {
-            label: 'Job Board',
-            subLabel: 'Find your dream design job',
+            label: 'Jewellery',
+            subLabel: 'Jewellery Set',
+            subLabel1:'Earrings',
+            subLabel2:'Mangalsutras',
+            subLabel3:'Studs',
+            subLabel4:'Bangles',
+            subLabel5:'Necklaces',
+            subLabel6:'Rings',
+            subLabel7:'Anklets',
             href: '#',
           },
           {
-            label: 'Freelance Projects',
-            subLabel: 'An exclusive list for contract work',
+            label: 'Women Accessory',
+            subLabel: 'Bags',
+            subLabel1:'Watches',
+            subLabel2:'Hair Accessories',
+            subLabel3:'Sunglasses',
+            subLabel4:'Socks',
+         
             href: '#',
           },
         ],
@@ -377,13 +543,20 @@ import {
         label: 'Electronics',
         children: [
           {
-            label: 'Job Board',
-            subLabel: 'Find your dream design job',
+            label: 'Mobile & Accessories',
+            subLabel: 'All Mobile & Accessories',
+            subLabel1:'Smartwatches',
+            subLabel2:'Mobile Holders',
+            subLabel3:'Mobile cases and covers',
+         
             href: '#',
           },
           {
-            label: 'Freelance Projects',
-            subLabel: 'An exclusive list for contract work',
+            label: 'Appliances',
+            subLabel: 'All Appliances',
+            subLabel1:'Grooming',
+            subLabel2:'Home Appliances',
+      
             href: '#',
           },
         ],
