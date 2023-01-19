@@ -18,7 +18,23 @@ import BeauthHealth from "./allProducts/beauty";
 import BagsFootwear from "./allProducts/bagsFootwear";
 
 export default function AllRoutes() {
-  return <Routes></Routes>;
+  return (
+    <Routes>
+      <Route path="/SingleProduct" element={<SingleProduct />} />
+      <Route path="/" element={<Home />} />
+      <Route path="/signup" element={<SignUp />} />
+      <Route path="/otp" element={<Otp />} />
+      <Route path="/admin" element={<AdminSide />} />
+      <Route path="/products" element={<Products />} />
+      <Route path="/men" element={<Men />} />
+      <Route path="/women" element={<Women />} />
+      <Route path="/beauthHealth" element={<BeauthHealth />} />
+      <Route path="/homeKitchen" element={<HomeKitchen />} />
+      <Route path="/jewellery" element={<Jewellery />} />
+      <Route path="/bagsFootwear" element={<BagsFootwear />} />
+      <Route path="/SingleProduct" element={<SingleProduct />} />
+    </Routes>
+  );
 }
 
-export default AllRoutes
+
