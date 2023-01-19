@@ -2,22 +2,29 @@ import Footer from "./components/Footer";
 import Footer2 from "./components/Footer2";
 import Navbar from "./components/Navbar";
 import AllRoutes from "./Pages/AllRoutes";
+import Loader from './components/Loader';
+import { useState,useEffect } from 'react';
 
 
 
 function App() {
-  return (
-    <>
-    <div style={{backgroundColor:"white",width:"100%"}}>
-
-   
+  const [isLoading, setIsLoading] = useState(true);
+useEffect(() => {
+    setIsLoading(true);
+    let timer = setTimeout(() => {
+        setIsLoading(false);
+        return () => clearInterval(timer);
+    }, 1000);
+}, []);
+return isLoading ? (
+    <Loader />
+) : (
  
-      
-      <Navbar/>
-   
+    <>
+    <div>
+       <Navbar/>
       <AllRoutes />
-    
-      <Footer/>
+       <Footer/>
       <Footer2/>
   
     </div>
