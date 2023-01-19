@@ -1,9 +1,45 @@
 import React from "react";
 // import FontAwesomeIcon from "font-awesome";
 // import { StarIcon } from "@chakra-ui/icons";
-import { FaShoppingCart } from "react-icons/fa";
+import { FaShoppingCart, FaStar } from "react-icons/fa";
+// import { CiStar } from "react-icons/ci";
 
-const SingleProduct = () => {
+const SingleProduct = ({ props }) => {
+  let id = props.id;
+  let category = props.category;
+  let title = props.title;
+  let ogPrice = props.original_price;
+  let dPrice = props.discounted_price;
+  let sizes = props.sizes;
+  let images = props.images;
+  console.log(images);
+  let details = props.details;
+  let rating = props.rating;
+  let sellerId = props.seller_id;
+  // {
+  //     "id": 1,
+  //     "category": "Sarees",
+  //     "title": "WETLESS RAINBOW ZARI",
+  //     "original_price": 416,
+  //     "discounted_price": 316,
+  //     "sizes": [
+  //       "Free Size"
+  //     ],
+  //     "images": [
+  //       "https://images.meesho.com/images/products/72024275/9cvk9_512.jpg",
+  //       "https://images.meesho.com/images/products/72349131/ndz0q_512.jpg",
+  //       "https://images.meesho.com/images/products/72349131/tzpv8_512.jpg",
+  //       "https://images.meesho.com/images/products/72349131/9dvpk_512.jpg"
+  //     ],
+  //     "details": {
+  //       "Fabric": "Chiffon",
+  //       "Pattern": "Self Design",
+  //       "Multipack": "Single",
+  //       "Description": "Best qaualtiy "
+  //     },
+  //     "rating": 3.9,
+  //     "seller_id": 1
+  //   }
   return (
     // main Div - Container
     <div
@@ -23,7 +59,7 @@ const SingleProduct = () => {
         {/* 10% width Image Container */}
         <div
           style={{
-            width: "10%",
+            width: "15%",
             // border: "1px solid blue",
             padding: "1%",
           }}
@@ -37,7 +73,7 @@ const SingleProduct = () => {
               padding: "2%",
               boxShadow: "rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px",
             }}
-            src="https://images.meesho.com/images/products/63012150/s06z4_64.webp"
+            src={images[0]}
             alt=""
           />
           <img
@@ -49,7 +85,7 @@ const SingleProduct = () => {
               padding: "2%",
               boxShadow: "rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px",
             }}
-            src="https://images.meesho.com/images/products/63012150/3jzal_64.webp"
+            src={images[1]}
             alt=""
           />
           <img
@@ -61,7 +97,7 @@ const SingleProduct = () => {
               padding: "2%",
               boxShadow: "rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px",
             }}
-            src="https://images.meesho.com/images/products/63012150/s06z4_64.webp"
+            src={images[2]}
             alt=""
           />
           <img
@@ -73,7 +109,7 @@ const SingleProduct = () => {
               padding: "2%",
               boxShadow: "rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px",
             }}
-            src="https://images.meesho.com/images/products/63012150/3jzal_64.webp"
+            src={images[3]}
             alt=""
           />
         </div>
@@ -81,10 +117,10 @@ const SingleProduct = () => {
           {/* Middle Div */}
           <div
             style={{
-              width: "95%",
+              width: "80%",
               //   border: "1px solid purple",
-              display: "block",
-              margin: "auto",
+              //   display: "block",
+              //   margin: "auto",
             }}
           >
             <img
@@ -92,9 +128,10 @@ const SingleProduct = () => {
                 display: "block",
                 margin: "auto",
                 marginTop: "2%",
+                width: "70%",
                 boxShadow: "rgba(1, 0.15, 0.15, 0.15) 1.95px 1.95px 2.6px",
               }}
-              src="https://images.meesho.com/images/products/63012150/epii6_512.webp"
+              src={images[0]}
               alt=""
             />
           </div>
@@ -102,6 +139,7 @@ const SingleProduct = () => {
             style={{
               display: "flex",
               justifyContent: "space-evenly",
+              width: "80%",
               marginTop: "7%",
             }}
           >
@@ -117,13 +155,24 @@ const SingleProduct = () => {
               //   }}
               style={{
                 padding: "2% 8%",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
                 fontSize: "20px",
                 border: "1px solid black",
                 fontWeight: "bold",
                 borderRadius: "7px",
               }}
             >
-              <FaShoppingCart /> Add to Cart
+              <FaShoppingCart />
+              <p
+                style={{
+                  color: "white",
+                }}
+              >
+                -
+              </p>{" "}
+              Add to Cart
             </button>
             <button
               //   style={{
@@ -172,7 +221,7 @@ const SingleProduct = () => {
                   border: "1px solid #fde9f2",
                   boxShadow: "rgba(1, 0.15, 0.15, 0.15) 1.95px 1.95px 2.6px",
                 }}
-                src="https://images.meesho.com/images/products/63012150/s06z4_64.webp"
+                src={images[1]}
                 alt=""
               />
               <img
@@ -182,7 +231,7 @@ const SingleProduct = () => {
                   border: "1px solid #fde9f2",
                   boxShadow: "rgba(1, 0.15, 0.15, 0.15) 1.95px 1.95px 2.6px",
                 }}
-                src="https://images.meesho.com/images/products/63012150/3jzal_64.webp"
+                src={images[2]}
                 alt=""
               />
               <img
@@ -192,7 +241,7 @@ const SingleProduct = () => {
                   border: "1px solid #fde9f2",
                   boxShadow: "rgba(1, 0.15, 0.15, 0.15) 1.95px 1.95px 2.6px",
                 }}
-                src="https://images.meesho.com/images/products/63012150/s06z4_64.webp"
+                src={images[3]}
                 alt=""
               />
             </div>
@@ -201,9 +250,10 @@ const SingleProduct = () => {
         {/* Last Div / Left Div */}
         <div
           style={{
-            width: "55%",
+            width: "120%",
             // border: "1px solid yellow",
             padding: "1%",
+            marginLeft: "-5%",
           }}
         >
           <div
@@ -219,15 +269,16 @@ const SingleProduct = () => {
           >
             <p
               style={{
-                fontSize: "large",
+                fontSize: "25px",
                 fontWeight: "bold",
                 color: "grey",
                 marginTop: "1%",
               }}
             >
-              Autokraftz New Latest Winter Knit Thick Fleece Woolen Combo of
+              {/* Autokraftz New Latest Winter Knit Thick Fleece Woolen Combo of
               Beanie Winter Cap Hat and Faux Fur Lining Wool Neck Muffler Scarf
-              in Black for All Girls Boys Men Women. Free Size
+              in Black for All Girls Boys Men Women. Free Size */}
+              {title}
             </p>
             <p
               style={{
@@ -235,13 +286,15 @@ const SingleProduct = () => {
                 marginTop: "1%",
               }}
             >
-              ₹184
+              {/* ₹184 */}₹{dPrice}
             </p>
             <div
               style={{
                 display: "flex",
                 gap: "30px",
                 marginTop: "2%",
+                justifyContent: "start",
+                alignItems: "center",
               }}
             >
               <h1
@@ -249,17 +302,23 @@ const SingleProduct = () => {
                   backgroundColor: "green",
                   padding: "5px 10px",
                   color: "white",
-                  //   fontSize: "large",
+                  fontSize: "large",
                   borderRadius: "20px",
                   fontWeight: "bold",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
                 }}
               >
-                4.0 *{/* <StarIcon /> */}
+                {rating}{" "}
+                <FaStar fill="white" color="white" backgroundColor="white" />
+                {/* <StarIcon /> */}
                 {/* <FontAwesomeIcon icon="fa-solid fa-star" /> */}
               </h1>
               <p
                 style={{
                   color: "grey",
+                  fontSize: "large",
                 }}
               >
                 10647 Ratings. 1651 Reviews
@@ -269,6 +328,7 @@ const SingleProduct = () => {
               style={{
                 color: "grey",
                 marginTop: "2%",
+                fontSize: "large",
               }}
             >
               Free Delivery
@@ -292,7 +352,8 @@ const SingleProduct = () => {
             >
               Select Size
             </p>
-            <button
+
+            {/* <button
               style={{
                 borderRadius: "20px",
                 marginTop: "3%",
@@ -305,7 +366,25 @@ const SingleProduct = () => {
               }}
             >
               Free Size
-            </button>
+            </button> */}
+            {sizes.map((el) => {
+              return (
+                <button
+                  style={{
+                    borderRadius: "20px",
+                    marginTop: "3%",
+                    fontSize: "20px",
+                    padding: "5px 10px",
+                    color: "#f43397",
+                    backgroundColor: "#fde9f2",
+                    border: "1px solid #f43397",
+                    marginBottom: "3%",
+                  }}
+                >
+                  {el}
+                </button>
+              );
+            })}
           </div>
           <div
             style={{
@@ -327,6 +406,7 @@ const SingleProduct = () => {
             <p
               style={{
                 color: "grey",
+                fontSize: "medium",
               }}
             >
               Name : Autokraftz New Latest Winter Knit Thick Fleece Woolen Combo
