@@ -4,8 +4,14 @@ import SingleProduct from "./SingleProduct";
 import { Otp } from "../components/signup/otp";
 import Admin from "./admin";
 import SignUp from "./signup";
-import Products from "./Products";
+import Products from "./allProducts/Products";
 import Home from "./Home";
+import Men from "./allProducts/men";
+import Women from "./allProducts/women";
+import Jewellery from "./allProducts/jewellery";
+import HomeKitchen from "./allProducts/homeKitchen";
+import BeauthHealth from "./allProducts/beauty";
+import BagsFootwear from "./allProducts/bagsFootwear";
 export default function AllRoutes() {
   return (
     <Routes>
@@ -15,6 +21,13 @@ export default function AllRoutes() {
       <Route path="/otp" element={<Otp />} />
       <Route path="/admin" element={<Admin />} />
       <Route path="/products" element={<Products />} />
+      <Route path="/men" element={<Men />} />
+      <Route path="/women" element={<Women />} />
+      <Route path="/beauthHealth" element={<BeauthHealth />} />
+      <Route path="/homeKitchen" element={<HomeKitchen />} />
+      <Route path="/jewellery" element={<Jewellery />} />
+      <Route path="/bagsFootwear" element={<BagsFootwear />} />
+
     </Routes>
   );
 }

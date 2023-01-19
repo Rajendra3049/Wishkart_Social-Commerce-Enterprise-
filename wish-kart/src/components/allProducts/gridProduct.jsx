@@ -1,8 +1,8 @@
-import { Box, Flex, Heading, Image } from '@chakra-ui/react'
+import { Box, Card, Flex, Heading, Image } from '@chakra-ui/react'
 import React from 'react'
 
 const GridProduct = ({props}) => {
-    console.log(props)
+    // console.log(props)
     let star = {
         green:"data:image/png;base64,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",
         lightGreen:"data:image/png;base64,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",
@@ -12,22 +12,28 @@ const GridProduct = ({props}) => {
 
     }
   return (
-    <Box>
+    <Card  >
         <Box>
-            <Image src={props.images[0]} width="200px" height="300px" />
+            <Image src={props.images[0]} width="100%" height="350px" />
         </Box>
-        <Box >
-            <Heading className="Productfont" mt={"5px"} color={"gray"}>{props.title}</Heading>
-            <Heading className='Productfont' mt={"5px"}>₹ {props.discounted_price}</Heading>
-            <Flex >
-                <Box  width="30px" mt={"10px"} fontSize={"3xl"} fontWeight={"bold"}>{props.rating}</Box>
-                <Box>
-                    <Image h={"15%"} mt={"5px"} ml={"5px"} src={props.rating>=4.5?star.green:  props.rating>=4?star.lightGreen:  props.rating>=3?star.orange:  props.rating>=2?star.yellow:  star.red}/>   
+        <Box margin={5}>
+            <Heading className="Productfont" size={"lg"} fontWeight={"medium"} color={"gray"}>{props.title}</Heading>
+            <Flex>
+
+                <Heading className='Productfont' color={"blackAlpha.800"} mt={"5px"}>₹ {props.discounted_price}</Heading>
+                <Heading textDecoration={"line-through"} fontWeight={"medium"} ml={"8px"} mt={"8px"} size="lg" color={"grey"}> ₹{props.original_price}</Heading>
+            </Flex>
+            
+            <Flex border={"1px solid grey"} mt={"5px"} borderRadius="50%" width={"75px"} height={"40px"}>
+                <Box  width="30px" mt={"7px"} ml={"10px"} color={"gray"} fontSize={"3xl"} fontWeight={"bold"}>{props.rating}</Box>
+                <Box  width="30%">
+                    <Image   mt={"9px"} ml={"3px"} src={props.rating>=4.5?star.green:  props.rating>=4?star.lightGreen:  props.rating>=3?star.orange:  props.rating>=2?star.yellow:  star.red}/>   
                 </Box>
 
             </Flex>
+            
         </Box>
-    </Box>
+    </Card>
   )
 }
 
