@@ -1,7 +1,7 @@
 import React from "react";
 // import FontAwesomeIcon from "font-awesome";
 // import { StarIcon } from "@chakra-ui/icons";
-import { FaShoppingCart, FaStar, FaStar } from "react-icons/fa";
+import { FaShoppingCart, FaStar } from "react-icons/fa";
 // import { CiStar } from "react-icons/ci";
 
 const SingleProduct = ({ props }) => {

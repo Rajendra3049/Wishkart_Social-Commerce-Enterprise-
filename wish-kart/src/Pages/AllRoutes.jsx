@@ -13,6 +13,7 @@ import BeauthHealth from "./allProducts/beauty";
 import BagsFootwear from "./allProducts/bagsFootwear";
 
 export default function AllRoutes() {
+  return (
     <Routes>
       <Route path="/SingleProduct" element={<SingleProduct />} />
       <Route path="/" element={<Home />} />
