@@ -355,6 +355,7 @@ const NAV_ITEMS = [
   },
   {
     label: "Women Western",
+    href: "/women",
     children: [
       {
         label: "Top Wear",
