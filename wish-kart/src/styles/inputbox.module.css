@@ -1,0 +1,116 @@
+html {
+  font-size: 62.5%;
+}
+.root {
+  width: 30rem;
+  max-width: 100%;
+  padding: 0.3rem;
+  height: 4rem;
+  border: 0px solid black;
+  font-size: 1.5rem;
+}
+
+.label,
+.input {
+  transition: all 0.2s;
+  touch-action: manipulation;
+}
+
+.input {
+  font-size: 1.8rem;
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid #ccc;
+  font-family: inherit;
+  border-radius: 0;
+  padding: 0;
+  cursor: text;
+  position: relative;
+  left: 0;
+  margin-top: 1rem;
+}
+
+.label {
+  border: 0px solid blue;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: text;
+  left: 0rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transform-origin: left bottom;
+  position: relative;
+  top: -2rem;
+}
+
+.input:focus {
+  outline: 0;
+  border-bottom: 1px solid #ff4397;
+}
+
+.input:focus + label,
+.input:valid + label,
+.input:not(:empty) + label {
+  cursor: pointer;
+  color: #ff4397;
+  font-size: 12px;
+  top: -4.2rem;
+}
+
+.input:focus ~ p,
+.input:valid ~ p {
+  display: none;
+}
+
+/* .select_box {
+  color: #ff4397;
+  background-color: #ff4397;
+} */
+/* media  */
+@media (max-width: 998px) {
+  html {
+    font-size: 55%;
+  }
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 45%;
+  }
+  .input {
+    font-size: 1.5rem;
+    width: 100%;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+    font-family: inherit;
+    border-radius: 0;
+    padding: 0;
+    cursor: text;
+    position: relative;
+    left: 0;
+    margin-top: 1rem;
+  }
+
+  .label {
+    border: 0px solid blue;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    cursor: text;
+    left: 0rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transform-origin: left bottom;
+    position: relative;
+    top: -2rem;
+  }
+  .input:focus + label,
+  .input:valid + label,
+  .input:not(:empty) + label {
+    cursor: pointer;
+    color: #ff4397;
+    font-size: 10px;
+    top: -4.2rem;
+  }
+}

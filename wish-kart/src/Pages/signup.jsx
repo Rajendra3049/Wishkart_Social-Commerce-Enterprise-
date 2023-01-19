@@ -35,7 +35,7 @@ export default function SignUp() {
   }
 
   React.useEffect(() => {
-    console.log("user used in useEffect signup", user);
+    console.log("user", user);
   }, [dispatch]);
   return (
     <div className={style.sign_up}>

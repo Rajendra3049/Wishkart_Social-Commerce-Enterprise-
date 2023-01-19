@@ -4,18 +4,21 @@ import Address from './Address/Address.jsx'
 import Cart from './Cart/Cart.jsx'
 import Payment from './Payment/Payment.jsx'
 import CartEmpty from './Cart/CartEmpty.jsx'
+import SingleProduct from "./SingleProduct";
+import { Otp } from "../components/signup/otp";
+import SignUp from "./signup";
+import Products from "./allProducts/Products";
+import Home from "./Home";
+import AdminSide from "./adminSide";
+import Men from "./allProducts/men";
+import Women from "./allProducts/women";
+import Jewellery from "./allProducts/jewellery";
+import HomeKitchen from "./allProducts/homeKitchen";
+import BeauthHealth from "./allProducts/beauty";
+import BagsFootwear from "./allProducts/bagsFootwear";
 
-const AllRoutes = () => {
-  return (
-    <div>
-        <Routes>
-        <Route path="/cart" element={<Cart/>} />
-        <Route path="/address" element={<Address />} />
-        <Route path='/cartempty' element={<CartEmpty/>}/>
-        <Route path='/payment' element={<Payment/>}/>
-      </Routes>
-    </div>
-  )
+export default function AllRoutes() {
+  return <Routes></Routes>;
 }
 
 export default AllRoutes

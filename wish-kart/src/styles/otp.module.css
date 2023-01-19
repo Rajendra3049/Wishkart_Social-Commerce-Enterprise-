@@ -1,0 +1,90 @@
+html {
+  font-size: 62.5%;
+}
+.sign_up {
+  min-height: 150vh;
+  justify-content: center;
+  padding-top: 18rem;
+  background: linear-gradient(
+    rgb(253, 233, 242) 0%,
+    rgb(253, 240, 232) 100%,
+    rgb(253, 240, 232) 100%
+  );
+}
+
+.main_box {
+  border: 0rem solid red;
+  width: 28%;
+  margin: auto;
+  box-shadow: rgba(149, 157, 165, 0.2) 0rem 8rem 24rem;
+  background-color: white;
+  border-radius: 1rem;
+  min-width: 40rem;
+}
+.main_top img {
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+.main_bottom {
+  border: 0rem solid blue;
+  padding: 10%;
+}
+.sign_up_profile {
+  border: 0rem solid red;
+  color: rgb(51, 51, 51);
+  font-style: normal;
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 3rem;
+  font-family: "Mier bold";
+  width: 100%;
+  padding: 0rem;
+  text-align: center;
+}
+
+.change_Number {
+  cursor: pointer;
+  color: #f43397;
+}
+.otp_box {
+  border: 0rem solid red;
+  text-align: center;
+  margin-top: 1rem;
+}
+.otp_input {
+  border: 0.1rem solid black;
+  cursor: text;
+  border-color: "blue";
+  margin: 2rem 0.5rem;
+  height: 4rem;
+  width: 3rem;
+  font-size: 1.8rem;
+  text-align: center;
+}
+.otp_btn {
+  cursor: "pointer";
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: 0.2rem;
+  font-size: 2rem;
+  line-height: 2rem;
+  border-radius: 0.4rem;
+  color: rgb(255, 255, 255);
+  background: rgb(244, 51, 151);
+  border: none;
+  padding: 1.2rem;
+  margin-top: 3rem;
+  width: 100%;
+}
+
+@media (max-width: 998px) {
+  html {
+    font-size: 55%;
+  }
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 45%;
+  }
+}

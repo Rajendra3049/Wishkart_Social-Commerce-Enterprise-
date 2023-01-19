@@ -1,0 +1,134 @@
+html {
+  font-size: 62.5%;
+}
+.sign_up {
+  min-height: 150vh;
+  justify-content: center;
+  padding-top: 18rem;
+  background: linear-gradient(
+    rgb(253, 233, 242) 0%,
+    rgb(253, 240, 232) 100%,
+    rgb(253, 240, 232) 100%
+  );
+}
+
+.main_box {
+  border: 0rem solid red;
+  width: 28%;
+  margin: auto;
+  box-shadow: rgba(149, 157, 165, 0.2) 0rem 8rem 24rem;
+  background-color: white;
+  border-radius: 1rem;
+  min-width: 40rem;
+}
+.main_top img {
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+.main_bottom {
+  border: 0rem solid blue;
+  padding: 10%;
+}
+.heading {
+  border: 0rem solid red;
+  font-size: 1.9rem;
+  font-weight: 500;
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+}
+.flex_box {
+  border: 0rem solid red;
+  display: flex;
+  /* justify-content: space-between; */
+}
+
+.flex_box div:nth-child(1) {
+  border: 0rem solid rgb(128, 0, 41);
+  margin-right: 5%;
+  margin-bottom: 5%;
+  width: 18%;
+}
+.flex_box div:nth-child(2) {
+  border: 0rem solid rgb(0, 11, 128);
+  margin-bottom: 5%;
+  width: 80%;
+}
+
+.country,
+.number {
+  border: 0rem solid green;
+  font-size: 1.2rem;
+  color: gray;
+}
+
+.country_code {
+  border-bottom: 0.1rem solid rgb(183, 182, 182);
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-top: 1rem;
+}
+.input_box {
+  width: 100%;
+  border: none;
+  border-bottom: 0.1rem solid rgb(183, 182, 182);
+  margin-top: 1rem;
+  font-family: inherit;
+  cursor: text;
+  position: relative;
+  font-size: 1.6rem;
+}
+.input_box:focus {
+  outline: 0;
+  border-bottom: 0.1rem solid #ff4397;
+}
+
+.continue_btn {
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: 0.1rem;
+  font-size: 1.7rem;
+  line-height: 2rem;
+  border-radius: 0.4rem;
+  color: rgb(255, 255, 255);
+  background: rgb(244, 51, 151);
+  border: none;
+  padding: 1.2rem;
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+  width: 100%;
+}
+
+.continue_btn:active {
+  transform: scale(0.98);
+  /* Scaling button to 0.98 to its original size */
+  box-shadow: 3rem 2rem 22rem 1rem rgba(0, 0, 0, 0.24);
+  /* Lowering the shadow */
+}
+.footer {
+  border: 0rem solid red;
+  font-size: 1.3rem;
+  width: 82%;
+  margin: auto;
+  font-weight: 400;
+  color: gray;
+  margin-top: 8rem;
+}
+.footer span {
+  color: #f5afea;
+  padding-right: 0.3rem;
+}
+
+/*------------------------------------OTP CSS-------------------------------- */
+
+/* media  */
+@media (max-width: 998px) {
+  html {
+    font-size: 55%;
+  }
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 45%;
+  }
+}
