@@ -35,7 +35,7 @@ export const Otp = () => {
             />
           </div>
           <div className={style.main_bottom}>
-            <p className={style.sign_up_profile}>
+            <div className={style.sign_up_profile}>
               Enter OTP sent to {localStorage.getItem("phone")}
               <br />
               <p
@@ -43,7 +43,7 @@ export const Otp = () => {
                 onClick={() => navigate("/signup")}>
                 Change Number
               </p>
-            </p>
+            </div>
             <div className={style.otp_box}>
               {otpIs.map((e) => {
                 return (

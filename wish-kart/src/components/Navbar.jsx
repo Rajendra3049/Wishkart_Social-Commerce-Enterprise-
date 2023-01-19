@@ -171,12 +171,14 @@ export default function Navbar() {
                 <Text fontSize={28} mt={"-20px"}>
                   <BsCart2 />
                 </Text>
-                <Text
-                  fontSize={["8px", "8x", "15px"]}
-                  mt={"5px"}
-                  cursor={"pointer"}>
-                  Cart
-                </Text>
+                <a href="/cart">
+                  <Text
+                    fontSize={["8px", "8x", "15px"]}
+                    mt={"5px"}
+                    cursor={"pointer"}>
+                    Cart
+                  </Text>
+                </a>
               </Box>
             </Box>
           </Flex>

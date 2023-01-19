@@ -1,9 +1,9 @@
-import React from 'react'
-import { Route, Routes } from 'react-router-dom'
-import Address from './Address/Address.jsx'
-import Cart from './Cart/Cart.jsx'
-import Payment from './Payment/Payment.jsx'
-import CartEmpty from './Cart/CartEmpty.jsx'
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+import Address from "./Address/Address.jsx";
+import Cart from "./Cart/Cart.jsx";
+import Payment from "./Payment/Payment.jsx";
+import CartEmpty from "./Cart/CartEmpty.jsx";
 import SingleProduct from "./SingleProduct";
 import { Otp } from "../components/signup/otp";
 import SignUp from "./signup";
@@ -33,13 +33,10 @@ export default function AllRoutes() {
       <Route path="/jewellery" element={<Jewellery />} />
       <Route path="/bagsFootwear" element={<BagsFootwear />} />
       <Route path="/SingleProduct" element={<SingleProduct />} />
-      <Route path="/cart" element={<Cart/>}/>
-      <Route path="/cartempty" element={<CartEmpty/>}/>
-      <Route path="/address" element={<Address/>}/>
-      <Route path='/payment' element={<Payment/>}/>
-
+      <Route path="/cart" element={<Cart />} />
+      <Route path="/cartempty" element={<CartEmpty />} />
+      <Route path="/address" element={<Address />} />
+      <Route path="/payment" element={<Payment />} />
     </Routes>
   );
 }
-
-
