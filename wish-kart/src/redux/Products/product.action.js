@@ -4,7 +4,7 @@ import axios from "axios"
 export const getProducts = async(dispatch)=>{
     dispatch({type:GET_PRODUCTS_LOADING})
     try{
-        let res = await axios.get("https://meesho-backend-3037.onrender.com/products")
+        let res = await axios.get("https://meesho-database.vercel.app/products")
         // console.log(res.data)
         dispatch({type:GET_PRODUCTS_SUCCESS,payload:res.data})
     }catch(error){
