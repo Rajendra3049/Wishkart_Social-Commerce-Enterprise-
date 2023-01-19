@@ -6,37 +6,30 @@ import Loader from "./components/Loader";
 import { useState, useEffect } from "react";
 
 function App() {
-  return (
+
+  const [isLoading, setIsLoading] = useState(true);
+useEffect(() => {
+    setIsLoading(true);
+    let timer = setTimeout(() => {
+        setIsLoading(false);
+        return () => clearInterval(timer);
+    }, 1000);
+}, []);
+return isLoading ? (
+    <Loader />
+) : (
     <>
       <div>
-        <Navbar />
+         <Navbar/>
         <AllRoutes />
-        <Footer />
-        <Footer2 />
+         <Footer/>
+        <Footer2/>
       </div>
     </>
   );
+  
+  
 }
 
 export default App;
 
-// const [isLoading, setIsLoading] = useState(true);
-// useEffect(() => {
-//     setIsLoading(true);
-//     let timer = setTimeout(() => {
-//         setIsLoading(false);
-//         return () => clearInterval(timer);
-//     }, 1000);
-// }, []);
-// return isLoading ? (
-//     <Loader />
-// ) : (
-//     <>
-//       <div>
-//          <Navbar/>
-//         <AllRoutes />
-//          <Footer/>
-//         <Footer2/>
-//       </div>
-//     </>
-//   );

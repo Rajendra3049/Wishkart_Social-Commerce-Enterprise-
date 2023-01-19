@@ -2,7 +2,7 @@ import { Box, Heading, SimpleGrid } from "@chakra-ui/react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import GridProduct from "../../components/allProducts/gridProduct.jsx";
-import { getProducts } from "../../redux/products/product.action.js";
+import { getProducts } from "../../redux/Products/product.action.js";
 
 const Men = () => {
   let { loading, error, data } = useSelector((store) => store.ProductsManager);
