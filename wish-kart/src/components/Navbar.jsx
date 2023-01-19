@@ -35,39 +35,31 @@ import { BiShoppingBag } from "react-icons/bi";
 export default function Navbar() {
   // const { isOpen, onOpen, onClose } = useDisclosure();
   return (
-    <>
-      <Box top={0} w={"100%"} h={"55px"} zIndex={1} position={"fixed"}>
-        <Box
-          width={["1300px", "1300px", "100%"]}
-          justifyContent={"center"}
-          h={["158x"]}
-          bg={"white"}
-          border={"1px solid gray"}
-          position={"relative"}>
-          <Flex h={"100px"} alignItems={"center"} w={"100%"}>
-            <Image
-              src={logo}
-              w={["9%", "9%", "8%"]}
-              h={["99px", "99px", "100px"]}
-              ml={["20px", "20px", "20px"]}
-              mt={["-26px", "", ""]}
-            />
-
-            <Flex>
-              <Stack
-                spacing={3}
-                w={["200px", "300px", "400px"]}
-                ml={["5%", "5%", "10%"]}
-                mt={"-20px"}>
-                <Input
-                  placeholder="Try Saree,Kurti or Search by Product Code"
-                  width={["80%", "80%", "100%"]}
-                  h={["25px", "30px", "45px"]}
-                  color={"black"}
-                  borderWidth="1px"
-                  fontSize={["8px", "8x", "15px"]}
-                  p={7}
-                />
+  <>
+  <Box top={0} w={"100%"} h={"55px"} zIndex={1} position={"fixed"}>
+  <Box
+  width={["1300px", "1300px", "100%"]}
+  justifyContent={"center"}
+  h={["158x"]}
+  bg={"white"}
+  border={"1px solid gray"}
+  position={"relative"}>
+  <Flex h={"100px"} alignItems={"center"} w={"100%"}>
+  <Link href="/" w={["9%", "9%", "8%"]}
+  h={["99px", "99px", "100px"]}
+  ml={["20px", "20px", "20px"]}
+  mt={["-26px", "", ""]}>
+  <Image src={logo}/>
+  </Link>
+  <Flex>
+  <Stack spacing={3}
+   w={["200px", "300px", "400px"]}
+   ml={["5%", "5%", "10%"]}
+   mt={"-20px"}>
+   <Input placeholder="Try Saree,Kurti or Search by Product Code" width={["80%", "80%", "100%"]} h={["25px", "30px", "45px"]}
+   color={"black"}
+  borderWidth="1px"
+  fontSize={["8px", "8x", "15px"]} p={7}/>
               </Stack>
             </Flex>
 
@@ -198,35 +190,4 @@ export default function Navbar() {
   );
 }
 
-// import React from 'react'
-// import {Box , Input , Image , Flex} from"@chakra-ui/react";
-// import "../index.css"
-// import logo from "../images/wish.png";
 
-// const Navbar = () => {
-
-//   return (
-//     <div>
-//   <Box border={"1px solid red"} w={"100%"} h={"133px"}>
-//   <Box id="nav1">
-// <Flex>
-//   <Box ml={"40px"}>
-//
-//   </Box>
-
-//   <Box mt={"28px"} >
-//   <Input placeholder='small size' size='sm' width={300} border={"1px solid black"}/>
-//   </Box>
-//   </Flex>
-//   </Box>
-
-// {/*
-// //navbar */}
-
-//   </Box>
-
-//     </div>
-//   )
-// }
-
-// export default Navbar
