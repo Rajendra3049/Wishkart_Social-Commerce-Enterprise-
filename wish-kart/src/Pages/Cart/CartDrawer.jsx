@@ -3,7 +3,6 @@ import {
   Text,
   Box,
   Flex,
-  Card,
   Image,
   Drawer,
   Button,
@@ -15,8 +14,11 @@ import {
   DrawerCloseButton,
   useDisclosure,
 } from "@chakra-ui/react";
+import { useState } from "react";
 
 const CartDrawer = () => {
+const [count,setCount]=useState(1)
+
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
   return (
@@ -67,9 +69,9 @@ const CartDrawer = () => {
                   <Flex gap={"10px"} >
                     <Text>Qty:</Text> 
                     <Flex gap={"10px"} borderWidth={"1px"} borderRadius={'5px'} padding={'0 5px'}>
-                      <Text>-</Text>
-                      <Text>1</Text>
-                      <Text>+</Text>
+                      <Text onClick={()=>setCount(count-1)} >-</Text>
+                      <Text>{count}</Text>
+                      <Text onClick={()=>setCount(count+1)}>+</Text>
                     </Flex>
                   </Flex>
                 </Flex>

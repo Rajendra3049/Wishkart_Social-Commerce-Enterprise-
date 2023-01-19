@@ -3,8 +3,22 @@ import React from "react";
 import "./cart.css";
 import Navbar2 from "../../components/Navbar2/Navbar2.jsx";
 import CartDrawer from "./CartDrawer";
+import swal from 'sweetalert';
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
+const navigate=useNavigate();
+
+ const handleSweetalert=()=>{
+  swal("Remove product from cart",  "Are you sure?", {
+    dangerMode: true,
+    buttons: true,
+  });
+ }
+
+  const gotoaddress=()=>{
+    navigate("/address")
+  }
   return (
     <>
       <Navbar2 />
@@ -12,8 +26,9 @@ const Cart = () => {
       <Box
         w={"72%"}
         gap={"10px"}
-        margin={"20px auto"}
+        margin={"100px auto"}
         display={{ base: "row", md: "row", lg: "flex" }}
+        
       >
         <div className="cart-first-section">
           <div className="cart-fisrt-section-item">
@@ -47,8 +62,8 @@ const Cart = () => {
                 fontSize={"20px"}
                 display="flex"
                 alignItems="center"
-                justifyContent="space-between"
-                gap={{ base: "0", md: "90px", lg: "290px" }}
+                justifyContent={"space-between"}
+                // gap={{ base: "0", md: "90px", lg: "200px" }}
               >
                 <Text fontWeight={"600"}>Redmi Go Back cover</Text>
                 <Text color={"pink.400"} fontWeight={"600"}>
@@ -68,6 +83,7 @@ const Cart = () => {
                 fontWeight={"600"}
                 bg={"none"}
                 _hover={{ bg: "none" }}
+                onClick={handleSweetalert}
               >
                 <i class="fa-solid fa-xmark"></i>Remove
               </Button>
@@ -130,6 +146,7 @@ const Cart = () => {
               borderRadius={"5px"}
               m={"10px auto"}
               _hover={{ bg: "pink.450" }}
+              onClick={gotoaddress}
             >
               Continue
             </Button>
