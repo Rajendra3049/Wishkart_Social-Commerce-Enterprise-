@@ -1,7 +1,7 @@
 import React from "react";
 // import FontAwesomeIcon from "font-awesome";
 // import { StarIcon } from "@chakra-ui/icons";
-import { FaShoppingCart } from "react-icons/fa";
+import { FaShoppingCart, FaStar } from "react-icons/fa";
 
 const SingleProduct = () => {
   return (
@@ -11,23 +11,20 @@ const SingleProduct = () => {
         // border: "1px solid red",
         padding: "3%",
         marginTop: "8%",
-      }}
-    >
+      }}>
       {/* inner Container */}
       <div
         style={{
           display: "Flex",
           //   border: "1px solid grey",
-        }}
-      >
+        }}>
         {/* 10% width Image Container */}
         <div
           style={{
             width: "10%",
             // border: "1px solid blue",
             padding: "1%",
-          }}
-        >
+          }}>
           <img
             style={{
               width: "80%",
@@ -85,8 +82,7 @@ const SingleProduct = () => {
               //   border: "1px solid purple",
               display: "block",
               margin: "auto",
-            }}
-          >
+            }}>
             <img
               style={{
                 display: "block",
@@ -103,8 +99,7 @@ const SingleProduct = () => {
               display: "flex",
               justifyContent: "space-evenly",
               marginTop: "7%",
-            }}
-          >
+            }}>
             <button
               //   style={{
               //     padding: "2% 8%",
@@ -121,8 +116,7 @@ const SingleProduct = () => {
                 border: "1px solid black",
                 fontWeight: "bold",
                 borderRadius: "7px",
-              }}
-            >
+              }}>
               <FaShoppingCart /> Add to Cart
             </button>
             <button
@@ -141,8 +135,7 @@ const SingleProduct = () => {
                 borderRadius: "7px",
                 color: "white",
                 backgroundColor: "#f43397",
-              }}
-            >
+              }}>
               Buy Now
             </button>
           </div>
@@ -153,8 +146,7 @@ const SingleProduct = () => {
                 fontWeight: "bold",
                 marginTop: "10%",
                 marginLeft: "2%",
-              }}
-            >
+              }}>
               Similar Products
             </h3>
             <div
@@ -163,8 +155,7 @@ const SingleProduct = () => {
                 display: "flex",
                 gap: "30px",
                 marginTop: "2%",
-              }}
-            >
+              }}>
               <img
                 style={{
                   width: "14%",
@@ -204,8 +195,7 @@ const SingleProduct = () => {
             width: "55%",
             // border: "1px solid yellow",
             padding: "1%",
-          }}
-        >
+          }}>
           <div
             style={{
               border: " ",
@@ -215,16 +205,14 @@ const SingleProduct = () => {
               boxShadow: "rgba(1, 0.15, 0.15, 0.15) 1.95px 1.95px 2.6px",
               //   marginTop: "2%",
               marginBottom: "2%",
-            }}
-          >
+            }}>
             <p
               style={{
                 fontSize: "large",
                 fontWeight: "bold",
                 color: "grey",
                 marginTop: "1%",
-              }}
-            >
+              }}>
               Autokraftz New Latest Winter Knit Thick Fleece Woolen Combo of
               Beanie Winter Cap Hat and Faux Fur Lining Wool Neck Muffler Scarf
               in Black for All Girls Boys Men Women. Free Size
@@ -233,8 +221,7 @@ const SingleProduct = () => {
               style={{
                 fontSize: "35px",
                 marginTop: "1%",
-              }}
-            >
+              }}>
               ₹184
             </p>
             <div
@@ -242,9 +229,8 @@ const SingleProduct = () => {
                 display: "flex",
                 gap: "30px",
                 marginTop: "2%",
-              }}
-            >
-              <h1
+              }}>
+              {/* <h1
                 style={{
                   backgroundColor: "green",
                   padding: "5px 10px",
@@ -254,14 +240,29 @@ const SingleProduct = () => {
                   fontWeight: "bold",
                 }}
               >
-                4.0 *{/* <StarIcon /> */}
+                4.0 
+              </h1> */}
+              <h1
+                style={{
+                  backgroundColor: "green",
+                  padding: "5px 10px",
+                  color: "white",
+                  fontSize: "large",
+                  borderRadius: "20px",
+                  fontWeight: "bold",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                }}>
+                {4}{" "}
+                <FaStar fill="white" color="white" backgroundColor="white" />
+                {/* <StarIcon /> */}
                 {/* <FontAwesomeIcon icon="fa-solid fa-star" /> */}
               </h1>
               <p
                 style={{
                   color: "grey",
-                }}
-              >
+                }}>
                 10647 Ratings. 1651 Reviews
               </p>
             </div>
@@ -269,8 +270,7 @@ const SingleProduct = () => {
               style={{
                 color: "grey",
                 marginTop: "2%",
-              }}
-            >
+              }}>
               Free Delivery
             </p>
           </div>
@@ -282,14 +282,12 @@ const SingleProduct = () => {
               padding: "2%",
               marginTop: "5%",
               boxShadow: "rgba(1, 0.15, 0.15, 0.15) 1.95px 1.95px 2.6px",
-            }}
-          >
+            }}>
             <p
               style={{
                 fontSize: "25px",
                 marginTop: "2%",
-              }}
-            >
+              }}>
               Select Size
             </p>
             <button
@@ -302,8 +300,7 @@ const SingleProduct = () => {
                 backgroundColor: "#fde9f2",
                 border: "1px solid #f43397",
                 marginBottom: "3%",
-              }}
-            >
+              }}>
               Free Size
             </button>
           </div>
@@ -317,18 +314,15 @@ const SingleProduct = () => {
               marginTop: "5%",
               marginBottom: "3%",
               paddingBottom: "3%",
-            }}
-          >
+            }}>
             <h3
-              style={{ fontSize: "28px", marginTop: "2%", marginBottom: "3%" }}
-            >
+              style={{ fontSize: "28px", marginTop: "2%", marginBottom: "3%" }}>
               Product Details
             </h3>
             <p
               style={{
                 color: "grey",
-              }}
-            >
+              }}>
               Name : Autokraftz New Latest Winter Knit Thick Fleece Woolen Combo
               of Beanie Winter Cap Hat and Faux Fur Lining Wool Neck Muffler
               Scarf in Black for All Girls Boys Men Women.
