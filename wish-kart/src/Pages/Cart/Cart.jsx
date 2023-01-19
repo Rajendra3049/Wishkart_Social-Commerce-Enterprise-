@@ -21,7 +21,7 @@ const navigate=useNavigate();
   }
   return (
     <>
-      <Navbar2 />
+      {/* <Navbar2 /> */}
       {/* <div className="cart-section"> */}
       <Box
         w={"72%"}
