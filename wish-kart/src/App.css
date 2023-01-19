@@ -2,6 +2,10 @@
   text-align: center;
 }
 
+.Productfont{
+  font-family: 'Noto Sans', sans-serif;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

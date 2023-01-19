@@ -5,9 +5,8 @@ import AllRoutes from "./Pages/AllRoutes";
 import Loader from './components/Loader';
 import { useState,useEffect } from 'react';
 
-
-
 function App() {
+
   const [isLoading, setIsLoading] = useState(true);
 useEffect(() => {
     setIsLoading(true);
@@ -19,15 +18,13 @@ useEffect(() => {
 return isLoading ? (
     <Loader />
 ) : (
- 
     <>
-    <div>
-       <Navbar/>
-      <AllRoutes />
-       <Footer/>
-      <Footer2/>
-  
-    </div>
+      <div>
+         <Navbar/>
+        <AllRoutes />
+         <Footer/>
+        <Footer2/>
+      </div>
     </>
   );
 }
