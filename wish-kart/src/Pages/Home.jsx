@@ -1,6 +1,4 @@
 import React from "react";
-
-
 import {
   Box,
   Button,
@@ -23,7 +21,8 @@ import HomeProducts from "../Pages/homeproducts";
 
 const Home = () => {
   return (
-    <Box w={"95%"} m={"auto"} mt={"188px"}>
+   
+    <Box w={"95%"} m={"auto"} mt={"188px"} border={'1px solid green'}>
       <Box bg={"#f9f9f9"} w={"85%"} m={"auto"} h={"370px"} mt={"80px"}>
         <Flex>
           <Box w={"590px"} mt={"60px"} ml={["10px", "20px", "60px"]}>
@@ -32,7 +31,8 @@ const Home = () => {
               lineHeight={"56px"}
               color={"#333333"}
               fontWeight={650}
-              textAlign={"left"}>
+              textAlign={"left"}
+            >
               Lowest Prices{" "}
             </Heading>
             <Heading
@@ -41,7 +41,8 @@ const Home = () => {
               color={"#333333"}
               fontWeight={650}
               mt={["-24px", "2px", "5px"]}
-              textAlign={"left"}>
+              textAlign={"left"}
+            >
               {" "}
               Best Quality Shopping{" "}
             </Heading>
@@ -54,7 +55,8 @@ const Home = () => {
                   w={"38px"}
                   h={"38px"}
                   mt={"27px"}
-                  p={1}>
+                  p={1}
+                >
                   <Flex>
                     <Text fontSize={"30px"} ml={"4px"}>
                       <CiDeliveryTruck bg={"#f7a8ca"} mt={"15px"} />
@@ -63,7 +65,8 @@ const Home = () => {
                       fontWeight={400}
                       ml={"17px"}
                       fontSize={"14px"}
-                      mt={"-5px"}>
+                      mt={"-5px"}
+                    >
                       Free Delievery
                     </Text>
                     <Flex bg={"black"} h="45px" ml={"18px"} mt={"-5px"}>
@@ -80,7 +83,8 @@ const Home = () => {
                       w={"38px"}
                       h={"38px"}
                       mt={"27px"}
-                      p={1}>
+                      p={1}
+                    >
                       <Flex>
                         <Text fontSize={"30px"} ml={"4px"}>
                           <CiDeliveryTruck bg={"#f7a8ca"} mt={"15px"} />
@@ -89,7 +93,8 @@ const Home = () => {
                           fontWeight={400}
                           ml={"17px"}
                           fontSize={"14px"}
-                          mt={"-5px"}>
+                          mt={"-5px"}
+                        >
                           Free Delievery
                         </Text>
                         <Flex bg={"black"} h="45px" ml={"18px"} mt={"-5px"}>
@@ -104,14 +109,16 @@ const Home = () => {
                       w={"38px"}
                       h={"38px"}
                       mt={"27px"}
-                      ml={"120px"}>
+                      ml={"120px"}
+                    >
                       <Flex>
                         <Image
                           src={cash}
                           width={"30px"}
                           m={"auto"}
                           mt={"4px"}
-                          ml={"3px"}></Image>
+                          ml={"3px"}
+                        ></Image>
                         <Text fontWeight={400} ml={"20px"} fontSize={"14px"}>
                           Cash On Delievery
                         </Text>
@@ -123,7 +130,8 @@ const Home = () => {
                       w={"38px"}
                       h={"38px"}
                       mt={"27px"}
-                      ml={"110px"}>
+                      ml={"110px"}
+                    >
                       <Flex>
                         <Flex bg={"black"} h="48px" mt={"-7px"} ml={"-10px"}>
                           <Divider orientation="vertical" color={"black"} />
@@ -133,7 +141,8 @@ const Home = () => {
                           width={"30px"}
                           m={"auto"}
                           ml={"13px"}
-                          mt={"2px"}></Image>
+                          mt={"2px"}
+                        ></Image>
                         <Text fontWeight={400} ml={"20px"} fontSize={"14px"}>
                           Easy Returns
                         </Text>
@@ -146,7 +155,8 @@ const Home = () => {
                     width={"30px"}
                     m={"auto"}
                     ml={"13px"}
-                    mt={"2px"}></Image>
+                    mt={"2px"}
+                  ></Image>
                   <Text fontWeight={400} ml={"20px"} fontSize={"14px"}>
                     Easy Returns
                   </Text>
@@ -161,7 +171,8 @@ const Home = () => {
                     color={"white"}
                     _hover={"#f43397"}
                     fontSize={18}
-                    fontWeight={550}>
+                    fontWeight={550}
+                  >
                     {" "}
                     <Image src={playstore} w={12} h={12} /> Download the
                     WishKart App
@@ -190,7 +201,8 @@ const Home = () => {
             lineHeight={"44px"}
             color={"#333333"}
             mt={["50px", "50px", "40px"]}
-            ml={["6px", "", "15px"]}>
+            ml={["6px", "", "15px"]}
+          >
             Top Categories to choose from
           </Heading>
           <Divider
@@ -212,29 +224,20 @@ const Home = () => {
       </Box>
       <Box w={"95%"} m={"auto"} h={"545px"} mt={["-333px", "-333px", "40px"]}>
         <Image src={snip3} m={"auto"} w={"86%"} />
-
-        <Box w={"95%"} m={"auto"} h={"545px"} mt={"100px"}>
-          <Image src={snip1} m={"auto"} w={"86%"} />
         </Box>
-        <Box w={"95%"} m={"auto"} h={"545px"} mt={"40px"}>
-          <Image src={snip2} m={"auto"} w={"86%"} />
-        </Box>
-        <Box w={"95%"} m={"auto"} h={"545px"} mt={"40px"}>
-          <Image src={snip3} m={"auto"} w={"86%"} />
-        </Box>
-
-        <Box w={"95%"} m={"auto"} h={"545px"} mt={["-333px", "-333px", "40px"]}>
+         <Box w={"95%"} m={"auto"} h={"545px"} mt={["-333px", "-333px", "40px"]}>
           <Image src={snip4} m={"auto"} w={"86%"} />
-        </Box>
+         </Box> 
 
-        <Box border={"1px solid black"} w={"70%"} h={"1300px"} float={"right"}>
-          <HomeProducts />
-        </Box>
-      </Box>
+        <Flex gap={8}>
+          <Box border={"1px solid red"} w={"29%"} ></Box>
+          <Box border={"1px solid blue"} w={"70%"} padding={10}><HomeProducts /></Box>
+     
+        </Flex>
+     
     </Box>
-    // </div>
+
   );
 };
 
 export default Home;
-
