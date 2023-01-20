@@ -1,14 +1,9 @@
 import {
   Box,
   Flex,
-
-  // Link,
   Image,
-
-  // useDisclosure,
   Input,
   Text,
-  // useColorModeValue,
   Stack,
   Divider,
   Popover,
@@ -17,11 +12,9 @@ import {
   Button,
   PopoverArrow,
   PopoverHeader,
-  // PopoverBody,
   Heading,
 } from "@chakra-ui/react";
-// import { HamburgerIcon, CloseIcon, AddIcon, SearchIcon } from '@chakra-ui/icons';
-import "../index.css";
+
 import logo from "../images/wish.png";
 import MegaMenu from "../components/MegaMenu";
 import { FaMobileAlt } from "react-icons/fa";
@@ -33,7 +26,6 @@ import { BiShoppingBag } from "react-icons/bi";
 import { Link as RouterLink } from "react-router-dom";
 
 export default function Navbar() {
-  // const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
       <Box top={0} w={"100%"} h={"55px"} zIndex={1} position={"fixed"}>
@@ -43,22 +35,25 @@ export default function Navbar() {
           h={["158x"]}
           bg={"white"}
           border={"1px solid gray"}
-          position={"relative"}>
+          position={"relative"}
+        >
           <Flex h={"100px"} alignItems={"center"} w={"100%"}>
-            <RouterLink
-              to="/"
-              w={["9%", "9%", "8%"]}
-              h={["99px", "99px", "100px"]}
-              ml={["20px", "20px", "20px"]}
-              mt={["-26px", "", ""]}>
-              <Image src={logo} />
+            <RouterLink to="/">
+              <Image
+                src={logo}
+                w={["65%", "70%", "100%"]}
+                h={["99px", "99px", "100px"]}
+                ml={["20px", "20px", "20px"]}
+                mt={["-10px", "", ""]}
+              />
             </RouterLink>
             <Flex>
               <Stack
                 spacing={3}
                 w={["200px", "300px", "400px"]}
                 ml={["5%", "5%", "10%"]}
-                mt={"-20px"}>
+                mt={"-20px"}
+              >
                 <Input
                   placeholder="Try Saree,Kurti or Search by Product Code"
                   width={["80%", "80%", "100%"]}
@@ -70,12 +65,12 @@ export default function Navbar() {
                 />
               </Stack>
             </Flex>
-
             <Box
               display={"flex"}
               textAlign={"center"}
               gap={10}
-              ml={["", "", "20%"]}>
+              ml={["", "", "20%"]}
+            >
               <Popover trigger={"hover"}>
                 <PopoverTrigger>
                   <Flex>
@@ -87,14 +82,14 @@ export default function Navbar() {
                       fontSize={["8px", "8x", "15px"]}
                       mt={"-15px"}
                       ml={"10px"}
-                      cursor={"pointer"}>
+                      cursor={"pointer"}
+                    >
                       Download App
                     </Text>
                   </Flex>
                 </PopoverTrigger>
                 <PopoverContent>
                   <PopoverArrow />
-                  {/* <PopoverCloseButton /> */}
                   <PopoverHeader fontSize={19}>Download From</PopoverHeader>
                   <Image src={google} w={"160px"} h={"60px"} ml={"18px"} />
                   <Image src={Appstore} w={"163px"} h={"72px"} ml={"18px"} />
@@ -107,7 +102,9 @@ export default function Navbar() {
                 <Text
                   fontSize={["8px", "8x", "15px"]}
                   mt={"-15px"}
-                  cursor={"pointer"}>
+                  cursor={"pointer"}
+                >
+                  {" "}
                   Admin
                 </Text>
               </RouterLink>
@@ -116,16 +113,17 @@ export default function Navbar() {
             <Box display={"flex"} ml={"60px"}>
               <Box m={10}>
                 <Text fontSize={28} mt={"-20px"} ml={"6px"}>
-                  <BiUser />
+                  <BiUser />{" "}
                 </Text>
-
                 <Popover trigger={"hover"}>
                   <PopoverTrigger>
                     <Flex>
                       <Text
                         fontSize={["8px", "8x", "15px"]}
                         mt={"5px"}
-                        cursor={"pointer"}>
+                        cursor={"pointer"}
+                      >
+                        {" "}
                         Profile
                       </Text>
                     </Flex>
@@ -137,7 +135,8 @@ export default function Navbar() {
                       fontSize={18}
                       mt={"15px"}
                       color={"#333333"}
-                      ml={"20px"}>
+                      ml={"20px"}
+                    >
                       Hello User
                     </Heading>
                     <Text mt={"5px"} ml={"20px"} fontSize={"10px"}>
@@ -151,7 +150,8 @@ export default function Navbar() {
                         ml={"15px"}
                         mt={"10px"}
                         h={"45px"}
-                        fontSize={"17px"}>
+                        fontSize={"17px"}
+                      >
                         Sign Up
                       </Button>
                     </RouterLink>
@@ -176,7 +176,8 @@ export default function Navbar() {
                   <Text
                     fontSize={["8px", "8x", "15px"]}
                     mt={"5px"}
-                    cursor={"pointer"}>
+                    cursor={"pointer"}
+                  >
                     Cart
                   </Text>
                 </RouterLink>
@@ -189,9 +190,10 @@ export default function Navbar() {
           top={0}
           w={"100%"}
           h={"55px"}
-          mt={"82px"}
+          mt={"80px"}
           bg={"white"}
-          position={"absolute"}>
+          position={"absolute"}
+        >
           <MegaMenu />
         </Box>
       </Box>
