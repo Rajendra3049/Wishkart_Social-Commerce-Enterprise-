@@ -1,3 +1,5 @@
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import AddProduct from "./addProduct";
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 import style from "../styles/adminSide.module.css";
