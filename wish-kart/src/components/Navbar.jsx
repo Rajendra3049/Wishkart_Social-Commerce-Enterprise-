@@ -13,7 +13,7 @@ import {
   Divider,
   Popover,
   PopoverTrigger,
-  Link,
+
   PopoverContent,
   Button,
   PopoverArrow,
@@ -31,6 +31,7 @@ import { BsCart2 } from "react-icons/bs";
 import google from "../images/google.png";
 import Appstore from "../images/Appstore.png";
 import { BiShoppingBag } from "react-icons/bi";
+import {Link as RouterLink} from "react-router-dom";
 
 export default function Navbar() {
   // const { isOpen, onOpen, onClose } = useDisclosure();
@@ -103,14 +104,14 @@ export default function Navbar() {
               <Flex bg={"black"} h="32px" mt={"-18px"}>
                 <Divider orientation="vertical" color={"black"} />
               </Flex>
-              <a href="/admin">
+              <RouterLink to="/admin">
                 <Text
                   fontSize={["8px", "8x", "15px"]}
                   mt={"-15px"}
                   cursor={"pointer"}>
                   Admin
                 </Text>
-              </a>
+              </RouterLink>
             </Box>
             {/* profile and cart */}
             <Box display={"flex"} ml={"60px"}>
@@ -132,7 +133,7 @@ export default function Navbar() {
                   </PopoverTrigger>
                   <PopoverContent h={"170px"} w={"240px"}>
                     <PopoverArrow />
-                    {/* <PopoverCloseButton /> */}
+                   
                     <Heading
                       fontSize={18}
                       mt={"15px"}
@@ -143,7 +144,7 @@ export default function Navbar() {
                     <Text mt={"5px"} ml={"20px"} fontSize={"10px"}>
                       To access your Meesho account
                     </Text>
-                    <a href="/signup">
+                    <RouterLink to="/signup">
                       <Button
                         bg={"#f43397"}
                         color={"white"}
@@ -154,7 +155,7 @@ export default function Navbar() {
                         fontSize={"17px"}>
                         Sign Up
                       </Button>
-                    </a>
+                    </RouterLink>
 
                     <PopoverHeader></PopoverHeader>
                     <Flex mt={"10px"} ml={"10px"}>
@@ -168,15 +169,18 @@ export default function Navbar() {
               </Box>
 
               <Box m={10}>
+              <RouterLink to="/cart">
                 <Text fontSize={28} mt={"-20px"}>
                   <BsCart2 />
                 </Text>
+           
                 <Text
                   fontSize={["8px", "8x", "15px"]}
                   mt={"5px"}
                   cursor={"pointer"}>
                   Cart
                 </Text>
+                </RouterLink>
               </Box>
             </Box>
           </Flex>
@@ -186,7 +190,7 @@ export default function Navbar() {
           top={0}
           w={"100%"}
           h={"55px"}
-          mt={"80px"}
+          mt={"82px"}
           bg={"white"}
           position={"absolute"}>
           <MegaMenu />

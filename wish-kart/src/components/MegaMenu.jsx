@@ -21,6 +21,7 @@ import {
   ChevronDownIcon,
   // ChevronRightIcon,
 } from "@chakra-ui/icons";
+import "../index.css";
 
 export default function MegaMenu() {
   const { isOpen, onToggle } = useDisclosure();
@@ -88,7 +89,8 @@ const DesktopNav = () => {
         <Box key={navItem.label}>
           <Popover trigger={"hover"} placement={"bottom-start"}>
             <PopoverTrigger>
-              <Link
+              <div  className="underline">
+              <Link 
                 p={4}
                 href={navItem.href ?? "#"}
                 // borderRadius={"8px 8px 0px 0px"}
@@ -97,11 +99,12 @@ const DesktopNav = () => {
                 h={"100%"}
                 color={linkColor}
                 _hover={{
-                  textDecoration: "underline",
+                  //  textDecoration: "underline",
                   color: linkHoverColor,
                 }}>
                 {navItem.label}
               </Link>
+              </div>
             </PopoverTrigger>
 
             {navItem.children && (
@@ -109,6 +112,7 @@ const DesktopNav = () => {
                 boxShadow={"xl"}
                 bg={popoverContentBgColor}
                 p={4}
+      
                 // bg={"white"}
                 display={"flex"}
                 rounded={"xl"}
