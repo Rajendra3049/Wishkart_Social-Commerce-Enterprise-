@@ -12,12 +12,11 @@ import {
 import axios from "axios";
 
 export const Get_Users_Data = (input) => async (dispatch) => {
-  //   console.log("in get user data function");
   let user = "";
   let found = false;
 
   axios
-    .get(`https://meesho-database.vercel.app/users`)
+    .get(`https://meesho-backend-3037.onrender.com/users`)
     .then((res) => {
       let usersData = res.data;
       for (let i = 0; i < usersData.length; i++) {
@@ -29,33 +28,35 @@ export const Get_Users_Data = (input) => async (dispatch) => {
       }
       if (found == true) {
         console.log("Existing user");
+
         dispatch({ type: USER_LOGIN, payload: user });
       } else {
         console.log("new User");
         let newUser = {
-          id: "",
+          id: Date.now(),
           mobile_no: input,
           name: "",
           address: {},
           cart: [],
           order: [],
         };
-
-        try {
-          axios
-            .post(`https://meesho-database.vercel.app/users`, newUser)
-            .then((res) => {
-              console.log(res.data);
-              dispatch({ type: USER_LOGIN, payload: res.data });
-            });
-        } catch (error) {
-          console.log("err in creating new user");
-          dispatch({ type: USER_ERROR });
-        }
+        CreateNewUser(newUser);
       }
     })
-    .catch((err) => {
-      console.log(err);
+    .catch((error) => {
+      console.log("err");
+      console.log(error);
       dispatch({ type: USER_ERROR });
     });
+  async function CreateNewUser(newUser) {
+    let res = await fetch("https://meesho-backend-3037.onrender.com/users", {
+      method: "POST",
+      body: JSON.stringify(newUser),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    let data = await res.json();
+    dispatch({ type: USER_LOGIN, payload: user });
+  }
 };

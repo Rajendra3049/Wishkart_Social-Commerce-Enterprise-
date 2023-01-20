@@ -173,6 +173,9 @@ export default function Navbar() {
                 <Text fontSize={28} mt={"-20px"}>
                   <BsCart2 />
                 </Text>
+
+                
+
            
                 <Text
                   fontSize={["8px", "8x", "15px"]}
@@ -181,6 +184,7 @@ export default function Navbar() {
                   Cart
                 </Text>
                 </RouterLink>
+
               </Box>
             </Box>
           </Flex>

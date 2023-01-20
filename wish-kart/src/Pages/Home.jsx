@@ -1,8 +1,16 @@
 import React from "react";
-import {Box, Button, Divider, Flex, Heading , Image , Text} from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Divider,
+  Flex,
+  Heading,
+  Image,
+  Text,
+} from "@chakra-ui/react";
 import cash from "../images/cash.png";
-import returns from "../images/returns.png"
-import {CiDeliveryTruck} from "react-icons/ci";
+import returns from "../images/returns.png";
+import { CiDeliveryTruck } from "react-icons/ci";
 import playstore from "../images/playstore.png";
 import snip1 from "../images/snip1.png";
 import snip2 from "../images/snip2.png";
@@ -10,10 +18,8 @@ import snip3 from "../images/snip3.png";
 import snip4 from "../images/snip4.png";
 import HomeProducts from "../Pages/homeproducts";
 
-
 const Home = () => {
   return (
-    // <div style={{border:"5px solid red" , height:"100vh"}}>
       <Box w={"95%"}  m={"auto"}mt={"188px"} >
      <Box  bg={"#f9f9f9"}  w={"85%"} m={"auto"} h={"370px"} mt={"80px"}>
      <Flex>
@@ -33,19 +39,78 @@ const Home = () => {
     </Flex>
     </Box>
 
-   <Box backgroundColor={"#f7a8ca"} borderRadius={"50%"} w={"38px"} h={"38px"} mt={"27px"}  ml={"120px"}>
-    <Flex>
-    <Image src={cash} width={"30px"} m={"auto"} mt={"4px"} ml={'3px'} ></Image>
-    <Text fontWeight={400} ml={"20px"} fontSize={"14px"}>Cash On Delievery</Text>
 
-    </Flex>
-    </Box>
-    <Box backgroundColor={"#f7a8ca"} borderRadius={"50%"} w={"38px"} h={"38px"} mt={"27px"}  ml={"110px"}>
+            <Box>
+              <Flex>
+                <Box
+                  backgroundColor={"#f7a8ca"}
+                  borderRadius={"50%"}
+                  w={"38px"}
+                  h={"38px"}
+                  mt={"27px"}
+                  p={1}>
+                  <Flex>
+                    <Text fontSize={"30px"} ml={"4px"}>
+                      <CiDeliveryTruck bg={"#f7a8ca"} mt={"15px"} />
+                    </Text>
+                    <Text
+                      fontWeight={400}
+                      ml={"17px"}
+                      fontSize={"14px"}
+                      mt={"-5px"}>
+                      Free Delievery
+                    </Text>
+                    <Flex bg={"black"} h="45px" ml={"18px"} mt={"-5px"}>
+                      <Divider orientation="vertical" color={"black"} />
+                    </Flex>
+                  </Flex>
+                </Box>
 
-      <Flex>
-      <Flex bg={"black"} h="48px" mt={"-7px"} ml={"-10px"}>
-                <Divider orientation="vertical" color={"black"} />
+                <Box
+                  backgroundColor={"#f7a8ca"}
+                  borderRadius={"50%"}
+                  w={"38px"}
+                  h={"38px"}
+                  mt={"27px"}
+                  ml={"120px"}>
+                  <Flex>
+                    <Image
+                      src={cash}
+                      width={"30px"}
+                      m={"auto"}
+                      mt={"4px"}
+                      ml={"3px"}></Image>
+                    <Text fontWeight={400} ml={"20px"} fontSize={"14px"}>
+                      Cash On Delievery
+                    </Text>
+                  </Flex>
+                </Box>
+                <Box
+                  backgroundColor={"#f7a8ca"}
+                  borderRadius={"50%"}
+                  w={"38px"}
+                  h={"38px"}
+                  mt={"27px"}
+                  ml={"110px"}>
+                  <Flex>
+                    <Flex bg={"black"} h="48px" mt={"-7px"} ml={"-10px"}>
+                      <Divider orientation="vertical" color={"black"} />
+                    </Flex>
+                    <Image
+                      src={returns}
+                      width={"30px"}
+                      m={"auto"}
+                      ml={"13px"}
+                      mt={"2px"}></Image>
+                    <Text fontWeight={400} ml={"20px"} fontSize={"14px"}>
+                      Easy Returns
+                    </Text>
+                  </Flex>
+                </Box>
               </Flex>
+
+              
+
     <Image src={returns} width={"30px"} m={"auto"} ml={"13px"} mt={"2px"}></Image>
     <Text fontWeight={400} ml={"20px"} fontSize={"14px"}>Easy Returns</Text>
     </Flex>
@@ -86,7 +151,19 @@ const Home = () => {
      <Box w={"95%"} m={"auto"} h={"545px"}  mt={["-333px","-333px",'40px']}>
      <Image src={snip3} m={"auto"} w={"86%"}/>
 
-     </Box>
+
+      <Box w={"95%"} m={"auto"} h={"545px"} mt={"100px"}>
+        <Image src={snip1} m={"auto"} w={"86%"} />
+      </Box>
+      <Box w={"95%"} m={"auto"} h={"545px"} mt={"40px"}>
+        <Image src={snip2} m={"auto"} w={"86%"} />
+      </Box>
+      <Box w={"95%"} m={"auto"} h={"545px"} mt={"40px"}>
+        <Image src={snip3} m={"auto"} w={"86%"} />
+      </Box>
+
+
+      
 
      <Box w={"95%"} m={"auto"} h={"545px"}  mt={["-333px","-333px",'40px']}>
      <Image src={snip4} m={"auto"} w={"86%"}/>
@@ -99,7 +176,9 @@ const Home = () => {
     </Box>
 
 
+
       </Box>
+    </Box>
     // </div>
   );
 };
@@ -107,44 +186,4 @@ const Home = () => {
 export default Home;
 
 
-    //  {/* <Box p="6">
-    //         <Box d="flex" alignItems="baseline">
-    //           {data.isNew && (
-    //             <Badge rounded="full" px="2" fontSize="0.8em" colorScheme="red">
-    //               New
-    //             </Badge>
-    //           )}
-    //         </Box>
-    //         <Flex mt="1" justifyContent="space-between" alignContent="center">
-    //           <Box
-    //             fontSize="2xl"
-    //             fontWeight="semibold"
-    //             as="h4"
-    //             lineHeight="tight"
-    //             isTruncated>
-    //             {data.name}
-    //           </Box>
-    //           <Tooltip
-    //             label="Add to cart"
-    //             bg="white"
-    //             placement={'top'}
-    //             color={'gray.800'}
-    //             fontSize={'1.2em'}>
-    //             <chakra.a href={'#'} display={'flex'}>
-    //               <Icon as={FiShoppingCart} h={7} w={7} alignSelf={'center'} />
-    //             </chakra.a>
-    //           </Tooltip>
-    //         </Flex>
-  
-    //         <Flex justifyContent="space-between" alignContent="center">
-          
-    //           <Box fontSize="2xl" color={useColorModeValue('gray.800', 'white')}>
-    //             <Box as="span" color={'gray.600'} fontSize="lg">
-    //               £
-    //             </Box>
-    //             {data.price.toFixed(2)}
-    //           </Box>
-    //         </Flex>
-    //       </Box>
-    //     </Box>
-    //   </Flex> */}
+    

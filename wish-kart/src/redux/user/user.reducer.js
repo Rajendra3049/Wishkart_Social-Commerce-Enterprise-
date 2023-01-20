@@ -13,7 +13,6 @@ const initialState = {
   error: false,
   isAuth: false,
   user: {
-    id: "",
     mobile_no: "",
     name: "",
     address: {},
@@ -23,7 +22,8 @@ const initialState = {
 };
 
 const UserReducer = (state = initialState, { type, payload }) => {
-  // console.log(type,payload)
+  // console.log("in");
+  console.log("Reducer", type, payload);
 
   switch (type) {
     case USER_LOADING: {
@@ -37,10 +37,7 @@ const UserReducer = (state = initialState, { type, payload }) => {
         ...state,
         loading: false,
         isAuth: true,
-        user: {
-          ...state.user,
-          mobile_no: payload,
-        },
+        user: payload,
       };
     }
     case USER_LOGOUT: {
