@@ -13,7 +13,6 @@ import {
   Divider,
   Popover,
   PopoverTrigger,
-
   PopoverContent,
   Button,
   PopoverArrow,
@@ -31,7 +30,7 @@ import { BsCart2 } from "react-icons/bs";
 import google from "../images/google.png";
 import Appstore from "../images/Appstore.png";
 import { BiShoppingBag } from "react-icons/bi";
-import {Link as RouterLink} from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 
 export default function Navbar() {
   // const { isOpen, onOpen, onClose } = useDisclosure();
@@ -46,14 +45,14 @@ export default function Navbar() {
           border={"1px solid gray"}
           position={"relative"}>
           <Flex h={"100px"} alignItems={"center"} w={"100%"}>
-            <Link
-              href="/"
+            <RouterLink
+              to="/"
               w={["9%", "9%", "8%"]}
               h={["99px", "99px", "100px"]}
               ml={["20px", "20px", "20px"]}
               mt={["-26px", "", ""]}>
               <Image src={logo} />
-            </Link>
+            </RouterLink>
             <Flex>
               <Stack
                 spacing={3}
@@ -133,7 +132,7 @@ export default function Navbar() {
                   </PopoverTrigger>
                   <PopoverContent h={"170px"} w={"240px"}>
                     <PopoverArrow />
-                   
+
                     <Heading
                       fontSize={18}
                       mt={"15px"}
@@ -169,22 +168,18 @@ export default function Navbar() {
               </Box>
 
               <Box m={10}>
-              <RouterLink to="/cart">
-                <Text fontSize={28} mt={"-20px"}>
-                  <BsCart2 />
-                </Text>
+                <RouterLink to="/cart">
+                  <Text fontSize={28} mt={"-20px"}>
+                    <BsCart2 />
+                  </Text>
 
-                
-
-           
-                <Text
-                  fontSize={["8px", "8x", "15px"]}
-                  mt={"5px"}
-                  cursor={"pointer"}>
-                  Cart
-                </Text>
+                  <Text
+                    fontSize={["8px", "8x", "15px"]}
+                    mt={"5px"}
+                    cursor={"pointer"}>
+                    Cart
+                  </Text>
                 </RouterLink>
-
               </Box>
             </Box>
           </Flex>
