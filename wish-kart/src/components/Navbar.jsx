@@ -1,28 +1,22 @@
 import {
   Box,
   Flex,
-
-  // Link,
   Image,
-
-  // useDisclosure,
   Input,
   Text,
-  // useColorModeValue,
   Stack,
   Divider,
   Popover,
   PopoverTrigger,
-
   PopoverContent,
   Button,
   PopoverArrow,
   PopoverHeader,
-  // PopoverBody,
+
   Heading,
 } from "@chakra-ui/react";
-// import { HamburgerIcon, CloseIcon, AddIcon, SearchIcon } from '@chakra-ui/icons';
-import "../index.css";
+
+
 import logo from "../images/wish.png";
 import MegaMenu from "../components/MegaMenu";
 import { FaMobileAlt } from "react-icons/fa";
@@ -34,7 +28,7 @@ import { BiShoppingBag } from "react-icons/bi";
 import {Link as RouterLink} from "react-router-dom";
 
 export default function Navbar() {
-  // const { isOpen, onOpen, onClose } = useDisclosure();
+
   return (
   <>
   <Box top={0} w={"100%"} h={"55px"} zIndex={1} position={"fixed"}>
@@ -88,7 +82,7 @@ export default function Navbar() {
                 </PopoverTrigger>
                 <PopoverContent>
                   <PopoverArrow />
-                  {/* <PopoverCloseButton /> */}
+                
                   <PopoverHeader fontSize={19}>Download From</PopoverHeader>
                   <Image src={google} w={"160px"} h={"60px"} ml={"18px"} />
                   <Image src={Appstore} w={"163px"} h={"72px"} ml={"18px"} />
@@ -183,7 +177,7 @@ export default function Navbar() {
           top={0}
           w={"100%"}
           h={"55px"}
-          mt={"82px"}
+          mt={"80px"}
           bg={"white"}
           position={"absolute"}>
           <MegaMenu />
