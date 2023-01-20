@@ -1,38 +1,38 @@
 import { GET_PRODUCTS_ERROR, GET_PRODUCTS_LOADING, GET_PRODUCTS_SUCCESS } from "./product.actionTypes"
 
 let initialData = {
-    loading:false,
-    error:false,
-    data:[]
+    loading: false,
+    error: false,
+    data: []
 }
 
-const ProductReducer = (state=initialData,{type,payload}) =>{
+const ProductReducer = (state = initialData, { type, payload }) => {
     // console.log(type,payload)
 
-    switch(type){
-        case GET_PRODUCTS_LOADING:{
-            return{
+    switch (type) {
+        case GET_PRODUCTS_LOADING: {
+            return {
                 ...state,
-                loading:true
+                loading: true
             }
         }
-        case GET_PRODUCTS_SUCCESS:{
-            return{
+        case GET_PRODUCTS_SUCCESS: {
+            return {
                 ...state,
-                loading:false,
-                data:payload
+                loading: false,
+                data: payload
             }
         }
-        case GET_PRODUCTS_ERROR:{
-            return{
+        case GET_PRODUCTS_ERROR: {
+            return {
                 ...state,
-                loading:false,
-                error:true
+                loading: false,
+                error: true
             }
         }
 
-        default:{
-            return{
+        default: {
+            return {
                 ...state
             }
         }

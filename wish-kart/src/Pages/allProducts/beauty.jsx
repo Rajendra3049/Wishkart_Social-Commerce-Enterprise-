@@ -7,20 +7,19 @@ import { getProducts } from "../../redux/Products/product.action.js";
 const BeauthHealth = () => {
   let { loading, error, data } = useSelector((store) => store.ProductsManager);
   let dispatch = useDispatch();
-//   console.log(data) 
-  let beautyHealth = data.filter((el)=>el.category=="Beauty and health")
+  //   console.log(data)
+  let beautyHealth = data.filter((el) => el.category == "Beauty and health");
   console.log(beautyHealth);
   useEffect(() => {
     getProducts(dispatch);
   }, []);
   return (
-    <Box  mt={"150px"}>
+    <Box mt={"150px"}>
       <Heading>BeauthHealth</Heading>
-      <Box style={{width:"90%",margin:"auto"}} border="0px solid red">
-
-        <SimpleGrid columns={[1, 2, 3, 4]} spacing={10}  >
+      <Box style={{ width: "90%", margin: "auto" }} border="0px solid red">
+        <SimpleGrid columns={[1, 2, 3, 4]} spacing={10}>
           {beautyHealth.map((el) => {
-            return( <GridProduct key={el.id} props={el} />);
+            return <GridProduct key={el.id} props={el} />;
           })}
         </SimpleGrid>
       </Box>

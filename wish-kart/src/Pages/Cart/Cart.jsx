@@ -3,22 +3,22 @@ import React from "react";
 import "./cart.css";
 import Navbar2 from "../../components/Navbar2/Navbar2.jsx";
 import CartDrawer from "./CartDrawer";
-import swal from 'sweetalert';
+import swal from "sweetalert";
 import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
-const navigate=useNavigate();
+  const navigate = useNavigate();
 
- const handleSweetalert=()=>{
-  swal("Remove product from cart",  "Are you sure?", {
-    dangerMode: true,
-    buttons: true,
-  });
- }
+  const handleSweetalert = () => {
+    swal("Remove product from cart", "Are you sure?", {
+      dangerMode: true,
+      buttons: true,
+    });
+  };
 
-  const gotoaddress=()=>{
-    navigate("/address")
-  }
+  const gotoaddress = () => {
+    navigate("/address");
+  };
   return (
     <>
       {/* <Navbar2 /> */}
@@ -28,7 +28,6 @@ const navigate=useNavigate();
         gap={"10px"}
         margin={"100px auto"}
         display={{ base: "row", md: "row", lg: "flex" }}
-        
       >
         <div className="cart-first-section">
           <div className="cart-fisrt-section-item">

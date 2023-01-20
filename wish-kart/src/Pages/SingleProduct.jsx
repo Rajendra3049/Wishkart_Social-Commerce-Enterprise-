@@ -48,20 +48,23 @@ const SingleProduct = ({ props }) => {
         // border: "1px solid red",
         padding: "3%",
         marginTop: "8%",
-      }}>
+      }}
+    >
       {/* inner Container */}
       <div
         style={{
           display: "Flex",
           //   border: "1px solid grey",
-        }}>
+        }}
+      >
         {/* 10% width Image Container */}
         <div
           style={{
             width: "15%",
             // border: "1px solid blue",
             padding: "1%",
-          }}>
+          }}
+        >
           <img
             style={{
               width: "80%",
@@ -119,7 +122,8 @@ const SingleProduct = ({ props }) => {
               //   border: "1px solid purple",
               display: "block",
               margin: "auto",
-            }}>
+            }}
+          >
             <img
               style={{
                 display: "block",
@@ -138,7 +142,8 @@ const SingleProduct = ({ props }) => {
               justifyContent: "space-evenly",
               width: "80%",
               marginTop: "7%",
-            }}>
+            }}
+          >
             <button
               //   style={{
               //     padding: "2% 8%",
@@ -158,7 +163,8 @@ const SingleProduct = ({ props }) => {
                 border: "1px solid black",
                 fontWeight: "bold",
                 borderRadius: "7px",
-              }}>
+              }}
+            >
               <FaShoppingCart /> Add to Cart
             </button>
             <button
@@ -177,7 +183,8 @@ const SingleProduct = ({ props }) => {
                 borderRadius: "7px",
                 color: "white",
                 backgroundColor: "#f43397",
-              }}>
+              }}
+            >
               Buy Now
             </button>
           </div>
@@ -188,7 +195,8 @@ const SingleProduct = ({ props }) => {
                 fontWeight: "bold",
                 marginTop: "10%",
                 marginLeft: "2%",
-              }}>
+              }}
+            >
               Similar Products
             </h3>
             <div
@@ -197,7 +205,8 @@ const SingleProduct = ({ props }) => {
                 display: "flex",
                 gap: "30px",
                 marginTop: "2%",
-              }}>
+              }}
+            >
               <img
                 style={{
                   width: "14%",
@@ -237,7 +246,8 @@ const SingleProduct = ({ props }) => {
             width: "120%",
             // border: "1px solid yellow",
             padding: "1%",
-          }}>
+          }}
+        >
           <div
             style={{
               border: " ",
@@ -247,14 +257,16 @@ const SingleProduct = ({ props }) => {
               boxShadow: "rgba(1, 0.15, 0.15, 0.15) 1.95px 1.95px 2.6px",
               //   marginTop: "2%",
               marginBottom: "2%",
-            }}>
+            }}
+          >
             <p
               style={{
                 fontSize: "25px",
                 fontWeight: "bold",
                 color: "grey",
                 marginTop: "1%",
-              }}>
+              }}
+            >
               Autokraftz New Latest Winter Knit Thick Fleece Woolen Combo of
               Beanie Winter Cap Hat and Faux Fur Lining Wool Neck Muffler Scarf
               in Black for All Girls Boys Men Women. Free Size */}
@@ -264,7 +276,8 @@ const SingleProduct = ({ props }) => {
               style={{
                 fontSize: "35px",
                 marginTop: "1%",
-              }}>
+              }}
+            >
               ₹184
             </p>
             <div
@@ -272,7 +285,8 @@ const SingleProduct = ({ props }) => {
                 display: "flex",
                 gap: "30px",
                 marginTop: "2%",
-              }}>
+              }}
+            >
               <h1
                 style={{
                   backgroundColor: "green",
@@ -284,14 +298,16 @@ const SingleProduct = ({ props }) => {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "space-between",
-                }}>
+                }}
+              >
                 4.0 *{/* <StarIcon /> */}
                 {/* <FontAwesomeIcon icon="fa-solid fa-star" /> */}
               </h1>
               <p
                 style={{
                   color: "grey",
-                }}>
+                }}
+              >
                 10647 Ratings. 1651 Reviews
               </p>
             </div>
@@ -299,7 +315,8 @@ const SingleProduct = ({ props }) => {
               style={{
                 color: "grey",
                 marginTop: "2%",
-              }}>
+              }}
+            >
               Free Delivery
             </p>
           </div>
@@ -311,12 +328,14 @@ const SingleProduct = ({ props }) => {
               padding: "2%",
               marginTop: "5%",
               boxShadow: "rgba(1, 0.15, 0.15, 0.15) 1.95px 1.95px 2.6px",
-            }}>
+            }}
+          >
             <p
               style={{
                 fontSize: "25px",
                 marginTop: "2%",
-              }}>
+              }}
+            >
               Select Size
             </p>
 
@@ -345,7 +364,8 @@ const SingleProduct = ({ props }) => {
                     backgroundColor: "#fde9f2",
                     border: "1px solid #f43397",
                     marginBottom: "3%",
-                  }}>
+                  }}
+                >
                   {el}
                 </button>
               );
@@ -361,15 +381,18 @@ const SingleProduct = ({ props }) => {
               marginTop: "5%",
               marginBottom: "3%",
               paddingBottom: "3%",
-            }}>
+            }}
+          >
             <h3
-              style={{ fontSize: "28px", marginTop: "2%", marginBottom: "3%" }}>
+              style={{ fontSize: "28px", marginTop: "2%", marginBottom: "3%" }}
+            >
               Product Details
             </h3>
             <p
               style={{
                 color: "grey",
-              }}>
+              }}
+            >
               Name : Autokraftz New Latest Winter Knit Thick Fleece Woolen Combo
               of Beanie Winter Cap Hat and Faux Fur Lining Wool Neck Muffler
               Scarf in Black for All Girls Boys Men Women.
