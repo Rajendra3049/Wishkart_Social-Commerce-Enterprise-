@@ -1,8 +1,14 @@
 import { Box, Card, Flex, Heading, Image } from "@chakra-ui/react";
 import React from "react";
 import { FaShoppingCart, FaStar } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 const GridProduct = ({ props }) => {
-  // console.log(props)
+  const navigate = useNavigate();
+  const handleproductpass = (id) => {
+    // console.log(id);
+    // console.log("hell0")
+    navigate(`/SingleProduct/${id}`);
+  };
   let star = {
     green:
       "data:image/png;base64,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",
@@ -16,7 +22,7 @@ const GridProduct = ({ props }) => {
   };
   return (
     <Card>
-      <Box>
+      <Box onClick={() => handleproductpass(props.id)}>
         <Image src={props.images[0]} width="100%" height="350px" />
       </Box>
       <Box margin={5}>
