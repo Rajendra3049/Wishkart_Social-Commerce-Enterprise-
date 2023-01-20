@@ -23,24 +23,13 @@ const initialState = {
 
 const UserReducer = (state = initialState, { type, payload }) => {
   // console.log("in");
-  // console.log("Reducer", type, payload);
+  console.log("Reducer", type, payload);
 
   switch (type) {
     case USER_LOADING: {
       return {
         ...state,
         loading: true,
-      };
-    }
-    case USER_LOGIN: {
-      return {
-        ...state,
-        loading: false,
-        isAuth: true,
-        user: {
-          ...state.user,
-          mobile_no: payload.mobile_no,
-        },
       };
     }
     case USER_LOGIN: {

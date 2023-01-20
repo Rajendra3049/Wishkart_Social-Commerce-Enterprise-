@@ -1,43 +1,54 @@
-import { GET_PRODUCTS_ERROR, GET_PRODUCTS_LOADING, GET_PRODUCTS_SUCCESS } from "./product.actionTypes"
+import {
+  GET_PRODUCTS_ERROR,
+  GET_PRODUCTS_LOADING,
+  GET_PRODUCTS_SUCCESS,
+  ADD_NEW_PRODUCT,
+} from "./product.actionTypes";
 
 let initialData = {
-    loading:false,
-    error:false,
-    data:[]
-}
+  loading: false,
+  error: false,
+  data: [],
+};
 
-const ProductReducer = (state=initialData,{type,payload}) =>{
-    // console.log(type,payload)
+const ProductReducer = (state = initialData, { type, payload }) => {
+  // console.log(type,payload)
 
-    switch(type){
-        case GET_PRODUCTS_LOADING:{
-            return{
-                ...state,
-                loading:true
-            }
-        }
-        case GET_PRODUCTS_SUCCESS:{
-            return{
-                ...state,
-                loading:false,
-                data:payload
-            }
-        }
-        case GET_PRODUCTS_ERROR:{
-            return{
-                ...state,
-                loading:false,
-                error:true
-            }
-        }
-
-        default:{
-            return{
-                ...state
-            }
-        }
-
+  switch (type) {
+    case GET_PRODUCTS_LOADING: {
+      return {
+        ...state,
+        loading: true,
+      };
     }
-}
+    case GET_PRODUCTS_SUCCESS: {
+      return {
+        ...state,
+        loading: false,
+        data: payload,
+      };
+    }
+    case ADD_NEW_PRODUCT: {
+      return {
+        ...state,
+        loading: false,
+        data: [...state.data, payload],
+      };
+    }
+    case GET_PRODUCTS_ERROR: {
+      return {
+        ...state,
+        loading: false,
+        error: true,
+      };
+    }
 
-export default ProductReducer
+    default: {
+      return {
+        ...state,
+      };
+    }
+  }
+};
+
+export default ProductReducer;

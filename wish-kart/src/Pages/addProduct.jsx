@@ -1,6 +1,8 @@
 import React from "react";
 import styles from "../styles/addProduct.module.css";
 import style from "../styles/inputbox.module.css";
+import { addNewProduct } from "../redux/Products/product.action";
+import { useDispatch, useSelector } from "react-redux";
 
 const initialData = {
   category: "",
@@ -21,6 +23,8 @@ const initialData = {
 
 export default function AddProduct() {
   const [state, setState] = React.useState(initialData);
+  let { loading, error, data } = useSelector((store) => store.ProductsManager);
+  let dispatch = useDispatch();
 
   const handleChange = (e) => {
     let { name, value } = e.target;
@@ -40,8 +44,9 @@ export default function AddProduct() {
       },
     });
   };
-  function handleSubmit() {
-    console.log(state);
+  function handleSubmit(e) {
+    e.preventDefault();
+    dispatch(addNewProduct(state));
   }
 
   return (
@@ -79,13 +84,13 @@ export default function AddProduct() {
                   width: "80%",
                 }}>
                 <option value="#">Select Category</option>
-                <option value="sarees">Sarees</option>
-                <option value="jewellery">Jewellery</option>
-                <option value="dresses">Dresses</option>
-                <option value="mens">Mens Top Wear</option>
-                <option value="beauty">Beauty and health</option>
-                <option value="bags">Bags and Footwear</option>
-                <option value="home">Home and Kitchen</option>
+                <option value="Sarees">Sarees</option>
+                <option value="Jewellery">Jewellery</option>
+                <option value="Dresses">Dresses</option>
+                <option value="Mens Top Wear">Mens Top Wear</option>
+                <option value="Beauty and health">Beauty and health</option>
+                <option value="Bags and Footwear">Bags and Footwear</option>
+                <option value="Home and Kitchen">Home and Kitchen</option>
               </select>
             </div>
           </div>
@@ -93,7 +98,7 @@ export default function AddProduct() {
           <div className={styles.rowParent}>
             <h2>Price of Product</h2>
             <div className={styles.row}>
-              <div className={`${style.root}, ${styles.input}`}>
+              <div className={style.root}>
                 <input
                   className={style.input}
                   type="text"
@@ -106,21 +111,16 @@ export default function AddProduct() {
                   Original Price
                 </label>
               </div>
-              <div className={`${style.root}, ${styles.input}`}>
+              <div className={`${style.root}, `}>
                 <input
                   className={style.input}
                   type="text"
                   required
-                  value={state.original_price}
-                  onChange={handleChange}
-                  name="original_price"
-                />
-                <label
-                  className={style.label}
-                  htmlFor="Discounted Price"
                   value={state.discounted_price}
                   onChange={handleChange}
-                  name="discounted_price">
+                  name="discounted_price"
+                />
+                <label className={style.label} htmlFor="Discounted Price">
                   Discounted Price
                 </label>
               </div>
@@ -221,14 +221,10 @@ export default function AddProduct() {
               </div>
             </div>
           </div>
-          <div className={styles.row}>
-            {/* <button className={styles.btn}>Add Product</button> */}
-            <input
-              type="submit"
-              className={styles.btn}
-              onClick={handleSubmit}
-            />
-          </div>
+        </div>
+        <div className={styles.row}>
+          {/* <button className={styles.btn}>Add Product</button> */}
+          <input type="submit" className={styles.btn} onClick={handleSubmit} />
         </div>
       </form>
     </div>

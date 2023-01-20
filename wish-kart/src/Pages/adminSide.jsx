@@ -1,10 +1,11 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import AddProduct from "./addProduct";
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
+
 import style from "../styles/adminSide.module.css";
 
-import { useDispatch, useSelector } from "react-redux";
+import AddProduct from "./addProduct";
+import OrderAccept from "../components/adminSide/orderAccept";
 
 export default function AdminSide() {
   // redux start
@@ -14,7 +15,6 @@ export default function AdminSide() {
   let dispatch = useDispatch();
   // redux end
 
-  console.log("adminside", user);
   return (
     <div className={style.main}>
       <Tabs variant="soft-rounded" colorScheme="green">
@@ -36,7 +36,7 @@ export default function AdminSide() {
             <AddProduct />
           </TabPanel>
           <TabPanel>
-            <p>two!</p>
+            <OrderAccept />
           </TabPanel>
         </TabPanels>
       </Tabs>
