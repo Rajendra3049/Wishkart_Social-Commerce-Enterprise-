@@ -125,10 +125,30 @@ html {
   html {
     font-size: 55%;
   }
+  .main_box {
+    border: 0rem solid red;
+    width: 28%;
+    margin: auto;
+    box-shadow: rgba(149, 157, 165, 0.2) 0rem 8rem 24rem;
+    background-color: white;
+    border-radius: 1rem;
+    min-width: 40rem;
+    margin-top: 4rem;
+  }
 }
 
 @media (max-width: 768px) {
   html {
     font-size: 45%;
+  }
+  .main_box {
+    border: 0rem solid red;
+    width: 28%;
+    margin: auto;
+    box-shadow: rgba(149, 157, 165, 0.2) 0rem 8rem 24rem;
+    background-color: white;
+    border-radius: 1rem;
+    min-width: 40rem;
+    margin-top: 4rem;
   }
 }

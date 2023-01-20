@@ -32,6 +32,7 @@ export const Get_Users_Data = (input) => async (dispatch) => {
       } else {
         console.log("new User");
         let newUser = {
+          id: Date.now(),
           mobile_no: input,
           name: "",
           address: {},
@@ -47,7 +48,6 @@ export const Get_Users_Data = (input) => async (dispatch) => {
       dispatch({ type: USER_ERROR });
     });
   async function CreateNewUser(newUser) {
-    console.log("newUser", newUser);
     let res = await fetch("https://meesho-backend-3037.onrender.com/users", {
       method: "POST",
       body: JSON.stringify(newUser),
@@ -56,17 +56,6 @@ export const Get_Users_Data = (input) => async (dispatch) => {
       },
     });
     let data = await res.json();
-    console.log(data);
+    dispatch({ type: USER_LOGIN, payload: user });
   }
 };
-
-// axios
-// .post(`https://meesho-backend-3037.onrender.com/users`, newUser)
-// .then((res) => {
-//   console.log(res.data);
-//   dispatch({ type: USER_LOGIN, payload: res.data });
-// })
-// .catch((error) => {
-//   console.log(error);
-//   dispatch({ type: USER_ERROR });
-// });

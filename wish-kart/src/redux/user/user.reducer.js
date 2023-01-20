@@ -22,8 +22,8 @@ const initialState = {
 };
 
 const UserReducer = (state = initialState, { type, payload }) => {
-  console.log("in");
-  console.log("Reducer", type, payload);
+  // console.log("in");
+  // console.log("Reducer", type, payload);
 
   switch (type) {
     case USER_LOADING: {

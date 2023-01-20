@@ -1,29 +1,45 @@
 import React, { useEffect, useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import style from "../../styles/otp.module.css";
-import { ResendAlert, AutoFilledAlert } from "./AutoFilledAlert";
+import Loader from "../Loader";
+import { ResendAlert } from "./AutoFilledAlert";
 
 export const Otp = () => {
   const [otpIs, setOtp] = useState([]);
   const [resend, setResend] = useState(false);
-  let navigate = useNavigate();
-
-  //   otp generate
-  const otp = new Array(6).fill(0).map(() => Math.floor(Math.random() * 10));
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     setOtp(otp);
     setResend(false);
   }, [resend]);
 
-  useEffect(() => {}, []);
+  // loading
+
+  useEffect(() => {
+    setIsLoading(true);
+    let timer = setTimeout(() => {
+      setIsLoading(false);
+      return () => clearInterval(timer);
+    }, 500);
+  }, []);
+
+  let navigate = useNavigate();
   //   number access
   var number = localStorage.getItem("phone");
 
   if (!number) {
     return <Navigate to="/signup" />;
   }
-  return (
+
+  //   otp generate
+  const otp = new Array(6).fill(0).map(() => Math.floor(Math.random() * 10));
+
+  // redirect to homepage
+
+  return isLoading ? (
+    <Loader />
+  ) : (
     <>
       <div className={style.sign_up}>
         <div className={style.main_box}>
@@ -48,6 +64,7 @@ export const Otp = () => {
               {otpIs.map((e) => {
                 return (
                   <input
+                    readOnly
                     key={Math.random()}
                     type="text"
                     className={style.otp_input}

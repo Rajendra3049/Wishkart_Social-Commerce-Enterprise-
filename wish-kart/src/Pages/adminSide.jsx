@@ -1,7 +1,18 @@
 import AddProduct from "./addProduct";
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 import style from "../styles/adminSide.module.css";
+
+import { useDispatch, useSelector } from "react-redux";
+
 export default function AdminSide() {
+  // redux start
+  let { loading, error, isAuth, user } = useSelector(
+    (store) => store.UserManager
+  );
+  let dispatch = useDispatch();
+  // redux end
+
+  console.log("adminside", user);
   return (
     <div className={style.main}>
       <Tabs variant="soft-rounded" colorScheme="green">
