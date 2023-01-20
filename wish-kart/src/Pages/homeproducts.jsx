@@ -1,3 +1,4 @@
+
 import { Box, Grid, Text, Stack, Image, Flex } from "@chakra-ui/react";
 import { data } from "../Pages/data";
 import { AiFillStar } from "react-icons/ai";
