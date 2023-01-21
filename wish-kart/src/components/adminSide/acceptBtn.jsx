@@ -1,10 +1,10 @@
-import { Td } from "@chakra-ui/react";
+import { Td, Box } from "@chakra-ui/react";
 import React from "react";
 export default function AcceptOrderButton() {
   const [ready, setReady] = React.useState(false);
   return (
     <>
-      <Td
+      <Box
         w={"25%"}
         textAlign={"center"}
         fontWeight={"600"}
@@ -14,7 +14,7 @@ export default function AcceptOrderButton() {
         }}
         cursor="pointer">
         {ready ? "Dispatched" : "Ready to Dispatch"}
-      </Td>
+      </Box>
     </>
   );
 }

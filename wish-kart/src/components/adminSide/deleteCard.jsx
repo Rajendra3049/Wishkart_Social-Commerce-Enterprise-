@@ -1,6 +1,7 @@
 import { removeProduct } from "../../redux/Products/product.action";
 import { useDispatch, useSelector } from "react-redux";
 import React from "react";
+import btnStyle from "../../styles/removeBtn.module.css";
 
 export default function DeleteCard({ singleData }) {
   // redux start
@@ -11,65 +12,59 @@ export default function DeleteCard({ singleData }) {
   function HandleDelete() {
     dispatch(removeProduct(singleData.id));
   }
-  React.useEffect(() => {
-    console.log("delete dispatch");
-    console.log(data);
-  }, [dispatch]);
+
   return (
     <>
       <div
         style={{
-          border: "0px solid red",
-          padding: "1rem",
-          height: "50rem",
-          boxShadow:
-            "rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px",
+          boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
+          height: "70vh",
+          padding: "4%",
+          cursor: "pointer",
         }}>
-        <div
+        <img
           style={{
-            border: "0px solid blue",
-            height: "30rem",
-            marginBottom: "2rem",
-          }}>
-          <img
-            src={singleData.images[0]}
-            alt={singleData.title}
-            style={{ height: "100%", width: "100%", border: "1px solid #ccc" }}
-          />
-        </div>
-        <div
+            //   width: "50%",
+            height: "70%",
+            display: "block",
+            margin: "auto",
+            marginBottom: "1rem",
+          }}
+          src={singleData.images[0]}
+          alt=""
+        />
+        <h3
           style={{
-            border: "0px solid green",
-            padding: "1rem",
-            lineHeight: "2.2rem",
-            height: "15rem",
+            fontSize: "1.3rem",
+            minHeight: "3.9rem",
+            marginTop: "2%",
+            color: "grey",
           }}>
-          <h2
+          {singleData.title}
+        </h3>
+        <h1
+          style={{
+            fontSize: "1.8rem",
+            fontWeight: "bold",
+          }}>
+          ₹{singleData.discounted_price}{" "}
+          <span
             style={{
-              border: "0px solid blue",
-              height: "8rem",
+              color: "grey",
+              fontSize: "1.5rem",
             }}>
-            <b>{singleData.title}</b>
-          </h2>
-          <p style={{ border: "0px solid red", height: "4rem" }}>
-            <span>Price: Rs{singleData.discounted_price}</span>{" "}
-            &nbsp;&nbsp;&nbsp;
-            <span
-              style={{
-                textDecoration: "line-through",
-                fontSize: "1.3rem",
-                color: "gray",
-              }}>
-              MRP: Rs{singleData.original_price}
-            </span>
-          </p>
+            onwards
+          </span>
+        </h1>
+
+        <div
+          style={{
+            border: "0px solid red",
+            textAlign: "center",
+            marginTop: "1rem",
+          }}>
           <button
-            style={{
-              width: "100%",
-              border: "0px solid red",
-              margin: "auto",
-              marginTop: "1.5rem",
-            }}
+            className={`${btnStyle.btn} ${btnStyle.custom_btn}`}
             onClick={HandleDelete}>
             Remove
           </button>
@@ -78,3 +73,11 @@ export default function DeleteCard({ singleData }) {
     </>
   );
 }
+
+// {
+//   border: "1px solid black",
+//   textAlign: "center",
+//   width: "80%",
+//   fontSize: "18px",
+//   padding: "0.5rem 0.5rem",
+// }

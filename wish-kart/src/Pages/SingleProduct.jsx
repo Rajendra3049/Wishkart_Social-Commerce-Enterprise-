@@ -1,16 +1,31 @@
 import React, { useState, useEffect } from "react";
-
 import { useParams } from "react-router-dom";
 import axios from "axios";
-
 import { FaShoppingCart, FaStar } from "react-icons/fa";
 import { SingleCard } from "../components/SingleCard";
+import { useDispatch, useSelector } from "react-redux";
+import { AddToCart } from "../redux/user/user.action";
+import { Navigate } from "react-router-dom";
 
 const SingleProduct = () => {
   const [loading, setLoading] = React.useState(false);
   const [data, setData] = useState([]);
   const [productDetails, setproductDetails] = useState({});
   const [image, setimage] = useState([]);
+
+  // redux start
+  let { user, isAuth } = useSelector((store) => store.UserManager);
+  let dispatch = useDispatch();
+  // redux end
+
+  function HandleAddToCart() {
+    console.log("Handle Add to Cart");
+    console.log("user", user);
+    let newCartData = user.cart;
+    newCartData.push(productDetails);
+    let userId = user.id;
+    dispatch(AddToCart(newCartData, userId));
+  }
 
   const { id } = useParams();
   useEffect(() => {
@@ -28,7 +43,7 @@ const SingleProduct = () => {
       .get("https://meesho-database.vercel.app/products")
       .then(({ data }) => {
         let product = data.filter((elem) => elem.id == id)[0];
-        console.log("product", product.images);
+
         setproductDetails(product);
         setimage(product.images);
         setLoading(true);
@@ -42,8 +57,10 @@ const SingleProduct = () => {
   let images = image;
   let details = productDetails.details;
   let rating = productDetails.rating;
-  console.log("sizes", sizes);
-
+  if (isAuth == false) {
+    console.log("user not authenticated");
+    return <Navigate to="/signup" />;
+  }
   if (loading) {
     return (
       <>
@@ -70,6 +87,7 @@ const SingleProduct = () => {
               {images.map((el, i) => {
                 return (
                   <img
+                    key={i}
                     style={{
                       width: "80%",
                       height: "90px",
@@ -113,15 +131,6 @@ const SingleProduct = () => {
                   marginTop: "7%",
                 }}>
                 <button
-                  //   style={{
-                  //     padding: "2% 8%",
-                  //     fontSize: "20px",
-                  //     border: "1px solid #f43397",
-                  //     fontWeight: "bold",
-                  //     borderRadius: "7px",
-                  //     color: "white",
-                  //     backgroundColor: "#f43397",
-                  //   }}
                   style={{
                     padding: "2% 8%",
                     display: "flex",
@@ -132,14 +141,13 @@ const SingleProduct = () => {
                     fontWeight: "bold",
                     borderRadius: "7px",
                     width: "90%",
-                  }}>
+                  }}
+                  onClick={HandleAddToCart}>
                   <FaShoppingCart />
                   <p
                     style={{
                       color: "white",
-                    }}>
-                    --
-                  </p>{" "}
+                    }}></p>{" "}
                   Add to Cart
                 </button>
               </div>
@@ -220,9 +228,6 @@ const SingleProduct = () => {
                     color: "grey",
                     marginTop: "1%",
                   }}>
-                  {/* Autokraftz New Latest Winter Knit Thick Fleece Woolen Combo of
-            Beanie Winter Cap Hat and Faux Fur Lining Wool Neck Muffler Scarf
-            in Black for All Girls Boys Men Women. Free Size  */}
                   {title}
                 </p>
                 <p
@@ -278,6 +283,9 @@ const SingleProduct = () => {
                   Free Delivery
                 </p>
               </div>
+
+              {/* sizes append */}
+
               <div
                 style={{
                   //   border: "1px solid black",
@@ -295,23 +303,70 @@ const SingleProduct = () => {
                   Select Size
                 </p>
 
-                {sizes.map((el) => {
-                  return (
-                    <button
-                      style={{
-                        borderRadius: "20px",
-                        marginTop: "3%",
-                        fontSize: "20px",
-                        padding: "5px 10px",
-                        color: "#f43397",
-                        backgroundColor: "#fde9f2",
-                        border: "1px solid #f43397",
-                        marginBottom: "3%",
-                      }}>
-                      {el}
-                    </button>
-                  );
-                })}
+                <button
+                  style={{
+                    borderRadius: "20px",
+                    marginTop: "3%",
+                    fontSize: "20px",
+                    padding: "5px 10px",
+                    color: "#f43397",
+                    backgroundColor: "#fde9f2",
+                    border: "1px solid #f43397",
+                    marginBottom: "3%",
+                  }}>
+                  {sizes[0]}
+                </button>
+                {sizes[1] ? (
+                  <button
+                    style={{
+                      borderRadius: "20px",
+                      marginTop: "3%",
+                      fontSize: "20px",
+                      padding: "5px 10px",
+                      color: "#f43397",
+                      backgroundColor: "#fde9f2",
+                      border: "1px solid #f43397",
+                      marginBottom: "3%",
+                    }}>
+                    {sizes[1]}
+                  </button>
+                ) : (
+                  ""
+                )}
+                {sizes[2] ? (
+                  <button
+                    style={{
+                      borderRadius: "20px",
+                      marginTop: "3%",
+                      fontSize: "20px",
+                      padding: "5px 10px",
+                      color: "#f43397",
+                      backgroundColor: "#fde9f2",
+                      border: "1px solid #f43397",
+                      marginBottom: "3%",
+                    }}>
+                    {sizes[2]}
+                  </button>
+                ) : (
+                  ""
+                )}
+                {sizes[3] ? (
+                  <button
+                    style={{
+                      borderRadius: "20px",
+                      marginTop: "3%",
+                      fontSize: "20px",
+                      padding: "5px 10px",
+                      color: "#f43397",
+                      backgroundColor: "#fde9f2",
+                      border: "1px solid #f43397",
+                      marginBottom: "3%",
+                    }}>
+                    {sizes[3]}
+                  </button>
+                ) : (
+                  ""
+                )}
               </div>
               <div
                 style={{
@@ -337,10 +392,6 @@ const SingleProduct = () => {
                     color: "grey",
                     fontSize: "medium",
                   }}>
-                  {/* "Fabric": "Chiffon",
-    "Pattern": "Self Design",
-    "Multipack": "Single",
-    "Description": "Best qaualtiy " */}
                   Name : {title}
                   <br /> Free Size <br /> Material : {
                     details.Pattern
@@ -348,15 +399,6 @@ const SingleProduct = () => {
                   <br /> Pattern : {details.Pattern} <br /> Size : L <br /> Net
                   Quantity (N) : 1 <br />
                   {details.Description}
-                  {/* It is very comfortable and suitable for your daily routine
-            activities or work. Free size, easily adjustable. It is for both
-            Men and Women and adaptable for everyone even for kids. This cap
-            and scarf is very fashionable and stylish, it is very trending and
-            made up of high quality woolen, Fur, Sleece material. Due to its
-            soft fabric it is easy to wear and skin-friendly. It can be match
-            with your all outfits gives you an attractive look, even it cold
-            weather it keeps you fashionable and good looking. It is easy to
-            carry in camping, tracking activities and keeps you warm.  */}
                   <br /> Country of Origin : India
                 </p>
               </div>
@@ -382,7 +424,7 @@ const SingleProduct = () => {
             }}>
             {data.map((p, i) => {
               if (i < 10) {
-                return <SingleCard props={p} />;
+                return <SingleCard key={i} props={p} />;
               }
             })}
           </div>

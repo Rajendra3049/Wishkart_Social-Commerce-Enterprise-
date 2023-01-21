@@ -1,11 +1,12 @@
 import DeleteCard from "./deleteCard";
 import { Pagination } from "antd";
+import React from "react";
 const onShowSizeChange = (current, pageSize) => {
   console.log(current, pageSize);
 };
 
 export default function ProductManage({ data }) {
-  //   console.log("all", data);
+  const [currentPage, setCurrentPage] = React.useState(1);
   return (
     <>
       {" "}
@@ -20,15 +21,14 @@ export default function ProductManage({ data }) {
           <DeleteCard key={e.id} singleData={e} />
         ))}
       </div>
-      <div>
-        <Pagination
-          showSizeChanger
-          onShowSizeChange={onShowSizeChange}
-          defaultCurrent={1}
-          total={500}
-        />
-        <br />
-      </div>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          height: "80px",
+          marginTop: "2rem",
+        }}></div>
     </>
   );
 }

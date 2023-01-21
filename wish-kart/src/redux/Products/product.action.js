@@ -45,7 +45,7 @@ export const removeProduct = (id) => async (dispatch) => {
   console.log("Deleted data line40", data);
   try {
     let res = await axios.get("https://meesho-database.vercel.app/products");
-    // console.log(res.data)
+    console.log("after Delete", res.data);
     dispatch({ type: GET_PRODUCTS_SUCCESS, payload: res.data });
   } catch (error) {
     dispatch({ type: GET_PRODUCTS_ERROR, payload: error.message });

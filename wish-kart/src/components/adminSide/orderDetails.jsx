@@ -30,7 +30,7 @@ export default function OrderDetails({ text, data }) {
         padding={"1.5rem"}
         textAlign={"left"}>
         {data.map((e) => (
-          <>
+          <Box key={e.id}>
             <PopoverHeader lineHeight={"2.3rem"}>
               <b>Product Name: </b>
               {e.title}
@@ -45,7 +45,7 @@ export default function OrderDetails({ text, data }) {
             </PopoverHeader>
             <PopoverCloseButton />
             <PopoverArrow />
-          </>
+          </Box>
         ))}
       </PopoverContent>
     </Popover>
