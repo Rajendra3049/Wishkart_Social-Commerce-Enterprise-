@@ -1,5 +1,10 @@
 import React from "react";
 import {
+  Accordion,
+  AccordionButton,
+  AccordionIcon,
+  AccordionItem,
+  AccordionPanel,
   Box,
   Button,
   Divider,
@@ -22,7 +27,7 @@ import HomeProducts from "../Pages/homeproducts";
 const Home = () => {
   return (
    
-    <Box w={"95%"} m={"auto"} mt={"188px"} border={'1px solid green'}>
+    <Box w={"95%"} m={"auto"} mt={"188px"} >
       <Box bg={"#f9f9f9"} w={"85%"} m={"auto"} h={"370px"} mt={"80px"}>
         <Flex>
           <Box w={"590px"} mt={"60px"} ml={["10px", "20px", "60px"]}>
@@ -77,31 +82,7 @@ const Home = () => {
 
                 <Box>
                   <Flex>
-                    <Box
-                      backgroundColor={"#f7a8ca"}
-                      borderRadius={"50%"}
-                      w={"38px"}
-                      h={"38px"}
-                      mt={"27px"}
-                      p={1}
-                    >
-                      <Flex>
-                        <Text fontSize={"30px"} ml={"4px"}>
-                          <CiDeliveryTruck bg={"#f7a8ca"} mt={"15px"} />
-                        </Text>
-                        <Text
-                          fontWeight={400}
-                          ml={"17px"}
-                          fontSize={"14px"}
-                          mt={"-5px"}
-                        >
-                          Free Delievery
-                        </Text>
-                        <Flex bg={"black"} h="45px" ml={"18px"} mt={"-5px"}>
-                          <Divider orientation="vertical" color={"black"} />
-                        </Flex>
-                      </Flex>
-                    </Box>
+             
 
                     <Box
                       backgroundColor={"#f7a8ca"}
@@ -150,16 +131,6 @@ const Home = () => {
                     </Box>
                   </Flex>
 
-                  <Image
-                    src={returns}
-                    width={"30px"}
-                    m={"auto"}
-                    ml={"13px"}
-                    mt={"2px"}
-                  ></Image>
-                  <Text fontWeight={400} ml={"20px"} fontSize={"14px"}>
-                    Easy Returns
-                  </Text>
                 </Box>
               </Flex>
               <Box mt={"34px"}>
@@ -225,13 +196,48 @@ const Home = () => {
       <Box w={"95%"} m={"auto"} h={"545px"} mt={["-333px", "-333px", "40px"]}>
         <Image src={snip3} m={"auto"} w={"86%"} />
         </Box>
-         <Box w={"95%"} m={"auto"} h={"545px"} mt={["-333px", "-333px", "40px"]}>
+         <Box w={"95%"} m={"auto"} h={"350px"} mt={["-333px", "-333px", "40px"]}>
           <Image src={snip4} m={"auto"} w={"86%"} />
          </Box> 
-
+       {/* home down section */}
         <Flex gap={8}>
-          <Box border={"1px solid red"} w={"29%"} ></Box>
-          <Box border={"1px solid blue"} w={"70%"} padding={10}><HomeProducts /></Box>
+          <Box border={"1px solid red"} w={"29%"}>
+          <Accordion>
+  <AccordionItem>
+    <h2>
+      <AccordionButton>
+        <Box as="span" flex='1' textAlign='left' fontSize={19}>
+          Category
+        </Box>
+        <AccordionIcon />
+      </AccordionButton>
+    </h2>
+    <AccordionPanel pb={4}>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+      commodo consequat.
+    </AccordionPanel>
+  </AccordionItem>
+
+  <AccordionItem>
+    <h2>
+      <AccordionButton>
+        <Box as="span" flex='1' textAlign='left'  fontSize={19}>
+          Gender
+        </Box>
+        <AccordionIcon />
+      </AccordionButton>
+    </h2>
+    <AccordionPanel pb={4}>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+      commodo consequat.
+    </AccordionPanel>
+  </AccordionItem>
+</Accordion></Box>
+          <Box  w={"70%"} padding={10}><HomeProducts /></Box>
      
         </Flex>
      

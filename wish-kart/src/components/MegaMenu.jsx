@@ -91,7 +91,7 @@ const DesktopNav = () => {
           <Popover trigger={"hover"} placement={"bottom-start"}>
             <PopoverTrigger>
               <div  className="underline">
-              <RouterLink 
+              <Link 
                 p={4}
                 href={navItem.href ?? "#"}
                 // borderRadius={"8px 8px 0px 0px"}
@@ -104,7 +104,7 @@ const DesktopNav = () => {
                   color: linkHoverColor,
                 }}>
                 {navItem.label}
-              </RouterLink>
+              </Link>
               </div>
             </PopoverTrigger>
 
@@ -113,7 +113,6 @@ const DesktopNav = () => {
                 boxShadow={"xl"}
                 bg={popoverContentBgColor}
                 p={4}
-      
                 // bg={"white"}
                 display={"flex"}
                 rounded={"xl"}
