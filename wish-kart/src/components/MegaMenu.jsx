@@ -80,28 +80,27 @@ export default function MegaMenu() {
 
 const DesktopNav = () => {
   const linkColor = useColorModeValue("black", "black");
-  const linkHoverColor = useColorModeValue("#f43397", "black");
+  // const linkHoverColor = useColorModeValue("#f43397", "black");
   const popoverContentBgColor = useColorModeValue("white", "gray.800");
 
   return (
     <Stack direction={"row"} spacing={6}>
       {NAV_ITEMS.map((navItem) => (
-        <Box key={navItem.label}>
-          <Popover trigger={"hover"} placement={"bottom-start"}>
+        <Box key={navItem.label} >
+          <Popover trigger={"hover"} placement={"bottom-end"}>
             <PopoverTrigger>
               <div  className="underline">
               <Link 
                 p={4}
                 href={navItem.href ?? "#"}
-                // borderRadius={"8px 8px 0px 0px"}
+                _hover={{ borderBottom:"3px solid #f43397",marginTop:"35px"}}
+         
                 fontSize={["5px", "10px", "16px"]}
                 fontWeight={500}
                 h={"100%"}
                 color={linkColor}
-                _hover={{
-                  //  textDecoration: "underline",
-                  color: linkHoverColor,
-                }}>
+        
+                >
                 {navItem.label}
               </Link>
               </div>
@@ -109,14 +108,16 @@ const DesktopNav = () => {
 
             {navItem.children && (
               <PopoverContent
+
                 boxShadow={"xl"}
                 bg={popoverContentBgColor}
                 p={4}
+                mt={2}
       
                 // bg={"white"}
                 display={"flex"}
                 rounded={"xl"}
-                minW={"1120px"}
+                minW={"1400px"}
                 minH={"300px"}>
                 <Flex>
                   {navItem.children.map((child) => (
@@ -155,7 +156,7 @@ const DesktopSubNav = ({
       <Stack direction={"row"} align={"center"}>
         <Box>
           <Text
-            transition={"all .3s ease"}
+            transition={"all .2s ease"}
             color={"#f43397"}
             fontSize={["5px", "10px", "16px"]}
             fontWeight={500}>

@@ -4,8 +4,8 @@ import {Accordion,AccordionItem,AccordionButton,AccordionPanel,AccordionIcon,} f
 
 const Footer2 = () => {
   return (
-<Box textAlign={"justify"}>
-<Accordion fontSize={"15px"} defaultIndex={[0]} allowMultiple>
+<Box textAlign={"justify"} ml={"30px"} w={"97%"}>
+<Accordion fontSize={"15px"} allowMultiple>
 <AccordionItem>
 <h1>
 <AccordionButton fontSize={25} color={"#333333"}>

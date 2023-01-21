@@ -6,7 +6,7 @@ import { AiFillStar } from "react-icons/ai";
 export default function HomeProducts() {
   return (
     <Box>
-      <Grid templateColumns={"repeat(3,1fr)"} gap={10}>
+      <Grid templateColumns={" repeat(3,1fr)"} gap={10}>
         {data.map((el) => (
           <Box
             role={"group"}
@@ -91,12 +91,10 @@ export default function HomeProducts() {
             </Stack>
           
             <Flex alignItems={'center'} justifyContent={"space-between"} p={"5px"} mt={'1px'}>
+             
               <Flex w={"55px"} h={"30px"}   fontSize={"14px"} alignItems={'center'}  color={"white"} bg={"#038d63"}
-                borderRadius={"10%"} justifyContent={"space-around"}>{el.rating2}<AiFillStar
-                      color={"white"}
-                  
-                      
-                    /></Flex>
+                borderRadius={"10%"} justifyContent={"space-around"}>{el.rating2}<AiFillStar color={"white"}/></Flex>
+                
               <Box>{el.rating}</Box>
               <Flex mr={"8px"} color={"#f43397"} fontWeight={600}>
                     <span color={"black"} >
