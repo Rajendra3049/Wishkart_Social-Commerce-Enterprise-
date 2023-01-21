@@ -1,11 +1,47 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 // import FontAwesomeIcon from "font-awesome";
 // import { StarIcon } from "@chakra-ui/icons";
 import { FaShoppingCart, FaStar } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
 // import { CiStar } from "react-icons/ci";
+import { Navigate, useLocation, useNavigate, useParams } from "react-router-dom";
 
 const SingleProduct = ({ props }) => {
-  let id = props.id;
+
+  const {id} = useParams();
+  console.log(useLocation())
+  let { loading, error, data } = useSelector((store) => store.ProductsManager);
+  let dispatch = useDispatch();
+  let [filtData,setFiltData] = useState({})
+  console.log(data,"data") 
+  console.log(id)
+  // let da = data.filter((el)=>el.id==id)
+  //   console.log(da)
+  //   console.log("lllllllllllllllllllll")
+    for(let i=0; i<data.length; i++){
+      if(id==data[i].id){
+        console.log("in")
+        console.log(data[i])
+        break
+      }
+    }
+ 
+  useEffect(()=>{
+    console.log("in")
+    for(let i=0; i<data.length; i++){
+      if(id==data[i].id){
+        
+        console.log(data[i])
+        break
+      }
+    }
+    
+    // setFiltData(da)
+  },[])
+  
+  // console.log(filtData,"filtData")
+
+  // let id = props.id;
   let category = props.category;
   let title = props.title;
   let ogPrice = props.original_price;

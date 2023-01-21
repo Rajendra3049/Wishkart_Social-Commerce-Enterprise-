@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import GridProduct from "../../components/allProducts/gridProduct.jsx";
+import Loader from "../../components/Loader.jsx";
 import { getProducts } from "../../redux/Products/product.action.js";
  
 // product filtering, product filter, allProductfilter checkbox filter
@@ -37,7 +38,9 @@ const Products = () => {
     })
 
   }
-  // if()
+  if(loading){
+    <Loader />
+  }
  
   return (
     <Box mt={"150px"} >
