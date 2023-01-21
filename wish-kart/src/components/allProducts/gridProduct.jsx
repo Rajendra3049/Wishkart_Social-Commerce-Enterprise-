@@ -1,4 +1,4 @@
-import { Box, Card, Flex, Heading, Image } from "@chakra-ui/react";
+import { Box, Card, Flex, Heading, Image, Text } from "@chakra-ui/react";
 import React from "react";
 import { FaShoppingCart, FaStar } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
@@ -22,11 +22,11 @@ const GridProduct = ({ props }) => {
   };
 
   let backgrnd = props.rating >= 4.5
-  ? "green"
+  ? "#038d63"
   : props.rating >= 4
-  ? "#1fd655"
+  ? "green"
   : props.rating >= 3
-  ? "#5ced73"
+  ? "#1fd655"
   : props.rating >= 2
   ? "orange"
   : "red"
@@ -34,11 +34,11 @@ const GridProduct = ({ props }) => {
   return (
     <Link to={`/product/${props.id}`}>
 
-      <Card>
-        <Box onClick={() => handleproductpass(props.id)}>
-          <Image src={props.images[0]} width="100%" height="350px" />
+      <Card backgroundColor={"whitesmoke"}>
+        <Box onClick={() => handleproductpass(props.id)} margin="0px 15px 0px 15px">
+          <Image src={props.images[0]} width="100%" height="300px" />
         </Box>
-        <Box margin={5} border="0px solid red">
+        <Box margin={10} border="0px solid red">
           <Heading
             className="Productfont"
             style={{
@@ -60,7 +60,7 @@ const GridProduct = ({ props }) => {
               textDecoration={"line-through"}
               fontWeight={"medium"}
               ml={"8px"}
-              mt={"8px"}
+              mt={"6px"}
               style={{
                 fontSize: "large",
               }}
@@ -103,7 +103,8 @@ const GridProduct = ({ props }) => {
             />
           </Box>
         </Flex> */}
-          <Heading
+        <Flex justifyContent={"space-between"} mt="5px">
+        <Heading
             style={{
               backgroundColor: backgrnd,
               padding: "5px 10px",
@@ -120,6 +121,16 @@ const GridProduct = ({ props }) => {
             {/* <StarIcon /> */}
             {/* <FontAwesomeIcon icon="fa-solid fa-star" /> */}
           </Heading>
+          <Text
+          style={{
+            fontSize: "medium",
+            
+          }}
+        >
+          1541 Reviews
+        </Text>
+        </Flex>
+          
         </Box>
       </Card>
     </Link>

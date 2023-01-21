@@ -20,7 +20,7 @@ import BagsFootwear from "./allProducts/bagsFootwear";
 export default function AllRoutes() {
   return (
     <Routes>
-      <Route path="/product/1/:id" element={<SingleProduct />} />
+      <Route path="/product/:id" element={<SingleProduct />} />
       <Route path="/" element={<Home />} />
       <Route path="/signup" element={<SignUp />} />
       <Route path="/otp" element={<Otp />} />
