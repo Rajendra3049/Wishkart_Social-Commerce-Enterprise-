@@ -4,32 +4,30 @@ import Navbar from "./components/Navbar";
 import AllRoutes from "./Pages/AllRoutes";
 import Loader from "./components/Loader";
 import { useState, useEffect } from "react";
+import NewNavbar from "./components/NewNavbar";
 
 function App() {
-
   const [isLoading, setIsLoading] = useState(true);
-useEffect(() => {
+  useEffect(() => {
     setIsLoading(true);
     let timer = setTimeout(() => {
-        setIsLoading(false);
-        return () => clearInterval(timer);
+      setIsLoading(false);
+      return () => clearInterval(timer);
     }, 1000);
-}, []);
-return isLoading ? (
+  }, []);
+  return isLoading ? (
     <Loader />
-) : (
+  ) : (
     <>
       <div>
-         <Navbar/>
+        {/* <Navbar/> */}
+        <NewNavbar />
         <AllRoutes />
-         <Footer/>
-        <Footer2/>
+        <Footer />
+        <Footer2 />
       </div>
     </>
   );
-  
-  
 }
 
 export default App;
-

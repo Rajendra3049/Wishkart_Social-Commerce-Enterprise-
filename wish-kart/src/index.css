@@ -25,10 +25,10 @@ code {
     monospace;
 }
 
-input::placeholder{
+/* input::placeholder{
   color: gray;
 }
 
 input{
   border: 1px solid black;
-}
+} */
