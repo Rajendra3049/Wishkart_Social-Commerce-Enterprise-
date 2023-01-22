@@ -3,6 +3,7 @@ import styles from "../styles/addProduct.module.css";
 import style from "../styles/inputbox.module.css";
 import { addNewProduct } from "../redux/Products/product.action";
 import { useDispatch, useSelector } from "react-redux";
+import { AddProductNotify } from "../components/notify";
 
 const initialData = {
   category: "",
@@ -224,7 +225,9 @@ export default function AddProduct() {
         </div>
         <div className={styles.row}>
           {/* <button className={styles.btn}>Add Product</button> */}
-          <input type="submit" className={styles.btn} onClick={handleSubmit} />
+          <button type="submit" className={styles.btn} onClick={handleSubmit}>
+            <AddProductNotify />
+          </button>
         </div>
       </form>
     </div>

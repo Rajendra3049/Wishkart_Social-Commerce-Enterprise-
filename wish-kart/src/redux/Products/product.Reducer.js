@@ -13,7 +13,7 @@ let initialData = {
 };
 
 const ProductReducer = (state = initialData, { type, payload }) => {
-  // console.log(type,payload)
+  console.log("Product Reducer", "type", type, "payload", payload);
 
   switch (type) {
     case GET_PRODUCTS_LOADING: {
@@ -40,7 +40,7 @@ const ProductReducer = (state = initialData, { type, payload }) => {
       return {
         ...state,
         loading: false,
-        data: [...state.data, payload],
+        data: payload,
       };
     }
     case GET_PRODUCTS_ERROR: {

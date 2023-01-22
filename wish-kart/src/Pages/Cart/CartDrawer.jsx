@@ -15,9 +15,26 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-const CartDrawer = () => {
-const [count,setCount]=useState(1)
+const CartDrawer = ({ qty, setQty }) => {
+  const [count, setCount] = useState(1);
+  const [price, setPrice] = React.useState(0);
+  const [cartData, setCartData] = React.useState([]);
+
+  // redux start
+  let { user, isAuth } = useSelector((store) => store.UserManager);
+  let dispatch = useDispatch();
+  // redux end
+
+  React.useEffect(() => {
+    let newPrice = 0;
+    for (let i = 0; i < cartData.length; i++) {
+      newPrice = newPrice + cartData[i].discounted_price;
+    }
+    setPrice(newPrice);
+    setCartData(user.cart);
+  }, [cartData, user]);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
@@ -27,8 +44,7 @@ const [count,setCount]=useState(1)
         ref={btnRef}
         onClick={onOpen}
         bg={"white"}
-        _hover={{ bg: "white" }}
-      >
+        _hover={{ bg: "white" }}>
         Edit
       </Button>
       <Drawer
@@ -36,12 +52,11 @@ const [count,setCount]=useState(1)
         placement="right"
         onClose={onClose}
         finalFocusRef={btnRef}
-        size={{base:"xs",md:'sm'}}
-      >
+        size={{ base: "xs", md: "sm" }}>
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton />
-          <DrawerHeader fontSize={'17px'}>EDIT ITEM</DrawerHeader>
+          <DrawerHeader fontSize={"17px"}>EDIT ITEM</DrawerHeader>
           <hr />
           <DrawerBody>
             <Flex>
@@ -63,33 +78,48 @@ const [count,setCount]=useState(1)
                   align={"center"}
                   justifyContent={"space-between"}
                   gap={"25px"}
-                  m={"10px auto"}
-                >
+                  m={"10px auto"}>
                   <Text>Size: Free size</Text>
-                  <Flex gap={"10px"} >
-                    <Text>Qty:</Text> 
-                    <Flex gap={"10px"} borderWidth={"1px"} borderRadius={'5px'} padding={'0 5px'}>
-                      <Text onClick={()=>setCount(count-1)} >-</Text>
-                      <Text>{count}</Text>
-                      <Text onClick={()=>setCount(count+1)}>+</Text>
+                  <Flex gap={"10px"}>
+                    <Text>Qty</Text>
+                    <Flex
+                      gap={"10px"}
+                      borderWidth={"1px"}
+                      borderRadius={"5px"}
+                      padding={"0 5px"}>
+                      <Button
+                        isDisabled={qty == 1}
+                        onClick={() => setQty(qty - 1)}>
+                        -
+                      </Button>
+                      <Text>{qty}</Text>
+                      <Button onClick={() => setQty(qty + 1)}>+</Button>
                     </Flex>
                   </Flex>
                 </Flex>
               </Box>
-             
             </Flex>
             <hr />
-            <Flex m={'20px 0'} align={"center"}
-                  justifyContent={"space-between"} fontWeight={'600'}>
-                <Text>Total Price</Text>
-                <Text>₹179</Text>
-              </Flex>
+            <Flex
+              m={"20px 0"}
+              align={"center"}
+              justifyContent={"space-between"}
+              fontWeight={"600"}>
+              <Text>Total Price</Text>
+              <Text>₹{parseInt(price) * parseInt(qty)}</Text>
+            </Flex>
             <hr />
           </DrawerBody>
 
           <DrawerFooter>
-        
-            <Button m={'10px 0'} colorScheme="pink" padding={{base:"10px 100px",md:'10px 140px',lg:'10px 170px'}}>
+            <Button
+              m={"10px 0"}
+              colorScheme="pink"
+              padding={{
+                base: "10px 100px",
+                md: "10px 140px",
+                lg: "10px 170px",
+              }}>
               Continue
             </Button>
           </DrawerFooter>
