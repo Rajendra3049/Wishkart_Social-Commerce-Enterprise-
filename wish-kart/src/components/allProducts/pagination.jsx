@@ -2,9 +2,9 @@ import { Button } from '@chakra-ui/react'
 import React from 'react'
 
 const Pagination = ({page,changePage,data}) => {
-    console.log(data)
+    // console.log(data)
     let N = Math.ceil(data.length/10)
-    console.log(N)
+    // console.log(N)
     let arr = []
     for(let i=1; i<=N; i++){
         arr.push(i)
