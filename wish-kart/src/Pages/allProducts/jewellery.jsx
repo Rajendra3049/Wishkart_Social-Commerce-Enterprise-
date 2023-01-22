@@ -19,7 +19,6 @@ import {
   Checkbox as ChakraCheckBox,
 } from "@chakra-ui/react";
 import { Checkbox } from "antd";
-
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import GridProduct from "../../components/allProducts/gridProduct.jsx";
@@ -30,12 +29,13 @@ const Men = () => {
   let { loading, error, data } = useSelector((store) => store.ProductsManager);
   let dispatch = useDispatch();
   let [filtCred, setFiltCred] = useState({});
+  // const [page, setPage] = useState(1)
+  // const [paginationData, setPaginationData] = useState([])
 
-  //   console.log(data)
-  let jewellerys = data.filter((el) => el.category == "Jewellery");
-  console.log(jewellerys);
+  let menData = data.filter((el) => el.category == "Mens Top Were");
+  console.log(menData);
 
-  let filtData = jewellerys.filter(
+  let filtData = menData.filter(
     (el) =>
       ((filtCred.above100 ? el.discounted_price > 1000 : "") ||
         (filtCred.a1000_500
@@ -51,21 +51,55 @@ const Men = () => {
         (filtCred.a3_2 ? el.rating < 3 : "") ||
         (filtCred.below2 ? el.rating < 2 : ""))
   );
+
+  // ***********************************pagination*************************************
+  // const changePage = (currentpage) => {
+  //   setPage(currentpage)
+  //   setPaginationData([])
+
+  //   for (let i = page * 10 - 10; i <= page * 9; i++) {
+  //     filtData.length == 0 ? console.log(menData) : console.log(filtData)
+  //     if ((filtData.length == 0 ? menData : filtData)[i]) {
+
+  //       setPaginationData((prePag) => [...prePag, (filtData.length == 0 ? menData : filtData)[i]])
+  //     }
+  //   }
+  // }
+  // // console.log(data);
+  // const setpageData = () => {
+  //   setPaginationData([])
+  //   for (let i = page * 10 - 10; i <= page * 9; i++) {
+
+  //     if ((filtData.length == 0 ? menData : filtData)[i]) {
+
+  //       setPaginationData((prePag) => [...prePag, (filtData.length == 0 ? menData : filtData)[i]])
+  //     }
+
+  //   }
+  // }
+  // console.log(paginationData)
+
+  // ***********************************pagination********************************
+
+  //   console.log(data)
+
   useEffect(() => {
     if (data.length == 0) {
       getProducts(dispatch);
     }
+    // setpageData()                               // part of pagination
   }, []);
   console.log(filtData);
 
   const check = (e) => {
-    console.log(e.target);
+    // console.log(e.target)
 
     const { name, checked } = e.target;
     setFiltCred({
       ...filtCred,
       [name]: checked,
     });
+    // setpageData()                             //part of pagination
   };
   if (loading) {
     <Loader />;
@@ -196,6 +230,7 @@ const Men = () => {
                   </Stack>
                   {/* </AccordionPanel> */}
                 </AccordionItem>
+
                 <AccordionItem>
                   <AccordionButton>
                     <Box
@@ -249,12 +284,15 @@ const Men = () => {
         </Hide>
         <Box style={{ width: "90%", margin: "auto" }} border="0px solid red">
           <SimpleGrid columns={[1, 2, 3, 4]} spacing={10}>
-            {(filtData.length == 0 ? jewellerys : filtData).map((el) => {
+            {(filtData.length == 0 ? menData : filtData).map((el) => {
               return <GridProduct key={el.id} props={el} />;
             })}
           </SimpleGrid>
         </Box>
       </Flex>
+      {/* <Box textAlign={"center"} marginTop="50px">
+        <Pagination page={page} changePage={changePage} data={filtData.length==0?menData:filtData} />
+        </Box> */}
     </Box>
   );
 };

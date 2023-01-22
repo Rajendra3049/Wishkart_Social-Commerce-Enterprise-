@@ -2,7 +2,6 @@ import {
   Accordion,
   AccordionButton,
   AccordionItem,
-  AccordionPanel,
   Box,
   Button,
   Flex,
@@ -32,10 +31,10 @@ const Men = () => {
   let [filtCred, setFiltCred] = useState({});
 
   //   console.log(data)
-  let bagsFootwear = data.filter((el) => el.category == "Bags and Footwear");
-  console.log(bagsFootwear);
+  let beautyHealth = data.filter((el) => el.category == "Beauty and health");
+  console.log(beautyHealth);
 
-  let filtData = bagsFootwear.filter(
+  let filtData = beautyHealth.filter(
     (el) =>
       ((filtCred.above100 ? el.discounted_price > 1000 : "") ||
         (filtCred.a1000_500
@@ -156,7 +155,12 @@ const Men = () => {
               <Accordion>
                 <AccordionItem>
                   <AccordionButton>
-                    <Box as="span" flex="1" fontSize={20} textAlign="left">
+                    <Box
+                      as="span"
+                      flex="1"
+                      fontSize={20}
+                      textAlign="left"
+                      ml={"7%"}>
                       {" "}
                       Price
                     </Box>
@@ -245,7 +249,7 @@ const Men = () => {
         </Hide>
         <Box style={{ width: "90%", margin: "auto" }} border="0px solid red">
           <SimpleGrid columns={[1, 2, 3, 4]} spacing={10}>
-            {(filtData.length == 0 ? bagsFootwear : filtData).map((el) => {
+            {(filtData.length == 0 ? beautyHealth : filtData).map((el) => {
               return <GridProduct key={el.id} props={el} />;
             })}
           </SimpleGrid>
