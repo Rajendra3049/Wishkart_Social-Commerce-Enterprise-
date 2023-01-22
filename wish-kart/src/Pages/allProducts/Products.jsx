@@ -21,6 +21,7 @@ const Products = () => {
     setPaginationData([])
 
     for (let i = page*10-10; i <= page*10; i++) {
+      
       filtData.length == 0 ? console.log(data) : console.log(filtData)
       if ((filtData.length == 0 ? data : filtData)[i]) {
 
@@ -78,7 +79,8 @@ const Products = () => {
       ...filtCred,
       [name]: checked
     })
-    setPage(1)                                                 //part of paginaion 
+    setPage(1)                                                    //part of paginaion set 1st page after filter
+    setpageData()                                                //part of paginaion set data after filter
   }
   if (loading) {
     <Loader />

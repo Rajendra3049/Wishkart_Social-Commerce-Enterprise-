@@ -1,7 +1,7 @@
 
 
 
-import { Box, Card, Flex, Heading, Image, Link } from "@chakra-ui/react";
+import { Box, Card, Flex, Heading, Image, Link,Text } from "@chakra-ui/react";
 import React from "react";
 import { FaStar } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
