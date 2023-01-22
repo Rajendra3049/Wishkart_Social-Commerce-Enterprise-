@@ -1,0 +1,170 @@
+html {
+  font-size: 62.5px;
+}
+
+.outerBox {
+  display: grid;
+  grid-template-columns: 31% 28% 15% 18%;
+  justify-content: space-between;
+  margin: auto;
+  padding: 2rem;
+  gap: 1rem;
+  width: 90%;
+}
+.first {
+}
+.first h1 {
+  font-size: 2.7rem;
+  font-weight: 700;
+}
+.first p {
+  font-size: 1.4rem;
+}
+.img_box1 {
+  display: flex;
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.img_box1 img {
+  width: 80%;
+  border-radius: 1rem;
+}
+
+/* second */
+.second {
+  display: flex;
+  font-size: 1.5rem;
+  line-height: 2.7rem;
+  justify-content: space-between;
+  font-weight: 500;
+}
+li {
+  list-style-type: none;
+}
+/* third */
+.third {
+}
+.third h1 {
+  font-size: 1.7rem;
+  font-weight: 600;
+}
+.img_box2 {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+.fourth {
+}
+.fourth h1 {
+  font-size: 1.7rem;
+  font-weight: 600;
+}
+.fourth p {
+  padding: 0.2rem;
+  font-size: 1.2rem;
+  text-align: left;
+}
+
+/* media  */
+
+@media (max-width: 998px) {
+  html {
+    font-size: 55%;
+  }
+  .outerBox {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+    margin: auto;
+    padding: 2rem;
+    gap: 1rem;
+    width: 90%;
+  }
+  .second {
+    display: flex;
+    font-size: 1.5rem;
+    line-height: 2.7rem;
+    justify-content: space-around;
+    font-weight: 500;
+  }
+  .img_box2 {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    height: 4rem;
+    margin-top: 2rem;
+  }
+  .fourth {
+    margin-top: -5rem;
+    margin-left: 3rem;
+    width: 70%;
+  }
+}
+
+@media (max-width: 500px) {
+  html {
+    font-size: 45%;
+  }
+  .outerBox {
+    display: grid;
+    grid-template-columns: auto;
+    justify-content: space-between;
+    margin: auto;
+    padding: 2rem;
+    gap: 1rem;
+    width: 90%;
+  }
+  .img_box1 {
+    display: flex;
+    width: 80%;
+    margin: auto;
+    margin-top: 2rem;
+  }
+
+  .img_box1 img {
+    width: 80%;
+    border-radius: 1rem;
+  }
+  /* second */
+  .second {
+    display: flex;
+    font-size: 2rem;
+    line-height: 3rem;
+    justify-content: space-between;
+    font-weight: 500;
+    margin-top: 2rem;
+  }
+  li {
+    list-style-type: none;
+  }
+  /* third */
+  .third {
+    margin-top: 2rem;
+  }
+  .third h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+  }
+  .img_box2 {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+
+    margin: auto;
+    height: 4rem;
+    margin-top: 2rem;
+  }
+  .fourth {
+    margin-top: 2rem;
+  }
+  .fourth h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+  }
+  .fourth p {
+    padding: 0.2rem;
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+  }
+}
