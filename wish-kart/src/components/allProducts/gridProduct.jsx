@@ -46,7 +46,7 @@ const GridProduct = ({ props }) => {
         </Box>
         <Box margin={10} border="0px solid red">
           <Heading
-            className="Productfont"
+            
             style={{
               
               fontSize: "large",
@@ -57,7 +57,7 @@ const GridProduct = ({ props }) => {
             {props.title}
           </Heading>
           <Flex>
-            <Heading className="Productfont" style={{
+            <Heading  style={{
               fontSize: "large",
             }} color={"blackAlpha.800"} mt={"5px"}>
               ₹ {props.discounted_price}
