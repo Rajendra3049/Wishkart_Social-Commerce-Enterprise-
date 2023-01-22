@@ -52,7 +52,7 @@ export default function AdminSide() {
               <OrderAccept />
             </TabPanel>
             <TabPanel>
-              <ProductManage data={data} />
+              <ProductManage />
             </TabPanel>
           </TabPanels>
         </Tabs>

@@ -18,6 +18,7 @@ import Navbar2 from "../../components/Navbar2/Navbar2";
 
 import { useDispatch, useSelector } from "react-redux";
 import { OrderPlacement } from "../../redux/user/user.action";
+import { CheckOutNotify } from "../../components/notify";
 
 const Payment = () => {
   const [price, setPrice] = React.useState(0);
@@ -172,7 +173,7 @@ const Payment = () => {
               m={"10px auto"}
               _hover={{ bg: "pink.450" }}
               onClick={HandleCheckOut}>
-              Continue
+              <CheckOutNotify />
             </Button>
           </Box>
         </Box>

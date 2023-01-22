@@ -6,12 +6,12 @@ import { SingleCard } from "../components/SingleCard";
 import { useDispatch, useSelector } from "react-redux";
 import { AddToCart } from "../redux/user/user.action";
 import { Navigate } from "react-router-dom";
+import { AddToCartNotify } from "../components/notify";
 
 const SingleProduct = () => {
   const [loading, setLoading] = React.useState(false);
   const [data, setData] = useState([]);
   const [productDetails, setproductDetails] = useState({});
-  const [image, setimage] = useState([]);
 
   // redux start
   let { user, isAuth } = useSelector((store) => store.UserManager);
@@ -45,18 +45,12 @@ const SingleProduct = () => {
         let product = data.filter((elem) => elem.id == id)[0];
 
         setproductDetails(product);
-        setimage(product.images);
+
         setLoading(true);
       })
       .catch((err) => alert("Someting went wrong"));
   };
 
-  let title = productDetails.title;
-  let dPrice = productDetails.discounted_price;
-  let sizes = productDetails.sizes;
-  let images = image;
-  let details = productDetails.details;
-  let rating = productDetails.rating;
   if (isAuth == false) {
     console.log("user not authenticated");
     return <Navigate to="/signup" />;
@@ -84,7 +78,7 @@ const SingleProduct = () => {
                 // border: "1px solid blue",
                 padding: "1%",
               }}>
-              {images.map((el, i) => {
+              {productDetails.images.map((el, i) => {
                 return (
                   <img
                     key={i}
@@ -96,7 +90,7 @@ const SingleProduct = () => {
                       padding: "2%",
                       boxShadow: "rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px",
                     }}
-                    src={images[i]}
+                    src={el}
                     alt=""
                   />
                 );
@@ -119,7 +113,7 @@ const SingleProduct = () => {
                     width: "70%",
                     boxShadow: "rgba(1, 0.15, 0.15, 0.15) 1.95px 1.95px 2.6px",
                   }}
-                  src={images[0]}
+                  src={productDetails.images[0]}
                   alt=""
                 />
               </div>
@@ -148,7 +142,7 @@ const SingleProduct = () => {
                     style={{
                       color: "white",
                     }}></p>{" "}
-                  Add to Cart
+                  <AddToCartNotify />
                 </button>
               </div>
               <div>
@@ -168,39 +162,23 @@ const SingleProduct = () => {
                     gap: "30px",
                     marginTop: "2%",
                   }}>
-                  <img
-                    style={{
-                      width: "14%",
-                      padding: "2%",
-                      border: "1px solid #fde9f2",
-                      boxShadow:
-                        "rgba(1, 0.15, 0.15, 0.15) 1.95px 1.95px 2.6px",
-                    }}
-                    src={images[1]}
-                    alt=""
-                  />
-                  <img
-                    style={{
-                      width: "14%",
-                      padding: "2%",
-                      border: "1px solid #fde9f2",
-                      boxShadow:
-                        "rgba(1, 0.15, 0.15, 0.15) 1.95px 1.95px 2.6px",
-                    }}
-                    src={images[2]}
-                    alt=""
-                  />
-                  <img
-                    style={{
-                      width: "14%",
-                      padding: "2%",
-                      border: "1px solid #fde9f2",
-                      boxShadow:
-                        "rgba(1, 0.15, 0.15, 0.15) 1.95px 1.95px 2.6px",
-                    }}
-                    src={images[3]}
-                    alt=""
-                  />
+                  {productDetails &&
+                    productDetails.images.map((image, i) => (
+                      <>
+                        <img
+                          key={i}
+                          style={{
+                            width: "14%",
+                            padding: "2%",
+                            border: "1px solid #fde9f2",
+                            boxShadow:
+                              "rgba(1, 0.15, 0.15, 0.15) 1.95px 1.95px 2.6px",
+                          }}
+                          src={image}
+                          alt=""
+                        />
+                      </>
+                    ))}
                 </div>
               </div>
             </div>
@@ -228,14 +206,14 @@ const SingleProduct = () => {
                     color: "grey",
                     marginTop: "1%",
                   }}>
-                  {title}
+                  {productDetails.title}
                 </p>
                 <p
                   style={{
                     fontSize: "35px",
                     marginTop: "1%",
                   }}>
-                  ₹{dPrice}
+                  ₹{productDetails.discounted_price}
                 </p>
                 <div
                   style={{
@@ -255,7 +233,7 @@ const SingleProduct = () => {
                       alignItems: "center",
                       justifyContent: "space-between",
                     }}>
-                    {rating}
+                    {productDetails.rating}
                     <p
                       style={{
                         color: "green",
@@ -302,71 +280,24 @@ const SingleProduct = () => {
                   }}>
                   Select Size
                 </p>
-
-                <button
-                  style={{
-                    borderRadius: "20px",
-                    marginTop: "3%",
-                    fontSize: "20px",
-                    padding: "5px 10px",
-                    color: "#f43397",
-                    backgroundColor: "#fde9f2",
-                    border: "1px solid #f43397",
-                    marginBottom: "3%",
-                  }}>
-                  {sizes[0]}
-                </button>
-                {sizes[1] ? (
-                  <button
-                    style={{
-                      borderRadius: "20px",
-                      marginTop: "3%",
-                      fontSize: "20px",
-                      padding: "5px 10px",
-                      color: "#f43397",
-                      backgroundColor: "#fde9f2",
-                      border: "1px solid #f43397",
-                      marginBottom: "3%",
-                    }}>
-                    {sizes[1]}
-                  </button>
-                ) : (
-                  ""
-                )}
-                {sizes[2] ? (
-                  <button
-                    style={{
-                      borderRadius: "20px",
-                      marginTop: "3%",
-                      fontSize: "20px",
-                      padding: "5px 10px",
-                      color: "#f43397",
-                      backgroundColor: "#fde9f2",
-                      border: "1px solid #f43397",
-                      marginBottom: "3%",
-                    }}>
-                    {sizes[2]}
-                  </button>
-                ) : (
-                  ""
-                )}
-                {sizes[3] ? (
-                  <button
-                    style={{
-                      borderRadius: "20px",
-                      marginTop: "3%",
-                      fontSize: "20px",
-                      padding: "5px 10px",
-                      color: "#f43397",
-                      backgroundColor: "#fde9f2",
-                      border: "1px solid #f43397",
-                      marginBottom: "3%",
-                    }}>
-                    {sizes[3]}
-                  </button>
-                ) : (
-                  ""
-                )}
+                {productDetails.sizes.map((size, i) => (
+                  <>
+                    <button
+                      key={i}
+                      style={{
+                        borderRadius: "20px",
+                        marginTop: "3%",
+                        fontSize: "20px",
+                        padding: "5px 10px",
+                        color: "#f43397",
+                        backgroundColor: "#fde9f2",
+                        border: "1px solid #f43397",
+                        marginBottom: "3%",
+                      }}>
+                      {size}
+                    </button>
+                  </>
+                ))}
               </div>
               <div
                 style={{
@@ -392,13 +323,13 @@ const SingleProduct = () => {
                     color: "grey",
                     fontSize: "medium",
                   }}>
-                  Name : {title}
-                  <br /> Free Size <br /> Material : {
-                    details.Pattern
-                  } <br /> Type : {details.Fabric}
-                  <br /> Pattern : {details.Pattern} <br /> Size : L <br /> Net
-                  Quantity (N) : 1 <br />
-                  {details.Description}
+                  Name : {productDetails.title}
+                  <br /> Free Size <br /> Material :{" "}
+                  {productDetails.details.Pattern} <br /> Type :{" "}
+                  {productDetails.details.Fabric}
+                  <br /> Pattern : {productDetails.details.Pattern} <br /> Size
+                  : L <br /> Net Quantity (N) : 1 <br />
+                  {productDetails.details.Description}
                   <br /> Country of Origin : India
                 </p>
               </div>

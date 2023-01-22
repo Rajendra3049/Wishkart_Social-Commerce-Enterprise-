@@ -2,6 +2,7 @@ import { removeProduct } from "../../redux/Products/product.action";
 import { useDispatch, useSelector } from "react-redux";
 import React from "react";
 import btnStyle from "../../styles/removeBtn.module.css";
+import { RemoveProductNotify } from "../notify";
 
 export default function DeleteCard({ singleData }) {
   // redux start
@@ -66,7 +67,7 @@ export default function DeleteCard({ singleData }) {
           <button
             className={`${btnStyle.btn} ${btnStyle.custom_btn}`}
             onClick={HandleDelete}>
-            Remove
+            <RemoveProductNotify />
           </button>
         </div>
       </div>

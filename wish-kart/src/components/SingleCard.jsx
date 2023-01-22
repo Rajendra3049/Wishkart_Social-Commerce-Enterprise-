@@ -4,14 +4,14 @@ import { FaStar } from "react-icons/fa";
 export const SingleCard = ({ props }) => {
   return (
     <div
+      key={props.id}
       style={{
         // border: "1px solid red",
         boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
         height: "70vh",
         padding: "4%",
         cursor: "pointer",
-      }}
-    >
+      }}>
       <img
         style={{
           //   width: "50%",
@@ -28,23 +28,20 @@ export const SingleCard = ({ props }) => {
           fontSize: "medium",
           marginTop: "2%",
           color: "grey",
-        }}
-      >
+        }}>
         {props.title}
       </h3>
       <h1
         style={{
           fontSize: "large",
           fontWeight: "bold",
-        }}
-      >
+        }}>
         ₹{props.discounted_price}{" "}
         <span
           style={{
             color: "grey",
             fontSize: "medium",
-          }}
-        >
+          }}>
           onwards
         </span>
       </h1>
@@ -52,8 +49,7 @@ export const SingleCard = ({ props }) => {
         style={{
           color: "grey",
           fontSize: "medium",
-        }}
-      >
+        }}>
         Free Delivery
       </span>
       <div
@@ -62,8 +58,7 @@ export const SingleCard = ({ props }) => {
           justifyContent: "space-between",
           alignItems: "center",
           marginTop: "2%",
-        }}
-      >
+        }}>
         <h1
           style={{
             color: "white",
@@ -76,8 +71,7 @@ export const SingleCard = ({ props }) => {
             alignItems: "center",
             fontSize: "large",
             justifyContent: "space-evenly",
-          }}
-        >
+          }}>
           {props.rating}
           <p style={{ color: "green" }}>-</p>
           <FaStar />
@@ -86,8 +80,7 @@ export const SingleCard = ({ props }) => {
           style={{
             fontSize: "medium",
             marginRight: "10%",
-          }}
-        >
+          }}>
           1541 Reviews
         </h4>
       </div>

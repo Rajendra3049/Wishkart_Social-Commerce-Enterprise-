@@ -4,6 +4,7 @@ import "./cart.css";
 import Navbar2 from "../../components/Navbar2/Navbar2.jsx";
 import CartDrawer from "./CartDrawer";
 import swal from "sweetalert";
+import { RemoveFromCartNotify } from "../../components/notify";
 
 import { DeleteFromCart } from "../../redux/user/user.action";
 import { Navigate, useNavigate } from "react-router-dom";
@@ -124,7 +125,8 @@ const Cart = () => {
                         onClick={() => {
                           handleRemove(e.id);
                         }}>
-                        <i class="fa-solid fa-xmark"></i>Remove
+                        <i class="fa-solid fa-xmark"></i>
+                        <RemoveFromCartNotify />
                       </Button>
                     </Box>
                   </Card>
