@@ -26,10 +26,10 @@ import { BiShoppingBag } from "react-icons/bi";
 import { Link, Link as RouterLink } from "react-router-dom";
 import { useState } from "react";
 import "../styles/navbar.css";
- var data = require("../input.json");
+var data = require("../input.json");
 
 export default function Navbar() {
-const [value, setValue] = useState("");
+  const [value, setValue] = useState("");
 
   const onChange = (event) => {
     setValue(event.target.value);
@@ -42,15 +42,14 @@ const [value, setValue] = useState("");
   };
   return (
     <>
-      <Box top={0} w={"100%"} h={"55px"} zIndex={1} position={"fixed"}>
+      <Box top={0} w={"100%"} h={"55px"} zIndex={100} position={"fixed"}>
         <Box
           width={["1300px", "1300px", "100%"]}
           justifyContent={"center"}
           h={["158x"]}
           bg={"white"}
           border={"1px solid gray"}
-          position={"relative"}
-        >
+          position={"relative"}>
           <Flex h={"100px"} alignItems={"center"} w={"100%"}>
             <RouterLink to="/">
               <Image
@@ -84,7 +83,8 @@ const [value, setValue] = useState("");
               
     
               </Stack> */}
-              <Stack className="search-container"
+              <Stack
+                className="search-container"
                 spacing={3}
                 w={["200px", "300px", "400px"]}
                 ml={["5%", "5%", "10%"]}
@@ -106,8 +106,8 @@ const [value, setValue] = useState("");
                   {/* <button onClick={() => onSearch(value)}> Search </button> */}
                 </Box>
                 {/* dropdown */}
-                
-                <Box border="1px solid red"   zIndex={99} className="dropdown">
+
+                <Box border="1px solid red" zIndex={99} className="dropdown">
                   {data
                     .filter((item) => {
                       const searchTerm = value.toLowerCase();
@@ -124,9 +124,7 @@ const [value, setValue] = useState("");
                       <Link to={item.href}>
                         <Box
                           onClick={() => onSearch(item.name)}
-                      
-                          key={item.name}
-                        >
+                          key={item.name}>
                           {item.name}
                         </Box>
                       </Link>
@@ -138,8 +136,7 @@ const [value, setValue] = useState("");
               display={"flex"}
               textAlign={"center"}
               gap={10}
-              ml={["", "", "20%"]}
-            >
+              ml={["", "", "20%"]}>
               <Popover trigger={"hover"}>
                 <PopoverTrigger>
                   <Flex _hover={{ color: "#f43397", fontWeight: 600 }}>
@@ -151,8 +148,7 @@ const [value, setValue] = useState("");
                       fontSize={["8px", "8x", "15px"]}
                       mt={"-15px"}
                       ml={"10px"}
-                      cursor={"pointer"}
-                    >
+                      cursor={"pointer"}>
                       Download App
                     </Text>
                   </Flex>
@@ -171,8 +167,7 @@ const [value, setValue] = useState("");
                 <Text
                   fontSize={["8px", "8x", "15px"]}
                   mt={"-15px"}
-                  cursor={"pointer"}
-                >
+                  cursor={"pointer"}>
                   {" "}
                   Admin
                 </Text>
@@ -188,8 +183,7 @@ const [value, setValue] = useState("");
                   fontSize={28}
                   mt={"-20px"}
                   ml={"6px"}
-                  _hover={{ color: "#f43397", fontWeight: 600 }}
-                >
+                  _hover={{ color: "#f43397", fontWeight: 600 }}>
                   <BiUser />{" "}
                 </Text>
                 <Popover trigger={"hover"}>
@@ -199,8 +193,7 @@ const [value, setValue] = useState("");
                         fontSize={["8px", "8x", "15px"]}
                         mt={"5px"}
                         cursor={"pointer"}
-                        _hover={{ color: "#f43397", fontWeight: 600 }}
-                      >
+                        _hover={{ color: "#f43397", fontWeight: 600 }}>
                         {" "}
                         Profile
                       </Text>
@@ -213,8 +206,7 @@ const [value, setValue] = useState("");
                       fontSize={18}
                       mt={"15px"}
                       color={"#333333"}
-                      ml={"20px"}
-                    >
+                      ml={"20px"}>
                       Hello User
                     </Heading>
                     <Text mt={"5px"} ml={"20px"} fontSize={"10px"}>
@@ -228,8 +220,7 @@ const [value, setValue] = useState("");
                         ml={"15px"}
                         mt={"10px"}
                         h={"45px"}
-                        fontSize={"17px"}
-                      >
+                        fontSize={"17px"}>
                         Sign Up
                       </Button>
                     </RouterLink>
@@ -254,8 +245,7 @@ const [value, setValue] = useState("");
                   <Text
                     fontSize={["8px", "8x", "15px"]}
                     mt={"5px"}
-                    cursor={"pointer"}
-                  >
+                    cursor={"pointer"}>
                     Cart
                   </Text>
                 </RouterLink>
@@ -263,15 +253,14 @@ const [value, setValue] = useState("");
             </Box>
           </Flex>
         </Box>
-        
+
         <Box
           top={0}
           w={"100%"}
           h={"55px"}
           mt={"80px"}
           bg={"white"}
-          position={"absolute"}
-        >
+          position={"absolute"}>
           <MegaMenu />
         </Box>
       </Box>

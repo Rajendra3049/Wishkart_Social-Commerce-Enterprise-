@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import AllRoutes from "./Pages/AllRoutes";
 import Loader from "./components/Loader";
 import { useState, useEffect } from "react";
+import NewNavbar from "./components/NewNavbar";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -20,6 +21,7 @@ function App() {
     <>
       <div>
         <Navbar />
+        {/* <NewNavbar /> */}
         <AllRoutes />
         <Footer />
         <Footer2 />
