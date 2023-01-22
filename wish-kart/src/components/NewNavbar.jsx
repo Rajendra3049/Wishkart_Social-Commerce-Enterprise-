@@ -54,17 +54,20 @@ export default function NewNavbar() {
         position={"fixed"}
       >
         <Box
-          display={{ base: "", md: "", lg: "flex" }}
+          display={{ base: "flex", md: "flex", lg: "flex" }}
           alignItems={"center"}
           bg={"white"}
           position={"relative"}
-        >
+        //  borderWidth="1px"
+         justifyContent={{base:'space-around',md:'space-around',lg:'none'}}>
+          
           {/* ---------------------website-logo---------------- */}
           <Image
             onClick={hanldegotolandingpage}
             src={logo}
-            w={{ base: "18%", md: "8%", lg: "5%" }}
-            m={{ base: "1% 0 1% 2%", md: "0% 2%", lg: "1% 4%" }}
+            w={{ base: "16%", md: "8%", lg: "5%" }}
+            m={{ base: "0% 0 0% 0%", md: "0% 2%", lg: "0.5% 4%" }}
+
           />
           {/* --------------------input box------------- */}
           <Box
@@ -72,14 +75,14 @@ export default function NewNavbar() {
             alignItems={"center"}
             borderWidth="1px"
             w={{ base: "", md: "50%", lg: "28%" }}
-            padding={{ base: "", md: "", lg: "10px 15px" }}
+            padding={{ base: "8px 15px", md: "10px 15px", lg: "10px 15px" }}
             fontSize={{ base: "", md: "", lg: "15px" }}
             gap={"5px"}
             borderRadius={"5px"}
           >
-            <SearchIcon />
+            <SearchIcon  fontSize={{ base: "10px", md: "13px", lg: "15px" }}/>
             <Input
-              fontSize={{ base: "", md: "", lg: "15px" }}
+              fontSize={{ base: "10px", md: "13px", lg: "15px" }}
               variant="unstyled"
               placeholder="Try Saree,Kurti or Search by Product Code"
               border={"none"}
@@ -137,7 +140,8 @@ export default function NewNavbar() {
             m={{ base: "", md: "", lg: "0 30px" }}
             gap={"35px"}
           >
-            <Box fontSize={"15px"} align="center" mt={"-14px"} cursor="pointer" >
+            <Box fontSize={"15px"} align="center" mt={"-14px"} cursor="pointer" 
+            display={{base:'none',md:'block',lg:'block'}}>
               <BiUser fontSize={"18px"}/>
               <Popover trigger="hover">
                 <PopoverTrigger>
@@ -179,28 +183,31 @@ export default function NewNavbar() {
               mt={"-14px"}
               onClick={handlecatsection}
               cursor="pointer"
+              display={{base:'none',md:'block',lg:'block'}}
             >
               <BsCart2 fontSize={"18px"} />
               <Text _hover={{color:'pink.400'}}>Cart</Text>
             </Box>
           </Box>
           {/* ---------------------------------side-navbar----------------------- */}
-          <Box>
-        <NavbarsideDrawer/>
-          </Box>
+         
+         
+            <Box fontSize='15px'
+            display={{base:'block',md:'block',lg:'none'}}>
+            <NavbarsideDrawer />
+            </Box>
+       </Box>
 
-        </Box>
-
-        <Box
+         <Box
           top={0}
           w={"100%"}
           h={"55px"}
-          mt={"80px"}
+          mt={{base:'70px',md:'66px',lg:"80px"}}
           bg={"white"}
           position={"absolute"}
         >
           <MegaMenu />
-        </Box>
+        </Box> 
       </Box>
     </>
   );
