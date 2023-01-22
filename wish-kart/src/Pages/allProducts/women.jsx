@@ -1,4 +1,6 @@
+
 import { Accordion, AccordionButton, AccordionItem, AccordionPanel, Box, Button, Flex, Heading, Hide, Menu, MenuButton, MenuDivider, MenuList, MenuOptionGroup, Show, SimpleGrid, Stack, Checkbox as ChakraCheckBox } from "@chakra-ui/react";
+
 import { Checkbox } from "antd";
 
 import { useEffect, useState } from "react";
@@ -10,11 +12,14 @@ import { getProducts } from "../../redux/Products/product.action.js";
 const Men = () => {
   let { loading, error, data } = useSelector((store) => store.ProductsManager);
   let dispatch = useDispatch();
-  let [filtCred,setFiltCred] = useState({}) 
+  let [filtCred, setFiltCred] = useState({});
 
-//   console.log(data)
-  let womenData = data.filter((el)=>el.category==("Sarees"||el.category=="Dresses"))
+  //   console.log(data)
+  let womenData = data.filter(
+    (el) => el.category == ("Sarees" || el.category == "Dresses")
+  );
   console.log(womenData);
+
 
   let filtData = womenData.filter((el)=> ((filtCred.above100? el.discounted_price>1000:"") || 
                                     (filtCred.a1000_500? (el.discounted_price<1000 && el.discounted_price>500):"") || 
@@ -43,14 +48,21 @@ const check =(e)=>{
     [name]:checked
   })
 
-}
-if(loading){
-  <Loader />
-}
-  
-  
 
+  const check = (e) => {
+    console.log(e.target);
+
+    const { name, checked } = e.target;
+    setFiltCred({
+      ...filtCred,
+      [name]: checked,
+    });
+  };
+  if (loading) {
+    <Loader />;
+  }
   return (
+
     <Box  mt={"150px"}>
       <Box >
         <Show below="md">
@@ -91,12 +103,12 @@ if(loading){
       <Hide below="md"  >
       <Box width={"20%"}>
       <Heading color={"#f43397"} marginLeft="5%">Filter</Heading>
+
           <Box>
             <Accordion>
-              
-
               <AccordionItem>
                 <AccordionButton>
+
                   <Box as="span" flex='1' fontSize={20} textAlign='left' marginLeft={"7%"}> Price</Box>
                 </AccordionButton>
                 {/* <AccordionPanel> */}
@@ -143,6 +155,7 @@ if(loading){
       </Box>
     
     </Flex>
+
     </Box>
   );
 };

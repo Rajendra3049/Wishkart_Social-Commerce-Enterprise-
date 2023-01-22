@@ -40,7 +40,7 @@ const SingleProduct = () => {
 
   const getProductDetails = () => {
     axios
-      .get("https://meesho-database.vercel.app/products")
+      .get("https://meesho-backend-3037.onrender.com/products")
       .then(({ data }) => {
         let product = data.filter((elem) => elem.id == id)[0];
 
