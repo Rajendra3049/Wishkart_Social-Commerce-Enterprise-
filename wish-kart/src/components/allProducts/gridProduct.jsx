@@ -1,13 +1,15 @@
-import { Box, Card, Flex, Heading, Image } from "@chakra-ui/react";
+import { Box, Card, Flex, Heading, Image, Link } from "@chakra-ui/react";
 import React from "react";
-import { FaShoppingCart, FaStar } from "react-icons/fa";
+import { FaStar } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+
 const GridProduct = ({ props }) => {
   const navigate = useNavigate();
+
   const handleproductpass = (id) => {
-    // console.log(id);
-    // console.log("hell0")
-    navigate(`/SingleProduct/${id}`);
+    console.log(id);
+    let path = `/SingleProduct/${id}`;
+    navigate(path);
   };
   let star = {
     green:

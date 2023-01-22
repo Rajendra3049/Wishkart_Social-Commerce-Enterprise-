@@ -80,26 +80,23 @@ export default function OrderAccept() {
             {allUsers.map((user) => {
               if (user.order.length > 0) {
                 return (
-                  <>
-                    {" "}
-                    <Tr>
-                      <Td w={"25%"} textAlign={"center"}>
-                        {date}
-                      </Td>
-                      <Td w={"25%"} textAlign={"center"}>
-                        {user.mobile_no}
-                      </Td>
-                      <Td w={"25%"} textAlign={"center"}>
-                        <OrderDetails
-                          text={user.order.length}
-                          data={user.order}
-                        />
-                      </Td>
-                      <Td>
-                        <AcceptOrderButton />
-                      </Td>
-                    </Tr>
-                  </>
+                  <Tr key={user.mobile_no}>
+                    <Td w={"25%"} textAlign={"center"}>
+                      {date}
+                    </Td>
+                    <Td w={"25%"} textAlign={"center"}>
+                      {user.mobile_no}
+                    </Td>
+                    <Td w={"25%"} textAlign={"center"}>
+                      <OrderDetails
+                        text={user.order.length}
+                        data={user.order}
+                      />
+                    </Td>
+                    <Td>
+                      <AcceptOrderButton />
+                    </Td>
+                  </Tr>
                 );
               }
             })}
