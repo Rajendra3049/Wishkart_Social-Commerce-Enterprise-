@@ -4,14 +4,24 @@ import { AiFillStar } from "react-icons/ai";
 
 export default function HomeProducts() {
   return (
-    <Box>
-      <Grid templateColumns={"repeat(3,1fr)"} gap={10}>
+    <Box
+      display={{ sm: "grid", md: "grid", lg: "flex" }}
+      border={"1px solid blue"}>
+      <Grid
+        templateColumns={{
+          sm: "repeat(2,1fr)",
+          md: "repeat(2,1fr)",
+          lg: "repeat(3,1fr)",
+        }}
+        gap={10}>
         {data.map((el) => (
           <Box
+            ml={["100px", "0px", "0px", "0px"]}
             role={"group"}
             p={6}
             h={390}
             maxW={"330px"}
+            // ml={["120px","0px","0px"]}
             w={"98%"}
             boxShadow={
               "rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px"
@@ -20,7 +30,7 @@ export default function HomeProducts() {
             pos={"relative"}>
             <Box
               rounded={"lg"}
-              mt={"-15px"}
+              mt={["-10px", "0px", "-14px", "-15px"]}
               height={"235px"}
               _after={{
                 transition: "all .3s ease",
@@ -30,9 +40,7 @@ export default function HomeProducts() {
                 pos: "absolute",
                 top: 5,
                 left: 0,
-
                 filter: "blur(15px)",
-                //  zIndex: -1,
               }}
               _groupHover={{
                 _after: {
@@ -76,17 +84,17 @@ export default function HomeProducts() {
                   fontWeight={500}
                   fontSize={"xl"}
                   color={"gray"}
+                  // mr={["-60px","-60px","-60px","-60px",]}
                   mr={"-60px"}>
                   onwards
                 </Text>
                 <Flex>
-                  <div style={{ width: "48px", marginLeft: "90px" }}>
+                  <Box w={"48px"} ml={"90px"}>
                     <span color={"black"}>{el.discount}</span>
-                  </div>
+                  </Box>
                 </Flex>
               </Flex>
             </Stack>
-
             <Flex
               alignItems={"center"}
               justifyContent={"space-between"}
@@ -104,6 +112,7 @@ export default function HomeProducts() {
                 {el.rating2}
                 <AiFillStar color={"white"} />
               </Flex>
+
               <Box>{el.rating}</Box>
               <Flex mr={"8px"} color={"#f43397"} fontWeight={600}>
                 <span color={"black"}>Trusted</span>

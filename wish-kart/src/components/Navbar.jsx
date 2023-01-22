@@ -23,9 +23,23 @@ import { BsCart2 } from "react-icons/bs";
 import google from "../images/google.png";
 import Appstore from "../images/Appstore.png";
 import { BiShoppingBag } from "react-icons/bi";
-import { Link as RouterLink } from "react-router-dom";
+import { Link, Link as RouterLink } from "react-router-dom";
+import { useState } from "react";
+import "../styles/navbar.css";
+ var data = require("../input.json");
 
 export default function Navbar() {
+const [value, setValue] = useState("");
+
+  const onChange = (event) => {
+    setValue(event.target.value);
+  };
+
+  const onSearch = (searchTerm) => {
+    setValue(searchTerm);
+    // our api to fetch the search result
+    console.log("search ", searchTerm);
+  };
   return (
     <>
       <Box top={0} w={"100%"} h={"55px"} zIndex={1} position={"fixed"}>
@@ -48,21 +62,76 @@ export default function Navbar() {
               />
             </RouterLink>
             <Flex>
-              <Stack
+              {/* <Stack
                 spacing={3}
                 w={["200px", "300px", "400px"]}
                 ml={["5%", "5%", "10%"]}
                 mt={"-20px"}
               >
+              
                 <Input
+                value={value} onChange={onChange} 
+                type="text"
                   placeholder="Try Saree,Kurti or Search by Product Code"
                   width={["80%", "80%", "100%"]}
                   h={["25px", "30px", "45px"]}
                   color={"black"}
                   borderWidth="1px"
                   fontSize={["8px", "8x", "15px"]}
-                  p={7}
+             
                 />
+            
+              
+    
+              </Stack> */}
+              <Stack className="search-container"
+                spacing={3}
+                w={["200px", "300px", "400px"]}
+                ml={["5%", "5%", "10%"]}
+                // mt={"99px"}
+              >
+                <Box>
+                  {/* <input type="text" value={value} onChange={onChange} /> */}
+                  <Input
+                    value={value}
+                    onChange={onChange}
+                    type="text"
+                    placeholder="Try Saree,Kurti or Search by Product Code"
+                    width={["80%", "80%", "100%"]}
+                    h={["25px", "30px", "45px"]}
+                    color={"black"}
+                    borderWidth="1px"
+                    fontSize={["8px", "8x", "15px"]}
+                  />
+                  {/* <button onClick={() => onSearch(value)}> Search </button> */}
+                </Box>
+                {/* dropdown */}
+                
+                <Box border="1px solid red"   zIndex={99} className="dropdown">
+                  {data
+                    .filter((item) => {
+                      const searchTerm = value.toLowerCase();
+                      const fullName = item.name.toLowerCase();
+
+                      return (
+                        searchTerm &&
+                        fullName.startsWith(searchTerm) &&
+                        fullName !== searchTerm
+                      );
+                    })
+                    .slice(0, 10)
+                    .map((item) => (
+                      <Link to={item.href}>
+                        <Box
+                          onClick={() => onSearch(item.name)}
+                      
+                          key={item.name}
+                        >
+                          {item.name}
+                        </Box>
+                      </Link>
+                    ))}
+                </Box>
               </Stack>
             </Flex>
             <Box
@@ -73,12 +142,12 @@ export default function Navbar() {
             >
               <Popover trigger={"hover"}>
                 <PopoverTrigger>
-                  <Flex>
+                  <Flex _hover={{ color: "#f43397", fontWeight: 600 }}>
                     <Text fontSize={18} mt={"-13px"}>
                       <FaMobileAlt />
                     </Text>
                     <Text
-                      color={"black"}
+                      // color={"black"}
                       fontSize={["8px", "8x", "15px"]}
                       mt={"-15px"}
                       ml={"10px"}
@@ -108,11 +177,19 @@ export default function Navbar() {
                   Admin
                 </Text>
               </RouterLink>
+              <Flex bg={"black"} h="32px" mt={"-18px"}>
+                <Divider orientation="vertical" color={"black"} />
+              </Flex>
             </Box>
             {/* profile and cart */}
             <Box display={"flex"} ml={"60px"}>
               <Box m={10}>
-                <Text fontSize={28} mt={"-20px"} ml={"6px"}>
+                <Text
+                  fontSize={28}
+                  mt={"-20px"}
+                  ml={"6px"}
+                  _hover={{ color: "#f43397", fontWeight: 600 }}
+                >
                   <BiUser />{" "}
                 </Text>
                 <Popover trigger={"hover"}>
@@ -122,6 +199,7 @@ export default function Navbar() {
                         fontSize={["8px", "8x", "15px"]}
                         mt={"5px"}
                         cursor={"pointer"}
+                        _hover={{ color: "#f43397", fontWeight: 600 }}
                       >
                         {" "}
                         Profile
@@ -185,7 +263,7 @@ export default function Navbar() {
             </Box>
           </Flex>
         </Box>
-
+        
         <Box
           top={0}
           w={"100%"}

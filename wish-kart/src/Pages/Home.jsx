@@ -7,10 +7,14 @@ import {
   AccordionPanel,
   Box,
   Button,
+  Card,
+  Checkbox,
   Divider,
   Flex,
   Heading,
+  Hide,
   Image,
+  Show,
   Text,
 } from "@chakra-ui/react";
 
@@ -23,37 +27,48 @@ import snip2 from "../images/snip2.png";
 import snip3 from "../images/snip3.png";
 import snip4 from "../images/snip4.png";
 import HomeProducts from "../Pages/homeproducts";
+import { Link as RouterLink } from "react-router-dom";
 
 const Home = () => {
   return (
-    <Box w={"95%"} m={"auto"} mt={"188px"}>
-      <Box bg={"#f9f9f9"} w={"85%"} m={"auto"} h={"370px"} mt={"80px"}>
+    <Box w={"95%"} m={"auto"} mt={"188px"} >
+      <Box bg={"#f9f9f9"} w={["140%","120%","120%","85%"]} m={"auto"} h={["370px","370px","370px","370px"]} ml={["100px","70px","0px","auto"]} mt={"80px"} border={"2px solid red"} >
+
         <Flex>
-          <Box w={"590px"} mt={"60px"} ml={["10px", "20px", "60px"]}>
+          <Box w={"590px"} mt={["0px","0px","0px","60px"]} ml={["10px", "80px","90px", "10px"]} border={"1px solid blue"}>
             <Heading
-              fontSize={["25px", "30px", "46px"]}
+              fontSize={["25px", "30px", "35px", "40px"]}
+              ml={["0px", "40px","0px", "10px"]}
               lineHeight={"56px"}
               color={"#333333"}
               fontWeight={650}
-              textAlign={"left"}>
+
+              textAlign={["center","center","center","left"]}
+            >
+
               Lowest Prices{" "}
             </Heading>
             <Heading
-              fontSize={["25px", "30px", "46px"]}
+              fontSize={["25px", "30px", "35px", "40px"]}
               lineHeight={"56px"}
               color={"#333333"}
               fontWeight={650}
               mt={["-24px", "2px", "5px"]}
-              textAlign={"left"}>
+
+              textAlign={["center","center","center","left"]}
+            >
+
+
               {" "}
               Best Quality Shopping{" "}
             </Heading>
 
-            <Box>
-              <Flex>
+            <Box   border={"2px solid yellow"}>
+              <Flex ml={["50px","80px","50px","0px"]}>
                 <Box
                   backgroundColor={"#f7a8ca"}
                   borderRadius={"50%"}
+                
                   w={"38px"}
                   h={"38px"}
                   mt={"27px"}
@@ -126,13 +141,14 @@ const Home = () => {
                   <Button
                     w={"312px"}
                     h={"48px"}
+                    ml={["114px","145px","60px","0px"]}
                     bg={"#f43397"}
                     color={"white"}
                     _hover={"#f43397"}
                     fontSize={18}
                     fontWeight={550}>
                     {" "}
-                    <Image src={playstore} w={12} h={12} /> Download the
+                    <Image src={playstore} w={12} h={12} mr={5} /> Download the
                     WishKart App
                   </Button>
                 </Flex>
@@ -140,10 +156,43 @@ const Home = () => {
             </Box>
           </Box>
           <Box mt={"0px"}>
-            <Image src="https://images.meesho.com/images/marketing/1631722939962.webp" />
+          <Hide below="md">
+            <Image src="https://images.meesho.com/images/marketing/1631722939962.webp"/>
+            </Hide>
           </Box>
         </Flex>
       </Box>
+      {/* <Box mt={"30px"}>
+        <Flex>
+          <Divider
+            orientation="horizontal"
+            width={"19%"}
+            height={"1px"}
+            bg={"rgb(247, 168, 202)"}
+            mt={"70px"}
+            ml={["100px", "10px", "100px"]}
+          />
+          <Heading
+            fontSize={["15px", "20px", "36px"]}
+            lineHeight={"44px"}
+            color={"#333333"}
+            mt={["50px", "50px", "40px"]}
+
+            ml={["65px", "", "35px"]}
+
+            Top Categories to choose from
+          </Heading>
+          
+          <Divider
+            orientation="horizontal"
+            width={"19%"}
+            height={"1px"}
+            bg={"rgb(247, 168, 202)"}
+            mt={["71px", "70px", "70px"]}
+            ml={["70px", "10px", "35px"]}
+          />
+        </Flex>
+      </Box> */}
       <Box mt={"30px"}>
         <Flex>
           <Divider
@@ -172,59 +221,1134 @@ const Home = () => {
           />
         </Flex>
       </Box>
+      
 
       <Box w={"95%"} m={"auto"} h={"545px"} mt={["45px", "45px", "100px"]}>
-        <Image src={snip1} m={"auto"} w={"86%"} />
+        <Image src={snip1} m={"auto"} w={"86%"} borderRadius={"8px"} />
       </Box>
-      <Box w={"95%"} m={"auto"} h={"545px"} mt={["-333px", "-333px", "40px"]}>
-        <Image src={snip2} m={"auto"} w={"86%"} />
+      <Box w={"95%"} m={"auto"} h={"545px"} mt={["10px", "-333px", "40px"]}>
+        <Image src={snip2} m={"auto"} w={"86%"} borderRadius={"8px"} />
       </Box>
-      <Box w={"95%"} m={"auto"} h={"545px"} mt={["-333px", "-333px", "40px"]}>
-        <Image src={snip3} m={"auto"} w={"86%"} />
-      </Box>
-      <Box w={"95%"} m={"auto"} h={"350px"} mt={["-333px", "-333px", "40px"]}>
-        <Image src={snip4} m={"auto"} w={"86%"} />
-      </Box>
-      {/* home down section */}
-      <Flex gap={8}>
-        <Box border={"1px solid red"} w={"29%"}>
-          <Accordion>
-            <AccordionItem>
-              <h2>
-                <AccordionButton>
-                  <Box as="span" flex="1" textAlign="left" fontSize={19}>
-                    Category
-                  </Box>
-                  <AccordionIcon />
-                </AccordionButton>
-              </h2>
-              <AccordionPanel pb={4}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat.
-              </AccordionPanel>
-            </AccordionItem>
 
-            <AccordionItem>
-              <h2>
-                <AccordionButton>
-                  <Box as="span" flex="1" textAlign="left" fontSize={19}>
-                    Gender
+      <Box w={"95%"} m={"auto"} h={"545px"} mt={["10px", "-333px", "40px"]}>
+        <Image src={snip3} m={"auto"} w={"86%"} borderRadius={"8px"} />
+      </Box>
+      <Box w={"95%"} m={"auto"} h={"350px"} mt={["10px", "-333px", "40px"]}>
+        <Image src={snip4} m={"auto"} w={"86%"} borderRadius={"8px"} />
+      </Box>
+
+      {/* home down section */}
+      <Flex gap={8} display={{sm:"block",md:"block",lg:"flex",xl:"flex"}}>
+        <Box w={["150%","95%","95%","30%"]} mt={"25px"} >
+          <Heading color={"#333333"} ml={["80px","110px","20px","10px"]} fontSize={["18px" , "20px" ,"22px"]}>Products For You</Heading>
+          <Card  h={"720px"} borderRadius={"8px"}w={["100%","100%","100%","90%"]} ml={["80px","110px","20px","0px"]} mt={["20px","",""]}>
+            <Accordion fontSize={"15px"} allowMultiple>
+              <AccordionItem>
+                <h2>
+                  <AccordionButton>
+                    <Box
+                      as="span"
+                      flex="1"
+                      textAlign="left"
+                      fontSize={19}
+                      h={"38px"}
+                    >
+                      Category
+                    </Box>
+                    <AccordionIcon fontSize={20} />
+                  </AccordionButton>
+                </h2>
+                <AccordionPanel h={"220px"}>
+                  <Flex>
+                    <Checkbox color={"black"}>
+                      <RouterLink to="/beauthHealth">
+                        <Text
+                          _hover={{ bg: "#f7a8ca" }}
+                          w={"400px"}
+                          fontSize={"18px"}
+                          color={"#333333"}
+                          ml={"18px"}
+                        >
+                          Beauty & Health
+                        </Text>
+                      </RouterLink>
+                    </Checkbox>
+                  </Flex>
+
+                  <Flex mt={"10px"}>
+                    <Checkbox color={"black"}>
+                      <RouterLink to="/women">
+                        <Text
+                          fontSize={"18px"}
+                          _hover={{ bg: "#f7a8ca" }}
+                          w={"400px"}
+                          color={"#333333"}
+                          ml={"18px"}
+                        >
+                          Womens Wear
+                        </Text>
+                      </RouterLink>
+                    </Checkbox>
+                  </Flex>
+
+                  <Flex mt={"10px"}>
+                    <Checkbox color={"black"}>
+                      <RouterLink to="/men">
+                        <Text
+                          fontSize={"18px"}
+                          _hover={{ bg: "#f7a8ca" }}
+                          w={"400px"}
+                          color={"#333333"}
+                          ml={"18px"}
+                        >
+                          Mens Wear
+                        </Text>
+                      </RouterLink>
+                    </Checkbox>
+                  </Flex>
+
+                  <Flex mt={"10px"}>
+                    <Checkbox color={"black"}>
+                      <RouterLink to="/homeKitchen">
+                        <Text
+                          fontSize={"18px"}
+                          _hover={{ bg: "#f7a8ca" }}
+                          w={"400px"}
+                          color={"#333333"}
+                          ml={"18px"}
+                        >
+                          Home & Kitchen
+                        </Text>
+                      </RouterLink>
+                    </Checkbox>
+                  </Flex>
+
+                  <Flex mt={"10px"}>
+                    <Checkbox color={"black"}>
+                      <RouterLink to="/jewellery">
+                        <Text
+                          fontSize={"18px"}
+                          _hover={{ bg: "#f7a8ca" }}
+                          w={"400px"}
+                          color={"#333333"}
+                          ml={"18px"}
+                        >
+                          Jewellery
+                        </Text>
+                      </RouterLink>
+                    </Checkbox>
+                  </Flex>
+
+                  <Flex mt={"10px"}>
+                    <Checkbox color={"black"}>
+                      <RouterLink to="/bagsFootwear">
+                        <Text
+                          fontSize={"18px"}
+                          _hover={{ bg: "#f7a8ca" }}
+                          w={"400px"}
+                          color={"#333333"}
+                          ml={"18px"}
+                        >
+                          Bags and Footwear
+                        </Text>
+                      </RouterLink>
+                    </Checkbox>
+                  </Flex>
+                </AccordionPanel>
+              </AccordionItem>
+
+              <AccordionItem>
+                <h2>
+                  <AccordionButton>
+                    <Box
+                      as="span"
+                      flex="1"
+                      textAlign="left"
+                      fontSize={19}
+                      h={"38px"}
+                    >
+                      Price
+                    </Box>
+                    <AccordionIcon fontSize={20} />
+                  </AccordionButton>
+                </h2>
+                <AccordionPanel pb={4}>
+                  <Box
+                    color={"gray"}
+                    w={"95px"}
+                    h={"36px"}
+                    border={"1px solid rgb(240, 240, 240)"}
+                    borderRadius={"10%"}
+                  >
+                    <Text align={"center"} mt={2}>
+                      Under ₹ 149
+                    </Text>
                   </Box>
-                  <AccordionIcon />
-                </AccordionButton>
-              </h2>
-              <AccordionPanel pb={4}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat.
-              </AccordionPanel>
-            </AccordionItem>
-          </Accordion>
+                  <Box
+                    color={"gray"}
+                    w={"95px"}
+                    h={"36px"}
+                    border={"1px solid rgb(240, 240, 240)"}
+                    borderRadius={"10%"}
+                    mt={5}
+                  >
+                    <Text align={"center"} mt={2}>
+                      Under ₹ 199
+                    </Text>
+                  </Box>
+                  <Box
+                    color={"gray"}
+                    w={"95px"}
+                    h={"36px"}
+                    border={"1px solid rgb(240, 240, 240)"}
+                    borderRadius={"10%"}
+                    mt={5}
+                  >
+                    <Text align={"center"} mt={2}>
+                      Under ₹ 249
+                    </Text>
+                  </Box>
+                  <Box
+                    color={"gray"}
+                    w={"95px"}
+                    h={"36px"}
+                    border={"1px solid rgb(240, 240, 240)"}
+                    borderRadius={"10%"}
+                    mt={5}
+                  >
+                    <Text align={"center"} mt={2}>
+                      Under ₹ 399
+                    </Text>
+                  </Box>
+                  <Box
+                    color={"gray"}
+                    w={"95px"}
+                    h={"36px"}
+                    border={"1px solid rgb(240, 240, 240)"}
+                    borderRadius={"10%"}
+                    mt={5}
+                  >
+                    <Text align={"center"} mt={2}>
+                      Under ₹ 999
+                    </Text>
+                  </Box>
+                </AccordionPanel>
+              </AccordionItem>
+
+              <AccordionItem>
+                <h2>
+                  <AccordionButton>
+                    <Box
+                      as="span"
+                      flex="1"
+                      textAlign="left"
+                      fontSize={19}
+                      h={"38px"}
+                    >
+                      Size
+                    </Box>
+                    <AccordionIcon fontSize={20} />
+                  </AccordionButton>
+                </h2>
+                <AccordionPanel h={"220px"}>
+                  <Flex>
+                    <Checkbox color={"black"}>
+                      <RouterLink to="/beauthHealth">
+                        <Text
+                          _hover={{ bg: "#f7a8ca" }}
+                          w={"400px"}
+                          fontSize={"18px"}
+                          color={"#333333"}
+                          ml={"18px"}
+                        >
+                          Beauty & Health
+                        </Text>
+                      </RouterLink>
+                    </Checkbox>
+                  </Flex>
+
+                  <Flex mt={"10px"}>
+                    <Checkbox color={"black"}>
+                      <RouterLink to="/women">
+                        <Text
+                          fontSize={"18px"}
+                          _hover={{ bg: "#f7a8ca" }}
+                          w={"400px"}
+                          color={"#333333"}
+                          ml={"18px"}
+                        >
+                          Womens Wear
+                        </Text>
+                      </RouterLink>
+                    </Checkbox>
+                  </Flex>
+
+                  <Flex mt={"10px"}>
+                    <Checkbox color={"black"}>
+                      <RouterLink to="/men">
+                        <Text
+                          fontSize={"18px"}
+                          _hover={{ bg: "#f7a8ca" }}
+                          w={"400px"}
+                          color={"#333333"}
+                          ml={"18px"}
+                        >
+                          Mens Wear
+                        </Text>
+                      </RouterLink>
+                    </Checkbox>
+                  </Flex>
+
+                  <Flex mt={"10px"}>
+                    <Checkbox color={"black"}>
+                      <RouterLink to="/homeKitchen">
+                        <Text
+                          fontSize={"18px"}
+                          _hover={{ bg: "#f7a8ca" }}
+                          w={"400px"}
+                          color={"#333333"}
+                          ml={"18px"}
+                        >
+                          Home & Kitchen
+                        </Text>
+                      </RouterLink>
+                    </Checkbox>
+                  </Flex>
+
+                  <Flex mt={"10px"}>
+                    <Checkbox color={"black"}>
+                      <RouterLink to="/jewellery">
+                        <Text
+                          fontSize={"18px"}
+                          _hover={{ bg: "#f7a8ca" }}
+                          w={"400px"}
+                          color={"#333333"}
+                          ml={"18px"}
+                        >
+                          Jewellery
+                        </Text>
+                      </RouterLink>
+                    </Checkbox>
+                  </Flex>
+
+                  <Flex mt={"10px"}>
+                    <Checkbox color={"black"}>
+                      <RouterLink to="/bagsFootwear">
+                        <Text
+                          fontSize={"18px"}
+                          _hover={{ bg: "#f7a8ca" }}
+                          w={"400px"}
+                          color={"#333333"}
+                          ml={"18px"}
+                        >
+                          Bags and Footwear
+                        </Text>
+                      </RouterLink>
+                    </Checkbox>
+                  </Flex>
+                </AccordionPanel>
+              </AccordionItem>
+
+              <AccordionItem>
+                <h2>
+                  <AccordionButton>
+                    <Box
+                      as="span"
+                      flex="1"
+                      textAlign="left"
+                      fontSize={19}
+                      h={"38px"}
+                    >
+                      Occasion
+                    </Box>
+                    <AccordionIcon fontSize={20} />
+                  </AccordionButton>
+                </h2>
+                <AccordionPanel h={"220px"}>
+                  <Flex>
+                    <Checkbox color={"black"}>
+                      <RouterLink to="/beauthHealth">
+                        <Text
+                          _hover={{ bg: "#f7a8ca" }}
+                          w={"400px"}
+                          fontSize={"18px"}
+                          color={"#333333"}
+                          ml={"18px"}
+                        >
+                          Beauty & Health
+                        </Text>
+                      </RouterLink>
+                    </Checkbox>
+                  </Flex>
+
+                  <Flex mt={"10px"}>
+                    <Checkbox color={"black"}>
+                      <RouterLink to="/women">
+                        <Text
+                          fontSize={"18px"}
+                          _hover={{ bg: "#f7a8ca" }}
+                          w={"400px"}
+                          color={"#333333"}
+                          ml={"18px"}
+                        >
+                          Womens Wear
+                        </Text>
+                      </RouterLink>
+                    </Checkbox>
+                  </Flex>
+
+                  <Flex mt={"10px"}>
+                    <Checkbox color={"black"}>
+                      <RouterLink to="/men">
+                        <Text
+                          fontSize={"18px"}
+                          _hover={{ bg: "#f7a8ca" }}
+                          w={"400px"}
+                          color={"#333333"}
+                          ml={"18px"}
+                        >
+                          Mens Wear
+                        </Text>
+                      </RouterLink>
+                    </Checkbox>
+                  </Flex>
+
+                  <Flex mt={"10px"}>
+                    <Checkbox color={"black"}>
+                      <RouterLink to="/homeKitchen">
+                        <Text
+                          fontSize={"18px"}
+                          _hover={{ bg: "#f7a8ca" }}
+                          w={"400px"}
+                          color={"#333333"}
+                          ml={"18px"}
+                        >
+                          Home & Kitchen
+                        </Text>
+                      </RouterLink>
+                    </Checkbox>
+                  </Flex>
+
+                  <Flex mt={"10px"}>
+                    <Checkbox color={"black"}>
+                      <RouterLink to="/jewellery">
+                        <Text
+                          fontSize={"18px"}
+                          _hover={{ bg: "#f7a8ca" }}
+                          w={"400px"}
+                          color={"#333333"}
+                          ml={"18px"}
+                        >
+                          Jewellery
+                        </Text>
+                      </RouterLink>
+                    </Checkbox>
+                  </Flex>
+
+                  <Flex mt={"10px"}>
+                    <Checkbox color={"black"}>
+                      <RouterLink to="/bagsFootwear">
+                        <Text
+                          fontSize={"18px"}
+                          _hover={{ bg: "#f7a8ca" }}
+                          w={"400px"}
+                          color={"#333333"}
+                          ml={"18px"}
+                        >
+                          Bags and Footwear
+                        </Text>
+                      </RouterLink>
+                    </Checkbox>
+                  </Flex>
+                </AccordionPanel>
+              </AccordionItem>
+
+              <AccordionItem>
+                <h2>
+                  <AccordionButton>
+                    <Box
+                      as="span"
+                      flex="1"
+                      textAlign="left"
+                      fontSize={19}
+                      h={"38px"}
+                    >
+                      Brand
+                    </Box>
+                    <AccordionIcon fontSize={20} />
+                  </AccordionButton>
+                </h2>
+                <AccordionPanel h={"220px"}>
+                  <Flex>
+                    <Checkbox color={"black"}>
+                      <RouterLink to="/beauthHealth">
+                        <Text
+                          _hover={{ bg: "#f7a8ca" }}
+                          w={"400px"}
+                          fontSize={"18px"}
+                          color={"#333333"}
+                          ml={"18px"}
+                        >
+                          Beauty & Health
+                        </Text>
+                      </RouterLink>
+                    </Checkbox>
+                  </Flex>
+
+                  <Flex mt={"10px"}>
+                    <Checkbox color={"black"}>
+                      <RouterLink to="/women">
+                        <Text
+                          fontSize={"18px"}
+                          _hover={{ bg: "#f7a8ca" }}
+                          w={"400px"}
+                          color={"#333333"}
+                          ml={"18px"}
+                        >
+                          Womens Wear
+                        </Text>
+                      </RouterLink>
+                    </Checkbox>
+                  </Flex>
+
+                  <Flex mt={"10px"}>
+                    <Checkbox color={"black"}>
+                      <RouterLink to="/men">
+                        <Text
+                          fontSize={"18px"}
+                          _hover={{ bg: "#f7a8ca" }}
+                          w={"400px"}
+                          color={"#333333"}
+                          ml={"18px"}
+                        >
+                          Mens Wear
+                        </Text>
+                      </RouterLink>
+                    </Checkbox>
+                  </Flex>
+
+                  <Flex mt={"10px"}>
+                    <Checkbox color={"black"}>
+                      <RouterLink to="/homeKitchen">
+                        <Text
+                          fontSize={"18px"}
+                          _hover={{ bg: "#f7a8ca" }}
+                          w={"400px"}
+                          color={"#333333"}
+                          ml={"18px"}
+                        >
+                          Home & Kitchen
+                        </Text>
+                      </RouterLink>
+                    </Checkbox>
+                  </Flex>
+
+                  <Flex mt={"10px"}>
+                    <Checkbox color={"black"}>
+                      <RouterLink to="/jewellery">
+                        <Text
+                          fontSize={"18px"}
+                          _hover={{ bg: "#f7a8ca" }}
+                          w={"400px"}
+                          color={"#333333"}
+                          ml={"18px"}
+                        >
+                          Jewellery
+                        </Text>
+                      </RouterLink>
+                    </Checkbox>
+                  </Flex>
+
+                  <Flex mt={"10px"}>
+                    <Checkbox color={"black"}>
+                      <RouterLink to="/bagsFootwear">
+                        <Text
+                          fontSize={"18px"}
+                          _hover={{ bg: "#f7a8ca" }}
+                          w={"400px"}
+                          color={"#333333"}
+                          ml={"18px"}
+                        >
+                          Bags and Footwear
+                        </Text>
+                      </RouterLink>
+                    </Checkbox>
+                  </Flex>
+                </AccordionPanel>
+              </AccordionItem>
+
+              <AccordionItem>
+                <h2>
+                  <AccordionButton>
+                    <Box
+                      as="span"
+                      flex="1"
+                      textAlign="left"
+                      fontSize={19}
+                      h={"38px"}
+                    >
+                      Meesho Mall
+                    </Box>
+                    <AccordionIcon fontSize={20} />
+                  </AccordionButton>
+                </h2>
+                <AccordionPanel h={"220px"}>
+                  <Flex>
+                    <Checkbox color={"black"}>
+                      <RouterLink to="/beauthHealth">
+                        <Text
+                          _hover={{ bg: "#f7a8ca" }}
+                          w={"400px"}
+                          fontSize={"18px"}
+                          color={"#333333"}
+                          ml={"18px"}
+                        >
+                          Beauty & Health
+                        </Text>
+                      </RouterLink>
+                    </Checkbox>
+                  </Flex>
+
+                  <Flex mt={"10px"}>
+                    <Checkbox color={"black"}>
+                      <RouterLink to="/women">
+                        <Text
+                          fontSize={"18px"}
+                          _hover={{ bg: "#f7a8ca" }}
+                          w={"400px"}
+                          color={"#333333"}
+                          ml={"18px"}
+                        >
+                          Womens Wear
+                        </Text>
+                      </RouterLink>
+                    </Checkbox>
+                  </Flex>
+
+                  <Flex mt={"10px"}>
+                    <Checkbox color={"black"}>
+                      <RouterLink to="/men">
+                        <Text
+                          fontSize={"18px"}
+                          _hover={{ bg: "#f7a8ca" }}
+                          w={"400px"}
+                          color={"#333333"}
+                          ml={"18px"}
+                        >
+                          Mens Wear
+                        </Text>
+                      </RouterLink>
+                    </Checkbox>
+                  </Flex>
+
+                  <Flex mt={"10px"}>
+                    <Checkbox color={"black"}>
+                      <RouterLink to="/homeKitchen">
+                        <Text
+                          fontSize={"18px"}
+                          _hover={{ bg: "#f7a8ca" }}
+                          w={"400px"}
+                          color={"#333333"}
+                          ml={"18px"}
+                        >
+                          Home & Kitchen
+                        </Text>
+                      </RouterLink>
+                    </Checkbox>
+                  </Flex>
+
+                  <Flex mt={"10px"}>
+                    <Checkbox color={"black"}>
+                      <RouterLink to="/jewellery">
+                        <Text
+                          fontSize={"18px"}
+                          _hover={{ bg: "#f7a8ca" }}
+                          w={"400px"}
+                          color={"#333333"}
+                          ml={"18px"}
+                        >
+                          Jewellery
+                        </Text>
+                      </RouterLink>
+                    </Checkbox>
+                  </Flex>
+
+                  <Flex mt={"10px"}>
+                    <Checkbox color={"black"}>
+                      <RouterLink to="/bagsFootwear">
+                        <Text
+                          fontSize={"18px"}
+                          _hover={{ bg: "#f7a8ca" }}
+                          w={"400px"}
+                          color={"#333333"}
+                          ml={"18px"}
+                        >
+                          Bags and Footwear
+                        </Text>
+                      </RouterLink>
+                    </Checkbox>
+                  </Flex>
+                </AccordionPanel>
+              </AccordionItem>
+
+              <AccordionItem>
+                <h2>
+                  <AccordionButton>
+                    <Box
+                      as="span"
+                      flex="1"
+                      textAlign="left"
+                      fontSize={19}
+                      h={"38px"}
+                    >
+                      Colour
+                    </Box>
+                    <AccordionIcon fontSize={20} />
+                  </AccordionButton>
+                </h2>
+                <AccordionPanel h={"220px"}>
+                  <Flex>
+                    <Checkbox color={"black"}>
+                      <RouterLink to="/beauthHealth">
+                        <Text
+                          _hover={{ bg: "#f7a8ca" }}
+                          w={"400px"}
+                          fontSize={"18px"}
+                          color={"#333333"}
+                          ml={"18px"}
+                        >
+                          Beauty & Health
+                        </Text>
+                      </RouterLink>
+                    </Checkbox>
+                  </Flex>
+
+                  <Flex mt={"10px"}>
+                    <Checkbox color={"black"}>
+                      <RouterLink to="/women">
+                        <Text
+                          fontSize={"18px"}
+                          _hover={{ bg: "#f7a8ca" }}
+                          w={"400px"}
+                          color={"#333333"}
+                          ml={"18px"}
+                        >
+                          Womens Wear
+                        </Text>
+                      </RouterLink>
+                    </Checkbox>
+                  </Flex>
+
+                  <Flex mt={"10px"}>
+                    <Checkbox color={"black"}>
+                      <RouterLink to="/men">
+                        <Text
+                          fontSize={"18px"}
+                          _hover={{ bg: "#f7a8ca" }}
+                          w={"400px"}
+                          color={"#333333"}
+                          ml={"18px"}
+                        >
+                          Mens Wear
+                        </Text>
+                      </RouterLink>
+                    </Checkbox>
+                  </Flex>
+
+                  <Flex mt={"10px"}>
+                    <Checkbox color={"black"}>
+                      <RouterLink to="/homeKitchen">
+                        <Text
+                          fontSize={"18px"}
+                          _hover={{ bg: "#f7a8ca" }}
+                          w={"400px"}
+                          color={"#333333"}
+                          ml={"18px"}
+                        >
+                          Home & Kitchen
+                        </Text>
+                      </RouterLink>
+                    </Checkbox>
+                  </Flex>
+
+                  <Flex mt={"10px"}>
+                    <Checkbox color={"black"}>
+                      <RouterLink to="/jewellery">
+                        <Text
+                          fontSize={"18px"}
+                          _hover={{ bg: "#f7a8ca" }}
+                          w={"400px"}
+                          color={"#333333"}
+                          ml={"18px"}
+                        >
+                          Jewellery
+                        </Text>
+                      </RouterLink>
+                    </Checkbox>
+                  </Flex>
+
+                  <Flex mt={"10px"}>
+                    <Checkbox color={"black"}>
+                      <RouterLink to="/bagsFootwear">
+                        <Text
+                          fontSize={"18px"}
+                          _hover={{ bg: "#f7a8ca" }}
+                          w={"400px"}
+                          color={"#333333"}
+                          ml={"18px"}
+                        >
+                          Bags and Footwear
+                        </Text>
+                      </RouterLink>
+                    </Checkbox>
+                  </Flex>
+                </AccordionPanel>
+              </AccordionItem>
+              <AccordionItem>
+                <h2>
+                  <AccordionButton>
+                    <Box
+                      as="span"
+                      flex="1"
+                      textAlign="left"
+                      fontSize={19}
+                      h={"38px"}
+                    >
+                      Type
+                    </Box>
+                    <AccordionIcon fontSize={20} />
+                  </AccordionButton>
+                </h2>
+                <AccordionPanel h={"220px"}>
+                  <Flex>
+                    <Checkbox color={"black"}>
+                      <RouterLink to="/beauthHealth">
+                        <Text
+                          _hover={{ bg: "#f7a8ca" }}
+                          w={"400px"}
+                          fontSize={"18px"}
+                          color={"#333333"}
+                          ml={"18px"}
+                        >
+                          Beauty & Health
+                        </Text>
+                      </RouterLink>
+                    </Checkbox>
+                  </Flex>
+
+                  <Flex mt={"10px"}>
+                    <Checkbox color={"black"}>
+                      <RouterLink to="/women">
+                        <Text
+                          fontSize={"18px"}
+                          _hover={{ bg: "#f7a8ca" }}
+                          w={"400px"}
+                          color={"#333333"}
+                          ml={"18px"}
+                        >
+                          Womens Wear
+                        </Text>
+                      </RouterLink>
+                    </Checkbox>
+                  </Flex>
+
+                  <Flex mt={"10px"}>
+                    <Checkbox color={"black"}>
+                      <RouterLink to="/men">
+                        <Text
+                          fontSize={"18px"}
+                          _hover={{ bg: "#f7a8ca" }}
+                          w={"400px"}
+                          color={"#333333"}
+                          ml={"18px"}
+                        >
+                          Mens Wear
+                        </Text>
+                      </RouterLink>
+                    </Checkbox>
+                  </Flex>
+
+                  <Flex mt={"10px"}>
+                    <Checkbox color={"black"}>
+                      <RouterLink to="/homeKitchen">
+                        <Text
+                          fontSize={"18px"}
+                          _hover={{ bg: "#f7a8ca" }}
+                          w={"400px"}
+                          color={"#333333"}
+                          ml={"18px"}
+                        >
+                          Home & Kitchen
+                        </Text>
+                      </RouterLink>
+                    </Checkbox>
+                  </Flex>
+
+                  <Flex mt={"10px"}>
+                    <Checkbox color={"black"}>
+                      <RouterLink to="/jewellery">
+                        <Text
+                          fontSize={"18px"}
+                          _hover={{ bg: "#f7a8ca" }}
+                          w={"400px"}
+                          color={"#333333"}
+                          ml={"18px"}
+                        >
+                          Jewellery
+                        </Text>
+                      </RouterLink>
+                    </Checkbox>
+                  </Flex>
+
+                  <Flex mt={"10px"}>
+                    <Checkbox color={"black"}>
+                      <RouterLink to="/bagsFootwear">
+                        <Text
+                          fontSize={"18px"}
+                          _hover={{ bg: "#f7a8ca" }}
+                          w={"400px"}
+                          color={"#333333"}
+                          ml={"18px"}
+                        >
+                          Bags and Footwear
+                        </Text>
+                      </RouterLink>
+                    </Checkbox>
+                  </Flex>
+                </AccordionPanel>
+              </AccordionItem>
+
+              <AccordionItem>
+                <h2>
+                  <AccordionButton>
+                    <Box
+                      as="span"
+                      flex="1"
+                      textAlign="left"
+                      fontSize={19}
+                      h={"38px"}
+                    >
+                      Combo
+                    </Box>
+                    <AccordionIcon fontSize={20} />
+                  </AccordionButton>
+                </h2>
+                <AccordionPanel h={"220px"}>
+                  <Flex>
+                    <Checkbox color={"black"}>
+                      <RouterLink to="/beauthHealth">
+                        <Text
+                          _hover={{ bg: "#f7a8ca" }}
+                          w={"400px"}
+                          fontSize={"18px"}
+                          color={"#333333"}
+                          ml={"18px"}
+                        >
+                          Beauty & Health
+                        </Text>
+                      </RouterLink>
+                    </Checkbox>
+                  </Flex>
+
+                  <Flex mt={"10px"}>
+                    <Checkbox color={"black"}>
+                      <RouterLink to="/women">
+                        <Text
+                          fontSize={"18px"}
+                          _hover={{ bg: "#f7a8ca" }}
+                          w={"400px"}
+                          color={"#333333"}
+                          ml={"18px"}
+                        >
+                          Womens Wear
+                        </Text>
+                      </RouterLink>
+                    </Checkbox>
+                  </Flex>
+
+                  <Flex mt={"10px"}>
+                    <Checkbox color={"black"}>
+                      <RouterLink to="/men">
+                        <Text
+                          fontSize={"18px"}
+                          _hover={{ bg: "#f7a8ca" }}
+                          w={"400px"}
+                          color={"#333333"}
+                          ml={"18px"}
+                        >
+                          Mens Wear
+                        </Text>
+                      </RouterLink>
+                    </Checkbox>
+                  </Flex>
+
+                  <Flex mt={"10px"}>
+                    <Checkbox color={"black"}>
+                      <RouterLink to="/homeKitchen">
+                        <Text
+                          fontSize={"18px"}
+                          _hover={{ bg: "#f7a8ca" }}
+                          w={"400px"}
+                          color={"#333333"}
+                          ml={"18px"}
+                        >
+                          Home & Kitchen
+                        </Text>
+                      </RouterLink>
+                    </Checkbox>
+                  </Flex>
+
+                  <Flex mt={"10px"}>
+                    <Checkbox color={"black"}>
+                      <RouterLink to="/jewellery">
+                        <Text
+                          fontSize={"18px"}
+                          _hover={{ bg: "#f7a8ca" }}
+                          w={"400px"}
+                          color={"#333333"}
+                          ml={"18px"}
+                        >
+                          Jewellery
+                        </Text>
+                      </RouterLink>
+                    </Checkbox>
+                  </Flex>
+
+                  <Flex mt={"10px"}>
+                    <Checkbox color={"black"}>
+                      <RouterLink to="/bagsFootwear">
+                        <Text
+                          fontSize={"18px"}
+                          _hover={{ bg: "#f7a8ca" }}
+                          w={"400px"}
+                          color={"#333333"}
+                          ml={"18px"}
+                        >
+                          Bags and Footwear
+                        </Text>
+                      </RouterLink>
+                    </Checkbox>
+                  </Flex>
+                </AccordionPanel>
+              </AccordionItem>
+
+              <AccordionItem>
+                <h2>
+                  <AccordionButton>
+                    <Box
+                      as="span"
+                      flex="1"
+                      textAlign="left"
+                      fontSize={19}
+                      h={"38px"}
+                    >
+                      Meesho Mall
+                    </Box>
+                    <AccordionIcon fontSize={20} />
+                  </AccordionButton>
+                </h2>
+                <AccordionPanel h={"220px"}>
+                  <Flex>
+                    <Checkbox color={"black"}>
+                      <RouterLink to="/beauthHealth">
+                        <Text
+                          _hover={{ bg: "#f7a8ca" }}
+                          w={"400px"}
+                          fontSize={"18px"}
+                          color={"#333333"}
+                          ml={"18px"}
+                        >
+                          Beauty & Health
+                        </Text>
+                      </RouterLink>
+                    </Checkbox>
+                  </Flex>
+
+                  <Flex mt={"10px"}>
+                    <Checkbox color={"black"}>
+                      <RouterLink to="/women">
+                        <Text
+                          fontSize={"18px"}
+                          _hover={{ bg: "#f7a8ca" }}
+                          w={"400px"}
+                          color={"#333333"}
+                          ml={"18px"}
+                        >
+                          Womens Wear
+                        </Text>
+                      </RouterLink>
+                    </Checkbox>
+                  </Flex>
+
+                  <Flex mt={"10px"}>
+                    <Checkbox color={"black"}>
+                      <RouterLink to="/men">
+                        <Text
+                          fontSize={"18px"}
+                          _hover={{ bg: "#f7a8ca" }}
+                          w={"400px"}
+                          color={"#333333"}
+                          ml={"18px"}
+                        >
+                          Mens Wear
+                        </Text>
+                      </RouterLink>
+                    </Checkbox>
+                  </Flex>
+
+                  <Flex mt={"10px"}>
+                    <Checkbox color={"black"}>
+                      <RouterLink to="/homeKitchen">
+                        <Text
+                          fontSize={"18px"}
+                          _hover={{ bg: "#f7a8ca" }}
+                          w={"400px"}
+                          color={"#333333"}
+                          ml={"18px"}
+                        >
+                          Home & Kitchen
+                        </Text>
+                      </RouterLink>
+                    </Checkbox>
+                  </Flex>
+
+                  <Flex mt={"10px"}>
+                    <Checkbox color={"black"}>
+                      <RouterLink to="/jewellery">
+                        <Text
+                          fontSize={"18px"}
+                          _hover={{ bg: "#f7a8ca" }}
+                          w={"400px"}
+                          color={"#333333"}
+                          ml={"18px"}
+                        >
+                          Jewellery
+                        </Text>
+                      </RouterLink>
+                    </Checkbox>
+                  </Flex>
+
+                  <Flex mt={"10px"}>
+                    <Checkbox color={"black"}>
+                      <RouterLink to="/bagsFootwear">
+                        <Text
+                          fontSize={"18px"}
+                          _hover={{ bg: "#f7a8ca" }}
+                          w={"400px"}
+                          color={"#333333"}
+                          ml={"18px"}
+                        >
+                          Bags and Footwear
+                        </Text>
+                      </RouterLink>
+                    </Checkbox>
+                  </Flex>
+                </AccordionPanel>
+              </AccordionItem>
+            </Accordion>
+          </Card>
         </Box>
-        <Box w={"70%"} padding={10}>
+        <Box w={["140%","145%","100%","80%"]} padding={10} border={"1px solid black"} ml={["100px","20px","8px","0px"]} mt={["50px","50px","50px","0px"]}>
           <HomeProducts />
         </Box>
       </Flex>
