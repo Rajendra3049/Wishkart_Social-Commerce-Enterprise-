@@ -67,8 +67,12 @@ const Products = () => {
       (filtCred.Home_and_Kitchen ? el.category == "Home and Kitchen" : ""))
   )
 
+const refreshComponent=()=>{
+  useEffect(()=>{
 
+  },[])
 
+}
 
 
   const check = (e) => {
@@ -81,7 +85,9 @@ const Products = () => {
     })
     setPage(1)                                                    //part of paginaion set 1st page after filter
     setpageData()                                                //part of paginaion set data after filter
+    refreshComponent()
   }
+
   if (loading) {
     <Loader />
   }
