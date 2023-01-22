@@ -1,18 +1,20 @@
-*{
+* {
 }
-.cart-section{
-    width: 60%;
-    margin:40px auto;
-   display: flex;
-   direction: column    ;   
-   gap:20px;
+.cart-section {
+  width: 60%;
+  margin: 40px auto;
+  display: flex;
+  direction: column;
+  gap: 20px;
 }
-
-.cart-second-section{
-    margin: auto;
+.cart-first-section {
+  display: grid;
 }
-p{
-    cursor: pointer;
+.cart-second-section {
+  margin: auto;
+}
+p {
+  cursor: pointer;
 }
 /* @media (max-width: 820px) {
     .cart-section{

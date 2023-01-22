@@ -6,7 +6,6 @@ const onShowSizeChange = (current, pageSize) => {
 };
 
 export default function ProductManage({ data }) {
-  const [currentPage, setCurrentPage] = React.useState(1);
   return (
     <>
       {" "}

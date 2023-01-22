@@ -82,3 +82,56 @@ export const AddToCart = (cart, id) => async (dispatch) => {
     dispatch({ type: USER_ADD_TO_CART, payload: data });
   }
 };
+
+export const DeleteFromCart = (cart, id) => async (dispatch) => {
+  console.log(cart, id);
+  let res = await fetch(
+    `https://meesho-backend-3037.onrender.com/users/${id}`,
+    {
+      method: "PATCH",
+      body: JSON.stringify({ cart }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  let data = await res.json();
+  console.log("deleted data", data);
+  dispatch({ type: USER_DELETE_FROM_CART, payload: data });
+};
+
+export const AddAddress = (address, id) => async (dispatch) => {
+  console.log("Address in reducer", address, id);
+  let res = await fetch(
+    `https://meesho-backend-3037.onrender.com/users/${id}`,
+    {
+      method: "PATCH",
+      body: JSON.stringify({ address }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  let data = await res.json();
+  console.log("Address", data);
+
+  dispatch({ type: USER_ADD_NEW_ADDRESS, payload: data });
+};
+
+export const OrderPlacement = (order, id) => async (dispatch) => {
+  let cart = [];
+
+  let res = await fetch(
+    `https://meesho-backend-3037.onrender.com/users/${id}`,
+    {
+      method: "PATCH",
+      body: JSON.stringify({ order, cart }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  let data = await res.json();
+  console.log("orderHistory", data);
+  dispatch({ type: USER_ORDER, payload: data });
+};

@@ -70,10 +70,7 @@ const UserReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         loading: false,
-        user: {
-          ...state.user,
-          cart: payload,
-        },
+        user: payload,
       };
     }
 
@@ -83,7 +80,7 @@ const UserReducer = (state = initialState, { type, payload }) => {
         loading: false,
         user: {
           ...state.user,
-          address: payload,
+          address: payload.address,
         },
       };
     }
@@ -91,10 +88,7 @@ const UserReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         loading: false,
-        user: {
-          ...state.user,
-          order: payload,
-        },
+        user: payload,
       };
     }
 
