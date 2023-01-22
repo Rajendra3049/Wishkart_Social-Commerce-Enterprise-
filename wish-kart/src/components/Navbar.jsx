@@ -13,6 +13,9 @@ import {
   PopoverArrow,
   PopoverHeader,
   Heading,
+  InputLeftElement,
+  InputGroup,
+  CloseButton,
 } from "@chakra-ui/react";
 
 import logo from "../images/wish.png";
@@ -26,6 +29,7 @@ import { BiShoppingBag } from "react-icons/bi";
 import { Link, Link as RouterLink } from "react-router-dom";
 import { useState } from "react";
 import "../styles/navbar.css";
+import { SearchIcon } from "@chakra-ui/icons";
  var data = require("../input.json");
 
 export default function Navbar() {
@@ -62,37 +66,23 @@ const [value, setValue] = useState("");
               />
             </RouterLink>
             <Flex>
-              {/* <Stack
-                spacing={3}
-                w={["200px", "300px", "400px"]}
-                ml={["5%", "5%", "10%"]}
-                mt={"-20px"}
-              >
-              
-                <Input
-                value={value} onChange={onChange} 
-                type="text"
-                  placeholder="Try Saree,Kurti or Search by Product Code"
-                  width={["80%", "80%", "100%"]}
-                  h={["25px", "30px", "45px"]}
-                  color={"black"}
-                  borderWidth="1px"
-                  fontSize={["8px", "8x", "15px"]}
-             
-                />
-            
-              
-    
-              </Stack> */}
-              <Stack className="search-container"
+      
+              <Stack 
                 spacing={3}
                 w={["200px", "300px", "400px"]}
                 ml={["5%", "5%", "10%"]}
                 // mt={"99px"}
               >
-                <Box>
-                  {/* <input type="text" value={value} onChange={onChange} /> */}
+                <Box position={"absolute"} marginTop={"-35px"}>
+                <InputGroup >
+                <InputLeftElement
+                   p={6}
+      pointerEvents='none'
+      children={<SearchIcon color='gray.500' mt={"16px"} ml={"8px"}  fontSize={15}/>}
+    />
+               
                   <Input
+               
                     value={value}
                     onChange={onChange}
                     type="text"
@@ -102,12 +92,19 @@ const [value, setValue] = useState("");
                     color={"black"}
                     borderWidth="1px"
                     fontSize={["8px", "8x", "15px"]}
+                    boxShadow={
+                      "rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px"
+                    }
+                 
                   />
-                  {/* <button onClick={() => onSearch(value)}> Search </button> */}
-                </Box>
-                {/* dropdown */}
+               {/* <CloseButton size='sm' />      */}
+    </InputGroup>
+              
+                {/* -------------------------- search dropdown--------------------------------------------------------- */}
                 
-                <Box border="1px solid red"   zIndex={99} className="dropdown">
+                <Box  zIndex={99} position="relative" className="dropdown" boxShadow={
+              "rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px"
+            } fontSize={"14px"}>
                   {data
                     .filter((item) => {
                       const searchTerm = value.toLowerCase();
@@ -122,15 +119,21 @@ const [value, setValue] = useState("");
                     .slice(0, 10)
                     .map((item) => (
                       <Link to={item.href}>
+                        <Flex>
+                        <SearchIcon color='gray.500' mt={"13px"} ml={"10px"}  fontSize={15}/>
                         <Box
+                        padding={4}
+                        
                           onClick={() => onSearch(item.name)}
                       
                           key={item.name}
                         >
                           {item.name}
                         </Box>
+                        </Flex>
                       </Link>
                     ))}
+                </Box>
                 </Box>
               </Stack>
             </Flex>

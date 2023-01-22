@@ -96,7 +96,7 @@ const DesktopNav = () => {
                 href={navItem.href ?? "#"}
                 _hover={{ borderBottom:"3px solid #f43397",marginTop:"35px"}}
          
-                fontSize={["5px", "10px", "16px"]}
+                fontSize={["25px","10px","10px", "16px"]}
                 fontWeight={500}
                 h={"100%"}
                 color={linkColor}

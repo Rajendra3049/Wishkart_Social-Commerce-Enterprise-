@@ -12,7 +12,7 @@ import { AiFillStar } from "react-icons/ai";
 
 export default function HomeProducts() {
   return (
-    <Box display={{ sm: "grid", md: "grid", lg: "flex" }} border={"1px solid blue"}  >
+    <Box display={{ sm: "grid", md: "grid", lg: "flex" }}  >
       <Grid templateColumns={{ sm: "repeat(2,1fr)", md: "repeat(2,1fr)", lg: "repeat(3,1fr)" }} gap={10} >
         {data.map((el) => (
           <Box
@@ -131,7 +131,7 @@ export default function HomeProducts() {
              
               <Flex   mr={"8px"} color={"#f43397"} fontWeight={600}>
 
-                justifyContent={"space-around"}>
+                justifyContent={"space-around"}
                 {el.rating2}
                 <AiFillStar color={"white"} />
               </Flex>

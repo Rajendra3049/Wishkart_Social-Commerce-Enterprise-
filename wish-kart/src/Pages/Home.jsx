@@ -32,10 +32,10 @@ import { Link as RouterLink } from "react-router-dom";
 const Home = () => {
   return (
     <Box w={"95%"} m={"auto"} mt={"188px"} >
-      <Box bg={"#f9f9f9"} w={["140%","120%","120%","85%"]} m={"auto"} h={["370px","370px","370px","370px"]} ml={["100px","70px","0px","auto"]} mt={"80px"} border={"2px solid red"} >
+      <Box bg={"#f9f9f9"} w={["140%","120%","120%","85%"]} m={"auto"} h={["370px","370px","370px","370px"]} ml={["100px","70px","0px","auto"]} mt={"80px"}>
 
         <Flex>
-          <Box w={"590px"} mt={["0px","0px","0px","60px"]} ml={["10px", "80px","90px", "10px"]} border={"1px solid blue"}>
+          <Box w={"590px"} mt={["0px","0px","0px","60px"]} ml={["10px", "80px","90px", "10px"]}>
             <Heading
               fontSize={["25px", "30px", "35px", "40px"]}
               ml={["0px", "40px","0px", "10px"]}
@@ -63,7 +63,7 @@ const Home = () => {
               Best Quality Shopping{" "}
             </Heading>
 
-            <Box   border={"2px solid yellow"}>
+            <Box >
               <Flex ml={["50px","80px","50px","0px"]}>
                 <Box
                   backgroundColor={"#f7a8ca"}
@@ -162,37 +162,7 @@ const Home = () => {
           </Box>
         </Flex>
       </Box>
-      {/* <Box mt={"30px"}>
-        <Flex>
-          <Divider
-            orientation="horizontal"
-            width={"19%"}
-            height={"1px"}
-            bg={"rgb(247, 168, 202)"}
-            mt={"70px"}
-            ml={["100px", "10px", "100px"]}
-          />
-          <Heading
-            fontSize={["15px", "20px", "36px"]}
-            lineHeight={"44px"}
-            color={"#333333"}
-            mt={["50px", "50px", "40px"]}
 
-            ml={["65px", "", "35px"]}
-
-            Top Categories to choose from
-          </Heading>
-          
-          <Divider
-            orientation="horizontal"
-            width={"19%"}
-            height={"1px"}
-            bg={"rgb(247, 168, 202)"}
-            mt={["71px", "70px", "70px"]}
-            ml={["70px", "10px", "35px"]}
-          />
-        </Flex>
-      </Box> */}
       <Box mt={"30px"}>
         <Flex>
           <Divider
@@ -217,27 +187,27 @@ const Home = () => {
             height={"1px"}
             bg={"rgb(247, 168, 202)"}
             mt={["71px", "70px", "70px"]}
-            ml={["4px", "10px", "70px"]}
+            ml={["4px", "10px", "15px"]}
           />
         </Flex>
       </Box>
       
 
-      <Box w={"95%"} m={"auto"} h={"545px"} mt={["45px", "45px", "100px"]}>
+      <Box w={["100%","100%","100%","95%"]} m={"auto"}  h={"545px"} mt={["10px", "45px", "100px"]}>
         <Image src={snip1} m={"auto"} w={"86%"} borderRadius={"8px"} />
       </Box>
-      <Box w={"95%"} m={"auto"} h={"545px"} mt={["10px", "-333px", "40px"]}>
+      <Box w={["100%","100%","100%","95%"]} m={"auto"} h={"545px"} mt={["10px", "-333px", "40px"]}>
         <Image src={snip2} m={"auto"} w={"86%"} borderRadius={"8px"} />
       </Box>
 
-      <Box w={"95%"} m={"auto"} h={"545px"} mt={["10px", "-333px", "40px"]}>
+      <Box w={["100%","100%","100%","95%"]} m={"auto"} h={"545px"} mt={["10px", "-333px", "40px"]}>
         <Image src={snip3} m={"auto"} w={"86%"} borderRadius={"8px"} />
       </Box>
-      <Box w={"95%"} m={"auto"} h={"350px"} mt={["10px", "-333px", "40px"]}>
+      <Box w={["100%","100%","100%","95%"]} m={"auto"} h={"350px"} mt={["10px", "-333px", "40px"]}>
         <Image src={snip4} m={"auto"} w={"86%"} borderRadius={"8px"} />
       </Box>
 
-      {/* home down section */}
+      {/*-------------------------------- home down section------------------------------------------- */}
       <Flex gap={8} display={{sm:"block",md:"block",lg:"flex",xl:"flex"}}>
         <Box w={["150%","95%","95%","30%"]} mt={"25px"} >
           <Heading color={"#333333"} ml={["80px","110px","20px","10px"]} fontSize={["18px" , "20px" ,"22px"]}>Products For You</Heading>
@@ -1348,7 +1318,7 @@ const Home = () => {
             </Accordion>
           </Card>
         </Box>
-        <Box w={["140%","145%","100%","80%"]} padding={10} border={"1px solid black"} ml={["100px","20px","8px","0px"]} mt={["50px","50px","50px","0px"]}>
+        <Box w={["140%","145%","100%","80%"]} padding={10} ml={["100px","20px","8px","0px"]} mt={["50px","50px","50px","0px"]}>
           <HomeProducts />
         </Box>
       </Flex>
