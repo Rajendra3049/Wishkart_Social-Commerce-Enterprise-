@@ -162,7 +162,7 @@ const Home = () => {
           </Box>
         </Flex>
       </Box>
-      <Box mt={"30px"}>
+      {/* <Box mt={"30px"}>
         <Flex>
           <Divider
             orientation="horizontal"
@@ -182,6 +182,7 @@ const Home = () => {
 
             Top Categories to choose from
           </Heading>
+          
           <Divider
             orientation="horizontal"
             width={"19%"}
@@ -191,7 +192,36 @@ const Home = () => {
             ml={["70px", "10px", "35px"]}
           />
         </Flex>
+      </Box> */}
+      <Box mt={"30px"}>
+        <Flex>
+          <Divider
+            orientation="horizontal"
+            width={"21%"}
+            height={"1px"}
+            bg={"rgb(247, 168, 202)"}
+            mt={"70px"}
+            ml={["10px", "10px", "100px"]}
+          />
+          <Heading
+            fontSize={["15px", "20px", "36px"]}
+            lineHeight={"44px"}
+            color={"#333333"}
+            mt={["50px", "50px", "40px"]}
+            ml={["6px", "", "15px"]}>
+            Top Categories to choose from
+          </Heading>
+          <Divider
+            orientation="horizontal"
+            width={"21%"}
+            height={"1px"}
+            bg={"rgb(247, 168, 202)"}
+            mt={["71px", "70px", "70px"]}
+            ml={["4px", "10px", "70px"]}
+          />
+        </Flex>
       </Box>
+      
 
       <Box w={"95%"} m={"auto"} h={"545px"} mt={["45px", "45px", "100px"]}>
         <Image src={snip1} m={"auto"} w={"86%"} borderRadius={"8px"} />

@@ -141,6 +141,7 @@ export default function HomeProducts() {
                 <span color={"black"}>Trusted</span>
               </Flex>
             </Flex>
+            </Flex>
           </Box>
         ))}
       </Grid>
