@@ -1,22 +1,22 @@
-import {
-  Box,
-  Grid,
-  Text,
-  Stack,
-  Image,
-  Flex,
-
-} from "@chakra-ui/react";
+import { Box, Grid, Text, Stack, Image, Flex } from "@chakra-ui/react";
 import { data } from "../Pages/data";
 import { AiFillStar } from "react-icons/ai";
 
 export default function HomeProducts() {
   return (
-    <Box display={{ sm: "grid", md: "grid", lg: "flex" }} border={"1px solid blue"}  >
-      <Grid templateColumns={{ sm: "repeat(2,1fr)", md: "repeat(2,1fr)", lg: "repeat(3,1fr)" }} gap={10} >
+    <Box
+      display={{ sm: "grid", md: "grid", lg: "flex" }}
+      border={"1px solid blue"}>
+      <Grid
+        templateColumns={{
+          sm: "repeat(2,1fr)",
+          md: "repeat(2,1fr)",
+          lg: "repeat(3,1fr)",
+        }}
+        gap={10}>
         {data.map((el) => (
           <Box
-           ml={["100px","0px","0px","0px"]}
+            ml={["100px", "0px", "0px", "0px"]}
             role={"group"}
             p={6}
             h={390}
@@ -30,7 +30,7 @@ export default function HomeProducts() {
             pos={"relative"}>
             <Box
               rounded={"lg"}
-              mt={["-10px","0px","-14px","-15px"]}
+              mt={["-10px", "0px", "-14px", "-15px"]}
               height={"235px"}
               _after={{
                 transition: "all .3s ease",
@@ -40,9 +40,7 @@ export default function HomeProducts() {
                 pos: "absolute",
                 top: 5,
                 left: 0,
-
                 filter: "blur(15px)",
-                //  zIndex: -1,
               }}
               _groupHover={{
                 _after: {
@@ -52,7 +50,6 @@ export default function HomeProducts() {
               <Image
                 rounded={"lg"}
                 height={230}
-    
                 width={282}
                 objectFit={"cover"}
                 src={el.image}
@@ -73,12 +70,7 @@ export default function HomeProducts() {
               <Flex
                 alignItems={"center"}
                 justifyContent={"space-between"}
-
-            
-                p={"4px"}
-              >
-
-
+                p={"4px"}>
                 <Text
                   fontSize={"3xl"}
                   fontFamily={"body"}
@@ -92,29 +84,22 @@ export default function HomeProducts() {
                   fontWeight={500}
                   fontSize={"xl"}
                   color={"gray"}
-
                   // mr={["-60px","-60px","-60px","-60px",]}
-                  mr={"-60px"}
-                >
+                  mr={"-60px"}>
                   onwards
                 </Text>
                 <Flex>
                   <Box w={"48px"} ml={"90px"}>
                     <span color={"black"}>{el.discount}</span>
                   </Box>
-
                 </Flex>
               </Flex>
             </Stack>
-
             <Flex
               alignItems={"center"}
               justifyContent={"space-between"}
               p={"5px"}
-
-              mt={"1px"}
-            >
-
+              mt={"1px"}>
               <Flex
                 w={"55px"}
                 h={"30px"}
@@ -123,24 +108,15 @@ export default function HomeProducts() {
                 color={"white"}
                 bg={"#038d63"}
                 borderRadius={"10%"}
-
-                justifyContent={"space-around"}
-              >
-
-              <Box>{el.rating}</Box>
-             
-              <Flex   mr={"8px"} color={"#f43397"} fontWeight={600}>
-
                 justifyContent={"space-around"}>
                 {el.rating2}
                 <AiFillStar color={"white"} />
               </Flex>
+
               <Box>{el.rating}</Box>
               <Flex mr={"8px"} color={"#f43397"} fontWeight={600}>
-
                 <span color={"black"}>Trusted</span>
               </Flex>
-            </Flex>
             </Flex>
           </Box>
         ))}
