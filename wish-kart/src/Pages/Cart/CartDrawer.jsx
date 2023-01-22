@@ -116,10 +116,11 @@ const CartDrawer = ({ qty, setQty }) => {
               m={"10px 0"}
               colorScheme="pink"
               padding={{
-                base: "10px 100px",
-                md: "10px 140px",
-                lg: "10px 170px",
-              }}>
+                base: "20px 50px",
+                md: "20px 100px",
+                lg: "20px 120px",
+              }}
+              fontSize="15px">
               Continue
             </Button>
           </DrawerFooter>

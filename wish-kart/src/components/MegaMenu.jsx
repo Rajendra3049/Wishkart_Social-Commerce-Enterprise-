@@ -35,19 +35,16 @@ export default function MegaMenu() {
         minH={"60px"}
         py={{ base: 2 }}
         px={{ base: 4 }}
-        // borderBottom={1}
-
         boxShadow={
           "rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px"
         }
         borderStyle={"solid"}
         borderColor={useColorModeValue("gray.200", "gray.900")}
         align={"center"}>
-        <Flex
-          flex={{ base: 1, md: "auto" }}
-          ml={{ base: -2 }}
-          display={{ base: "flex", md: "none" }}>
+        <Flex ml={"10px"} display={{ sm: "flex", md: "none", lg: "none" }}>
           <IconButton
+            minH={"30px"}
+            minW={"30px"}
             onClick={onToggle}
             icon={
               isOpen ? (
@@ -60,18 +57,18 @@ export default function MegaMenu() {
             aria-label={"Toggle Navigation"}
           />
         </Flex>
-        <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
-          <Text
-            textAlign={useBreakpointValue({ base: "center", md: "left" })}
-            fontFamily={"heading"}
-            color={useColorModeValue("gray.800", "white")}></Text>
-
-          <Flex display={{ base: "none", md: "flex" }} ml={10}>
-            <DesktopNav />
-          </Flex>
+        <Flex
+          justify={{
+            sm: "none",
+            md: "space-around",
+            lg: "space-around",
+          }}
+          margin={"auto"}
+          padding={"10px"}
+          display={["none", "none", "flex"]}>
+          <DesktopNav />
         </Flex>
       </Flex>
-
       <Collapse in={isOpen} animateOpacity>
         <MobileNav />
       </Collapse>
@@ -87,46 +84,45 @@ const DesktopNav = () => {
   return (
     <Stack direction={"row"} spacing={6}>
       {NAV_ITEMS.map((navItem) => (
-        <Box key={navItem.label}>
-          <Popover trigger={"hover"} placement={"bottom-start"}>
-            <PopoverTrigger>
-              <div className="underline">
-                <RouterLink
+        <RouterLink to={navItem.href}>
+          <Box key={navItem.label}>
+            <Popover trigger={"hover"} placement={"bottom-end"}>
+              <PopoverTrigger>
+                <Box
                   p={4}
-                  to={navItem.href ?? "#"}
-                  // borderRadius={"8px 8px 0px 0px"}
-                  fontSize={["5px", "10px", "16px"]}
+                  _hover={{
+                    borderBottom: "3px solid #f43397",
+                  }}
+                  fontSize={["none", "10px", "10px", "16px"]}
                   fontWeight={500}
                   h={"100%"}
-                  color={linkColor}
-                  _hover={{
-                    //  textDecoration: "underline",
-                    color: linkHoverColor,
-                  }}>
+                  color={linkColor}>
                   {navItem.label}
-                </RouterLink>
-              </div>
-            </PopoverTrigger>
+                </Box>
+              </PopoverTrigger>
 
-            {navItem.children && (
-              <PopoverContent
-                boxShadow={"xl"}
-                bg={popoverContentBgColor}
-                p={4}
-                // bg={"white"}
-                display={"flex"}
-                rounded={"xl"}
-                minW={"1120px"}
-                minH={"300px"}>
-                <Flex>
-                  {navItem.children.map((child) => (
-                    <DesktopSubNav key={child.label} {...child} />
-                  ))}
-                </Flex>
-              </PopoverContent>
-            )}
-          </Popover>
-        </Box>
+              {navItem.children && (
+                <PopoverContent
+                  boxShadow={"xl"}
+                  bg={popoverContentBgColor}
+                  p={4}
+                  // bg={"white"}
+                  display={"flex"}
+                  rounded={"xl"}
+                  minW={"1600px"}
+                  minH={"300px"}
+                  pl={"50px"}
+                  pr={"50px"}>
+                  <Flex>
+                    {navItem.children.map((child) => (
+                      <DesktopSubNav key={child.label} {...child} />
+                    ))}
+                  </Flex>
+                </PopoverContent>
+              )}
+            </Popover>
+          </Box>
+        </RouterLink>
       ))}
     </Stack>
   );
@@ -303,13 +299,13 @@ const MobileNavItem = ({ label, children, href }) => {
 
 const NAV_ITEMS = [
   {
-    label: "Women Ethnic",
-    href: "/women",
+    label: "All",
+    href: "/products",
     children: [
       {
         label: "All Women Ethnic",
         subLabel: "View All",
-        href: "/women",
+        href: "/products",
       },
       {
         label: "Sarees",

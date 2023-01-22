@@ -1,6 +1,8 @@
 import Footer from "./components/Footer";
 import Footer2 from "./components/Footer2";
 import Navbar from "./components/Navbar";
+import NewNavbar from "./components/NewNavbar";
+
 import AllRoutes from "./Pages/AllRoutes";
 import Loader from "./components/Loader";
 import { useState, useEffect } from "react";
@@ -17,14 +19,12 @@ function App() {
   return isLoading ? (
     <Loader />
   ) : (
-    <>
-      <div>
-        <Navbar />
-        <AllRoutes />
-        <Footer />
-        <Footer2 />
-      </div>
-    </>
+    <div>
+      <Navbar />
+      <AllRoutes />
+      <Footer />
+      <Footer2 />
+    </div>
   );
 }
 

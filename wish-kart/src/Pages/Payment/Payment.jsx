@@ -55,10 +55,10 @@ const Payment = () => {
   } else {
     return (
       <>
-        <Navbar2 />
+        {/* <Navbar2 /> */}
         <Box
           w={{ base: "80%", md: "70%", lg: "70%" }}
-          margin={"100px auto"}
+          margin={"180px auto"}
           padding={{ base: "10px", md: "", lg: "" }}
           display={{ base: "", md: "", lg: "flex" }}
           gap={{ base: "", md: "", lg: "20px" }}>
@@ -75,11 +75,11 @@ const Payment = () => {
             </Flex>
             <Button
               justifyContent={"space-between"}
-              gap={{ base: "110px", md: "420px", lg: "280px" }}
+              gap={{ base: "110px", md: "372px", lg: "280px" }}
               padding={"25px 14px"}
               bg={"green.100"}
               _hover={{ bg: "green.100" }}>
-              <Text>Cash on Delivery</Text>{" "}
+              <Text fontSize={{ base: "16px" }}>Cash on Delivery</Text>{" "}
               <Checkbox
                 colorScheme="green"
                 defaultChecked
@@ -135,6 +135,7 @@ const Payment = () => {
               justifyContent={"space-between"}
               fontWeight={"600"}
               color={"gray"}
+              fontSize="13px"
               m={"10px auto"}>
               <Text>Total Product Price</Text>
               <Text>
@@ -158,7 +159,7 @@ const Payment = () => {
             <Button
               fontSize={"10px"}
               outline={"none"}
-              padding={{ base: "1px 28px", md: "1px 182px", lg: "1px 69px" }}
+              padding={{ base: "1px 17px", md: "1px 145px", lg: "1px 77px" }}
               m={"10px auto"}>
               Clicking on ‘Continue’ will not deduct any money
             </Button>
@@ -166,8 +167,13 @@ const Payment = () => {
             <br />
 
             <Button
+              fontSize={"15px"}
               bg={"pink.400"}
-              padding={{ base: "1px 105px", md: "1px 260px", lg: "1px 147px" }}
+              padding={{
+                base: "20px 78px",
+                md: "20px 205px",
+                lg: "20px 140px",
+              }}
               color={"white"}
               borderRadius={"5px"}
               m={"10px auto"}

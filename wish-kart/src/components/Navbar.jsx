@@ -13,6 +13,8 @@ import {
   PopoverArrow,
   PopoverHeader,
   Heading,
+  InputGroup,
+  InputLeftElement,
 } from "@chakra-ui/react";
 
 import logo from "../images/wish.png";
@@ -26,10 +28,11 @@ import { BiShoppingBag } from "react-icons/bi";
 import { Link, Link as RouterLink } from "react-router-dom";
 import { useState } from "react";
 import "../styles/navbar.css";
- var data = require("../input.json");
+import { SearchIcon } from "@chakra-ui/icons";
+var data = require("../input.json");
 
 export default function Navbar() {
-const [value, setValue] = useState("");
+  const [value, setValue] = useState("");
 
   const onChange = (event) => {
     setValue(event.target.value);
@@ -42,15 +45,14 @@ const [value, setValue] = useState("");
   };
   return (
     <>
-      <Box top={0} w={"100%"} h={"55px"} zIndex={1} position={"fixed"}>
+      <Box top={0} w={"100%"} h={"55px"} zIndex={100} position={"fixed"}>
         <Box
           width={["1300px", "1300px", "100%"]}
           justifyContent={"center"}
           h={["158x"]}
           bg={"white"}
           border={"1px solid gray"}
-          position={"relative"}
-        >
+          position={"relative"}>
           <Flex h={"100px"} alignItems={"center"} w={"100%"}>
             <RouterLink to="/">
               <Image
@@ -62,75 +64,85 @@ const [value, setValue] = useState("");
               />
             </RouterLink>
             <Flex>
-              {/* <Stack
-                spacing={3}
-                w={["200px", "300px", "400px"]}
-                ml={["5%", "5%", "10%"]}
-                mt={"-20px"}
-              >
-              
-                <Input
-                value={value} onChange={onChange} 
-                type="text"
-                  placeholder="Try Saree,Kurti or Search by Product Code"
-                  width={["80%", "80%", "100%"]}
-                  h={["25px", "30px", "45px"]}
-                  color={"black"}
-                  borderWidth="1px"
-                  fontSize={["8px", "8x", "15px"]}
-             
-                />
-            
-              
-    
-              </Stack> */}
-              <Stack className="search-container"
+              <Stack
                 spacing={3}
                 w={["200px", "300px", "400px"]}
                 ml={["5%", "5%", "10%"]}
                 // mt={"99px"}
               >
-                <Box>
-                  {/* <input type="text" value={value} onChange={onChange} /> */}
-                  <Input
-                    value={value}
-                    onChange={onChange}
-                    type="text"
-                    placeholder="Try Saree,Kurti or Search by Product Code"
-                    width={["80%", "80%", "100%"]}
-                    h={["25px", "30px", "45px"]}
-                    color={"black"}
-                    borderWidth="1px"
-                    fontSize={["8px", "8x", "15px"]}
-                  />
-                  {/* <button onClick={() => onSearch(value)}> Search </button> */}
-                </Box>
-                {/* dropdown */}
-                
-                <Box border="1px solid red"   zIndex={99} className="dropdown">
-                  {data
-                    .filter((item) => {
-                      const searchTerm = value.toLowerCase();
-                      const fullName = item.name.toLowerCase();
+                <Box position={"absolute"} marginTop={"-35px"}>
+                  <InputGroup>
+                    <InputLeftElement
+                      p={6}
+                      pointerEvents="none"
+                      children={
+                        <SearchIcon
+                          color="gray.500"
+                          mt={"16px"}
+                          ml={"8px"}
+                          fontSize={15}
+                        />
+                      }
+                    />
 
-                      return (
-                        searchTerm &&
-                        fullName.startsWith(searchTerm) &&
-                        fullName !== searchTerm
-                      );
-                    })
-                    .slice(0, 10)
-                    .map((item) => (
-                      <Link to={item.href}>
-                        <Box
-                          onClick={() => onSearch(item.name)}
-                      
-                          key={item.name}
-                        >
-                          {item.name}
-                        </Box>
-                      </Link>
-                    ))}
+                    <Input
+                      value={value}
+                      onChange={onChange}
+                      type="text"
+                      placeholder="Try Saree,Kurti or Search by Product Code"
+                      width={["80%", "80%", "100%"]}
+                      h={["25px", "30px", "45px"]}
+                      color={"black"}
+                      borderWidth="1px"
+                      fontSize={["8px", "8x", "15px"]}
+                      boxShadow={
+                        "rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px"
+                      }
+                    />
+                    {/* <CloseButton size='sm' />      */}
+                  </InputGroup>
+
+                  {/* -------------------------- search dropdown--------------------------------------------------------- */}
+
+                  <Box
+                    zIndex={99}
+                    position="relative"
+                    className="dropdown"
+                    boxShadow={
+                      "rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px"
+                    }
+                    fontSize={"14px"}>
+                    {data
+                      .filter((item) => {
+                        const searchTerm = value.toLowerCase();
+                        const fullName = item.name.toLowerCase();
+
+                        return (
+                          searchTerm &&
+                          fullName.startsWith(searchTerm) &&
+                          fullName !== searchTerm
+                        );
+                      })
+                      .slice(0, 10)
+                      .map((item) => (
+                        <Link to={item.href}>
+                          <Flex>
+                            <SearchIcon
+                              color="gray.500"
+                              mt={"13px"}
+                              ml={"10px"}
+                              fontSize={15}
+                            />
+                            <Box
+                              padding={4}
+                              onClick={() => onSearch(item.name)}
+                              key={item.name}>
+                              {item.name}
+                            </Box>
+                          </Flex>
+                        </Link>
+                      ))}
+                  </Box>
                 </Box>
               </Stack>
             </Flex>
@@ -138,8 +150,7 @@ const [value, setValue] = useState("");
               display={"flex"}
               textAlign={"center"}
               gap={10}
-              ml={["", "", "20%"]}
-            >
+              ml={["", "", "20%"]}>
               <Popover trigger={"hover"}>
                 <PopoverTrigger>
                   <Flex _hover={{ color: "#f43397", fontWeight: 600 }}>
@@ -151,8 +162,7 @@ const [value, setValue] = useState("");
                       fontSize={["8px", "8x", "15px"]}
                       mt={"-15px"}
                       ml={"10px"}
-                      cursor={"pointer"}
-                    >
+                      cursor={"pointer"}>
                       Download App
                     </Text>
                   </Flex>
@@ -171,8 +181,7 @@ const [value, setValue] = useState("");
                 <Text
                   fontSize={["8px", "8x", "15px"]}
                   mt={"-15px"}
-                  cursor={"pointer"}
-                >
+                  cursor={"pointer"}>
                   {" "}
                   Admin
                 </Text>
@@ -188,8 +197,7 @@ const [value, setValue] = useState("");
                   fontSize={28}
                   mt={"-20px"}
                   ml={"6px"}
-                  _hover={{ color: "#f43397", fontWeight: 600 }}
-                >
+                  _hover={{ color: "#f43397", fontWeight: 600 }}>
                   <BiUser />{" "}
                 </Text>
                 <Popover trigger={"hover"}>
@@ -199,8 +207,7 @@ const [value, setValue] = useState("");
                         fontSize={["8px", "8x", "15px"]}
                         mt={"5px"}
                         cursor={"pointer"}
-                        _hover={{ color: "#f43397", fontWeight: 600 }}
-                      >
+                        _hover={{ color: "#f43397", fontWeight: 600 }}>
                         {" "}
                         Profile
                       </Text>
@@ -213,8 +220,7 @@ const [value, setValue] = useState("");
                       fontSize={18}
                       mt={"15px"}
                       color={"#333333"}
-                      ml={"20px"}
-                    >
+                      ml={"20px"}>
                       Hello User
                     </Heading>
                     <Text mt={"5px"} ml={"20px"} fontSize={"10px"}>
@@ -228,8 +234,7 @@ const [value, setValue] = useState("");
                         ml={"15px"}
                         mt={"10px"}
                         h={"45px"}
-                        fontSize={"17px"}
-                      >
+                        fontSize={"17px"}>
                         Sign Up
                       </Button>
                     </RouterLink>
@@ -254,8 +259,7 @@ const [value, setValue] = useState("");
                   <Text
                     fontSize={["8px", "8x", "15px"]}
                     mt={"5px"}
-                    cursor={"pointer"}
-                  >
+                    cursor={"pointer"}>
                     Cart
                   </Text>
                 </RouterLink>
@@ -263,15 +267,14 @@ const [value, setValue] = useState("");
             </Box>
           </Flex>
         </Box>
-        
+
         <Box
           top={0}
           w={"100%"}
           h={"55px"}
           mt={"80px"}
           bg={"white"}
-          position={"absolute"}
-        >
+          position={"absolute"}>
           <MegaMenu />
         </Box>
       </Box>
