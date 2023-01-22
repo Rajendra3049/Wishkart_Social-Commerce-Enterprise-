@@ -12,7 +12,9 @@ import {
   Divider,
   Flex,
   Heading,
+  Hide,
   Image,
+  Show,
   Text,
 } from "@chakra-ui/react";
 
@@ -30,35 +32,37 @@ import { Link as RouterLink } from "react-router-dom";
 const Home = () => {
   return (
     <Box w={"95%"} m={"auto"} mt={"188px"} >
-      <Box bg={"#f9f9f9"} w={"85%"} m={"auto"} h={"370px"} mt={"80px"}>
+      <Box bg={"#f9f9f9"} w={["140%","120%","120%","85%"]} m={"auto"} h={["370px","370px","370px","370px"]} ml={["100px","70px","0px","auto"]} mt={"80px"} border={"2px solid red"} >
         <Flex>
-          <Box w={"590px"} mt={"60px"} ml={["10px", "20px", "60px"]}>
+          <Box w={"590px"} mt={["0px","0px","0px","60px"]} ml={["10px", "80px","90px", "10px"]} border={"1px solid blue"}>
             <Heading
-              fontSize={["25px", "30px", "46px"]}
+              fontSize={["25px", "30px", "35px", "40px"]}
+              ml={["0px", "40px","0px", "10px"]}
               lineHeight={"56px"}
               color={"#333333"}
               fontWeight={650}
-              textAlign={"left"}
+              textAlign={["center","center","center","left"]}
             >
               Lowest Prices{" "}
             </Heading>
             <Heading
-              fontSize={["25px", "30px", "46px"]}
+              fontSize={["25px", "30px", "35px", "40px"]}
               lineHeight={"56px"}
               color={"#333333"}
               fontWeight={650}
               mt={["-24px", "2px", "5px"]}
-              textAlign={"left"}
+              textAlign={["center","center","center","left"]}
             >
               {" "}
               Best Quality Shopping{" "}
             </Heading>
 
-            <Box>
-              <Flex>
+            <Box   border={"2px solid yellow"}>
+              <Flex ml={["50px","80px","50px","0px"]}>
                 <Box
                   backgroundColor={"#f7a8ca"}
                   borderRadius={"50%"}
+                
                   w={"38px"}
                   h={"38px"}
                   mt={"27px"}
@@ -137,6 +141,7 @@ const Home = () => {
                   <Button
                     w={"312px"}
                     h={"48px"}
+                    ml={["114px","145px","60px","0px"]}
                     bg={"#f43397"}
                     color={"white"}
                     _hover={"#f43397"}
@@ -152,7 +157,9 @@ const Home = () => {
             </Box>
           </Box>
           <Box mt={"0px"}>
-            <Image src="https://images.meesho.com/images/marketing/1631722939962.webp" />
+          <Hide below="md">
+            <Image src="https://images.meesho.com/images/marketing/1631722939962.webp"/>
+            </Hide>
           </Box>
         </Flex>
       </Box>
@@ -200,9 +207,10 @@ const Home = () => {
       </Box>
 
       {/* home down section */}
-      <Flex gap={8} flexDirection={["revert-layer","row","row"]}>
-        <Box w={"26%"} mt={"25px"}>
-          <Card border={"1px solid #dbdbdb"} h={"720px"} borderRadius={"8px"}>
+      <Flex gap={8} display={{sm:"block",md:"block",lg:"flex",xl:"flex"}}>
+        <Box w={["150%","95%","95%","30%"]} mt={"25px"} >
+          <Heading color={"#333333"} ml={["80px","110px","20px","10px"]} fontSize={["18px" , "20px" ,"22px"]}>Products For You</Heading>
+          <Card  h={"720px"} borderRadius={"8px"}w={["100%","100%","100%","90%"]} ml={["80px","110px","20px","0px"]} mt={["20px","",""]}>
             <Accordion fontSize={"15px"} allowMultiple>
               <AccordionItem>
                 <h2>
@@ -1309,7 +1317,7 @@ const Home = () => {
             </Accordion>
           </Card>
         </Box>
-        <Box w={"74%"} padding={10}>
+        <Box w={["140%","145%","100%","80%"]} padding={10} border={"1px solid black"} ml={["100px","20px","8px","0px"]} mt={["50px","50px","50px","0px"]}>
           <HomeProducts />
         </Box>
       </Flex>

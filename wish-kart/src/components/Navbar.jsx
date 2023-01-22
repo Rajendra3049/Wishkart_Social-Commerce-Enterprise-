@@ -88,7 +88,7 @@ const [value, setValue] = useState("");
                 spacing={3}
                 w={["200px", "300px", "400px"]}
                 ml={["5%", "5%", "10%"]}
-                mt={"-20px"}
+                // mt={"99px"}
               >
                 <Box>
                   {/* <input type="text" value={value} onChange={onChange} /> */}

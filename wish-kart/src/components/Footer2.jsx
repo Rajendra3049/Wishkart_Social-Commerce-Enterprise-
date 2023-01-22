@@ -4,8 +4,8 @@ import {Accordion,AccordionItem,AccordionButton,AccordionPanel,AccordionIcon,} f
 
 const Footer2 = () => {
   return (
-<Box textAlign={"justify"} ml={"30px"} w={"97%"}>
-<Accordion fontSize={"15px"} allowMultiple>
+<Box textAlign={"justify"} ml={["0px","-5px","15px"]} w={["180%","150%","99%"]}>
+<Accordion fontSize={["14px","14px","15px"]} allowMultiple>
 <AccordionItem>
 <h1>
 <AccordionButton fontSize={25} color={"#333333"}>
@@ -15,7 +15,7 @@ More About Meesho
 <AccordionIcon />
 </AccordionButton>
 </h1>
-<AccordionPanel pb={4}>
+<AccordionPanel pb={2}>
 <Heading color={"#333333"} fontWeight={700} fontSize={["15px","16px","18px"]}>Meesho: Affordable Online Shopping at Your Fingertips</Heading>
 
 <Text color={"#333333"} fontSize={["10px","12px","14px"]} mt={"18px"}>There are many benefits of shopping online.
