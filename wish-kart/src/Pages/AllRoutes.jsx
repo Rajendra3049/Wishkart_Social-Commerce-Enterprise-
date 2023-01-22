@@ -21,7 +21,7 @@ import ScrollToTop from "react-scroll-to-top";
 export default function AllRoutes() {
   return (
     <Routes>
-      <Route path="/SingleProduct/:id" element={<SingleProduct />} />
+      <Route path="/product/:id" element={<SingleProduct />} />
       <Route path="/" element={<Home />} />
       <Route path="/signup" element={<SignUp />} />
       <Route path="/otp" element={<Otp />} />
@@ -33,6 +33,7 @@ export default function AllRoutes() {
       <Route path="/homeKitchen" element={<HomeKitchen />} />
       <Route path="/jewellery" element={<Jewellery />} />
       <Route path="/bagsFootwear" element={<BagsFootwear />} />
+      <Route path="/SingleProduct" element={<SingleProduct />} />
       <Route path="/cart" element={<Cart />} />
       <Route path="/cartempty" element={<CartEmpty />} />
       <Route path="/address" element={<Address />} />

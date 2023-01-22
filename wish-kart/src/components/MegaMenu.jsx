@@ -21,8 +21,8 @@ import {
   ChevronDownIcon,
   // ChevronRightIcon,
 } from "@chakra-ui/icons";
-import "../index.css";
 import { Link as RouterLink } from "react-router-dom";
+import "../index.css";
 
 export default function MegaMenu() {
   const { isOpen, onToggle } = useDisclosure();
@@ -90,21 +90,21 @@ const DesktopNav = () => {
         <Box key={navItem.label}>
           <Popover trigger={"hover"} placement={"bottom-start"}>
             <PopoverTrigger>
-              <div className="underline">
-                <RouterLink
-                  p={4}
-                  to={navItem.href ?? "#"}
-                  // borderRadius={"8px 8px 0px 0px"}
-                  fontSize={["5px", "10px", "16px"]}
-                  fontWeight={500}
-                  h={"100%"}
-                  color={linkColor}
-                  _hover={{
-                    //  textDecoration: "underline",
-                    color: linkHoverColor,
-                  }}>
-                  {navItem.label}
-                </RouterLink>
+              <div  className="underline">
+              <Link 
+                p={4}
+                href={navItem.href ?? "#"}
+                // borderRadius={"8px 8px 0px 0px"}
+                fontSize={["5px", "10px", "16px"]}
+                fontWeight={500}
+                h={"100%"}
+                color={linkColor}
+                _hover={{
+                  //  textDecoration: "underline",
+                  color: linkHoverColor,
+                }}>
+                {navItem.label}
+              </Link>
               </div>
             </PopoverTrigger>
 
