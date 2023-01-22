@@ -122,6 +122,7 @@ const GridProduct = ({ props }) => {
               alignItems: "center",
               justifyContent: "space-between",
               width: "70px",
+              
             }}>
             {props.rating} <FaStar fill="white" color="white" backgroundColor="white" />
             {/* <StarIcon /> */}

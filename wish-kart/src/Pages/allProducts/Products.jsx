@@ -1,7 +1,10 @@
-import { Accordion, AccordionButton, AccordionItem, AccordionPanel, Box, Button, Checkbox, Flex, Heading, Hide, Input, Menu, MenuButton, MenuDivider, MenuItem, MenuItemOption, MenuList, MenuOptionGroup, Show, SimpleGrid, Stack } from "@chakra-ui/react";
+import { Accordion, AccordionButton, AccordionItem,Checkbox as ChakraCheckBox, AccordionPanel, Box, Button,  Flex, Heading, Hide, Input, Link, Menu, MenuButton, MenuDivider, MenuItem, MenuItemOption, MenuList, MenuOptionGroup, Show, SimpleGrid, Stack, Text } from "@chakra-ui/react";
+import { Checkbox } from "antd";
+
 import { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import GridDiv from "../../components/allProducts/gridDiv.jsx";
 import GridProduct from "../../components/allProducts/gridProduct.jsx";
 import Pagination from "../../components/allProducts/pagination.jsx";
 import Loader from "../../components/Loader.jsx";
@@ -33,7 +36,7 @@ const Products = () => {
   const setpageData = () => {
     setPaginationData([])
     for (let i = page*10-10; i<=page*9; i++) {
-
+      console.log(data)
       if ((filtData.length == 0 ? data : filtData)[i]) {
 
         setPaginationData((prePag) => [...prePag, (filtData.length == 0 ? data : filtData)[i]])
@@ -41,13 +44,15 @@ const Products = () => {
 
     }
   }
+  // console.log(paginationData)
   // ***********************************pagination********************************
-  console.log(paginationData)
+
+ 
   useEffect(() => {
     if (data.length == 0) {
       getProducts(dispatch);
     }
-    setpageData()                                 //part of pagination
+  setpageData()                                 //part of pagination
 
   }, [])
 
@@ -67,12 +72,14 @@ const Products = () => {
       (filtCred.Home_and_Kitchen ? el.category == "Home and Kitchen" : ""))
   )
 
-const refreshComponent=()=>{
+const RefreshComponent=()=>{
+  console.log('ak')
   useEffect(()=>{
-
+    
   },[])
 
 }
+
 
 
   const check = (e) => {
@@ -84,20 +91,23 @@ const refreshComponent=()=>{
       [name]: checked
     })
     setPage(1)                                                    //part of paginaion set 1st page after filter
-    setpageData()                                                //part of paginaion set data after filter
-    refreshComponent()
+    setpageData()                                                 //part of paginaion set data after filter
+    RefreshComponent()
+    
   }
+  console.log(data)
+  console.log(filtData)
+  console.log(paginationData)
 
   if (loading) {
     <Loader />
   }
 
-
   return (
-    <Box mt={"150px"} >
+    <Box mt={"150px"}  >
 
 
-      <Box>
+      <Box >
         <Show below="md">
           <Menu>
             <MenuButton as={Button} >
@@ -107,23 +117,22 @@ const refreshComponent=()=>{
               <MenuOptionGroup title="Price">
                 <Stack direction={"column"} ml="15%" >
 
-                  <Checkbox onChange={(e) => check(e)} name="above100" size={"lg"}>Above 1000</Checkbox>
-                  <Checkbox onChange={(e) => check(e)} name="a1000_500" size={"lg"} >1000 - 500</Checkbox>
-                  <Checkbox onChange={(e) => check(e)} name="a500_300" size={"lg"}>500 - 300</Checkbox>
-                  <Checkbox onChange={(e) => check(e)} name="below300" size={"lg"} >Below 300</Checkbox>
+                  <ChakraCheckBox onChange={(e) => check(e)} name="above100" size={"lg"}>Above 1000</ChakraCheckBox>
+                  <ChakraCheckBox onChange={(e) => check(e)} name="a1000_500" size={"lg"} >1000 - 500</ChakraCheckBox>
+                  <ChakraCheckBox onChange={(e) => check(e)} name="a500_300" size={"lg"}>500 - 300</ChakraCheckBox>
+                  <ChakraCheckBox onChange={(e) => check(e)} name="below300" size={"lg"} >Below 300</ChakraCheckBox>
                 </Stack>
               </MenuOptionGroup>
               <MenuDivider />
               <MenuOptionGroup title="Category">
                 <Stack direction={"column"} ml="15%">
 
-                  <Checkbox onChange={(e) => check(e)} name="Sarees" size={"lg"}>Sarees</Checkbox>
-                  <Checkbox onChange={(e) => check(e)} name="Dresses" size={"lg"}>Dresses</Checkbox>
-                  <Checkbox onChange={(e) => check(e)} name="Mens_Top_Were" size={"lg"} >Mens Top Were</Checkbox>
-                  <Checkbox onChange={(e) => check(e)} name="Jewellery" size={"lg"}>Jewellery</Checkbox>
-                  <Checkbox onChange={(e) => check(e)} name="Beauty_and_health" size={"lg"}>Beauty and health</Checkbox>
-                  <Checkbox onChange={(e) => check(e)} name="Bags_and_Footwear" size={"lg"} >Bags and Footwear</Checkbox>
-                  <Checkbox onChange={(e) => check(e)} name="Home_and_Kitchen" size={"lg"}>Home and Kitchen</Checkbox>
+                  <ChakraCheckBox onChange={(e) => check(e)} name="Sarees" size={"lg"}>Sarees</ChakraCheckBox>
+                  <ChakraCheckBox onChange={(e) => check(e)} name="Mens_Top_Were" size={"lg"} >Mens Top Were</ChakraCheckBox>
+                  <ChakraCheckBox onChange={(e) => check(e)} name="Jewellery" size={"lg"}>Jewellery</ChakraCheckBox>
+                  <ChakraCheckBox onChange={(e) => check(e)} name="Beauty_and_health" size={"lg"}>Beauty and health</ChakraCheckBox>
+                  <ChakraCheckBox onChange={(e) => check(e)} name="Bags_and_Footwear" size={"lg"} >Bags and Footwear</ChakraCheckBox>
+                  <ChakraCheckBox onChange={(e) => check(e)} name="Home_and_Kitchen" size={"lg"}>Home and Kitchen</ChakraCheckBox>
 
                 </Stack>
               </MenuOptionGroup>
@@ -134,9 +143,9 @@ const refreshComponent=()=>{
         </Show>
       </Box>
 
-      <Flex>
+      <Flex >
 
-        <Hide below="md" >
+        <Hide below="md"  >
           <Box width={"20%"}>
             <Heading color={"#f43397"} marginLeft="5%">Filter</Heading>
             <Box>
@@ -148,7 +157,7 @@ const refreshComponent=()=>{
                     <Box as="span" flex='1' fontSize={20} textAlign='left' marginLeft={"7%"}> Price</Box>
                   </AccordionButton>
                   {/* <AccordionPanel> */}
-                  <Stack direction={"column"} ml="15%" >
+                  <Stack direction={"column"} ml="5%" >
 
                     <Checkbox onChange={(e) => check(e)} name="above100" size={"lg"}>Above 1000</Checkbox>
                     <Checkbox onChange={(e) => check(e)} name="a1000_500" size={"lg"} >1000 - 500</Checkbox>
@@ -186,18 +195,14 @@ const refreshComponent=()=>{
 
         <Box style={{ width: "90%", margin: "auto" }} border="0px solid red">
 
-          <SimpleGrid columns={[1, 2, 3, 4]} spacing={10}  >
-            {(paginationData).map((el) => {
-
-              return (<GridProduct key={el.id} props={el} />);
-            })}
-          </SimpleGrid>
+          <GridDiv paginationData={paginationData}/>
         </Box>
 
       </Flex>
       <Box textAlign={"center"} marginTop="50px">
         <Pagination page={page} changePage={changePage} data={filtData.length == 0 ? data : filtData} />
       </Box>
+      <Text id="refresh">1</Text>
     </Box>
   );
 };
