@@ -1,9 +1,14 @@
 import {
   Box,
   Flex,
+
+  // Link,
   Image,
+  // useDisclosure,
   Input,
   Text,
+  // useColorModeValue,
+  Stack,
   Divider,
   Popover,
   PopoverTrigger,
@@ -11,179 +16,170 @@ import {
   Button,
   PopoverArrow,
   PopoverHeader,
-  Show,
-  Hide,
+  // PopoverBody,
+  Heading,
 } from "@chakra-ui/react";
-import { SearchIcon } from "@chakra-ui/icons";
-
+// import { HamburgerIcon, CloseIcon, AddIcon, SearchIcon } from '@chakra-ui/icons';
+import "../index.css";
 import logo from "../images/wish.png";
-import MegaMenu from "./MegaMenu";
+import MegaMenu from "../components/MegaMenu";
 import { FaMobileAlt } from "react-icons/fa";
 import { BiUser } from "react-icons/bi";
 import { BsCart2 } from "react-icons/bs";
 import google from "../images/google.png";
 import Appstore from "../images/Appstore.png";
 import { BiShoppingBag } from "react-icons/bi";
-import { useNavigate } from "react-router-dom";
-import NavbarsideDrawer from "./NavbarSideDrawer";
 
 export default function NewNavbar() {
-  const navigate = useNavigate();
-  const hanldegotolandingpage = () => {
-    navigate("./");
-  };
-
-  const adminhandle = () => {
-    navigate("./admin");
-  };
-  const handlecatsection = () => {
-    navigate("./cart");
-  };
-
-  const handlesiginPage = () => {
-    navigate("./signup");
-  };
+  // const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
-      <Box
-        top={0}
-        w={{ base: "100%", md: "100%", lg: "100%" }}
-        h={"55px"}
-        zIndex={1}
-        position={"fixed"}>
+      <Box top={0} w={"100%"} h={"55px"} zIndex={1} position={"fixed"}>
         <Box
-          display={{ base: "", md: "", lg: "flex" }}
-          alignItems={"center"}
+          width={["1300px", "1300px", "100%"]}
+          justifyContent={"center"}
+          h={["158x"]}
           bg={"white"}
+          border={"1px solid gray"}
           position={"relative"}>
-          {/* ---------------------website-logo---------------- */}
-          <Image
-            onClick={hanldegotolandingpage}
-            src={logo}
-            w={{ base: "18%", md: "8%", lg: "5%" }}
-            m={{ base: "1% 0 1% 2%", md: "0% 2%", lg: "1% 4%" }}
-          />
-          {/* --------------------input box------------- */}
-          <Box
-            display={{ base: "flex", md: "flex", lg: "flex" }}
-            alignItems={"center"}
-            borderWidth="1px"
-            w={{ base: "", md: "50%", lg: "28%" }}
-            padding={{ base: "", md: "", lg: "10px 15px" }}
-            fontSize={{ base: "", md: "", lg: "15px" }}
-            gap={"5px"}
-            borderRadius={"5px"}>
-            <SearchIcon />
-            <Input
-              fontSize={{ base: "", md: "", lg: "15px" }}
-              variant="unstyled"
-              placeholder="Try Saree,Kurti or Search by Product Code"
-              border={"none"}
+          <Flex h={"100px"} alignItems={"center"} w={"100%"}>
+            <Image
+              src={logo}
+              w={["9%", "9%", "8%"]}
+              h={["99px", "99px", "100px"]}
+              ml={["20px", "20px", "20px"]}
+              mt={["-26px", "", ""]}
             />
-          </Box>
-          {/* --------------------------admin-&-app-download--------------- */}
-          <Box
-            display={{ base: "none", md: "none", lg: "flex" }}
-            alignItems={"center"}
-            gap={"10px"}
-            marginLeft={{ base: "", md: "", lg: "24%" }}>
-            <Popover trigger={"hover"}>
-              <PopoverTrigger>
-                <Flex align={"center"} gap={"5px"}>
-                  <Text fontSize={18}>
-                    <FaMobileAlt />
-                  </Text>
-                  <Text
-                    color={"black"}
-                    fontSize={["8px", "8x", "15px"]}
-                    cursor={"pointer"}
-                    _hover={{ color: "pink.400" }}>
-                    Download App
-                  </Text>
-                </Flex>
-              </PopoverTrigger>
-              <PopoverContent>
-                <PopoverArrow />
-                {/* <PopoverCloseButton /> */}
-                <PopoverHeader fontSize={19}>Download From</PopoverHeader>
-                <Image src={google} w={"160px"} h={"60px"} ml={"18px"} />
-                <Image src={Appstore} w={"163px"} h={"72px"} ml={"18px"} />
-              </PopoverContent>
-            </Popover>
-            {/* -------------------divider--------------- */}
 
-            <Flex bg={"black"} h="32px">
-              <Divider orientation="vertical" color={"black"} />
+            <Flex>
+              <Stack
+                spacing={3}
+                w={["200px", "300px", "400px"]}
+                ml={["5%", "5%", "10%"]}
+                mt={"-20px"}>
+                <Input
+                  placeholder="Try Saree,Kurti or Search by Product Code"
+                  width={["80%", "80%", "100%"]}
+                  h={["25px", "30px", "45px"]}
+                  color={"black"}
+                  borderWidth="1px"
+                  fontSize={["8px", "8x", "15px"]}
+                  p={7}
+                />
+              </Stack>
             </Flex>
-            {/* ----------------------admin----------------- */}
-            <Box onClick={adminhandle} cursor="pointer">
-              <Text _hover={{ color: "pink.400" }} fontSize={"15px"}>
-                Admin
-              </Text>
-            </Box>
-            {/* -------------again-divider------------------------------ */}
-            <Flex bg={"black"} h="32px">
-              <Divider orientation="vertical" color={"black"} />
-            </Flex>
-          </Box>
-          {/* ----------------------------profile------------------ */}
 
-          <Box
-            display={"flex"}
-            m={{ base: "", md: "", lg: "0 30px" }}
-            gap={"35px"}>
-            <Box fontSize={"15px"} align="center" mt={"-14px"} cursor="pointer">
-              <BiUser fontSize={"18px"} />
-              <Popover trigger="hover">
+            <Box
+              display={"flex"}
+              textAlign={"center"}
+              gap={10}
+              ml={["", "", "20%"]}>
+              <Popover trigger={"hover"}>
                 <PopoverTrigger>
-                  <Text
-                    fontSize={{ bse: "", md: "", lg: "38px" }}
-                    _hover={{ color: "pink.400" }}>
-                    Profile
-                  </Text>
+                  <Flex>
+                    <Text fontSize={18} mt={"-13px"}>
+                      <FaMobileAlt />
+                    </Text>
+                    <Text
+                      color={"black"}
+                      fontSize={["8px", "8x", "15px"]}
+                      mt={"-15px"}
+                      ml={"10px"}
+                      cursor={"pointer"}>
+                      Download App
+                    </Text>
+                  </Flex>
                 </PopoverTrigger>
                 <PopoverContent>
-                  <PopoverHeader fontWeight="semibold" padding={"2px 20px"}>
-                    Hello User
-                  </PopoverHeader>
-                  <Text fontSize={"10px"}>To access your Messho account</Text>
-                  <hr />
                   <PopoverArrow />
-                  <Button
-                    m={"10px"}
-                    bg={"pink.400"}
-                    fontSize={{ base: "", md: "", lg: "16px" }}
-                    color={"white"}
-                    _hover={{ bg: "pink.500" }}
-                    onClick={handlesiginPage}>
-                    Sign Up
-                  </Button>
-                  <hr />
-                  <Flex align={"center"} gap="10px" m="10px 25px">
-                    <BiShoppingBag fontSize={20} />
-                    <Text fontSize={"13px"}>My Orders</Text>
-                  </Flex>
+                  {/* <PopoverCloseButton /> */}
+                  <PopoverHeader fontSize={19}>Download From</PopoverHeader>
+                  <Image src={google} w={"160px"} h={"60px"} ml={"18px"} />
+                  <Image src={Appstore} w={"163px"} h={"72px"} ml={"18px"} />
                 </PopoverContent>
               </Popover>
+              <Flex bg={"black"} h="32px" mt={"-18px"}>
+                <Divider orientation="vertical" color={"black"} />
+              </Flex>
+              <a href="/admin">
+                <Text
+                  fontSize={["8px", "8x", "15px"]}
+                  mt={"-15px"}
+                  cursor={"pointer"}>
+                  Admin
+                </Text>
+              </a>
             </Box>
+            {/* profile and cart */}
+            <Box display={"flex"} ml={"60px"}>
+              <Box m={10}>
+                <Text fontSize={28} mt={"-20px"} ml={"6px"}>
+                  <BiUser />
+                </Text>
 
-            {/* --------------------------cart-section--------------------------- */}
-            <Box
-              fontSize={"15px"}
-              align="center"
-              mt={"-14px"}
-              onClick={handlecatsection}
-              cursor="pointer">
-              <BsCart2 fontSize={"18px"} />
-              <Text _hover={{ color: "pink.400" }}>Cart</Text>
+                <Popover trigger={"hover"}>
+                  <PopoverTrigger>
+                    <Flex>
+                      <Text
+                        fontSize={["8px", "8x", "15px"]}
+                        mt={"5px"}
+                        cursor={"pointer"}>
+                        Profile
+                      </Text>
+                    </Flex>
+                  </PopoverTrigger>
+                  <PopoverContent h={"170px"} w={"240px"}>
+                    <PopoverArrow />
+                    {/* <PopoverCloseButton /> */}
+                    <Heading
+                      fontSize={18}
+                      mt={"15px"}
+                      color={"#333333"}
+                      ml={"20px"}>
+                      Hello User
+                    </Heading>
+                    <Text mt={"5px"} ml={"20px"} fontSize={"10px"}>
+                      To access your Meesho account
+                    </Text>
+                    <a href="/signup">
+                      <Button
+                        bg={"#f43397"}
+                        color={"white"}
+                        w={"210px"}
+                        ml={"15px"}
+                        mt={"10px"}
+                        h={"45px"}
+                        fontSize={"17px"}>
+                        Sign Up
+                      </Button>
+                    </a>
+
+                    <PopoverHeader></PopoverHeader>
+                    <Flex mt={"10px"} ml={"10px"}>
+                      <BiShoppingBag fontSize={20} />
+                      <p style={{ marginLeft: "10px", fontSize: "15px" }}>
+                        My Orders
+                      </p>
+                    </Flex>
+                  </PopoverContent>
+                </Popover>
+              </Box>
+
+              <Box m={10}>
+                <Text fontSize={28} mt={"-20px"}>
+                  <BsCart2 />
+                </Text>
+                <Text
+                  fontSize={["8px", "8x", "15px"]}
+                  mt={"5px"}
+                  cursor={"pointer"}>
+                  Cart
+                </Text>
+              </Box>
             </Box>
-          </Box>
-          {/* ---------------------------------side-navbar----------------------- */}
-          <Box>
-            <NavbarsideDrawer />
-          </Box>
+          </Flex>
         </Box>
-        {/* 
+
         <Box
           top={0}
           w={"100%"}
@@ -192,7 +188,7 @@ export default function NewNavbar() {
           bg={"white"}
           position={"absolute"}>
           <MegaMenu />
-        </Box> */}
+        </Box>
       </Box>
     </>
   );

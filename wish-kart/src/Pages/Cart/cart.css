@@ -8,10 +8,10 @@
   gap: 20px;
 }
 .cart-first-section {
-  display: grid;
+  /* display: grid; */
 }
 .cart-second-section {
-  margin: auto;
+  /* margin: auto; */
 }
 p {
   cursor: pointer;

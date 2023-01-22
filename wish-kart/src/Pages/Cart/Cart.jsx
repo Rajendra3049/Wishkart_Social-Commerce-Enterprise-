@@ -1,9 +1,7 @@
 import { Flex, Text, Card, Button, Box, Image, Grid } from "@chakra-ui/react";
 import React from "react";
 import "./cart.css";
-import Navbar2 from "../../components/Navbar2/Navbar2.jsx";
 import CartDrawer from "./CartDrawer";
-import swal from "sweetalert";
 import { RemoveFromCartNotify } from "../../components/notify";
 
 import { DeleteFromCart } from "../../redux/user/user.action";
@@ -32,13 +30,6 @@ const Cart = () => {
 
   const navigate = useNavigate();
 
-  const handleSweetalert = () => {
-    swal("Remove product from cart", "Are you sure?", {
-      dangerMode: true,
-      buttons: true,
-    });
-  };
-
   const gotoaddress = () => {
     navigate("/address");
   };
@@ -66,10 +57,12 @@ const Cart = () => {
         {/* <Navbar2 /> */}
         {/* <div className="cart-section"> */}
         <Box
-          w={"72%"}
+          // borderWidth={'1px'}
+          w={{ base: "95%", md: "72%", lg: "72%" }}
           gap={"10px"}
-          margin={"100px auto"}
-          display={{ base: "row", md: "row", lg: "flex" }}>
+          margin={"180px auto"}
+          display={{ base: "row", md: "row", lg: "flex" }}
+          alignItems="center">
           <Grid>
             {cartData &&
               cartData.map((e, i) => (
@@ -93,7 +86,7 @@ const Cart = () => {
                       objectFit="cover"
                       boxSize="90%"
                       w={{ base: "40%", md: "30%", lg: "18%" }}
-                      padding={"20px"}
+                      padding={"10px"}
                       src={e.images[0]}
                     />
                     <Box>
@@ -109,18 +102,19 @@ const Cart = () => {
                           <CartDrawer qty={qty} setQty={setQty} />
                         </Text>
                       </Box>
-                      <Flex gap={"20px"} fontWeight={"500"}>
+                      <Flex gap={"20px"} fontWeight={"550"} fontSize="16px">
                         <Text>Size: {e.sizes[0]}</Text>
                         <Text>Qty: {qty}</Text>
                       </Flex>
-                      <Text m={"10px auto"} fontWeight={"500"}>
-                        {e.discounted_price}
+                      <Text m={"10px auto"} fontWeight={"500"} fontSize="15px">
+                        {"₹"} {e.discounted_price}
                       </Text>
                       <Button
                         color={"pink.400"}
                         gap={"10px"}
                         fontWeight={"600"}
                         bg={"none"}
+                        fontSize="16px"
                         _hover={{ bg: "none" }}
                         onClick={() => {
                           handleRemove(e.id);
@@ -176,7 +170,7 @@ const Cart = () => {
               <Button
                 fontSize={"10px"}
                 outline={"none"}
-                padding={{ base: "xs", md: "1px 162px", lg: "1px 69px" }}
+                padding={{ base: "0 53px", md: "1px 162px", lg: "1px 69px" }}
                 m={"10px auto"}>
                 Clicking on ‘Continue’ will not deduct any money
               </Button>
@@ -185,10 +179,15 @@ const Cart = () => {
 
               <Button
                 bg={"pink.400"}
-                padding={{ base: "1px 95px", md: "1px 240px", lg: "1px 147px" }}
+                padding={{
+                  base: "20px 136px",
+                  md: "20px 244px",
+                  lg: "20px 149px",
+                }}
                 color={"white"}
                 borderRadius={"5px"}
                 m={"10px auto"}
+                fontSize="17px"
                 _hover={{ bg: "pink.450" }}
                 onClick={gotoaddress}>
                 Continue

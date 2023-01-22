@@ -16,6 +16,7 @@ import Jewellery from "./allProducts/jewellery";
 import HomeKitchen from "./allProducts/homeKitchen";
 import BeauthHealth from "./allProducts/beauty";
 import BagsFootwear from "./allProducts/bagsFootwear";
+import NewNavbar from "../components/NewNavbar.jsx";
 
 export default function AllRoutes() {
   return (
