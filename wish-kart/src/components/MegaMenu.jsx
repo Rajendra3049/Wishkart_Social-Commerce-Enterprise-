@@ -21,6 +21,7 @@ import {
   ChevronDownIcon,
   // ChevronRightIcon,
 } from "@chakra-ui/icons";
+import { Link as RouterLink } from "react-router-dom";
 import "../index.css";
 
 export default function MegaMenu() {
@@ -113,8 +114,6 @@ const DesktopNav = () => {
                 bg={popoverContentBgColor}
                 p={4}
                 mt={2}
-      
-                // bg={"white"}
                 display={"flex"}
                 rounded={"xl"}
                 minW={"1400px"}
@@ -146,8 +145,8 @@ const DesktopSubNav = ({
   subLabel7,
 }) => {
   return (
-    <Link
-      href={href}
+    <RouterLink
+      to={href}
       role={"group"}
       display={"block"}
       p={6}
@@ -234,7 +233,7 @@ const DesktopSubNav = ({
           {/* <Icon  w={5} h={5} as={ChevronRightIcon} /> */}
         </Flex>
       </Stack>
-    </Link>
+    </RouterLink>
   );
 };
 
@@ -292,9 +291,9 @@ const MobileNavItem = ({ label, children, href }) => {
           align={"start"}>
           {children &&
             children.map((child) => (
-              <Link key={child.label} py={2} href={child.href}>
+              <RouterLink key={child.label} py={2} to={child.href}>
                 {child.label}
-              </Link>
+              </RouterLink>
             ))}
         </Stack>
       </Collapse>

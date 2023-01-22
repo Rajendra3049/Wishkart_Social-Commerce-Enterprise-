@@ -13,6 +13,7 @@ const initialState = {
   error: false,
   isAuth: false,
   user: {
+    id: "",
     mobile_no: "",
     name: "",
     address: {},
@@ -22,8 +23,7 @@ const initialState = {
 };
 
 const UserReducer = (state = initialState, { type, payload }) => {
-  // console.log("in");
-  console.log("Reducer", type, payload);
+  console.log("Reducer", "type:", type, "payload:", payload);
 
   switch (type) {
     case USER_LOADING: {
@@ -70,10 +70,7 @@ const UserReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         loading: false,
-        user: {
-          ...state.user,
-          cart: payload,
-        },
+        user: payload,
       };
     }
 
@@ -83,7 +80,7 @@ const UserReducer = (state = initialState, { type, payload }) => {
         loading: false,
         user: {
           ...state.user,
-          address: payload,
+          address: payload.address,
         },
       };
     }
@@ -91,10 +88,7 @@ const UserReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         loading: false,
-        user: {
-          ...state.user,
-          order: payload,
-        },
+        user: payload,
       };
     }
 

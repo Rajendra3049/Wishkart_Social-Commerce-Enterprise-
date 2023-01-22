@@ -33,6 +33,7 @@ const Home = () => {
   return (
     <Box w={"95%"} m={"auto"} mt={"188px"} >
       <Box bg={"#f9f9f9"} w={["140%","120%","120%","85%"]} m={"auto"} h={["370px","370px","370px","370px"]} ml={["100px","70px","0px","auto"]} mt={"80px"} border={"2px solid red"} >
+
         <Flex>
           <Box w={"590px"} mt={["0px","0px","0px","60px"]} ml={["10px", "80px","90px", "10px"]} border={"1px solid blue"}>
             <Heading
@@ -41,8 +42,10 @@ const Home = () => {
               lineHeight={"56px"}
               color={"#333333"}
               fontWeight={650}
+
               textAlign={["center","center","center","left"]}
             >
+
               Lowest Prices{" "}
             </Heading>
             <Heading
@@ -51,8 +54,11 @@ const Home = () => {
               color={"#333333"}
               fontWeight={650}
               mt={["-24px", "2px", "5px"]}
+
               textAlign={["center","center","center","left"]}
             >
+
+
               {" "}
               Best Quality Shopping{" "}
             </Heading>
@@ -66,8 +72,7 @@ const Home = () => {
                   w={"38px"}
                   h={"38px"}
                   mt={"27px"}
-                  p={1}
-                >
+                  p={1}>
                   <Flex>
                     <Text fontSize={"30px"} ml={"4px"}>
                       <CiDeliveryTruck bg={"#f7a8ca"} mt={"15px"} />
@@ -76,8 +81,7 @@ const Home = () => {
                       fontWeight={400}
                       ml={"17px"}
                       fontSize={"14px"}
-                      mt={"-5px"}
-                    >
+                      mt={"-5px"}>
                       Free Delievery
                     </Text>
                     <Flex bg={"black"} h="45px" ml={"18px"} mt={"-5px"}>
@@ -94,16 +98,14 @@ const Home = () => {
                       w={"38px"}
                       h={"38px"}
                       mt={"27px"}
-                      ml={"120px"}
-                    >
+                      ml={"120px"}>
                       <Flex>
                         <Image
                           src={cash}
                           width={"30px"}
                           m={"auto"}
                           mt={"4px"}
-                          ml={"3px"}
-                        ></Image>
+                          ml={"3px"}></Image>
                         <Text fontWeight={400} ml={"20px"} fontSize={"14px"}>
                           Cash On Delievery
                         </Text>
@@ -115,8 +117,7 @@ const Home = () => {
                       w={"38px"}
                       h={"38px"}
                       mt={"27px"}
-                      ml={"110px"}
-                    >
+                      ml={"110px"}>
                       <Flex>
                         <Flex bg={"black"} h="48px" mt={"-7px"} ml={"-10px"}>
                           <Divider orientation="vertical" color={"black"} />
@@ -126,8 +127,7 @@ const Home = () => {
                           width={"30px"}
                           m={"auto"}
                           ml={"13px"}
-                          mt={"2px"}
-                        ></Image>
+                          mt={"2px"}></Image>
                         <Text fontWeight={400} ml={"20px"} fontSize={"14px"}>
                           Easy Returns
                         </Text>
@@ -146,8 +146,7 @@ const Home = () => {
                     color={"white"}
                     _hover={"#f43397"}
                     fontSize={18}
-                    fontWeight={550}
-                  >
+                    fontWeight={550}>
                     {" "}
                     <Image src={playstore} w={12} h={12} mr={5} /> Download the
                     WishKart App
@@ -178,8 +177,9 @@ const Home = () => {
             lineHeight={"44px"}
             color={"#333333"}
             mt={["50px", "50px", "40px"]}
+
             ml={["65px", "", "35px"]}
-          >
+
             Top Categories to choose from
           </Heading>
           <Divider
@@ -199,6 +199,7 @@ const Home = () => {
       <Box w={"95%"} m={"auto"} h={"545px"} mt={["10px", "-333px", "40px"]}>
         <Image src={snip2} m={"auto"} w={"86%"} borderRadius={"8px"} />
       </Box>
+
       <Box w={"95%"} m={"auto"} h={"545px"} mt={["10px", "-333px", "40px"]}>
         <Image src={snip3} m={"auto"} w={"86%"} borderRadius={"8px"} />
       </Box>

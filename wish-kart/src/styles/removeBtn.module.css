@@ -1,0 +1,59 @@
+.custom_btn {
+  width: 80%;
+  height: 40px;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 25px;
+  font-family: "Lato", sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  outline: none;
+  margin-top: 1rem;
+}
+
+.btn {
+  height: 40px;
+  line-height: 42px;
+  padding: 0;
+  border: none;
+  background: rgb(251, 33, 117);
+  background: linear-gradient(
+    0deg,
+    rgb(251, 33, 117 1) 0%,
+    rgb(251, 33, 117 1) 100%
+  );
+}
+.btn:hover {
+  color: rgb(251, 33, 117);
+  background: transparent;
+  box-shadow: none;
+}
+.btn:before,
+.btn:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 2px;
+  width: 0;
+  background: rgb(251, 33, 117);
+  box-shadow: -1px -1px 5px 0px #fff, 7px 7px 20px 0px #0003,
+    4px 4px 5px 0px #0002;
+  transition: 400ms ease all;
+}
+.btn:after {
+  right: inherit;
+  top: inherit;
+  left: 0;
+  bottom: 0;
+}
+.btn:hover:before,
+.btn:hover:after {
+  width: 100%;
+  transition: 800ms ease all;
+}

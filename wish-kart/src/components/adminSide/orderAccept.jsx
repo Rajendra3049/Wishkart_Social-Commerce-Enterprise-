@@ -3,14 +3,14 @@ import {
   Table,
   Thead,
   Tbody,
-  Tfoot,
   Tr,
   Th,
   Td,
-  TableCaption,
   TableContainer,
   Box,
 } from "@chakra-ui/react";
+import OrderDetails from "./orderDetails";
+import AcceptOrderButton from "./acceptBtn";
 
 async function GetAllUsers(setUsers) {
   let res = await fetch("https://meesho-backend-3037.onrender.com/users", {
@@ -26,7 +26,6 @@ async function GetAllUsers(setUsers) {
 export default function OrderAccept() {
   const [date, setDate] = React.useState("");
   const [allUsers, setUsers] = React.useState([]);
-  const [ready, setReady] = React.useState(false);
 
   React.useEffect(() => {
     GetAllUsers(setUsers);
@@ -40,36 +39,64 @@ export default function OrderAccept() {
     setDate(currentDate);
   });
   return (
-    <Box width={"80%"} margin={"auto"}>
+    <Box
+      width={"80%"}
+      margin={"auto"}
+      border={"1px solid #ccc"}
+      mt={"4rem"}
+      minH={"30rem"}
+      padding={"0.5rem"}>
       <TableContainer>
-        <Table variant="simple">
+        <Table>
           <Thead>
             <Tr>
-              <Th fontSize={["1rem", "1.5rem", "1.8rem"]}>Date</Th>
-              <Th fontSize={["1rem", "1.5rem", "1.8rem"]}>User</Th>
-              <Th fontSize={["1rem", "1.5rem", "1.8rem"]}>Orders</Th>
-              <Th fontSize={["1rem", "1.5rem", "1.8rem"]}>Status</Th>
+              <Th
+                w={"25%"}
+                textAlign={"center"}
+                fontSize={["1rem", "1.5rem", "1.8rem"]}>
+                Date
+              </Th>
+              <Th
+                w={"25%"}
+                textAlign={"center"}
+                fontSize={["1rem", "1.5rem", "1.8rem"]}>
+                User
+              </Th>
+              <Th
+                w={"25%"}
+                textAlign={"center"}
+                fontSize={["1rem", "1.5rem", "1.8rem"]}>
+                Orders
+              </Th>
+              <Th
+                w={"25%"}
+                textAlign={"center"}
+                fontSize={["1rem", "1.5rem", "1.8rem"]}>
+                Status
+              </Th>
             </Tr>
           </Thead>
           <Tbody>
             {allUsers.map((user) => {
               if (user.order.length > 0) {
                 return (
-                  <>
-                    {" "}
-                    <Tr>
-                      <Td>{date}</Td>
-                      <Td>{user.mobile_no}</Td>
-                      <Td>{user.order.length}</Td>
-                      <Td
-                        onClick={() => {
-                          setReady(!ready);
-                        }}
-                        cursor="pointer">
-                        {ready ? "Dispatched" : "Ready to Dispatch"}
-                      </Td>
-                    </Tr>
-                  </>
+                  <Tr key={user.mobile_no}>
+                    <Td w={"25%"} textAlign={"center"}>
+                      {date}
+                    </Td>
+                    <Td w={"25%"} textAlign={"center"}>
+                      {user.mobile_no}
+                    </Td>
+                    <Td w={"25%"} textAlign={"center"}>
+                      <OrderDetails
+                        text={user.order.length}
+                        data={user.order}
+                      />
+                    </Td>
+                    <Td>
+                      <AcceptOrderButton />
+                    </Td>
+                  </Tr>
                 );
               }
             })}

@@ -16,11 +16,12 @@ import Jewellery from "./allProducts/jewellery";
 import HomeKitchen from "./allProducts/homeKitchen";
 import BeauthHealth from "./allProducts/beauty";
 import BagsFootwear from "./allProducts/bagsFootwear";
+import ScrollToTop from "react-scroll-to-top";
 
 export default function AllRoutes() {
   return (
     <Routes>
-      <Route path="/SingleProduct" element={<SingleProduct />} />
+      <Route path="/product/:id" element={<SingleProduct />} />
       <Route path="/" element={<Home />} />
       <Route path="/signup" element={<SignUp />} />
       <Route path="/otp" element={<Otp />} />

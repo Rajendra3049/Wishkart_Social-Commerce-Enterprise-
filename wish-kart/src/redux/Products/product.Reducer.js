@@ -3,6 +3,7 @@ import {
   GET_PRODUCTS_LOADING,
   GET_PRODUCTS_SUCCESS,
   ADD_NEW_PRODUCT,
+  REMOVE_PRODUCT,
 } from "./product.actionTypes";
 
 let initialData = {
@@ -12,7 +13,7 @@ let initialData = {
 };
 
 const ProductReducer = (state = initialData, { type, payload }) => {
-  // console.log(type,payload)
+  console.log("Product Reducer", "type", type, "payload", payload);
 
   switch (type) {
     case GET_PRODUCTS_LOADING: {
@@ -33,6 +34,13 @@ const ProductReducer = (state = initialData, { type, payload }) => {
         ...state,
         loading: false,
         data: [...state.data, payload],
+      };
+    }
+    case REMOVE_PRODUCT: {
+      return {
+        ...state,
+        loading: false,
+        data: payload,
       };
     }
     case GET_PRODUCTS_ERROR: {
