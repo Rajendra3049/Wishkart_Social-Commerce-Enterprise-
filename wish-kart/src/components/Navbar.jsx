@@ -70,6 +70,7 @@ export default function Navbar() {
     <>
       <Box top={0} w={"100%"} h={"55px"} zIndex={100} position={"fixed"}>
         <Box
+          display={["none", "none", "block"]}
           width={["1300px", "1300px", "100%"]}
           justifyContent={"center"}
           h={["158x"]}
@@ -90,7 +91,7 @@ export default function Navbar() {
               <Stack
                 spacing={3}
                 w={["200px", "300px", "400px"]}
-                ml={["5%", "5%", "10%"]}
+                ml={["15%", "15%", "10%"]}
                 // mt={"99px"}
               >
                 <Box position={"absolute"} marginTop={"-35px"}>
@@ -113,7 +114,7 @@ export default function Navbar() {
                       onChange={onChange}
                       type="text"
                       placeholder="Try Saree,Kurti or Search by Product Code"
-                      width={["80%", "80%", "100%"]}
+                      width={["50%", "50%", "100%"]}
                       h={["25px", "30px", "45px"]}
                       color={"black"}
                       borderWidth="1px"
@@ -296,7 +297,7 @@ export default function Navbar() {
           top={0}
           w={"100%"}
           h={"55px"}
-          mt={"80px"}
+          mt={["0px", "0px", "80px"]}
           bg={"white"}
           position={"absolute"}>
           <MegaMenu />

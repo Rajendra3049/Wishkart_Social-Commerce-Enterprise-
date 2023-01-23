@@ -130,7 +130,7 @@ const Products = () => {
   }
 
   return (
-    <Box mt={"150px"}>
+    <Box mt={"180px"} mb={"30px"}>
       <Box>
         <Show below="md">
           <Menu>

@@ -1,4 +1,4 @@
-import { Button } from "@chakra-ui/react";
+import { Button, Box } from "@chakra-ui/react";
 import React from "react";
 
 const Pagination = ({ page, changePage, data }) => {
@@ -12,8 +12,10 @@ const Pagination = ({ page, changePage, data }) => {
   console.log(page);
 
   return (
-    <div>
+    <>
       <Button
+        bg="none"
+        mr={"20px"}
         isDisabled={page == 1}
         padding="20px 10px 20px 10px"
         border={"1px solid grey"}
@@ -24,15 +26,20 @@ const Pagination = ({ page, changePage, data }) => {
       {arr.map((el) => {
         return (
           <Button
-            fontSize="4xl"
-            padding="10px 10px 10px 10px"
+            bg="none"
+            fontSize="20px"
+            m={"5px"}
             onClick={() => changePage(el)}
-            style={{ border: page == el ? "1px solid red" : "" }}>
+            style={{
+              border: page == el ? "1px solid blue" : "00px solid grey",
+            }}>
             {el}
           </Button>
         );
       })}
       <Button
+        bg="none"
+        ml={"20px"}
         isDisabled={page == N}
         padding="20px 10px 20px 10px"
         border={"1px solid grey"}
@@ -40,7 +47,7 @@ const Pagination = ({ page, changePage, data }) => {
         onClick={() => changePage((prev) => prev + 1)}>
         Next
       </Button>
-    </div>
+    </>
   );
 };
 

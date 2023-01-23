@@ -28,7 +28,7 @@ import { Link as RouterLink } from "react-router-dom";
 
 const Home = () => {
   return (
-    <Box w={"98%"} m={"auto"} padding={"20px"} mt={"200px"}>
+    <Box w={"98%"} m={"auto"} padding={"20px"} mt={["80px", "80px", "200px"]}>
       {/* banner start */}
       <Box>
         <Image src={banner} margin={"auto"} mb={"20px"} />
