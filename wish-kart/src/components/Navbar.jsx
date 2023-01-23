@@ -25,14 +25,27 @@ import { BsCart2 } from "react-icons/bs";
 import google from "../images/google.png";
 import Appstore from "../images/Appstore.png";
 import { BiShoppingBag } from "react-icons/bi";
-import { Link, Link as RouterLink } from "react-router-dom";
-import { useState } from "react";
+import { Link, Link as RouterLink, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
 import "../styles/navbar.css";
 import { SearchIcon } from "@chakra-ui/icons";
+import { useDispatch, useSelector } from "react-redux";
+import { USER_LOGOUT } from "../redux/user/user.type";
+
 var data = require("../input.json");
 
 export default function Navbar() {
   const [value, setValue] = useState("");
+  const navigate = useNavigate();
+  // redux start
+  let { loading, error, isAuth, user } = useSelector(
+    (store) => store.UserManager
+  );
+  let dispatch = useDispatch();
+  // redux end
+  React.useEffect(() => {
+    console.log(isAuth, "navbar");
+  }, [dispatch, user, isAuth]);
 
   const onChange = (event) => {
     setValue(event.target.value);
@@ -43,6 +56,16 @@ export default function Navbar() {
     // our api to fetch the search result
     console.log("search ", searchTerm);
   };
+
+  // login-logout
+  function HandleLogin() {
+    if (isAuth) {
+      dispatch({ type: USER_LOGOUT });
+      navigate("/");
+    } else {
+      navigate("/signup");
+    }
+  }
   return (
     <>
       <Box top={0} w={"100%"} h={"55px"} zIndex={100} position={"fixed"}>
@@ -221,23 +244,24 @@ export default function Navbar() {
                       mt={"15px"}
                       color={"#333333"}
                       ml={"20px"}>
-                      Hello User
+                      {isAuth ? "+91 " + user.mobile_no : "Hello, Users"}
                     </Heading>
                     <Text mt={"5px"} ml={"20px"} fontSize={"10px"}>
-                      To access your Meesho account
+                      {isAuth ? "" : " To access your Meesho account"}
                     </Text>
-                    <RouterLink to="/signup">
-                      <Button
-                        bg={"#f43397"}
-                        color={"white"}
-                        w={"210px"}
-                        ml={"15px"}
-                        mt={"10px"}
-                        h={"45px"}
-                        fontSize={"17px"}>
-                        Sign Up
-                      </Button>
-                    </RouterLink>
+                    {/* <RouterLink to="/signup"> */}
+                    <Button
+                      bg={"#f43397"}
+                      color={"white"}
+                      w={"210px"}
+                      ml={"15px"}
+                      mt={"10px"}
+                      h={"45px"}
+                      fontSize={"17px"}
+                      onClick={HandleLogin}>
+                      {isAuth ? "Sign Out" : "Sign Up"}
+                    </Button>
+                    {/* </RouterLink> */}
 
                     <PopoverHeader></PopoverHeader>
                     <Flex mt={"10px"} ml={"10px"}>
