@@ -19,7 +19,7 @@ function App() {
   return isLoading ? (
     <Loader />
   ) : (
-    <div style={{ border: "1px solid red" }}>
+    <div>
       <Navbar />
       <AllRoutes />
       <Footer />
