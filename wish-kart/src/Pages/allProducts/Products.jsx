@@ -121,20 +121,24 @@ const Products = () => {
     setpageData(); //part of paginaion set data after filter
     RefreshComponent();
   };
-  console.log(data);
-  console.log(filtData);
-  console.log(paginationData);
-
+  // console.log(data);
+  // console.log(filtData);
+  // console.log(paginationData);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   if (loading) {
     <Loader />;
   }
 
   return (
-    <Box mt={"180px"} mb={"30px"}>
-      <Box>
+    <Box mt={["100px", "100px", "200px"]}>
+      <Box mb={"20px"} ml={"20px"}>
         <Show below="md">
           <Menu>
-            <MenuButton as={Button}>Filter</MenuButton>
+            <MenuButton as={Button} fontSize={"16px"} padding={"10px"}>
+              Filter
+            </MenuButton>
             <MenuList>
               <MenuOptionGroup title="Price">
                 <Stack direction={"column"} ml="15%">

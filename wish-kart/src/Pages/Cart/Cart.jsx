@@ -9,6 +9,9 @@ import { Navigate, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 const Cart = () => {
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const [qty, setQty] = React.useState(1);
   const [price, setPrice] = React.useState(0);
   const [cartData, setCartData] = React.useState([]);

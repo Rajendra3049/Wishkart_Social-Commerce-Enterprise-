@@ -30,6 +30,9 @@ const initialData = {
 };
 
 function Address() {
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const [price, setPrice] = React.useState(0);
   const [cartData, setCartData] = React.useState([]);
   const [formData, setFormData] = React.useState(initialData);

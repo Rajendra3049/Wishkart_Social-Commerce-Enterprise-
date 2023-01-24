@@ -1,0 +1,53 @@
+.pageBox {
+  border: 0px solid red;
+  width: 60%;
+  margin: auto;
+  font-size: 20px;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+.currentPage {
+  border: 0px solid blue;
+  display: flex;
+  width: 80%;
+  justify-content: space-around;
+  font-size: 18px;
+}
+.btn {
+  background-color: rgb(214, 207, 207);
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+.btn:disabled {
+  background-color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+@media (max-width: 480px) {
+  .pageBox {
+    border: 0px solid red;
+    width: 90%;
+    margin: auto;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+  }
+  .currentPage {
+    border: 0px solid blue;
+    display: flex;
+    width: 80%;
+    justify-content: space-around;
+  }
+  .btn {
+    background-color: rgb(214, 207, 207);
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+  .btn:disabled {
+    background-color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+}

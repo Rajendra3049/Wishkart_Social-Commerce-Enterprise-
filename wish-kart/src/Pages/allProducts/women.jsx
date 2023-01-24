@@ -35,7 +35,7 @@ const Women = () => {
   let womenData = data.filter(
     (el) => el.category == ("Sarees" || el.category == "Dresses")
   );
-  console.log(womenData);
+  // console.log(womenData);
 
   let filtData = womenData.filter(
     (el) =>
@@ -58,7 +58,10 @@ const Women = () => {
       getProducts(dispatch);
     }
   }, []);
-  console.log(filtData);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  // console.log(filtData);
 
   const check = (e) => {
     console.log(e.target);
@@ -74,11 +77,13 @@ const Women = () => {
   }
 
   return (
-    <Box mt={"150px"}>
-      <Box>
+    <Box mt={["100px", "100px", "200px"]}>
+      <Box mb={"20px"} ml={"20px"}>
         <Show below="md">
           <Menu>
-            <MenuButton as={Button}>Filter</MenuButton>
+            <MenuButton as={Button} fontSize={"16px"} padding={"10px"}>
+              Filter
+            </MenuButton>
             <MenuList>
               <MenuOptionGroup title="Price">
                 <Stack direction={"column"} ml="15%">

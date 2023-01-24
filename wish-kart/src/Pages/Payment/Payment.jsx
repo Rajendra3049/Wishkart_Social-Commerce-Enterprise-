@@ -21,6 +21,9 @@ import { OrderPlacement } from "../../redux/user/user.action";
 import { CheckOutNotify } from "../../components/notify";
 
 const Payment = () => {
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const [price, setPrice] = React.useState(0);
   const [cartData, setCartData] = React.useState([]);
 

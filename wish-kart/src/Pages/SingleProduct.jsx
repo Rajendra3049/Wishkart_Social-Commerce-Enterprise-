@@ -12,6 +12,9 @@ const SingleProduct = () => {
   const [loading, setLoading] = React.useState(false);
   const [data, setData] = useState([]);
   const [productDetails, setproductDetails] = useState({});
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   // redux start
   let { user, isAuth } = useSelector((store) => store.UserManager);

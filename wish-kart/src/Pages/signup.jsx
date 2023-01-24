@@ -13,6 +13,9 @@ export default function SignUp() {
   );
   let dispatch = useDispatch();
   // redux end
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const [mobileNumber, setMobileNumber] = React.useState("");
   const navigate = useNavigate();

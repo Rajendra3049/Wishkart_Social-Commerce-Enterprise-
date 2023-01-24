@@ -29,9 +29,11 @@ const Men = () => {
   let { loading, error, data } = useSelector((store) => store.ProductsManager);
   let dispatch = useDispatch();
   let [filtCred, setFiltCred] = useState({});
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   //   console.log(data)
-  let beautyHealth = data.filter((el) => el.category == "Beauty and health");
+  let beautyHealth = data.filter((el) => el.category == "Bags and Footwear");
   console.log(beautyHealth);
 
   let filtData = beautyHealth.filter(
@@ -55,7 +57,7 @@ const Men = () => {
       getProducts(dispatch);
     }
   }, []);
-  console.log(filtData);
+  // console.log(filtData);
 
   const check = (e) => {
     console.log(e.target);
@@ -71,11 +73,13 @@ const Men = () => {
   }
 
   return (
-    <Box mt={"150px"}>
-      <Box>
+    <Box mt={["100px", "100px", "200px"]}>
+      <Box mb={"20px"} ml={"20px"}>
         <Show below="md">
           <Menu>
-            <MenuButton as={Button}>Filter</MenuButton>
+            <MenuButton as={Button} fontSize={"16px"} padding={"10px"}>
+              Filter
+            </MenuButton>
             <MenuList>
               <MenuOptionGroup title="Price">
                 <Stack direction={"column"} ml="15%">

@@ -57,3 +57,18 @@
   width: 100%;
   transition: 800ms ease all;
 }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1px solid #ccc;
+  gap: 15px;
+}
+
+@media (max-width: 420px) {
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    border: 1px solid #ccc;
+    gap: 15px;
+  }
+}

@@ -4,10 +4,19 @@ import {
   AccordionItem,
   AccordionPanel,
   Box,
+  Button,
   Flex,
   Heading,
+  Hide,
+  Menu,
+  MenuButton,
+  MenuDivider,
+  MenuList,
+  MenuOptionGroup,
+  Show,
   SimpleGrid,
   Stack,
+  Checkbox as ChakraCheckBox,
 } from "@chakra-ui/react";
 import { Checkbox, Pagination } from "antd";
 import { useEffect, useState } from "react";
@@ -38,36 +47,9 @@ const Men = () => {
       (filtCred.below300 ? el.discounted_price < 300 : "")
   );
 
-  // ***********************************pagination*************************************
-  // const changePage = (currentpage) => {
-  //   setPage(currentpage)
-  //   setPaginationData([])
-
-  //   for (let i = page * 10 - 10; i <= page * 9; i++) {
-  //     filtData.length == 0 ? console.log(menData) : console.log(filtData)
-  //     if ((filtData.length == 0 ? menData : filtData)[i]) {
-
-  //       setPaginationData((prePag) => [...prePag, (filtData.length == 0 ? menData : filtData)[i]])
-  //     }
-  //   }
-  // }
-  // // console.log(data);
-  // const setpageData = () => {
-  //   setPaginationData([])
-  //   for (let i = page * 10 - 10; i <= page * 9; i++) {
-
-  //     if ((filtData.length == 0 ? menData : filtData)[i]) {
-
-  //       setPaginationData((prePag) => [...prePag, (filtData.length == 0 ? menData : filtData)[i]])
-  //     }
-
-  //   }
-  // }
-  // console.log(paginationData)
-
-  // ***********************************pagination********************************
-
-  //   console.log(data)
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   useEffect(() => {
     if (data.length == 0) {
@@ -75,7 +57,7 @@ const Men = () => {
     }
     // setpageData()                               // part of pagination
   }, []);
-  console.log(filtData);
+  // console.log(filtData);
 
   const check = (e) => {
     // console.log(e.target)
@@ -92,9 +74,83 @@ const Men = () => {
   }
 
   return (
-    <Box mt={"150px"}>
+    <Box mt={["100px", "100px", "200px"]}>
+      <Box mb={"20px"} ml={"20px"}>
+        <Show below="md">
+          <Menu>
+            <MenuButton as={Button} fontSize={"16px"} padding={"10px"}>
+              Filter
+            </MenuButton>
+            <MenuList>
+              <MenuOptionGroup title="Price">
+                <Stack direction={"column"} ml="15%">
+                  <ChakraCheckBox
+                    onChange={(e) => check(e)}
+                    name="above100"
+                    size={"lg"}>
+                    Above 1000
+                  </ChakraCheckBox>
+                  <ChakraCheckBox
+                    onChange={(e) => check(e)}
+                    name="a1000_500"
+                    size={"lg"}>
+                    1000 - 500
+                  </ChakraCheckBox>
+                  <ChakraCheckBox
+                    onChange={(e) => check(e)}
+                    name="a500_300"
+                    size={"lg"}>
+                    500 - 300
+                  </ChakraCheckBox>
+                  <ChakraCheckBox
+                    onChange={(e) => check(e)}
+                    name="below300"
+                    size={"lg"}>
+                    Below 300
+                  </ChakraCheckBox>
+                </Stack>
+              </MenuOptionGroup>
+              <MenuDivider />
+              <MenuOptionGroup title="Category">
+                <Stack direction={"column"} ml="15%">
+                  <ChakraCheckBox
+                    onChange={(e) => check(e)}
+                    name="ratingTop"
+                    size={"lg"}>
+                    Above 4.5
+                  </ChakraCheckBox>
+                  <ChakraCheckBox
+                    onChange={(e) => check(e)}
+                    name="ratingTop2"
+                    size={"lg"}>
+                    4.5 - 4
+                  </ChakraCheckBox>
+                  <ChakraCheckBox
+                    onChange={(e) => check(e)}
+                    name="a4_3"
+                    size={"lg"}>
+                    4 - 3
+                  </ChakraCheckBox>
+                  <ChakraCheckBox
+                    onChange={(e) => check(e)}
+                    name="a3-2"
+                    size={"lg"}>
+                    3 - 2
+                  </ChakraCheckBox>
+                  <ChakraCheckBox
+                    onChange={(e) => check(e)}
+                    name="below2"
+                    size={"lg"}>
+                    below 2
+                  </ChakraCheckBox>
+                </Stack>
+              </MenuOptionGroup>
+            </MenuList>
+          </Menu>
+        </Show>
+      </Box>
       <Flex>
-        <Box width={"20%"}>
+        <Hide below="md" width={"20%"}>
           <Heading>Filter</Heading>
           <Box>
             <Accordion>
@@ -137,7 +193,7 @@ const Men = () => {
               </AccordionItem>
             </Accordion>
           </Box>
-        </Box>
+        </Hide>
         <Box style={{ width: "90%", margin: "auto" }} border="0px solid red">
           <SimpleGrid columns={[1, 2, 3, 4]} spacing={10}>
             {(filtData.length == 0 ? menData : filtData).map((el) => {

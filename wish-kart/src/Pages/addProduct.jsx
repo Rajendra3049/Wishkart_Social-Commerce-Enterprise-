@@ -23,6 +23,9 @@ const initialData = {
 };
 
 export default function AddProduct() {
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const [state, setState] = React.useState(initialData);
   let { loading, error, data } = useSelector((store) => store.ProductsManager);
   let dispatch = useDispatch();

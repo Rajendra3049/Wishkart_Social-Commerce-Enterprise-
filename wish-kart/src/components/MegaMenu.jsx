@@ -31,12 +31,13 @@ import { BiUser } from "react-icons/bi";
 import { BsCart2 } from "react-icons/bs";
 import { FaMobileAlt } from "react-icons/fa";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { USER_LOGOUT } from "../redux/user/user.type";
 
 export default function MegaMenu() {
-  const { isOpen, onToggle } = useDisclosure();
+  const { isOpen, onOpen, onClose, onToggle } = useDisclosure();
+
   const [value, setValue] = useState("");
   const navigate = useNavigate();
   // redux start
@@ -94,9 +95,9 @@ export default function MegaMenu() {
                 onClick={onToggle}
                 icon={
                   isOpen ? (
-                    <CloseIcon w={3} h={3} />
+                    <CloseIcon w={5} h={5} mt={8} />
                   ) : (
-                    <HamburgerIcon w={10} h={10} />
+                    <HamburgerIcon w={10} h={10} mt={8} />
                   )
                 }
                 variant={"ghost"}
@@ -325,6 +326,8 @@ const MobileNav = () => {
       <Stack
         bg={useColorModeValue("white", "gray.800")}
         p={4}
+        pl={"20px"}
+        fontSize={12}
         display={{ md: "none" }}>
         {NAV_ITEMS.map((navItem) => (
           <MobileNavItem key={navItem.label} {...navItem} />

@@ -2,6 +2,9 @@ import React from "react";
 import { FaStar } from "react-icons/fa";
 
 export const SingleCard = ({ props }) => {
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div
       key={props.id}

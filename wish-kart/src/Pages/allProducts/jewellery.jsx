@@ -29,11 +29,12 @@ const Men = () => {
   let { loading, error, data } = useSelector((store) => store.ProductsManager);
   let dispatch = useDispatch();
   let [filtCred, setFiltCred] = useState({});
-  // const [page, setPage] = useState(1)
-  // const [paginationData, setPaginationData] = useState([])
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
-  let menData = data.filter((el) => el.category == "Mens Top Were");
-  console.log(menData);
+  let menData = data.filter((el) => el.category == "Jewellery");
+  // console.log("menData", menData);
 
   let filtData = menData.filter(
     (el) =>
@@ -52,44 +53,13 @@ const Men = () => {
         (filtCred.below2 ? el.rating < 2 : ""))
   );
 
-  // ***********************************pagination*************************************
-  // const changePage = (currentpage) => {
-  //   setPage(currentpage)
-  //   setPaginationData([])
-
-  //   for (let i = page * 10 - 10; i <= page * 9; i++) {
-  //     filtData.length == 0 ? console.log(menData) : console.log(filtData)
-  //     if ((filtData.length == 0 ? menData : filtData)[i]) {
-
-  //       setPaginationData((prePag) => [...prePag, (filtData.length == 0 ? menData : filtData)[i]])
-  //     }
-  //   }
-  // }
-  // // console.log(data);
-  // const setpageData = () => {
-  //   setPaginationData([])
-  //   for (let i = page * 10 - 10; i <= page * 9; i++) {
-
-  //     if ((filtData.length == 0 ? menData : filtData)[i]) {
-
-  //       setPaginationData((prePag) => [...prePag, (filtData.length == 0 ? menData : filtData)[i]])
-  //     }
-
-  //   }
-  // }
-  // console.log(paginationData)
-
-  // ***********************************pagination********************************
-
-  //   console.log(data)
-
   useEffect(() => {
     if (data.length == 0) {
       getProducts(dispatch);
     }
     // setpageData()                               // part of pagination
   }, []);
-  console.log(filtData);
+  // console.log("filtData", filtData);
 
   const check = (e) => {
     // console.log(e.target)
@@ -106,11 +76,13 @@ const Men = () => {
   }
 
   return (
-    <Box mt={"150px"}>
-      <Box>
+    <Box mt={["100px", "100px", "200px"]}>
+      <Box mb={"20px"} ml={"20px"}>
         <Show below="md">
           <Menu>
-            <MenuButton as={Button}>Filter</MenuButton>
+            <MenuButton as={Button} fontSize={"16px"} padding={"10px"}>
+              Filter
+            </MenuButton>
             <MenuList>
               <MenuOptionGroup title="Price">
                 <Stack direction={"column"} ml="15%">

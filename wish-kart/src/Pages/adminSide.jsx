@@ -12,6 +12,9 @@ import { Link as RouterLink } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 
 export default function AdminSide() {
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   // redux start
   let { isAuth } = useSelector((store) => store.UserManager);
   let { data } = useSelector((store) => store.ProductsManager);
