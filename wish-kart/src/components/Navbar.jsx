@@ -264,7 +264,6 @@ export default function Navbar() {
                     </Button>
                     {/* </RouterLink> */}
 
-                    <PopoverHeader></PopoverHeader>
                     <Flex mt={"10px"} ml={"10px"}>
                       <BiShoppingBag fontSize={20} />
                       <p style={{ marginLeft: "10px", fontSize: "15px" }}>

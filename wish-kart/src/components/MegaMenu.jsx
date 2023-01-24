@@ -14,6 +14,9 @@ import {
   useColorModeValue,
   useBreakpointValue,
   useDisclosure,
+  PopoverArrow,
+  Heading,
+  Button,
 } from "@chakra-ui/react";
 import {
   HamburgerIcon,
@@ -22,10 +25,49 @@ import {
   // ChevronRightIcon,
 } from "@chakra-ui/icons";
 import "../index.css";
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
+import { BiShoppingBag } from "react-icons/bi";
+import { BiUser } from "react-icons/bi";
+import { BsCart2 } from "react-icons/bs";
+import { FaMobileAlt } from "react-icons/fa";
+
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { USER_LOGOUT } from "../redux/user/user.type";
 
 export default function MegaMenu() {
   const { isOpen, onToggle } = useDisclosure();
+  const [value, setValue] = useState("");
+  const navigate = useNavigate();
+  // redux start
+  let { loading, error, isAuth, user } = useSelector(
+    (store) => store.UserManager
+  );
+  let dispatch = useDispatch();
+  // redux end
+  React.useEffect(() => {
+    console.log(isAuth, "navbar");
+  }, [dispatch, user, isAuth]);
+
+  const onChange = (event) => {
+    setValue(event.target.value);
+  };
+
+  const onSearch = (searchTerm) => {
+    setValue(searchTerm);
+    // our api to fetch the search result
+    console.log("search ", searchTerm);
+  };
+
+  // login-logout
+  function HandleLogin() {
+    if (isAuth) {
+      dispatch({ type: USER_LOGOUT });
+      navigate("/");
+    } else {
+      navigate("/signup");
+    }
+  }
 
   return (
     <Box>
@@ -42,21 +84,66 @@ export default function MegaMenu() {
         borderColor={useColorModeValue("gray.200", "gray.900")}
         align={"center"}>
         <Flex ml={"10px"} display={{ sm: "flex", md: "none", lg: "none" }}>
-          <IconButton
-            minH={"30px"}
-            minW={"30px"}
-            onClick={onToggle}
-            icon={
-              isOpen ? (
-                <CloseIcon w={3} h={3} />
-              ) : (
-                <HamburgerIcon w={10} h={10} />
-              )
-            }
-            variant={"ghost"}
-            aria-label={"Toggle Navigation"}
-          />
+          <Flex>
+            {" "}
+            <Box>
+              {" "}
+              <IconButton
+                minH={"30px"}
+                minW={"30px"}
+                onClick={onToggle}
+                icon={
+                  isOpen ? (
+                    <CloseIcon w={3} h={3} />
+                  ) : (
+                    <HamburgerIcon w={10} h={10} />
+                  )
+                }
+                variant={"ghost"}
+                aria-label={"Toggle Navigation"}
+              />
+            </Box>
+            <Flex>
+              <Box>
+                <RouterLink to="/">
+                  <Flex mt={"10px"} ml={"10px"}>
+                    <p style={{ marginLeft: "10px", fontSize: "15px" }}>Home</p>
+                  </Flex>
+                </RouterLink>
+              </Box>
+              <Box>
+                <RouterLink to="/admin">
+                  <Flex mt={"10px"} ml={"10px"}>
+                    <p style={{ marginLeft: "10px", fontSize: "15px" }}>
+                      Admin
+                    </p>
+                  </Flex>
+                </RouterLink>
+              </Box>
+              <Box>
+                <RouterLink to="/signup">
+                  <Flex mt={"10px"} ml={"10px"}>
+                    <p
+                      style={{ marginLeft: "10px", fontSize: "15px" }}
+                      onClick={HandleLogin}>
+                      {isAuth ? "Sign Out" : "Sign Up"}
+                    </p>
+                  </Flex>
+                </RouterLink>
+              </Box>
+              <Box>
+                <RouterLink to="/cart">
+                  <Flex mt={"10px"} ml={"10px"}>
+                    <p style={{ marginLeft: "10px", fontSize: "15px" }}>
+                      My Orders
+                    </p>
+                  </Flex>
+                </RouterLink>
+              </Box>
+            </Flex>
+          </Flex>
         </Flex>
+
         <Flex
           justify={{
             sm: "none",
@@ -233,14 +320,17 @@ const DesktopSubNav = ({
 
 const MobileNav = () => {
   return (
-    <Stack
-      bg={useColorModeValue("white", "gray.800")}
-      p={4}
-      display={{ md: "none" }}>
-      {NAV_ITEMS.map((navItem) => (
-        <MobileNavItem key={navItem.label} {...navItem} />
-      ))}
-    </Stack>
+    <>
+      {" "}
+      <Stack
+        bg={useColorModeValue("white", "gray.800")}
+        p={4}
+        display={{ md: "none" }}>
+        {NAV_ITEMS.map((navItem) => (
+          <MobileNavItem key={navItem.label} {...navItem} />
+        ))}
+      </Stack>
+    </>
   );
 };
 
