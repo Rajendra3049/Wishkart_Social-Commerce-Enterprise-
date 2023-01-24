@@ -19,7 +19,7 @@ export default function HomeProducts() {
         {/* card */}
         {data.map((el) => (
           <Box
-            key={el.rating2}
+            key={el.id}
             style={{
               // border: "1px solid red",
               boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",

@@ -1,7 +1,6 @@
 import Footer from "./components/Footer";
 import Footer2 from "./components/Footer2";
 import Navbar from "./components/Navbar";
-import NewNavbar from "./components/NewNavbar";
 
 import AllRoutes from "./Pages/AllRoutes";
 import Loader from "./components/Loader";

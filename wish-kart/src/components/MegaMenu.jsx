@@ -84,8 +84,8 @@ const DesktopNav = () => {
   return (
     <Stack direction={"row"} spacing={6}>
       {NAV_ITEMS.map((navItem) => (
-        <RouterLink to={navItem.href}>
-          <Box key={navItem.label}>
+        <RouterLink to={navItem.href} key={navItem.label}>
+          <Box>
             <Popover trigger={"hover"} placement={"bottom-end"}>
               <PopoverTrigger>
                 <Box
@@ -225,9 +225,7 @@ const DesktopSubNav = ({
           _groupHover={{ opacity: "100%", transform: "translateX(0)" }}
           justify={"flex-end"}
           align={"center"}
-          flex={1}>
-          {/* <Icon  w={5} h={5} as={ChevronRightIcon} /> */}
-        </Flex>
+          flex={1}></Flex>
       </Stack>
     </RouterLink>
   );
@@ -300,7 +298,7 @@ const MobileNavItem = ({ label, children, href }) => {
 const NAV_ITEMS = [
   {
     label: "All",
-    href: "/products",
+    href: "#",
     children: [
       {
         label: "All Women Ethnic",
@@ -327,12 +325,12 @@ const NAV_ITEMS = [
         subLabel2: "Rayon Kurtis",
         subLabel3: "Cotton Kurtis",
         subLabel4: "Embroidered Kurtis",
-        href: "#",
+        href: "/women",
       },
       {
         label: "Kurta Sets",
         subLabel: "All Kurta Sets",
-        href: "#",
+        href: "/women",
       },
       {
         label: "Suits and Dress Materials",
@@ -340,7 +338,7 @@ const NAV_ITEMS = [
         subLabel1: "Cotton Suits",
         subLabel2: "Embroidered Suits",
         subLabel3: "Chanderi Suits",
-        href: "#",
+        href: "/women",
       },
       {
         label: "Other Ethnic",
@@ -349,13 +347,13 @@ const NAV_ITEMS = [
         subLabel2: "Lehanga",
         subLabel3: "Gown",
         subLabel4: "Ethnic Bottomwear",
-        href: "#",
+        href: "/women",
       },
     ],
   },
   {
     label: "Women Western",
-    href: "/women",
+    href: "#",
     children: [
       {
         label: "Top Wear",
@@ -372,25 +370,25 @@ const NAV_ITEMS = [
         subLabe2: "Palazzos",
         subLabel3: "Shorts",
         subLabel4: "Skirts",
-        href: "#",
+        href: "/women",
       },
       {
         label: "Innner Wear",
         subLabel: "Bras",
         subLabel1: "Breifs",
-        href: "#",
+        href: "/women",
       },
       {
         label: "Sleep Wear",
         subLabel: "Nightsuits",
         subLabel1: "Babydolls",
-        href: "#",
+        href: "/women",
       },
     ],
   },
   {
     label: "Men",
-    href: "/men",
+    href: "#",
     children: [
       {
         label: "Top Wear",
@@ -415,7 +413,7 @@ const NAV_ITEMS = [
         subLabel4: "Jewellery",
         subLabel5: "Sunglasses",
         subLabel6: "Bags",
-        href: "#",
+        href: "/men",
       },
       {
         label: "Mens Footwear",
@@ -426,24 +424,25 @@ const NAV_ITEMS = [
         subLabel4: "Jewellery",
         subLabel5: "Formal Shoes",
 
-        href: "#",
+        href: "/men",
       },
       {
         label: "Ethnic Wear",
         subLabel: "Men Kurtas",
         subLabel1: "Ethnic Jackets",
-        href: "#",
+        href: "/men",
       },
       {
         label: "Inner & Sleep Wear",
         subLabel: "All Inner & Sleep Wear",
         subLabel1: "Vests",
+        href: "/men",
       },
     ],
   },
   {
     label: "Kids",
-    href: "/men",
+    href: "#",
     children: [
       {
         label: "Boys & Girls 2+ Years",
@@ -462,16 +461,18 @@ const NAV_ITEMS = [
         subLabel2: "Stationery",
         subLabel3: "Watches",
         subLabel4: "Bags & Backpacks",
+        href: "/men",
       },
       {
         label: "Baby Care",
         subLabel: "All Baby Care",
+        href: "/men",
       },
     ],
   },
   {
     label: "Home & Kitchen",
-    href: "/homeKitchen",
+    href: "#",
     children: [
       {
         label: "Home Furnishing",
@@ -488,17 +489,19 @@ const NAV_ITEMS = [
         subLabel1: "Stickers",
         subLabel2: "Clocks",
         subLabel3: "Showpieces",
+        href: "/homeKitchen",
       },
       {
         label: "Kitchen & Dining",
         subLabel: "Kitchen Storage",
         subLabel1: "Cookware & Bakeware",
+        href: "/homeKitchen",
       },
     ],
   },
   {
     label: "Beauty & Health",
-    href: "/beauthHealth",
+    href: "#",
     children: [
       {
         label: "Makeup",
@@ -518,13 +521,13 @@ const NAV_ITEMS = [
       {
         label: "Skincare",
         subLabel: "Deodrants",
-        href: "#",
+        href: "/beauthHealth",
       },
     ],
   },
   {
     label: "Bags & Footwear",
-    href: "/bagsFootwear",
+    href: "#",
     children: [
       {
         label: "Women Bags",
@@ -538,7 +541,7 @@ const NAV_ITEMS = [
         label: "Men Bags",
         subLabel: "All Men Bags",
         subLabel1: "Men Wallets",
-        href: "#",
+        href: "/bagsFootwear",
       },
       {
         label: "Men Footwear",
@@ -546,20 +549,20 @@ const NAV_ITEMS = [
         subLabel1: "Casual Shoes",
         subLabel2: "Formal Shoes",
         subLabel3: "Sandals",
-        href: "#",
+        href: "/bagsFootwear",
       },
       {
         label: "Women Footwear",
         subLabel: "Flats",
         subLabel1: "Bellies",
         subLabel2: "Jutties",
-        href: "#",
+        href: "/bagsFootwear",
       },
     ],
   },
   {
     label: "Jewellery & Accessories",
-    href: "/jewellery",
+    href: "#",
     children: [
       {
         label: "Jewellery",
@@ -581,7 +584,7 @@ const NAV_ITEMS = [
         subLabel3: "Sunglasses",
         subLabel4: "Socks",
 
-        href: "#",
+        href: "/jewellery",
       },
     ],
   },
@@ -595,7 +598,7 @@ const NAV_ITEMS = [
         subLabel2: "Mobile Holders",
         subLabel3: "Mobile cases and covers",
 
-        href: "#",
+        href: "/jewellery",
       },
       {
         label: "Appliances",
@@ -603,7 +606,7 @@ const NAV_ITEMS = [
         subLabel1: "Grooming",
         subLabel2: "Home Appliances",
 
-        href: "#",
+        href: "/jewellery",
       },
     ],
   },
