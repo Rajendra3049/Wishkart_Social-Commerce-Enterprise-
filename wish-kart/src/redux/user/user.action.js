@@ -60,7 +60,7 @@ export const Get_Users_Data = (input) => async (dispatch) => {
       },
     });
     let data = await res.json();
-    dispatch({ type: USER_LOGIN, payload: user });
+    dispatch({ type: USER_LOGIN, payload: newUser });
   }
 };
 

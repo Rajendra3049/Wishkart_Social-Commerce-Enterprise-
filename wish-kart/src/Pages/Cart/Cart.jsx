@@ -55,7 +55,7 @@ const Cart = () => {
     console.log("user not authenticated");
     return <Navigate to="/signup" />;
   } else {
-    if (user.cart.length == 0) {
+    if (user.cart.length <= 0) {
       return <Navigate to="/cartempty" />;
     }
     return (
