@@ -79,7 +79,6 @@ const SingleProduct = () => {
             <Flex w={["100%", "100%", "60%"]}>
               <Box
                 width={["25%", "25%", "25%"]}
-                display="grid"
                 justifyContent={"space-around"}>
                 {productDetails.images.map((el, i) => {
                   return (
@@ -87,9 +86,12 @@ const SingleProduct = () => {
                       key={i}
                       style={{
                         width: "50%",
-                        border: "1px solid #fde9f2",
+                        border: "1px solid red",
                         boxShadow: "rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px",
                         margin: "auto",
+                        // #fde9f2
+                        marginBottom: "10px",
+                        marginTop: "10px",
                       }}
                       src={el}
                       alt=""
