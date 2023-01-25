@@ -17,6 +17,7 @@ export const SingleCard = ({ props }) => {
         cursor: "pointer",
       }}>
       <Link to={`/SingleProduct/${props.id}`}>
+        {" "}
         <img
           style={{
             //   width: "50%",
@@ -28,6 +29,7 @@ export const SingleCard = ({ props }) => {
           alt=""
         />
       </Link>
+
       <h3
         style={{
           fontSize: "medium",
