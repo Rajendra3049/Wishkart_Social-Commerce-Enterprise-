@@ -85,11 +85,10 @@ const SingleProduct = () => {
                     <img
                       key={i}
                       style={{
-                        width: "50%",
-                        border: "1px solid red",
+                        width: "60%",
+                        border: "1px solid  #fde9f2",
                         boxShadow: "rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px",
                         margin: "auto",
-                        // #fde9f2
                         marginBottom: "10px",
                         marginTop: "10px",
                       }}
