@@ -235,7 +235,7 @@ const Products = () => {
                     </Box>
                   </AccordionButton>
                   {/* <AccordionPanel> */}
-                  <Stack direction={"column"} ml="5%">
+                  <Stack direction={"column"} ml="15%">
                     <Checkbox
                       onChange={(e) => check(e)}
                       name="above100"
