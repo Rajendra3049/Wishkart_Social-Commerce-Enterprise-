@@ -18,7 +18,7 @@ import {
   Stack,
   Checkbox as ChakraCheckBox,
 } from "@chakra-ui/react";
-import { Checkbox, Pagination } from "antd";
+import { Checkbox } from "antd";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import GridProduct from "../../components/allProducts/gridProduct.jsx";
@@ -29,26 +29,29 @@ const Men = () => {
   let { loading, error, data } = useSelector((store) => store.ProductsManager);
   let dispatch = useDispatch();
   let [filtCred, setFiltCred] = useState({});
-  // const [page, setPage] = useState(1)
-  // const [paginationData, setPaginationData] = useState([])
-
-  let menData = data.filter((el) => el.category == "Mens Top Were");
-
-  let filtData = menData.filter(
-    (el) =>
-      (filtCred.above100 ? el.discounted_price > 1000 : "") ||
-      (filtCred.a1000_500
-        ? el.discounted_price < 1000 && el.discounted_price > 500
-        : "") ||
-      (filtCred.a500_300
-        ? el.discounted_price < 500 && el.discounted_price > 300
-        : "") ||
-      (filtCred.below300 ? el.discounted_price < 300 : "")
-  );
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  let menData = data.filter((el) => el.category == "Jewellery");
+  // console.log("menData", menData);
+
+  let filtData = menData.filter(
+    (el) =>
+      ((filtCred.above100 ? el.discounted_price > 1000 : "") ||
+        (filtCred.a1000_500
+          ? el.discounted_price < 1000 && el.discounted_price > 500
+          : "") ||
+        (filtCred.a500_300
+          ? el.discounted_price < 500 && el.discounted_price > 300
+          : "") ||
+        (filtCred.below300 ? el.discounted_price < 300 : "")) &&
+        ((filtCred.ratingTop ? el.rating >= 4.5 : "") ||
+        (filtCred.ratingTop2 ? el.rating < 4.5 && el.rating >= 4 : "") ||
+        (filtCred.a4_3 ? el.rating < 4 && el.rating >= 3 : "") ||
+        (filtCred.a3_2 ? el.rating < 3 : "") ||
+        (filtCred.below2 ? el.rating <= 2 : ""))
+  );
 
   useEffect(() => {
     if (data.length == 0) {
@@ -56,7 +59,7 @@ const Men = () => {
     }
     // setpageData()                               // part of pagination
   }, []);
-  // console.log(filtData);
+  // console.log("filtData", filtData);
 
   const check = (e) => {
     // console.log(e.target)
@@ -148,49 +151,107 @@ const Men = () => {
           </Menu>
         </Show>
       </Box>
+
       <Flex>
-        <Hide below="md" width={"20%"}>
-          <Heading>Filter</Heading>
-          <Box>
-            <Accordion>
-              <AccordionItem>
-                <AccordionButton>
-                  <Box as="span" flex="1" fontSize={20} textAlign="left">
-                    {" "}
-                    Price
-                  </Box>
-                </AccordionButton>
-                {/* <AccordionPanel> */}
-                <Stack direction={"column"} ml="5%">
-                  <Checkbox
-                    onChange={(e) => check(e)}
-                    name="above100"
-                    size={"lg"}
-                    style={{ marginLeft: "5px" }}>
-                    Above 1000
-                  </Checkbox>
-                  <Checkbox
-                    onChange={(e) => check(e)}
-                    name="a1000_500"
-                    size={"lg"}>
-                    1000 - 500
-                  </Checkbox>
-                  <Checkbox
-                    onChange={(e) => check(e)}
-                    name="a500_300"
-                    size={"lg"}>
-                    500 - 300
-                  </Checkbox>
-                  <Checkbox
-                    onChange={(e) => check(e)}
-                    name="below300"
-                    size={"lg"}>
-                    Below 300
-                  </Checkbox>
-                </Stack>
-                {/* </AccordionPanel> */}
-              </AccordionItem>
-            </Accordion>
+        <Hide below="md">
+          <Box width={"20%"}>
+            <Heading color={"#f43397"} marginLeft="5%">
+              Filter
+            </Heading>
+            <Box>
+              <Accordion>
+                <AccordionItem>
+                  <AccordionButton>
+                    <Box
+                      as="span"
+                      flex="1"
+                      fontSize={20}
+                      textAlign="left"
+                      marginLeft={"7%"}>
+                      {" "}
+                      Price
+                    </Box>
+                  </AccordionButton>
+                  {/* <AccordionPanel> */}
+                  <Stack direction={"column"} ml="15%">
+                    <Checkbox
+                      onChange={(e) => check(e)}
+                      name="above100"
+                      size={"lg"}
+                      style={{ marginLeft: "5px" }}>
+                      Above 1000
+                    </Checkbox>
+                    <Checkbox
+                      onChange={(e) => check(e)}
+                      name="a1000_500"
+                      size={"lg"}>
+                      1000 - 500
+                    </Checkbox>
+                    <Checkbox
+                      onChange={(e) => check(e)}
+                      name="a500_300"
+                      size={"lg"}>
+                      500 - 300
+                    </Checkbox>
+                    <Checkbox
+                      onChange={(e) => check(e)}
+                      name="below300"
+                      size={"lg"}>
+                      Below 300
+                    </Checkbox>
+                  </Stack>
+                  {/* </AccordionPanel> */}
+                </AccordionItem>
+
+                <AccordionItem>
+                  <AccordionButton>
+                    <Box
+                      as="span"
+                      flex="1"
+                      fontSize={20}
+                      textAlign="left"
+                      marginLeft={"7%"}>
+                      {" "}
+                      Category
+                    </Box>
+                  </AccordionButton>
+                  {/* <AccordionPanel> */}
+                  <Stack direction={"column"} ml="15%">
+                    <Checkbox
+                      onChange={(e) => check(e)}
+                      name="ratingTop"
+                      size={"lg"}>
+                      Above 4.5
+                    </Checkbox>
+                    <Checkbox
+                      onChange={(e) => check(e)}
+                      name="ratingTop2"
+                      size={"lg"}>
+                      4.5 - 4
+                    </Checkbox>
+                    <Checkbox
+                      onChange={(e) => check(e)}
+                      name="a4_3"
+                      size={"lg"}>
+                      4 - 3
+                    </Checkbox>
+                    <Checkbox
+                      onChange={(e) => check(e)}
+                      name="a3-2"
+                      size={"lg"}>
+                      3 - 2
+                    </Checkbox>
+                    <Checkbox
+                      onChange={(e) => check(e)}
+                      name="below2"
+                      size={"lg"}>
+                      below 2
+                    </Checkbox>
+                  </Stack>
+                  {/* </AccordionPanel> */}
+                </AccordionItem>
+              </Accordion>
+            </Box>
           </Box>
         </Hide>
         <Box style={{ width: "90%", margin: "auto" }} border="0px solid red">

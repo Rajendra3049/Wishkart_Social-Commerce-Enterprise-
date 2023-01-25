@@ -47,24 +47,24 @@ const Women = () => {
           ? el.discounted_price < 500 && el.discounted_price > 300
           : "") ||
         (filtCred.below300 ? el.discounted_price < 300 : "")) &&
-      ((filtCred.ratingTop ? el.rating > 4.5 : "") ||
-        (filtCred.ratingTop2 ? el.rating < 4.5 && el.rating > 4 : "") ||
-        (filtCred.a4_3 ? el.rating < 4 && el.rating > 3 : "") ||
+        ((filtCred.ratingTop ? el.rating >= 4.5 : "") ||
+        (filtCred.ratingTop2 ? el.rating < 4.5 && el.rating >= 4 : "") ||
+        (filtCred.a4_3 ? el.rating < 4 && el.rating >= 3 : "") ||
         (filtCred.a3_2 ? el.rating < 3 : "") ||
-        (filtCred.below2 ? el.rating < 2 : ""))
+        (filtCred.below2 ? el.rating <= 2 : ""))
   );
   useEffect(() => {
     if (data.length == 0) {
       getProducts(dispatch);
     }
   }, []);
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-  // console.log(filtData);
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // }, []);
+  console.log(filtData);
 
   const check = (e) => {
-    console.log(e.target);
+    // console.log(e.target);
     const { name, checked } = e.target;
     setFiltCred({
       ...filtCred,
@@ -267,3 +267,7 @@ const Women = () => {
 };
 
 export default Women;
+
+
+// Mens Top Were
+// menData
