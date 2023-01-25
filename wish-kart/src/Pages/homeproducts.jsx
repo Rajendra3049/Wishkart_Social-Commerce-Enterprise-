@@ -3,6 +3,7 @@ import { data } from "../Pages/data";
 import { AiFillStar } from "react-icons/ai";
 import { FaStar } from "react-icons/fa";
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function HomeProducts({ showData, currentPage }) {
   React.useEffect(() => {
@@ -44,6 +45,7 @@ export default function HomeProducts({ showData, currentPage }) {
                 src={el.image}
                 alt=""
               />
+
               <h3
                 style={{
                   fontSize: "14px",
