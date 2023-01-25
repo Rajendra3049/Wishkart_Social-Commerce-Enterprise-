@@ -14,8 +14,9 @@ const SingleProduct = () => {
   const [loading, setLoading] = React.useState(false);
   const [data, setData] = useState([]);
   const [productDetails, setproductDetails] = useState({});
-  const [present, setPresent] = React.useState(false);
+  const [mainImage, setMainImage] = React.useState("");
 
+  // console.log("mainImage", mainImage);
   // redux start
   let { user, isAuth } = useSelector((store) => store.UserManager);
   let dispatch = useDispatch();
@@ -42,9 +43,8 @@ const SingleProduct = () => {
       .get("https://meesho-backend-3037.onrender.com/products")
       .then(({ data }) => {
         let product = data.filter((elem) => elem.id == id)[0];
-
         setproductDetails(product);
-
+        setMainImage(product.images[0]);
         setLoading(true);
       })
       .catch((err) => alert("Someting went wrong"));
@@ -83,6 +83,9 @@ const SingleProduct = () => {
                 {productDetails.images.map((el, i) => {
                   return (
                     <img
+                      onClick={() => {
+                        setMainImage(el);
+                      }}
                       key={i}
                       style={{
                         width: "60%",
@@ -115,7 +118,7 @@ const SingleProduct = () => {
                         boxShadow:
                           "rgba(1, 0.15, 0.15, 0.15) 1.95px 1.95px 2.6px",
                       }}
-                      src={productDetails.images[0]}
+                      src={mainImage}
                       alt=""
                     />
                   </div>
@@ -145,7 +148,7 @@ const SingleProduct = () => {
                         style={{
                           color: "white",
                         }}></p>{" "}
-                      <AddToCartNotify present={present} />
+                      <AddToCartNotify />
                     </button>
                   </div>
                 </Box>
@@ -166,6 +169,9 @@ const SingleProduct = () => {
                       productDetails.images.map((image, i) => (
                         <>
                           <img
+                            onClick={() => {
+                              setMainImage(image);
+                            }}
                             width={"20%"}
                             key={i}
                             style={{
@@ -222,7 +228,6 @@ const SingleProduct = () => {
                     style={{
                       color: "white",
                       fontWeight: "bold",
-
                       borderRadius: "20px",
                       backgroundColor: "#038d63",
                       display: "flex",

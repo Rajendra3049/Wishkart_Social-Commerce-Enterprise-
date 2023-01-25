@@ -17,15 +17,15 @@ export default function DeleteCard({ singleData }) {
 
   return (
     <>
-      <div
-        key={singleData.id}
-        style={{
-          boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
-          height: "70vh",
-          padding: "4%",
-          cursor: "pointer",
-        }}>
-        <Link to={`/SingleProduct/${singleData.id}`}>
+      <Link to={`/SingleProduct/${singleData.id}`}>
+        <div
+          key={singleData.id}
+          style={{
+            boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
+            height: "70vh",
+            padding: "4%",
+            cursor: "pointer",
+          }}>
           <img
             style={{
               //   width: "50%",
@@ -37,52 +37,45 @@ export default function DeleteCard({ singleData }) {
             src={singleData.images[0]}
             alt=""
           />
-        </Link>
-        <h3
-          style={{
-            fontSize: "1.3rem",
-            minHeight: "3.9rem",
-            marginTop: "2%",
-            color: "grey",
-          }}>
-          {singleData.title}
-        </h3>
-        <h1
-          style={{
-            fontSize: "1.8rem",
-            fontWeight: "bold",
-          }}>
-          ₹{singleData.discounted_price}{" "}
-          <span
-            style={{
-              color: "grey",
-              fontSize: "1.5rem",
-            }}>
-            onwards
-          </span>
-        </h1>
 
-        <div
-          style={{
-            border: "0px solid red",
-            textAlign: "center",
-            marginTop: "1rem",
-          }}>
-          <button
-            className={`${btnStyle.btn} ${btnStyle.custom_btn}`}
-            onClick={HandleDelete}>
-            <RemoveProductNotify />
-          </button>
+          <h3
+            style={{
+              fontSize: "1.3rem",
+              minHeight: "3.9rem",
+              marginTop: "2%",
+              color: "grey",
+            }}>
+            {singleData.title}
+          </h3>
+          <h1
+            style={{
+              fontSize: "1.8rem",
+              fontWeight: "bold",
+            }}>
+            ₹{singleData.discounted_price}{" "}
+            <span
+              style={{
+                color: "grey",
+                fontSize: "1.5rem",
+              }}>
+              onwards
+            </span>
+          </h1>
+
+          <div
+            style={{
+              border: "0px solid red",
+              textAlign: "center",
+              marginTop: "1rem",
+            }}>
+            <button
+              className={`${btnStyle.btn} ${btnStyle.custom_btn}`}
+              onClick={HandleDelete}>
+              <RemoveProductNotify />
+            </button>
+          </div>
         </div>
-      </div>
+      </Link>
     </>
   );
 }
-
-// {
-//   border: "1px solid black",
-//   textAlign: "center",
-//   width: "80%",
-//   fontSize: "18px",
-//   padding: "0.5rem 0.5rem",
-// }

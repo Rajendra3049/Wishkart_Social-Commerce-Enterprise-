@@ -1,5 +1,6 @@
 import React from "react";
 import { FaStar } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export const SingleCard = ({ props }) => {
   React.useEffect(() => {
@@ -15,16 +16,18 @@ export const SingleCard = ({ props }) => {
         padding: "4%",
         cursor: "pointer",
       }}>
-      <img
-        style={{
-          //   width: "50%",
-          height: "70%",
-          display: "block",
-          margin: "auto",
-        }}
-        src={props.images[0]}
-        alt=""
-      />
+      <Link to={`/SingleProduct/${props.id}`}>
+        <img
+          style={{
+            //   width: "50%",
+            height: "70%",
+            display: "block",
+            margin: "auto",
+          }}
+          src={props.images[0]}
+          alt=""
+        />
+      </Link>
       <h3
         style={{
           fontSize: "medium",
