@@ -19,14 +19,14 @@ export default function OrderDetails({ text, data }) {
   return (
     <Popover isLazy>
       <PopoverTrigger>
-        <Button background={"none"} fontSize={"1.5rem"}>
+        <Button background={"none"} fontSize={["1rem", "1rem", "1.8rem"]}>
           {text}
         </Button>
       </PopoverTrigger>
       <PopoverContent
-        width={"50rem"}
+        width={["36rem", "36rem", "50rem"]}
         minHeight={"20rem"}
-        fontSize={"1.6rem"}
+        fontSize={["1.3rem", "1.3rem", "1.6rem"]}
         padding={"1.5rem"}
         textAlign={"left"}>
         {data.map((e) => (

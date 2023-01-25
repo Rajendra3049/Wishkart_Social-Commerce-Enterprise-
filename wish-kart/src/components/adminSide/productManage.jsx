@@ -4,21 +4,19 @@ import { useDispatch, useSelector } from "react-redux";
 
 import btnStyle from "../../styles/removeBtn.module.css";
 import Pagination from "../pagination";
+import Loader from "../Loader";
 
 export default function ProductManage() {
+  const [loading, setLoading] = React.useState(true);
+
   const [pages, setPages] = React.useState([]);
   const [currentPage, setCurrentPage] = React.useState(1);
 
-  const [productData, setProductData] = React.useState([]);
   let { data } = useSelector((store) => store.ProductsManager);
   let dispatch = useDispatch();
 
   React.useEffect(() => {
-    let newData = [];
-    for (let i = currentPage - 1; i < currentPage + 11; i++) {
-      newData.push(data[i]);
-    }
-    setProductData(newData);
+    setLoading(false);
   }, [currentPage, data]);
 
   React.useEffect(() => {
@@ -28,24 +26,23 @@ export default function ProductManage() {
     }
     setPages(newPages);
   }, []);
-
-  // React.useEffect(() => {
-  //   setProductData(data);
-  // }, [data]);
-  return (
-    <>
-      {" "}
-      <div className={btnStyle.grid}>
-        {productData &&
-          productData.map((e) => <DeleteCard key={e.id} singleData={e} />)}
-      </div>
-      <div>
-        <Pagination
-          pages={pages}
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-        />
-      </div>
-    </>
-  );
+  if (loading) {
+    return <Loader />;
+  } else {
+    return (
+      <>
+        {" "}
+        <div className={btnStyle.grid}>
+          {data && data.map((e) => <DeleteCard key={e.id} singleData={e} />)}
+        </div>
+        <div>
+          <Pagination
+            pages={pages}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+          />
+        </div>
+      </>
+    );
+  }
 }

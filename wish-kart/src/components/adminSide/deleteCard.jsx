@@ -18,6 +18,7 @@ export default function DeleteCard({ singleData }) {
   return (
     <>
       <div
+        key={singleData.id}
         style={{
           boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
           height: "70vh",

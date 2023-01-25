@@ -46,16 +46,16 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 440px) {
   html {
     font-size: 45%;
   }
   .main {
     border: 0px solid red;
     text-align: left;
-    width: 80%;
+    width: 100%;
     margin: auto;
-    margin-top: 22rem;
+    margin-top: 11rem;
     font-size: 1.5rem;
   }
   .list {

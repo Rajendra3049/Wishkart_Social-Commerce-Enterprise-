@@ -57,7 +57,6 @@ export default function AddProduct() {
     <div className={styles.root}>
       <form>
         <div className={styles.main}>
-          {/* <h1>Add New Product</h1> */}
           <hr />
           <div className={styles.rowParent}>
             <h2>General Info About Product</h2>

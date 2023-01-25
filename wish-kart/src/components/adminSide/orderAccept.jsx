@@ -40,7 +40,7 @@ export default function OrderAccept() {
   });
   return (
     <Box
-      width={"80%"}
+      width={["100%", "100%", "80%"]}
       margin={"auto"}
       border={"1px solid #ccc"}
       mt={"4rem"}
@@ -53,53 +53,60 @@ export default function OrderAccept() {
               <Th
                 w={"25%"}
                 textAlign={"center"}
-                fontSize={["1rem", "1.5rem", "1.8rem"]}>
+                fontSize={["1rem", "1rem", "1.8rem"]}>
                 Date
               </Th>
               <Th
                 w={"25%"}
                 textAlign={"center"}
-                fontSize={["1rem", "1.5rem", "1.8rem"]}>
+                fontSize={["1rem", "1rem", "1.8rem"]}>
                 User
               </Th>
               <Th
                 w={"25%"}
                 textAlign={"center"}
-                fontSize={["1rem", "1.5rem", "1.8rem"]}>
+                fontSize={["1rem", "1rem", "1.8rem"]}>
                 Orders
               </Th>
               <Th
                 w={"25%"}
                 textAlign={"center"}
-                fontSize={["1rem", "1.5rem", "1.8rem"]}>
+                fontSize={["1rem", "1rem", "1.8rem"]}>
                 Status
               </Th>
             </Tr>
           </Thead>
           <Tbody>
-            {allUsers.map((user) => {
-              if (user.order.length > 0) {
-                return (
-                  <Tr key={user.mobile_no}>
-                    <Td w={"25%"} textAlign={"center"}>
-                      {date}
-                    </Td>
-                    <Td w={"25%"} textAlign={"center"}>
-                      {user.mobile_no}
-                    </Td>
-                    <Td w={"25%"} textAlign={"center"}>
-                      <OrderDetails
-                        text={user.order.length}
-                        data={user.order}
-                      />
-                    </Td>
-                    <Td>
-                      <AcceptOrderButton />
-                    </Td>
-                  </Tr>
-                );
-              }
-            })}
+            {allUsers &&
+              allUsers.map((user) => {
+                if (user.order.length > 0) {
+                  return (
+                    <Tr key={user.mobile_no}>
+                      <Td
+                        fontSize={["1rem", "1rem", "1.8rem"]}
+                        textAlign={"center"}>
+                        {date}
+                      </Td>
+                      <Td
+                        fontSize={["1rem", "1rem", "1.8rem"]}
+                        textAlign={"center"}>
+                        {user.mobile_no}
+                      </Td>
+                      <Td
+                        fontSize={["1rem", "1rem", "1.8rem"]}
+                        textAlign={"center"}>
+                        <OrderDetails
+                          text={user.order.length}
+                          data={user.order}
+                        />
+                      </Td>
+                      <Td fontSize={["1rem", "1rem", "1.8rem"]}>
+                        <AcceptOrderButton />
+                      </Td>
+                    </Tr>
+                  );
+                }
+              })}
           </Tbody>
         </Table>
       </TableContainer>

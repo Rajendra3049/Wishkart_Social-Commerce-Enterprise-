@@ -64,9 +64,9 @@ const Cart = () => {
           // borderWidth={'1px'}
           w={{ base: "95%", md: "72%", lg: "72%" }}
           gap={"10px"}
-          margin={"180px auto"}
           display={{ base: "row", md: "row", lg: "flex" }}
-          alignItems="center">
+          alignItems="center"
+          marginTop={["100px", "180px", "180px"]}>
           <Grid>
             {cartData &&
               cartData.map((e, i) => (
@@ -93,24 +93,28 @@ const Cart = () => {
                       padding={"10px"}
                       src={e.images[0]}
                     />
-                    <Box>
+                    <Box paddingLeft={["1rem", "1rem", "0rem"]}>
                       <Box
-                        fontSize={"20px"}
+                        fontSize={["18px", "18px", "20px"]}
                         display="flex"
                         alignItems="center"
-                        justifyContent={"space-between"}
-                        // gap={{ base: "0", md: "90px", lg: "200px" }}
-                      >
+                        justifyContent={"space-between"}>
                         <Text fontWeight={"600"}>{e.title}</Text>
                         <Text color={"pink.400"} fontWeight={"600"}>
                           <CartDrawer qty={qty} setQty={setQty} />
                         </Text>
                       </Box>
-                      <Flex gap={"20px"} fontWeight={"550"} fontSize="16px">
+                      <Flex
+                        gap={"20px"}
+                        fontWeight={"550"}
+                        fontSize={["13px", "13px", "16px"]}>
                         <Text>Size: {e.sizes[0]}</Text>
                         <Text>Qty: {qty}</Text>
                       </Flex>
-                      <Text m={"10px auto"} fontWeight={"500"} fontSize="15px">
+                      <Text
+                        m={"10px auto"}
+                        fontWeight={"500"}
+                        fontSize={["13px", "13px", "15px"]}>
                         {"₹"} {e.discounted_price}
                       </Text>
                       <Button
@@ -118,11 +122,12 @@ const Cart = () => {
                         gap={"10px"}
                         fontWeight={"600"}
                         bg={"none"}
-                        fontSize="16px"
+                        fontSize={["14px", "14px", "16px"]}
                         _hover={{ bg: "none" }}
                         onClick={() => {
                           handleRemove(e.id);
-                        }}>
+                        }}
+                        marginBottom={["20px", "20px", "0px"]}>
                         <i class="fa-solid fa-xmark"></i>
                         <RemoveFromCartNotify />
                       </Button>
@@ -143,17 +148,22 @@ const Cart = () => {
               ))}
           </Grid>
           <div className="cart-second-section">
-            <Box borderLeft={"2px solid rgb(148, 137, 137)"} padding={"10px"}>
-              <Text fontWeight={"600"} fontSize={"20px"}>
+            <Box
+              borderLeft={"2px solid rgb(148, 137, 137)"}
+              padding={"10px"}
+              marginTop={"2rem"}>
+              <Text fontWeight={"600"} fontSize={["16px", "16px", "20px"]}>
                 Price Details{" "}
               </Text>
               <Flex
                 justifyContent={"space-between"}
                 fontWeight={"600"}
                 color={"gray"}
-                m={"10px auto"}>
-                <Text>Total Product Price</Text>
-                <Text>
+                m={"5px auto"}>
+                <Text fontSize={["10px", "10px", "14px"]}>
+                  Total Product Price
+                </Text>
+                <Text fontSize={["10px", "10px", "14px"]}>
                   {"₹"}
                   {price * qty}
                 </Text>
@@ -161,7 +171,7 @@ const Cart = () => {
               <hr />
               <Flex
                 justifyContent={"space-between"}
-                fontSize={"17px"}
+                fontSize={["16px", "16px", "20px"]}
                 fontWeight={"600"}
                 m={"10px auto"}>
                 <Text>Order Total</Text>

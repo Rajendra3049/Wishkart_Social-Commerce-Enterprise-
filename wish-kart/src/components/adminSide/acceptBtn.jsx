@@ -5,6 +5,7 @@ export default function AcceptOrderButton() {
   return (
     <>
       <Box
+        fontSize={["1rem", "1rem", "1.8rem"]}
         w={"25%"}
         textAlign={"center"}
         fontWeight={"600"}

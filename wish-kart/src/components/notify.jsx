@@ -10,6 +10,7 @@ import {
   ModalBody,
   ModalCloseButton,
   useDisclosure,
+  Box,
 } from "@chakra-ui/react";
 import { Navigate, useNavigate } from "react-router-dom";
 
@@ -71,6 +72,8 @@ export function RemoveFromCartNotify() {
   const id = "test-toast";
   return (
     <Text
+      fontSize={["14px", "14px", "16px"]}
+      marginLeft={"-0.5rem"}
       onClick={() => {
         if (!toast.isActive(id)) {
           toast({
@@ -122,30 +125,37 @@ export function CheckOutNotify() {
   const navigate = useNavigate();
 
   return (
-    <>
+    <Box>
       <Text onClick={onOpen}>Place Your Order</Text>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Order Placed Successfully</ModalHeader>
+        <ModalContent marginTop={"15rem"}>
+          <ModalHeader fontSize={"16px"}>Order Placed Successfully</ModalHeader>
           <ModalCloseButton />
-          <ModalBody>Transaction id:{`10002002537595`}</ModalBody>
+          <ModalBody fontSize={"14px"}>
+            Transaction id:{`10002002537595`}
+          </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={onClose}>
+            <Button
+              colorScheme="blue"
+              mr={3}
+              onClick={onClose}
+              fontSize={"12px"}>
               Close
             </Button>
             <Button
               variant="ghost"
               onClick={() => {
                 navigate("/");
-              }}>
+              }}
+              fontSize={"12px"}>
               Homepage
             </Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
-    </>
+    </Box>
   );
 }
