@@ -8,6 +8,7 @@ import { AddToCart } from "../redux/user/user.action";
 import { Navigate } from "react-router-dom";
 import { AddToCartNotify } from "../components/notify";
 import Loader from "../components/Loader";
+import { Box, Flex, Text } from "@chakra-ui/react";
 
 const SingleProduct = () => {
   const [loading, setLoading] = React.useState(false);
@@ -65,135 +66,124 @@ const SingleProduct = () => {
         <div
           key={productDetails.id}
           style={{
-            // border: "1px solid red",
             padding: "3%",
             marginTop: "8%",
           }}>
-          {/* inner Container */}
-          <div
-            style={{
-              display: "Flex",
-              //   border: "1px solid grey",
-            }}>
-            {/* 10% width Image Container */}
-            <div
-              style={{
-                width: "15%",
-                // border: "1px solid blue",
-                padding: "1%",
-              }}>
-              {productDetails.images.map((el, i) => {
-                return (
-                  <img
-                    key={i}
-                    style={{
-                      width: "80%",
-                      height: "90px",
-                      border: "1px solid #fde9f2",
-                      margin: "10%",
-                      padding: "2%",
-                      boxShadow: "rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px",
-                    }}
-                    src={el}
-                    alt=""
-                  />
-                );
-              })}
-            </div>
-            <div>
+          {/* upper main Container */}
+          <Box
+            w={"100%"}
+            display={["grid", "grid", "flex"]}
+            marginTop={["20px", "20px", "20px"]}
+            padding={"10px"}>
+            {/* 1st left side box  */}
+            <Flex w={["100%", "100%", "60%"]}>
+              <Box
+                width={["25%", "25%", "25%"]}
+                display="grid"
+                justifyContent={"space-around"}>
+                {productDetails.images.map((el, i) => {
+                  return (
+                    <img
+                      key={i}
+                      style={{
+                        width: "50%",
+                        border: "1px solid #fde9f2",
+                        boxShadow: "rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px",
+                        margin: "auto",
+                      }}
+                      src={el}
+                      alt=""
+                    />
+                  );
+                })}
+              </Box>
               {/* Middle Div */}
-              <div
-                style={{
-                  width: "80%",
-                  //   border: "1px solid purple",
-                  display: "block",
-                  margin: "auto",
-                }}>
-                <img
-                  style={{
-                    display: "block",
-                    margin: "auto",
-                    marginTop: "2%",
-                    width: "70%",
-                    boxShadow: "rgba(1, 0.15, 0.15, 0.15) 1.95px 1.95px 2.6px",
-                  }}
-                  src={productDetails.images[0]}
-                  alt=""
-                />
-              </div>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-evenly",
-                  width: "80%",
-                  marginTop: "7%",
-                }}>
-                <button
-                  disabled={present}
-                  style={{
-                    padding: "2% 8%",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    fontSize: "20px",
-                    border: "1px solid black",
-                    fontWeight: "bold",
-                    borderRadius: "7px",
-                    width: "90%",
-                  }}
-                  onClick={HandleAddToCart}>
-                  <FaShoppingCart />
-                  <p
+              <Box
+                width={["80%", "80%", "70%"]}
+                padding={["10px", "10px", "10px"]}>
+                {/* mid top box */}
+                <Box>
+                  <div
                     style={{
-                      color: "white",
-                    }}></p>{" "}
-                  <AddToCartNotify present={present} />
-                </button>
-              </div>
-              <div>
-                <h3
-                  style={{
-                    fontSize: "20px",
-                    fontWeight: "bold",
-                    marginTop: "10%",
-                    marginLeft: "2%",
-                  }}>
-                  Similar Products
-                </h3>
-                <div
-                  style={{
-                    // border: "1px solid aqua",
-                    display: "flex",
-                    gap: "30px",
-                    marginTop: "2%",
-                  }}>
-                  {productDetails &&
-                    productDetails.images.map((image, i) => (
-                      <>
-                        <img
-                          key={i}
-                          style={{
-                            width: "14%",
-                            padding: "2%",
-                            border: "1px solid #fde9f2",
-                            boxShadow:
-                              "rgba(1, 0.15, 0.15, 0.15) 1.95px 1.95px 2.6px",
-                          }}
-                          src={image}
-                          alt=""
-                        />
-                      </>
-                    ))}
-                </div>
-              </div>
-            </div>
+                      margin: "auto",
+                    }}>
+                    <img
+                      style={{
+                        margin: "auto",
+                        width: "80%",
+                        boxShadow:
+                          "rgba(1, 0.15, 0.15, 0.15) 1.95px 1.95px 2.6px",
+                      }}
+                      src={productDetails.images[0]}
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-evenly",
+                      width: "80%",
+                      margin: "auto",
+                      marginTop: "7%",
+                    }}>
+                    <button
+                      style={{
+                        padding: "2% 8%",
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        fontSize: "20px",
+                        border: "1px solid black",
+                        fontWeight: "bold",
+                        borderRadius: "7px",
+                        width: "90%",
+                      }}
+                      onClick={HandleAddToCart}>
+                      <FaShoppingCart />
+                      <p
+                        style={{
+                          color: "white",
+                        }}></p>{" "}
+                      <AddToCartNotify present={present} />
+                    </button>
+                  </div>
+                </Box>
+                {/* mid bottom box */}
+                <Box
+                  width={["80%", "80%", "70%"]}
+                  padding={["10px", "10px", "10px"]}
+                  mt={["10px", "10px", "10px"]}>
+                  <Text fontSize={["16px", "16px", "20px"]} fontWeight={"600"}>
+                    Similar Products
+                  </Text>
+                  <Box
+                    display="flex"
+                    style={{
+                      gap: "30px",
+                    }}>
+                    {productDetails &&
+                      productDetails.images.map((image, i) => (
+                        <>
+                          <img
+                            width={"20%"}
+                            key={i}
+                            style={{
+                              padding: "2%",
+                              border: "1px solid #fde9f2",
+                              boxShadow:
+                                "rgba(1, 0.15, 0.15, 0.15) 1.95px 1.95px 2.6px",
+                            }}
+                            src={image}
+                            alt=""
+                          />
+                        </>
+                      ))}
+                  </Box>
+                </Box>
+              </Box>
+            </Flex>
             {/* Last Div / Left Div */}
-            <div
-              style={{
-                width: "120%",
-                // border: "1px solid yellow",
-                padding: "1%",
-              }}>
+            <Box w={["100%", "100%", "40%"]}>
               <div
                 style={{
                   border: " ",
@@ -201,62 +191,58 @@ const SingleProduct = () => {
                   margin: "auto",
                   padding: "2%",
                   boxShadow: "rgba(1, 0.15, 0.15, 0.15) 1.95px 1.95px 2.6px",
-                  //   marginTop: "2%",
                   marginBottom: "2%",
                 }}>
-                <p
+                <Text
+                  fontSize={["20px", "20px", "25px"]}
                   style={{
-                    fontSize: "25px",
                     fontWeight: "bold",
                     color: "grey",
                     marginTop: "1%",
                   }}>
                   {productDetails.title}
-                </p>
-                <p
+                </Text>
+                <Text
+                  fontSize={["25px", "25px", "35px"]}
                   style={{
-                    fontSize: "35px",
+                    fontWeight: "bold",
                     marginTop: "1%",
                   }}>
                   ₹{productDetails.discounted_price}
-                </p>
-                <div
+                </Text>
+                <Flex
+                  gap={["40px", "30px", "30px"]}
                   style={{
-                    display: "flex",
-                    gap: "30px",
                     marginTop: "2%",
                   }}>
-                  <h1
+                  <Text
+                    fontSize={["14px", "20px", "20px"]}
+                    padding={["1% 3%", "1% 3%", "1% 3%"]}
                     style={{
-                      backgroundColor: "green",
-                      padding: "5px 10px",
                       color: "white",
-                      fontSize: "large",
-                      borderRadius: "20px",
                       fontWeight: "bold",
+
+                      borderRadius: "20px",
+                      backgroundColor: "#038d63",
                       display: "flex",
                       alignItems: "center",
-                      justifyContent: "space-between",
+                      marginLeft: "10px",
+                      justifyContent: "space-evenly",
                     }}>
                     {productDetails.rating}
-                    <p
-                      style={{
-                        color: "green",
-                      }}>
-                      -
-                    </p>{" "}
-                    <FaStar fill="white" />
-                    {/* <StarIcon /> */}
-                    {/* <FontAwesomeIcon icon="fa-solid fa-star" /> */}
-                  </h1>
-                  <p
+                    <p style={{ color: "#038d63" }}>-</p>
+                    <FaStar />
+                  </Text>
+
+                  <Box
                     style={{
                       color: "grey",
                       fontSize: "large",
                     }}>
-                    10647 Ratings. 1651 Reviews
-                  </p>
-                </div>
+                    10647 Ratings. <br />
+                    1651 Reviews
+                  </Box>
+                </Flex>
                 <p
                   style={{
                     color: "grey",
@@ -277,11 +263,12 @@ const SingleProduct = () => {
                   padding: "2%",
                   marginTop: "5%",
                   boxShadow: "rgba(1, 0.15, 0.15, 0.15) 1.95px 1.95px 2.6px",
+                  marginBottom: "5px",
                 }}>
                 <p
                   style={{
                     fontSize: "25px",
-                    marginTop: "2%",
+                    marginTop: "1%",
                   }}>
                   Select Size
                 </p>
@@ -297,7 +284,7 @@ const SingleProduct = () => {
                         color: "#f43397",
                         backgroundColor: "#fde9f2",
                         border: "1px solid #f43397",
-                        marginBottom: "3%",
+                        margin: "5px",
                       }}>
                       {size}
                     </button>
@@ -315,14 +302,15 @@ const SingleProduct = () => {
                   marginBottom: "3%",
                   paddingBottom: "3%",
                 }}>
-                <h3
+                <Text
+                  fontSize={["20px", "20px", "25px"]}
+                  fontWeight="600"
                   style={{
-                    fontSize: "28px",
                     marginTop: "2%",
                     marginBottom: "3%",
                   }}>
                   Product Details
-                </h3>
+                </Text>
                 <p
                   style={{
                     color: "grey",
@@ -338,32 +326,30 @@ const SingleProduct = () => {
                   <br /> Country of Origin : India
                 </p>
               </div>
-            </div>
-          </div>
+            </Box>
+          </Box>
 
           {/* Suggestions <Div></Div> */}
-          <h1
-            style={{
-              fontSize: "large",
-              marginLeft: "3%",
-              marginBottom: "2%",
-              marginTop: "7%",
-            }}>
+          <Text
+            fontSize={["20px", "25px", "25px"]}
+            fontWeight="600"
+            margin={"4%"}>
             Suggested Products
-          </h1>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr",
-              gap: "2vh",
-              marginBottom: "3%",
-            }}>
+          </Text>
+          <Box
+            display={"grid"}
+            gridTemplateColumns={[
+              "repeat(1,1fr)",
+              "repeat(2,1fr)",
+              "repeat(5,1fr)",
+            ]}
+            gap={"20px"}>
             {data.map((p, i) => {
               if (i < 10) {
                 return <SingleCard key={i} props={p} />;
               }
             })}
-          </div>
+          </Box>
         </div>
       </>
     );

@@ -20,7 +20,6 @@ export const SingleCard = ({ props }) => {
           //   width: "50%",
           height: "70%",
           display: "block",
-
           margin: "auto",
         }}
         src={props.images[0]}
@@ -70,9 +69,8 @@ export const SingleCard = ({ props }) => {
             borderRadius: "20px",
             backgroundColor: "green",
             display: "flex",
-
             alignItems: "center",
-            fontSize: "large",
+            fontSize: "12px",
             justifyContent: "space-evenly",
           }}>
           {props.rating}
@@ -82,7 +80,7 @@ export const SingleCard = ({ props }) => {
         <h4
           style={{
             fontSize: "medium",
-            marginRight: "10%",
+            marginRight: "5%",
           }}>
           1541 Reviews
         </h4>

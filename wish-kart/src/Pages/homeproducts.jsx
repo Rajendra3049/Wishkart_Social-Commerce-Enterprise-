@@ -106,7 +106,6 @@ export default function HomeProducts({ showData, currentPage }) {
                   {el.rating}
                 </h4>
               </div>
-                        
             </Box>
           ))}
         {/* card end */}
