@@ -142,7 +142,6 @@ const SingleProduct = () => {
                         fontWeight: "bold",
                         borderRadius: "7px",
                         width: "90%",
-                        backgroundColor:"skyblue"
                       }}
                       onClick={HandleAddToCart}>
                       <FaShoppingCart />
