@@ -107,7 +107,8 @@ const SingleProduct = () => {
                 padding={["10px", "10px", "10px"]}>
                 {/* mid top box */}
                 <Box>
-                  <div
+                  <Box
+                    minH={["300px", "300px", "300px"]}
                     style={{
                       margin: "auto",
                     }}>
@@ -121,7 +122,7 @@ const SingleProduct = () => {
                       src={mainImage}
                       alt=""
                     />
-                  </div>
+                  </Box>
                   <div
                     style={{
                       display: "flex",
