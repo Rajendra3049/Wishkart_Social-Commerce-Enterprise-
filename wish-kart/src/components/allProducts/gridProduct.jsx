@@ -73,39 +73,6 @@ const GridProduct = ({ props }) => {
             </Heading>
           </Flex>
 
-          {/* <Flex
-          border={"1px solid grey"}
-          mt={"5px"}
-          borderRadius="50%"
-          width={"75px"}
-          height={"40px"}>
-          <Box
-            width="30px"
-            mt={"7px"}
-            ml={"10px"}
-            color={"gray"}
-            fontSize={"3xl"}
-            fontWeight={"bold"}>
-            {props.rating}
-          </Box>
-          <Box width="30%">
-            <Image
-              mt={"9px"}
-              ml={"3px"}
-              src={
-                props.rating >= 4.5
-                  ? star.green
-                  : props.rating >= 4
-                  ? star.lightGreen
-                  : props.rating >= 3
-                  ? star.orange
-                  : props.rating >= 2
-                  ? star.yellow
-                  : star.red
-              }
-            />
-          </Box>
-        </Flex> */}
           <Flex justifyContent={"space-between"} mt="5px">
             <Heading
               style={{

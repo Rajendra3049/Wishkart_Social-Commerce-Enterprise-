@@ -34,7 +34,6 @@ const Men = () => {
   }, []);
   //   console.log(data)
   let beautyHealth = data.filter((el) => el.category == "Bags and Footwear");
-  console.log(beautyHealth);
 
   let filtData = beautyHealth.filter(
     (el) =>

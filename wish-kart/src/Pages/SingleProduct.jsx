@@ -7,14 +7,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { AddToCart } from "../redux/user/user.action";
 import { Navigate } from "react-router-dom";
 import { AddToCartNotify } from "../components/notify";
+import Loader from "../components/Loader";
 
 const SingleProduct = () => {
   const [loading, setLoading] = React.useState(false);
   const [data, setData] = useState([]);
   const [productDetails, setproductDetails] = useState({});
-  React.useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  const [present, setPresent] = React.useState(false);
 
   // redux start
   let { user, isAuth } = useSelector((store) => store.UserManager);
@@ -23,7 +22,6 @@ const SingleProduct = () => {
 
   function HandleAddToCart() {
     console.log("Handle Add to Cart");
-    console.log("user", user);
     let newCartData = user.cart;
     newCartData.push(productDetails);
     let userId = user.id;
@@ -31,10 +29,7 @@ const SingleProduct = () => {
   }
 
   const { id } = useParams();
-  useEffect(() => {
-    getProductDetails();
-    getData();
-  }, []);
+
   const getData = async () => {
     let res = await fetch("https://meesho-backend-3037.onrender.com/products");
     let d = await res.json();
@@ -53,6 +48,11 @@ const SingleProduct = () => {
       })
       .catch((err) => alert("Someting went wrong"));
   };
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    getProductDetails();
+    getData();
+  }, [user]);
 
   if (isAuth == false) {
     console.log("user not authenticated");
@@ -63,6 +63,7 @@ const SingleProduct = () => {
       <>
         {" "}
         <div
+          key={productDetails.id}
           style={{
             // border: "1px solid red",
             padding: "3%",
@@ -128,6 +129,7 @@ const SingleProduct = () => {
                   marginTop: "7%",
                 }}>
                 <button
+                  disabled={present}
                   style={{
                     padding: "2% 8%",
                     display: "flex",
@@ -145,7 +147,7 @@ const SingleProduct = () => {
                     style={{
                       color: "white",
                     }}></p>{" "}
-                  <AddToCartNotify />
+                  <AddToCartNotify present={present} />
                 </button>
               </div>
               <div>
@@ -366,7 +368,7 @@ const SingleProduct = () => {
       </>
     );
   } else {
-    return "No data";
+    return <Loader />;
   }
 };
 

@@ -33,7 +33,6 @@ const Men = () => {
   // const [paginationData, setPaginationData] = useState([])
 
   let menData = data.filter((el) => el.category == "Mens Top Were");
-  console.log(menData);
 
   let filtData = menData.filter(
     (el) =>

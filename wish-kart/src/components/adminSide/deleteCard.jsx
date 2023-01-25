@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import React from "react";
 import btnStyle from "../../styles/removeBtn.module.css";
 import { RemoveProductNotify } from "../notify";
+import { Link } from "react-router-dom";
 
 export default function DeleteCard({ singleData }) {
   // redux start
@@ -23,17 +24,19 @@ export default function DeleteCard({ singleData }) {
           padding: "4%",
           cursor: "pointer",
         }}>
-        <img
-          style={{
-            //   width: "50%",
-            height: "70%",
-            display: "block",
-            margin: "auto",
-            marginBottom: "1rem",
-          }}
-          src={singleData.images[0]}
-          alt=""
-        />
+        <Link to={`/SingleProduct/${singleData.id}`}>
+          <img
+            style={{
+              //   width: "50%",
+              height: "70%",
+              display: "block",
+              margin: "auto",
+              marginBottom: "1rem",
+            }}
+            src={singleData.images[0]}
+            alt=""
+          />
+        </Link>
         <h3
           style={{
             fontSize: "1.3rem",

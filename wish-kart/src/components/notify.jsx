@@ -40,7 +40,7 @@ export function AddProductNotify() {
   );
 }
 
-export function AddToCartNotify() {
+export function AddToCartNotify({ present }) {
   const toast = useToast();
   const id = "test-toast";
   return (
@@ -61,7 +61,7 @@ export function AddToCartNotify() {
           });
         }
       }}>
-      Add to Cart
+      {present ? "Already Added" : "Add to Cart"}
     </Text>
   );
 }

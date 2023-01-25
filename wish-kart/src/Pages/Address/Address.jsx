@@ -51,7 +51,6 @@ function Address() {
     setPrice(newPrice);
     setCartData(user.cart);
   }, [cartData, user]);
-  console.log(price);
 
   const handlepayment = () => {
     let userId = user.id;

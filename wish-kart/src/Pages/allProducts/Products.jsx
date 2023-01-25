@@ -61,7 +61,7 @@ const Products = () => {
   const setpageData = () => {
     setPaginationData([]);
     for (let i = page * 10 - 10; i <= page * 9; i++) {
-      console.log(data);
+      // console.log(data);
       if ((filtData.length == 0 ? data : filtData)[i]) {
         setPaginationData((prePag) => [
           ...prePag,

@@ -10,14 +10,9 @@ import axios from "axios";
 export const getProducts = async (dispatch) => {
   dispatch({ type: GET_PRODUCTS_LOADING });
   try {
-
-    let res = await axios.get("https://meesho-backend-3037.onrender.com/products");
-
-
-  
-
-  
-
+    let res = await axios.get(
+      "https://meesho-backend-3037.onrender.com/products"
+    );
 
     // console.log(res.data)
     dispatch({ type: GET_PRODUCTS_SUCCESS, payload: res.data });
@@ -36,7 +31,7 @@ export const addNewProduct = (state) => async (dispatch) => {
   });
   let data = await res.json();
   dispatch({ type: ADD_NEW_PRODUCT, payload: data });
-  console.log("new_data-productAction line28", data);
+  // console.log("new_data-productAction line28", data);
 };
 
 export const removeProduct = (id) => async (dispatch) => {

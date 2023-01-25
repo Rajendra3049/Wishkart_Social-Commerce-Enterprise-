@@ -11,7 +11,9 @@ import {
 
 import axios from "axios";
 
+// get users
 export const Get_Users_Data = (input) => async (dispatch) => {
+  dispatch({ type: USER_LOADING });
   let user = "";
   let found = false;
 
@@ -31,7 +33,6 @@ export const Get_Users_Data = (input) => async (dispatch) => {
 
         dispatch({ type: USER_LOGIN, payload: user });
       } else {
-        console.log("new User");
         let newUser = {
           id: input,
           mobile_no: input,
@@ -40,6 +41,7 @@ export const Get_Users_Data = (input) => async (dispatch) => {
           cart: [],
           order: [],
         };
+        console.log("new User", newUser);
         CreateNewUser(newUser);
       }
     })
@@ -48,6 +50,7 @@ export const Get_Users_Data = (input) => async (dispatch) => {
       console.log(error);
       dispatch({ type: USER_ERROR });
     });
+
   async function CreateNewUser(newUser) {
     let res = await fetch("https://meesho-backend-3037.onrender.com/users", {
       method: "POST",
@@ -61,8 +64,9 @@ export const Get_Users_Data = (input) => async (dispatch) => {
   }
 };
 
+// add into cart
 export const AddToCart = (cart, id) => async (dispatch) => {
-  console.log(cart, id);
+  // console.log(cart, id);
   let res = await fetch(
     `https://meesho-backend-3037.onrender.com/users/${id}`,
     {
@@ -74,15 +78,11 @@ export const AddToCart = (cart, id) => async (dispatch) => {
     }
   );
   let data = await res.json();
-  console.log("added data", data);
-  if (data.keys(data).length === 0) {
-    console.log("obj");
-  } else {
-    console.log("array");
-    dispatch({ type: USER_ADD_TO_CART, payload: data });
-  }
+  // console.log("after Added", data);
+  dispatch({ type: USER_ADD_TO_CART, payload: data.cart });
 };
 
+// delete from cart
 export const DeleteFromCart = (cart, id) => async (dispatch) => {
   console.log(cart, id);
   let res = await fetch(
@@ -100,6 +100,7 @@ export const DeleteFromCart = (cart, id) => async (dispatch) => {
   dispatch({ type: USER_DELETE_FROM_CART, payload: data });
 };
 
+// add address
 export const AddAddress = (address, id) => async (dispatch) => {
   console.log("Address in reducer", address, id);
   let res = await fetch(
@@ -113,7 +114,7 @@ export const AddAddress = (address, id) => async (dispatch) => {
     }
   );
   let data = await res.json();
-  console.log("Address", data);
+  // console.log("Address", data);
 
   dispatch({ type: USER_ADD_NEW_ADDRESS, payload: data });
 };

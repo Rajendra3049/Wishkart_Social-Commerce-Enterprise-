@@ -9,9 +9,6 @@ import { Navigate, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 const Cart = () => {
-  React.useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
   const [qty, setQty] = React.useState(1);
   const [price, setPrice] = React.useState(0);
   const [cartData, setCartData] = React.useState([]);
@@ -22,13 +19,16 @@ const Cart = () => {
   // redux end
 
   React.useEffect(() => {
+    window.scrollTo(0, 0);
     console.log("cartData", cartData);
-    let newPrice = 0;
-    for (let i = 0; i < cartData.length; i++) {
-      newPrice = newPrice + cartData[i].discounted_price;
+    if (user.cart.length > 0) {
+      let newPrice = 0;
+      for (let i = 0; i < cartData.length; i++) {
+        newPrice = newPrice + cartData[i].discounted_price;
+      }
+      setPrice(newPrice);
+      setCartData(user.cart);
     }
-    setPrice(newPrice);
-    setCartData(user.cart);
   }, [user, cartData]);
 
   const navigate = useNavigate();
@@ -47,7 +47,7 @@ const Cart = () => {
         updatedCart.push(cartData[i]);
       }
     }
-    console.log("updated", updatedCart);
+    // console.log("updated", updatedCart);
     dispatch(DeleteFromCart(updatedCart, userId));
   }
 
@@ -55,10 +55,11 @@ const Cart = () => {
     console.log("user not authenticated");
     return <Navigate to="/signup" />;
   } else {
+    if (user.cart.length == 0) {
+      return <Navigate to="/cartempty" />;
+    }
     return (
       <>
-        {/* <Navbar2 /> */}
-        {/* <div className="cart-section"> */}
         <Box
           // borderWidth={'1px'}
           w={{ base: "95%", md: "72%", lg: "72%" }}
@@ -69,7 +70,7 @@ const Cart = () => {
           <Grid>
             {cartData &&
               cartData.map((e, i) => (
-                <div className="cart-first-section">
+                <div key={e.id} className="cart-first-section">
                   <div className="cart-fisrt-section-item">
                     <Flex
                       marginBottom={"15px"}

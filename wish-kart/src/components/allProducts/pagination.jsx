@@ -9,7 +9,6 @@ const Pagination = ({ page, changePage, data }) => {
   for (let i = 1; i <= N; i++) {
     arr.push(i);
   }
-  console.log(page);
 
   return (
     <>
@@ -23,9 +22,10 @@ const Pagination = ({ page, changePage, data }) => {
         onClick={() => changePage((prev) => prev - 1)}>
         Prev
       </Button>
-      {arr.map((el) => {
+      {arr.map((el, i) => {
         return (
           <Button
+            key={i}
             bg="none"
             fontSize="20px"
             m={"5px"}
