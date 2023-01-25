@@ -342,7 +342,6 @@ const MobileNavItem = ({ label, children, href }) => {
 
   return (
     <Stack spacing={4} onClick={children && onToggle}>
-      <RouterLink>
       <Flex
         py={2}
         as={Link}
@@ -368,7 +367,6 @@ const MobileNavItem = ({ label, children, href }) => {
           />
         )}
       </Flex>
-      </RouterLink>
 
       <Collapse in={isOpen} animateOpacity style={{ marginTop: "0!important" }}>
         <Stack
@@ -393,10 +391,10 @@ const MobileNavItem = ({ label, children, href }) => {
 const NAV_ITEMS = [
   {
     label: "All",
-    href: "/products",
+    href: "#",
     children: [
       {
-        label: "All",
+        label: "All Women Ethnic",
         subLabel: "View All",
         href: "/products",
       },
@@ -448,7 +446,7 @@ const NAV_ITEMS = [
   },
   {
     label: "Women Western",
-    href: "/women",
+    href: "#",
     children: [
       {
         label: "Top Wear",
@@ -483,7 +481,7 @@ const NAV_ITEMS = [
   },
   {
     label: "Men",
-    href: "/men",
+    href: "#",
     children: [
       {
         label: "Top Wear",
@@ -567,7 +565,7 @@ const NAV_ITEMS = [
   },
   {
     label: "Home & Kitchen",
-    href: "/homeKitchen",
+    href: "#",
     children: [
       {
         label: "Home Furnishing",
@@ -596,7 +594,7 @@ const NAV_ITEMS = [
   },
   {
     label: "Beauty & Health",
-    href: "beauthHealth",
+    href: "#",
     children: [
       {
         label: "Makeup",
@@ -622,7 +620,7 @@ const NAV_ITEMS = [
   },
   {
     label: "Bags & Footwear",
-    href: "/bagsFootwear",
+    href: "#",
     children: [
       {
         label: "Women Bags",
@@ -657,7 +655,7 @@ const NAV_ITEMS = [
   },
   {
     label: "Jewellery & Accessories",
-    href: "/jewellery",
+    href: "#",
     children: [
       {
         label: "Jewellery",

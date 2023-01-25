@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import btnStyle from "../../styles/removeBtn.module.css";
 import Pagination from "../pagination";
 import Loader from "../Loader";
-import { Box, SimpleGrid } from "@chakra-ui/react";
 
 export default function ProductManage() {
   const [loading, setLoading] = React.useState(true);
@@ -33,9 +32,9 @@ export default function ProductManage() {
     return (
       <>
         {" "}
-        <SimpleGrid columns={[1,2,3,4]} className={btnStyle.grid}>
-          {data && data.map((e) => <Box><DeleteCard key={e.id} singleData={e} /></Box>)}
-        </SimpleGrid >
+        <div className={btnStyle.grid}>
+          {data && data.map((e) => <DeleteCard key={e.id} singleData={e} />)}
+        </div>
         <div>
           <Pagination
             pages={pages}

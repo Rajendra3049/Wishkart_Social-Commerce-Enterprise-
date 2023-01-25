@@ -220,13 +220,9 @@ const SingleProduct = () => {
                   ₹{productDetails.discounted_price}
                 </Text>
                 <Flex
-                justifyContent={"space-between"}
                   gap={["40px", "30px", "30px"]}
                   style={{
-                    // border:"1px solid red",
                     marginTop: "2%",
-                    marginLeft:"-2%",
-                    marginRight:"5%"
                   }}>
                   <Text
                     fontSize={["14px", "20px", "20px"]}
