@@ -1,9 +1,7 @@
-import { Box, Grid, Text, Stack, Image, Flex } from "@chakra-ui/react";
-import { data } from "../Pages/data";
-import { AiFillStar } from "react-icons/ai";
+import { Box, Grid } from "@chakra-ui/react";
 import { FaStar } from "react-icons/fa";
 import React from "react";
-import { json, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function HomeProducts({ showData, currentPage }) {
   function StoreInLocal(el) {
@@ -27,7 +25,7 @@ export default function HomeProducts({ showData, currentPage }) {
       {/* card */}
       {showData &&
         showData.map((el) => (
-          <Link to="/homeproduct">
+          <Link to="/products">
             <Box
               onClick={() => {
                 StoreInLocal(el);
