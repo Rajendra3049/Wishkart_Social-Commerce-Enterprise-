@@ -108,14 +108,14 @@ export default function MegaMenu() {
               <Box>
                 <RouterLink to="/">
                   <Flex mt={"10px"} ml={"10px"}>
-                    <p style={{ marginLeft: "10px", fontSize: "15px" }}>Home</p>
+                    <p style={{ marginLeft: "10px", fontSize: "14px" }}>Home</p>
                   </Flex>
                 </RouterLink>
               </Box>
               <Box>
                 <RouterLink to="/admin">
                   <Flex mt={"10px"} ml={"10px"}>
-                    <p style={{ marginLeft: "10px", fontSize: "15px" }}>
+                    <p style={{ marginLeft: "10px", fontSize: "14px" }}>
                       Admin
                     </p>
                   </Flex>
@@ -125,7 +125,7 @@ export default function MegaMenu() {
                 <RouterLink to="/signup">
                   <Flex mt={"10px"} ml={"10px"}>
                     <p
-                      style={{ marginLeft: "10px", fontSize: "15px" }}
+                      style={{ marginLeft: "10px", fontSize: "14px" }}
                       onClick={HandleLogin}>
                       {isAuth ? "Sign Out" : "Sign Up"}
                     </p>
@@ -135,7 +135,7 @@ export default function MegaMenu() {
               <Box>
                 <RouterLink to="/cart">
                   <Flex mt={"10px"} ml={"10px"}>
-                    <p style={{ marginLeft: "10px", fontSize: "15px" }}>
+                    <p style={{ marginLeft: "10px", fontSize: "14px" }}>
                       My Orders
                     </p>
                   </Flex>

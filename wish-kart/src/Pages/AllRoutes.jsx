@@ -16,12 +16,14 @@ import Jewellery from "./allProducts/jewellery";
 import HomeKitchen from "./allProducts/homeKitchen";
 import BeauthHealth from "./allProducts/beauty";
 import BagsFootwear from "./allProducts/bagsFootwear";
+import HomeSingleProduct from "../components/homeSingleProduct.jsx";
 
 export default function AllRoutes() {
   return (
     <Routes>
       <Route path="/SingleProduct/:id" element={<SingleProduct />} />
       <Route path="/" element={<Home />} />
+      <Route path="/homeproduct" element={<HomeSingleProduct />} />
       <Route path="/signup" element={<SignUp />} />
       <Route path="/otp" element={<Otp />} />
       <Route path="/admin" element={<AdminSide />} />

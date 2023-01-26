@@ -3,28 +3,37 @@ import { data } from "../Pages/data";
 import { AiFillStar } from "react-icons/ai";
 import { FaStar } from "react-icons/fa";
 import React from "react";
-import { Link } from "react-router-dom";
+import { json, Link } from "react-router-dom";
 
 export default function HomeProducts({ showData, currentPage }) {
+  function StoreInLocal(el) {
+    localStorage.setItem("props", JSON.stringify(el));
+  }
+
   React.useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
   return (
-    <Box>
-      <Grid
-        templateColumns={[
-          "repeat(1,1fr)",
-          "repeat(2,1fr)",
-          "repeat(2,1fr)",
-          "repeat(2,1fr)",
-          "repeat(2,1fr)",
-          "repeat(3,1fr)",
-        ]}
-        gap={10}>
-        {/* card */}
-        {showData &&
-          showData.map((el) => (
+    <Grid
+      templateColumns={[
+        "repeat(1,1fr)",
+        "repeat(2,1fr)",
+        "repeat(2,1fr)",
+        "repeat(2,1fr)",
+        "repeat(3,1fr)",
+        "repeat(3,1fr)",
+      ]}
+      gap={10}>
+      {/* card */}
+      {showData &&
+        showData.map((el) => (
+          <Link to="/homeproduct">
             <Box
+              onClick={() => {
+                StoreInLocal(el);
+              }}
+              margin={"auto"}
+              w={["90%", "100%", "100%", "100%", "100%", "100%"]}
               key={el.id}
               style={{
                 // border: "1px solid red",
@@ -109,9 +118,9 @@ export default function HomeProducts({ showData, currentPage }) {
                 </h4>
               </div>
             </Box>
-          ))}
-        {/* card end */}
-      </Grid>
-    </Box>
+          </Link>
+        ))}
+      {/* card end */}
+    </Grid>
   );
 }
