@@ -1,9 +1,10 @@
 import React from "react";
-import styles from "../styles/addProduct.module.css";
-import style from "../styles/inputbox.module.css";
-import { addNewProduct } from "../redux/Products/product.action";
+import btnStyle from "../../styles/removeBtn.module.css";
+import styles from "../../styles/addProduct.module.css"
+import style from "../../styles/inputbox.module.css";
+import { addNewProduct, updateProduct } from "../../redux/Products/product.action";
 import { useDispatch, useSelector } from "react-redux";
-import { AddProductNotify } from "../components/notify";
+import { AddProductNotify } from "../../components/notify";
 
 const initialData = {
   category: "",
@@ -22,11 +23,12 @@ const initialData = {
   seller_id: 30,
 };
 
-export default function AddProduct() {
+export default function UpdateProduct({singleData,onClose}) {
+  
   React.useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  const [state, setState] = React.useState(initialData);
+  const [state, setState] = React.useState(singleData);
   let { loading, error, data } = useSelector((store) => store.ProductsManager);
   let dispatch = useDispatch();
 
@@ -39,6 +41,7 @@ export default function AddProduct() {
     });
   };
 
+
   const handleChangeDetails = (e) => {
     setState({
       ...state,
@@ -48,15 +51,17 @@ export default function AddProduct() {
       },
     });
   };
-  function handleSubmit(e) {
+  function HandleUpdate(e) {
     e.preventDefault();
-    dispatch(addNewProduct(state));
-  }
   
+    let data = state
+    dispatch(updateProduct(singleData.id, data));
+    onClose()
+  }
 
   return (
     <div className={styles.root}>
-      <form onSubmit={handleSubmit}>
+      <form  onSubmit={HandleUpdate}>
         <div className={styles.main}>
           <hr />
           <div className={styles.rowParent}>
@@ -228,8 +233,9 @@ export default function AddProduct() {
         </div>
         <div className={styles.row}>
           {/* <button className={styles.btn}>Add Product</button> */}
-          <button type="submit" className={styles.btn}>
-            <AddProductNotify />
+          <button type="submit"  className={`${btnStyle.btn} ${btnStyle.custom_btn}`}>
+            {/* <AddProductNotify /> */}
+            Update Product
           </button>
         </div>
       </form>

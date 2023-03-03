@@ -4,6 +4,7 @@ import {
   GET_PRODUCTS_SUCCESS,
   ADD_NEW_PRODUCT,
   REMOVE_PRODUCT,
+  UPDATE_PRODUCT
 } from "./product.actionTypes";
 
 let initialData = {
@@ -37,6 +38,13 @@ const ProductReducer = (state = initialData, { type, payload }) => {
       };
     }
     case REMOVE_PRODUCT: {
+      return {
+        ...state,
+        loading: false,
+        data: payload,
+      };
+    }
+    case UPDATE_PRODUCT: {
       return {
         ...state,
         loading: false,

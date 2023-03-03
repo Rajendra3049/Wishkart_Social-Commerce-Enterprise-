@@ -22,7 +22,7 @@ import snip1 from "../images/snip1.png";
 import snip2 from "../images/snip2.png";
 import snip3 from "../images/snip3.png";
 import snip4 from "../images/snip4.png";
-import banner from "../images/banner1.png";
+import banner from "../images/meeshobanner.png";
 import HomeProducts from "../Pages/homeproducts";
 import { Link as RouterLink } from "react-router-dom";
 import { data } from "../Pages/data";
@@ -86,9 +86,10 @@ const Home = () => {
           gap={8}
           display={["block", "block", "block", "flex", "flex", "flex"]}>
           <Box
-            width={["90%", "90%", "90%", "30%", "35%", "20%"]}
+            width={["90%", "90%", "70%", "30%", "22%", "20%"]}
             margin={"auto"}
-            mt={"20px"}>
+            mt={"20px"}
+           >
             <Heading
               color={"#333333"}
               ml={"10px"}
@@ -98,7 +99,7 @@ const Home = () => {
               Products For You
             </Heading>
             <Card borderRadius={"8px"}>
-              <Accordion fontSize={"15px"} allowMultiple>
+              <Accordion fontSize={"15px"} allowMultiple w={270}>
                 <AccordionItem>
                   <h2>
                     <AccordionButton>
