@@ -9,7 +9,7 @@ import {
   Stack,
   Button,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -19,7 +19,7 @@ import "./address.css";
 import { AddAddress } from "../../redux/user/user.action";
 
 const initialData = {
-  user_name: "",
+  user_name: "" ,
   phone: "",
   house_no: "",
   area: "",
@@ -30,6 +30,14 @@ const initialData = {
 };
 
 function Address() {
+
+  // const [input, setInput] = useState('')
+
+  // const handleInputChange = (e) => setInput(e.target.value)
+
+  // const isError = input === ''
+
+
   React.useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -65,7 +73,7 @@ function Address() {
       [e.target.name]: e.target.value,
     });
   };
-  if (isAuth == false) {
+  if (isAuth === false) {
     console.log("user not authenticated");
     return <Navigate to="/signup" />;
   } else {
@@ -78,7 +86,7 @@ function Address() {
           fontWeight={550}
           display={{ base: "", md: "", lg: "flex" }}
           gap={{ base: "", md: "", lg: "15px" }}>
-          <Box>
+          <form onSubmit={handlepayment}>
             <Text fontSize={"25px"}>Select Delivery Address</Text>
             <Box borderWidth={"1px"} padding={"15px"} borderRadius={"5px"}>
               <Flex gap="10px" align={"center"} fontSize={"18px"}>
@@ -190,7 +198,7 @@ function Address() {
                   </FormControl>
                 </Box>
               </HStack>
-              <FormControl id="" isRequired>
+              <FormControl id="" >
                 <FormLabel fontSize={"15px"} mt="8px">
                   Nearby Location(option)
                 </FormLabel>
@@ -204,10 +212,11 @@ function Address() {
                 />
               </FormControl>
               <Stack spacing={10} pt={2}>
-                <Button
+                <Button 
                   loadingText="Submitting"
                   size="lg"
                   bg={"pink.400"}
+                  type="submit"
                   color={"white"}
                   _hover={{
                     bg: "pink.500",
@@ -215,12 +224,12 @@ function Address() {
                   p="20px 0"
                   fontSize={"15px"}
                   mt="12px"
-                  onClick={handlepayment}>
+                  >
                   Save Address & Contiune
                 </Button>
               </Stack>
             </Box>
-          </Box>
+          </form>
           {/* ============================= */}
           <Box mt={{ base: "", md: "", lg: "28px" }} padding={"10px"}>
             <Text fontSize={"25px"}>Price Details</Text>
@@ -246,7 +255,7 @@ function Address() {
         </Box>
       </>
     );
-  }
-}
+  }}
+
 
 export default Address;

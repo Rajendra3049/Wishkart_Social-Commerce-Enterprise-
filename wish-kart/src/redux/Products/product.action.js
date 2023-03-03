@@ -4,6 +4,7 @@ import {
   GET_PRODUCTS_SUCCESS,
   ADD_NEW_PRODUCT,
   REMOVE_PRODUCT,
+  UPDATE_PRODUCT
 } from "./product.actionTypes.js";
 import axios from "axios";
 
@@ -51,6 +52,30 @@ export const removeProduct = (id) => async (dispatch) => {
     );
     console.log("after Delete", res.data);
     dispatch({ type: REMOVE_PRODUCT, payload: res.data });
+  } catch (error) {
+    dispatch({ type: GET_PRODUCTS_ERROR, payload: error.message });
+  }
+};
+
+export const updateProduct = (id,data) => async (dispatch) => {
+  console.log(data,id)
+  let res = await fetch(
+    `https://meesho-backend-3037.onrender.com/products/${id}`,
+    {
+      method: "PATCH",
+      body:JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+
+  try {
+    let res = await axios.get(
+      "https://meesho-backend-3037.onrender.com/products"
+    );
+    console.log("after Update", res.data);
+    dispatch({ type:UPDATE_PRODUCT, payload: res.data });
   } catch (error) {
     dispatch({ type: GET_PRODUCTS_ERROR, payload: error.message });
   }
