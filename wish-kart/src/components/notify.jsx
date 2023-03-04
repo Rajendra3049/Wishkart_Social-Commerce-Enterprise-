@@ -90,7 +90,7 @@ export function RemoveFromCartNotify() {
           });
         }
       }}>
-      Remove
+   
     </Text>
   );
 }
@@ -115,7 +115,7 @@ export function RemoveProductNotify() {
           });
         }
       }}>
-      Remove
+
     </Text>
   );
 }

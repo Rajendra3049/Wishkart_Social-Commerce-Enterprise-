@@ -194,8 +194,8 @@ export default function Navbar() {
                 <PopoverContent>
                   <PopoverArrow />
                   <PopoverHeader fontSize={19}>Download From</PopoverHeader>
-                  <Image src={google} w={"160px"} h={"60px"} ml={"18px"} />
-                  <Image src={Appstore} w={"163px"} h={"72px"} ml={"18px"} />
+                  <Image src={google} w={"120px"} h={"40px"} ml={"35px"} />
+                  <Image src={Appstore} w={"123px"} h={"52px"} ml={"35px"} mt={"6px"} />
                 </PopoverContent>
               </Popover>
               <Flex bg={"black"} h="32px" mt={"-18px"}>

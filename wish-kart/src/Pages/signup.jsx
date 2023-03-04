@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import style from "../styles/signup.module.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -79,6 +79,10 @@ export default function SignUp() {
             <button className={style.continue_btn} onClick={HandleSubmit}>
               Continue
             </button>
+           <Link to="/adminsignup"><button className={style.continue_btn} >
+              Sign In as Admin
+            </button></Link>
+          
 
             <div className={style.footer}>
               By continuing, you agree to Meesho's{" "}

@@ -7,6 +7,8 @@ import {
   USER_DELETE_FROM_CART,
   USER_ADD_NEW_ADDRESS,
   USER_ORDER,
+  ADMIN_LOGIN,
+  ADMIN_ERROR
 } from "./user.type";
 const initialState = {
   loading: false,
@@ -33,6 +35,14 @@ const UserReducer = (state = initialState, { type, payload }) => {
       };
     }
     case USER_LOGIN: {
+      return {
+        ...state,
+        loading: false,
+        isAuth: true,
+        user: payload,
+      };
+    }
+    case ADMIN_LOGIN: {
       return {
         ...state,
         loading: false,
@@ -93,6 +103,14 @@ const UserReducer = (state = initialState, { type, payload }) => {
     }
 
     case USER_ERROR: {
+      return {
+        ...state,
+        loading: false,
+        error: true,
+      };
+    }
+
+    case ADMIN_ERROR: {
       return {
         ...state,
         loading: false,
