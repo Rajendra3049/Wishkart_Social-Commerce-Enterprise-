@@ -17,6 +17,7 @@ import HomeKitchen from "./allProducts/homeKitchen";
 import BeauthHealth from "./allProducts/beauty";
 import BagsFootwear from "./allProducts/bagsFootwear";
 import HomeSingleProduct from "../components/homeSingleProduct.jsx";
+import AdminSignin from "../adminsigin/adminsignup";
 
 export default function AllRoutes() {
   return (
@@ -38,6 +39,8 @@ export default function AllRoutes() {
       <Route path="/cartempty" element={<CartEmpty />} />
       <Route path="/address" element={<Address />} />
       <Route path="/payment" element={<Payment />} />
+      <Route path="/address" element={<Address />} />
+      <Route path="/adminsignup" element={<AdminSignin/>} />
     </Routes>
   );
 }

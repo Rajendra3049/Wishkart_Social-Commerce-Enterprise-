@@ -7,6 +7,9 @@ import {
   USER_DELETE_FROM_CART,
   USER_ADD_NEW_ADDRESS,
   USER_ORDER,
+ ADMIN_LOGIN,
+ ADMIN_ERROR
+
 } from "./user.type";
 
 import axios from "axios";
@@ -62,7 +65,16 @@ export const Get_Users_Data = (input) => async (dispatch) => {
     let data = await res.json();
     dispatch({ type: USER_LOGIN, payload: newUser });
   }
-};
+
+}
+
+//get admin
+export const Get_Admins_Data = (input) => async (dispatch) => {
+  dispatch({ type: ADMIN_LOGIN, });
+
+}
+
+
 
 // add into cart
 export const AddToCart = (cart, id) => async (dispatch) => {
@@ -136,3 +148,21 @@ export const OrderPlacement = (order, id) => async (dispatch) => {
   console.log("orderHistory", data);
   dispatch({ type: USER_ORDER, payload: data });
 };
+
+
+
+
+
+//add admin
+
+// async function CreateAdmin(newAdmin) {
+//   let res = await fetch("https://meesho-backend-3037.onrender.com/admin", {
+//     method: "POST",
+//     body: JSON.stringify(newAdmin),
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//   });
+//   let data = await res.json();
+//   dispatch({ type: ADMIN_LOGIN, payload: newAdmin });
+// }

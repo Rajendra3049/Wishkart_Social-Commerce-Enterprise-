@@ -10,8 +10,18 @@ import {
   AccordionIcon,
   AccordionPanel,
   Input,
+  PinInputField,
+  HStack,
+  Heading,
+  PinInput,
+  Stack,
+  CardBody,
+  CardHeader,
+  Card,
+  Radio,
+  RadioGroup,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import { CheckCircleIcon } from "@chakra-ui/icons";
 import Navbar2 from "../../components/Navbar2/Navbar2";
@@ -26,6 +36,7 @@ const Payment = () => {
   }, []);
   const [price, setPrice] = React.useState(0);
   const [cartData, setCartData] = React.useState([]);
+  const [cardDetail, setCardDetail] = useState("");
 
   const navigate = useNavigate();
   // redux start
@@ -41,6 +52,12 @@ const Payment = () => {
     setPrice(newPrice);
     setCartData(user.cart);
   }, [cartData, user]);
+
+
+  const handlepayment = (e) => {
+    setCardDetail(e);
+}
+
 
   function HandleCheckOut() {
     console.log("in");
@@ -70,10 +87,83 @@ const Payment = () => {
               <Text fontSize={"20px"} fontWeight={"550"} mb={"20px"}>
                 Payment Method
               </Text>
-              <Text fontSize={"10px"}>100% SAFE PAYMENT</Text>
+
+    
+              <RadioGroup onChange={(e) => handlepayment(e)} value={cardDetail} >
+                            <Stack direction='row'>
+                                <Radio value='cash' ><Text fontSize={20}>Cash</Text></Radio>
+                                <Radio value='card'><Text fontSize={20}>Card</Text></Radio>
+                            </Stack>
+                        </RadioGroup>
+
+                        {/* ==== Card Detail ===== */}
+                        {cardDetail === "card" ? <Card border="1px" borderColor="blue.500" margin="18px 0">
+                            <CardHeader>
+                                <Heading size="md"> Card Payment </Heading>
+                            </CardHeader>
+
+                            <CardBody>
+                                <Stack spacing="4">
+                                    <Box>
+                                        <Heading
+                                            size="xs"
+                                            textTransform="uppercase"
+                                            textAlign={"left"}
+                                            margin="4px 2px"
+                                        >
+                                            Card Number
+                                        </Heading>
+                                        <Input
+                                            variant="flushed"
+                                            type="number"
+                                            placeholder="Enter Card Number"
+                                        />
+                                    </Box>
+                                    <Box>
+                                        <Heading
+                                            size="xs"
+                                            textTransform="uppercase"
+                                            textAlign={"left"}
+                                            margin="6px 2px"
+                                        >
+                                            Evpiration Date
+                                        </Heading>
+                                        <Input
+                                            placeholder="Select Date and Time"
+                                            size="md"
+                                            type="datetime-local"
+                                        />
+                                    </Box>
+                                    <Box>
+                                        <Heading
+                                            size="xs"
+                                            textTransform="uppercase"
+                                            textAlign={"left"}
+                                            margin="6px 2px"
+                                        >
+                                            CVC code
+                                        </Heading>
+                                        <HStack>
+                                            <PinInput type="alphanumeric">
+                                                <PinInputField />
+                                                <PinInputField />
+                                                <PinInputField />
+                                            </PinInput>
+                                        </HStack>
+                                    </Box>
+                                </Stack>
+                            </CardBody>
+                        </Card> : ""}
+
+
+
+
+
+
+              {/* <Text fontSize={"10px"}>100% SAFE PAYMENT</Text> */}
             </Flex>
             <Flex>
-              <Text fontSize={"10px"}>PAY IN CASH</Text>
+              {/* <Text fontSize={"10px"}>PAY IN CASH</Text> */}
               <hr />
             </Flex>
             <Button
@@ -90,7 +180,7 @@ const Payment = () => {
             </Button>
 
             {/* --------------------------- */}
-            <Box mt={"20px"}>
+            {/* <Box mt={"20px"}>
               <Accordion
                 allowToggle
                 bg={"white"}
@@ -127,7 +217,7 @@ const Payment = () => {
                   </AccordionPanel>
                 </AccordionItem>
               </Accordion>
-            </Box>
+            </Box> */}
           </Box>
           {/* ---------------------------- */}
           <Box padding={"10px"}>
@@ -192,3 +282,12 @@ const Payment = () => {
 };
 
 export default Payment;
+
+
+
+
+
+
+
+
+

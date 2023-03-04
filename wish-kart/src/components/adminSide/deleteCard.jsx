@@ -8,12 +8,18 @@ import btnStyle from "../../styles/removeBtn.module.css";
 import { RemoveProductNotify } from "../notify";
 import { Link } from "react-router-dom";
 import Update from "../adminSide/Update";
+import { MdDelete } from "react-icons/md";
+
+import { useDisclosure , Text, Box } from "@chakra-ui/react";
+
+
 
 export default function DeleteCard({ singleData }) {
   // redux start
   let { loading, error, data } = useSelector((store) => store.UserManager);
   let dispatch = useDispatch();
   // redux end
+  
   // const [dataUpdate,setUpdateData]=React.useState(singleData)
 
   function HandleDelete() {
@@ -28,10 +34,10 @@ export default function DeleteCard({ singleData }) {
         key={singleData.id}
         style={{
           boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
-          height: "90vh",
+          height: "70vh",
           padding: "4%",
           cursor: "pointer",
-          border:"1px solid red"
+          // border:"1px solid red"
         }}
       >
         <Link to={`/SingleProduct/${singleData.id}`}>
@@ -61,6 +67,8 @@ export default function DeleteCard({ singleData }) {
         <h1
           style={{
             fontSize: "1.8rem",
+          display:"flex",
+        //  justifyContent:"space-evenly",
             fontWeight: "bold",
           }}
         >
@@ -68,23 +76,35 @@ export default function DeleteCard({ singleData }) {
           <span
             style={{
               color: "grey",
+              // display:"flex",
+              // justifyContent:"space-evenly",
+              alignItems:"center",
+              marginLeft:"10px",
               fontSize: "1.5rem",
             }}
           >
             onwards
             
           </span>
+        
+        
           
         </h1>
-     <button
+  
+     {/* <button
             className={`${btnStyle.btn} ${btnStyle.custom_btn}`}
             onClick={HandleDelete}
-          >
+          > */}
+          <Box display={"flex"}>
+            <MdDelete fontSize={15} color={"#f41cb2"} onClick={HandleDelete} />
+            <Update singleData={singleData} />
+            </Box>
             <RemoveProductNotify />
-          </button>
+  
+          {/* </button> */}
     
         {/* <button className={`${btnStyle.btn} ${btnStyle.custom_btn}`}> */}
-          <Update singleData={singleData} />
+      
         {/* <div
           style={{
             display:"flex",

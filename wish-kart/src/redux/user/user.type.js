@@ -1,9 +1,12 @@
 // loading ,error
 export const USER_LOADING = "user/loading";
 export const USER_ERROR = "user/error";
+export const ADMIN_ERROR = "admin/error";
+
 
 // login,logout
 export const USER_LOGIN = "user/login";
+
 export const USER_LOGOUT = "user/logout";
 
 // add to cart, delete from cart
@@ -15,3 +18,6 @@ export const USER_ADD_NEW_ADDRESS = "user/add_new_address";
 
 // order
 export const USER_ORDER = "user/order";
+
+// admin
+export const ADMIN_LOGIN = "admin/login";

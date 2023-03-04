@@ -17,9 +17,10 @@ html {
 }
 
 .input {
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   width: 100%;
   border: 0;
+  color: black;
   border-bottom: 1px solid #ccc;
   font-family: inherit;
   border-radius: 0;

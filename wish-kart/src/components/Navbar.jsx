@@ -44,7 +44,7 @@ export default function Navbar() {
   let dispatch = useDispatch();
   // redux end
   React.useEffect(() => {
-    console.log(isAuth, "navbar");
+   
   }, [dispatch, user, isAuth]);
 
   const onChange = (event) => {
@@ -54,7 +54,6 @@ export default function Navbar() {
   const onSearch = (searchTerm) => {
     setValue(searchTerm);
     // our api to fetch the search result
-    console.log("search ", searchTerm);
   };
 
   // login-logout
@@ -194,14 +193,14 @@ export default function Navbar() {
                 <PopoverContent>
                   <PopoverArrow />
                   <PopoverHeader fontSize={19}>Download From</PopoverHeader>
-                  <Image src={google} w={"160px"} h={"60px"} ml={"18px"} />
-                  <Image src={Appstore} w={"163px"} h={"72px"} ml={"18px"} />
+                  <Image src={google} w={"120px"} h={"40px"} ml={"35px"} />
+                  <Image src={Appstore} w={"123px"} h={"52px"} ml={"35px"} mt={"6px"} />
                 </PopoverContent>
               </Popover>
               <Flex bg={"black"} h="32px" mt={"-18px"}>
                 <Divider orientation="vertical" color={"black"} />
               </Flex>
-              <RouterLink to="/admin">
+              <RouterLink to="/adminsignup">
                 <Text
                   fontSize={["8px", "8x", "15px"]}
                   mt={"-15px"}

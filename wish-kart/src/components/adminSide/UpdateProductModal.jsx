@@ -1,5 +1,5 @@
 import React from "react";
-import btnStyle from "../../styles/removeBtn.module.css";
+import btnStyle from "../../styles/update.module.css";
 import styles from "../../styles/addProduct.module.css"
 import style from "../../styles/inputbox.module.css";
 import { addNewProduct, updateProduct } from "../../redux/Products/product.action";
@@ -231,11 +231,11 @@ export default function UpdateProduct({singleData,onClose}) {
             </div>
           </div>
         </div>
-        <div className={styles.row}>
+        <div className={styles.row} >
           {/* <button className={styles.btn}>Add Product</button> */}
           <button type="submit"  className={`${btnStyle.btn} ${btnStyle.custom_btn}`}>
             {/* <AddProductNotify /> */}
-            Update Product
+            Update
           </button>
         </div>
       </form>
