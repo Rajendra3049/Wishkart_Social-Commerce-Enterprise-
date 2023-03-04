@@ -24,9 +24,9 @@ export default function AdminSide() {
   useEffect(() => {
     getProducts(dispatch);
   }, []);
-  if (isAuth == false) {
+  if (isAuth === false) {
     console.log("user not authenticated");
-    return <Navigate to="/signup" />;
+    return <Navigate to="/adminsignup" />;
   } else {
     return (
       <div className={style.main}>

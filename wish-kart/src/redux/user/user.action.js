@@ -7,8 +7,9 @@ import {
   USER_DELETE_FROM_CART,
   USER_ADD_NEW_ADDRESS,
   USER_ORDER,
-  ADMIN_LOGIN,
-  ADMIN_ERROR
+ ADMIN_LOGIN,
+ ADMIN_ERROR
+
 } from "./user.type";
 
 import axios from "axios";
@@ -69,41 +70,7 @@ export const Get_Users_Data = (input) => async (dispatch) => {
 
 //get admin
 export const Get_Admins_Data = (input) => async (dispatch) => {
-  dispatch({ type: USER_LOADING });
-  let admin= "";
-  let found = false;
-
-  axios
-    .get(`https://meesho-backend-3037.onrender.com/admin`)
-    .then((res) => {
-      let adminData = res.data;
-      for (let i = 0; i < adminData.length; i++) {
-        if (adminData[i].email == input) {
-          admin = adminData[i];
-          found = true;
-          break;
-        }
-      }
-      if (found == true) {
-        console.log("Existing admin");
-
-        dispatch({ type: ADMIN_LOGIN, payload: admin });
-      } else {
-        let newAdmin = {
-          id: input,
-          email: input,
-          name: "",
-        
-        };
-        console.log("new Admin", newAdmin);
-        // CreateNewUser(newAdmin);
-      }
-    })
-    .catch((error) => {
-      console.log("err");
-      console.log(error);
-      dispatch({ type: ADMIN_ERROR });
-    })
+  dispatch({ type: ADMIN_LOGIN, });
 
 }
 

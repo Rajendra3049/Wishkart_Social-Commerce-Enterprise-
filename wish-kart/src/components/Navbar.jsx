@@ -44,7 +44,7 @@ export default function Navbar() {
   let dispatch = useDispatch();
   // redux end
   React.useEffect(() => {
-    console.log(isAuth, "navbar");
+   
   }, [dispatch, user, isAuth]);
 
   const onChange = (event) => {
@@ -54,7 +54,6 @@ export default function Navbar() {
   const onSearch = (searchTerm) => {
     setValue(searchTerm);
     // our api to fetch the search result
-    console.log("search ", searchTerm);
   };
 
   // login-logout
@@ -201,7 +200,7 @@ export default function Navbar() {
               <Flex bg={"black"} h="32px" mt={"-18px"}>
                 <Divider orientation="vertical" color={"black"} />
               </Flex>
-              <RouterLink to="/admin">
+              <RouterLink to="/adminsignup">
                 <Text
                   fontSize={["8px", "8x", "15px"]}
                   mt={"-15px"}

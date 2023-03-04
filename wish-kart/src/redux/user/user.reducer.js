@@ -1,3 +1,4 @@
+
 import {
   USER_LOADING,
   USER_ERROR,
@@ -8,7 +9,7 @@ import {
   USER_ADD_NEW_ADDRESS,
   USER_ORDER,
   ADMIN_LOGIN,
-  ADMIN_ERROR
+
 } from "./user.type";
 const initialState = {
   loading: false,
@@ -25,13 +26,22 @@ const initialState = {
 };
 
 const UserReducer = (state = initialState, { type, payload }) => {
-  console.log("UserReducer", "type:", type, "payload:", payload);
+
 
   switch (type) {
+  
+
     case USER_LOADING: {
       return {
         ...state,
         loading: true,
+      };
+    }
+    case ADMIN_LOGIN: {
+      return {
+        ...state,
+        loading: false,
+        isAuth: true,
       };
     }
     case USER_LOGIN: {
@@ -42,14 +52,7 @@ const UserReducer = (state = initialState, { type, payload }) => {
         user: payload,
       };
     }
-    case ADMIN_LOGIN: {
-      return {
-        ...state,
-        loading: false,
-        isAuth: true,
-        user: payload,
-      };
-    }
+ 
     case USER_LOGOUT: {
       return {
         ...state,
@@ -110,13 +113,7 @@ const UserReducer = (state = initialState, { type, payload }) => {
       };
     }
 
-    case ADMIN_ERROR: {
-      return {
-        ...state,
-        loading: false,
-        error: true,
-      };
-    }
+
 
     default: {
       return {

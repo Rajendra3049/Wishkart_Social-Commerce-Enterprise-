@@ -14,7 +14,7 @@ let initialData = {
 };
 
 const ProductReducer = (state = initialData, { type, payload }) => {
-  console.log("Product Reducer", "type", type, "payload", payload);
+
 
   switch (type) {
     case GET_PRODUCTS_LOADING: {
