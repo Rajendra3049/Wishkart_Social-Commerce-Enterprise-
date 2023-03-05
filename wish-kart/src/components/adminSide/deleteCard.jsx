@@ -95,8 +95,8 @@ export default function DeleteCard({ singleData }) {
             className={`${btnStyle.btn} ${btnStyle.custom_btn}`}
             onClick={HandleDelete}
           > */}
-          <Box display={"flex"}>
-            <MdDelete fontSize={15} color={"#f41cb2"} onClick={HandleDelete} />
+          <Box display={"flex"} mt={6}>
+            <MdDelete fontSize={19} color={"#f41cb2"}  onClick={HandleDelete} />
             <Update singleData={singleData} />
             </Box>
             <RemoveProductNotify />

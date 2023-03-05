@@ -59,10 +59,12 @@
 }
 .grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   border: 1px solid #ccc;
   gap: 15px;
 }
+
+
 
 @media (max-width: 420px) {
   .grid {
@@ -72,3 +74,27 @@
     gap: 15px;
   }
 }
+
+
+@media (max-width: 460px) {
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    border: 1px solid #ccc;
+    gap: 15px;
+  }
+}
+
+
+
+@media (max-width: 461px) {
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    border: 1px solid #ccc;
+    gap: 15px;
+  }
+}
+
+
+

@@ -52,7 +52,7 @@ export default function SignUp() {
             <img
               className={style.sign_up_img}
               src="https://images.meesho.com/images/marketing/1661417516766.webp"
-              alt="top box image"
+              alt="top box"
             />
           </div>
           <div className={style.main_bottom}>
@@ -79,7 +79,7 @@ export default function SignUp() {
             <button className={style.continue_btn} onClick={HandleSubmit}>
               Continue
             </button>
-           <Link to="/adminsignup"><button className={style.continue_btn} >
+           <Link to="/adminsignup"><button className={style.continue_btn} style={{marginTop:"-35px"}}>
               Sign In as Admin
             </button></Link>
           
