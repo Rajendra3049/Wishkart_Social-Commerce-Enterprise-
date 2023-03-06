@@ -2,7 +2,7 @@
 }
 .cart-section {
   width: 60%;
-  margin: 40px auto;
+  /* margin: 40px auto; */
   display: flex;
   direction: column;
   gap: 20px;

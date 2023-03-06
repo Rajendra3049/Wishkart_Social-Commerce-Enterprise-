@@ -6,15 +6,11 @@ import {
   AccordionItem,
   AccordionPanel,
   Box,
-  Button,
   Card,
   Checkbox,
-  Divider,
   Flex,
   Heading,
-  Hide,
   Image,
-  Show,
   Text,
 } from "@chakra-ui/react";
 
@@ -65,7 +61,8 @@ const Home = () => {
             lineHeight={"44px"}
             color={"#333333"}
             textAlign={"center"}
-            padding={["5px", "10px", "10px", "20px"]}>
+            padding={["5px", "10px", "10px", "20px"]}
+          >
             Top Categories to choose from
           </Heading>
 
@@ -84,22 +81,24 @@ const Home = () => {
         <Flex
           justifyContent={"space-between"}
           gap={8}
-          display={["block", "block", "block", "flex", "flex", "flex"]}>
+          display={["block", "block", "block", "flex", "flex", "flex"]}
+        >
           <Box
-            width={["90%", "90%", "70%", "30%", "22%", "20%"]}
+            width={["83%", "60%", "70%", "30%", "22%", "20%"]}
             margin={"auto"}
             mt={"20px"}
-           >
+          >
             <Heading
               color={"#333333"}
               ml={"10px"}
               fontSize={"26px"}
               mb={"20px"}
-              mt={"10px"}>
+              mt={"10px"}
+            >
               Products For You
             </Heading>
             <Card borderRadius={"8px"}>
-              <Accordion fontSize={"15px"} allowMultiple w={270}>
+              <Accordion fontSize={"15px"} allowMultiple w={"100%"}>
                 <AccordionItem>
                   <h2>
                     <AccordionButton>
@@ -108,7 +107,8 @@ const Home = () => {
                         flex="1"
                         textAlign="left"
                         fontSize={19}
-                        h={"38px"}>
+                        h={"38px"}
+                      >
                         Category
                       </Box>
                       <AccordionIcon fontSize={20} />
@@ -123,7 +123,8 @@ const Home = () => {
                             w={"400px"}
                             fontSize={"18px"}
                             color={"#333333"}
-                            ml={"18px"}>
+                            ml={"18px"}
+                          >
                             Beauty & Health
                           </Text>
                         </RouterLink>
@@ -138,7 +139,8 @@ const Home = () => {
                             _hover={{ bg: "#f7a8ca" }}
                             w={"400px"}
                             color={"#333333"}
-                            ml={"18px"}>
+                            ml={"18px"}
+                          >
                             Womens Wear
                           </Text>
                         </RouterLink>
@@ -153,7 +155,8 @@ const Home = () => {
                             _hover={{ bg: "#f7a8ca" }}
                             w={"400px"}
                             color={"#333333"}
-                            ml={"18px"}>
+                            ml={"18px"}
+                          >
                             Mens Wear
                           </Text>
                         </RouterLink>
@@ -168,7 +171,8 @@ const Home = () => {
                             _hover={{ bg: "#f7a8ca" }}
                             w={"400px"}
                             color={"#333333"}
-                            ml={"18px"}>
+                            ml={"18px"}
+                          >
                             Home & Kitchen
                           </Text>
                         </RouterLink>
@@ -183,7 +187,8 @@ const Home = () => {
                             _hover={{ bg: "#f7a8ca" }}
                             w={"400px"}
                             color={"#333333"}
-                            ml={"18px"}>
+                            ml={"18px"}
+                          >
                             Jewellery
                           </Text>
                         </RouterLink>
@@ -198,7 +203,8 @@ const Home = () => {
                             _hover={{ bg: "#f7a8ca" }}
                             w={"400px"}
                             color={"#333333"}
-                            ml={"18px"}>
+                            ml={"18px"}
+                          >
                             Bags and Footwear
                           </Text>
                         </RouterLink>
@@ -215,7 +221,8 @@ const Home = () => {
                         flex="1"
                         textAlign="left"
                         fontSize={19}
-                        h={"38px"}>
+                        h={"38px"}
+                      >
                         Price
                       </Box>
                       <AccordionIcon fontSize={20} />
@@ -227,7 +234,8 @@ const Home = () => {
                       w={"95px"}
                       h={"36px"}
                       border={"1px solid rgb(240, 240, 240)"}
-                      borderRadius={"10%"}>
+                      borderRadius={"10%"}
+                    >
                       <Text align={"center"} mt={2}>
                         Under ₹ 149
                       </Text>
@@ -238,7 +246,8 @@ const Home = () => {
                       h={"36px"}
                       border={"1px solid rgb(240, 240, 240)"}
                       borderRadius={"10%"}
-                      mt={5}>
+                      mt={5}
+                    >
                       <Text align={"center"} mt={2}>
                         Under ₹ 199
                       </Text>
@@ -249,7 +258,8 @@ const Home = () => {
                       h={"36px"}
                       border={"1px solid rgb(240, 240, 240)"}
                       borderRadius={"10%"}
-                      mt={5}>
+                      mt={5}
+                    >
                       <Text align={"center"} mt={2}>
                         Under ₹ 249
                       </Text>
@@ -260,7 +270,8 @@ const Home = () => {
                       h={"36px"}
                       border={"1px solid rgb(240, 240, 240)"}
                       borderRadius={"10%"}
-                      mt={5}>
+                      mt={5}
+                    >
                       <Text align={"center"} mt={2}>
                         Under ₹ 399
                       </Text>
@@ -271,7 +282,8 @@ const Home = () => {
                       h={"36px"}
                       border={"1px solid rgb(240, 240, 240)"}
                       borderRadius={"10%"}
-                      mt={5}>
+                      mt={5}
+                    >
                       <Text align={"center"} mt={2}>
                         Under ₹ 999
                       </Text>
@@ -287,7 +299,8 @@ const Home = () => {
                         flex="1"
                         textAlign="left"
                         fontSize={19}
-                        h={"38px"}>
+                        h={"38px"}
+                      >
                         Size
                       </Box>
                       <AccordionIcon fontSize={20} />
@@ -302,7 +315,8 @@ const Home = () => {
                             w={"400px"}
                             fontSize={"18px"}
                             color={"#333333"}
-                            ml={"18px"}>
+                            ml={"18px"}
+                          >
                             Beauty & Health
                           </Text>
                         </RouterLink>
@@ -317,7 +331,8 @@ const Home = () => {
                             _hover={{ bg: "#f7a8ca" }}
                             w={"400px"}
                             color={"#333333"}
-                            ml={"18px"}>
+                            ml={"18px"}
+                          >
                             Womens Wear
                           </Text>
                         </RouterLink>
@@ -332,7 +347,8 @@ const Home = () => {
                             _hover={{ bg: "#f7a8ca" }}
                             w={"400px"}
                             color={"#333333"}
-                            ml={"18px"}>
+                            ml={"18px"}
+                          >
                             Mens Wear
                           </Text>
                         </RouterLink>
@@ -347,7 +363,8 @@ const Home = () => {
                             _hover={{ bg: "#f7a8ca" }}
                             w={"400px"}
                             color={"#333333"}
-                            ml={"18px"}>
+                            ml={"18px"}
+                          >
                             Home & Kitchen
                           </Text>
                         </RouterLink>
@@ -362,7 +379,8 @@ const Home = () => {
                             _hover={{ bg: "#f7a8ca" }}
                             w={"400px"}
                             color={"#333333"}
-                            ml={"18px"}>
+                            ml={"18px"}
+                          >
                             Jewellery
                           </Text>
                         </RouterLink>
@@ -377,7 +395,8 @@ const Home = () => {
                             _hover={{ bg: "#f7a8ca" }}
                             w={"400px"}
                             color={"#333333"}
-                            ml={"18px"}>
+                            ml={"18px"}
+                          >
                             Bags and Footwear
                           </Text>
                         </RouterLink>
@@ -394,7 +413,8 @@ const Home = () => {
                         flex="1"
                         textAlign="left"
                         fontSize={19}
-                        h={"38px"}>
+                        h={"38px"}
+                      >
                         Occasion
                       </Box>
                       <AccordionIcon fontSize={20} />
@@ -409,7 +429,8 @@ const Home = () => {
                             w={"400px"}
                             fontSize={"18px"}
                             color={"#333333"}
-                            ml={"18px"}>
+                            ml={"18px"}
+                          >
                             Beauty & Health
                           </Text>
                         </RouterLink>
@@ -424,7 +445,8 @@ const Home = () => {
                             _hover={{ bg: "#f7a8ca" }}
                             w={"400px"}
                             color={"#333333"}
-                            ml={"18px"}>
+                            ml={"18px"}
+                          >
                             Womens Wear
                           </Text>
                         </RouterLink>
@@ -439,7 +461,8 @@ const Home = () => {
                             _hover={{ bg: "#f7a8ca" }}
                             w={"400px"}
                             color={"#333333"}
-                            ml={"18px"}>
+                            ml={"18px"}
+                          >
                             Mens Wear
                           </Text>
                         </RouterLink>
@@ -454,7 +477,8 @@ const Home = () => {
                             _hover={{ bg: "#f7a8ca" }}
                             w={"400px"}
                             color={"#333333"}
-                            ml={"18px"}>
+                            ml={"18px"}
+                          >
                             Home & Kitchen
                           </Text>
                         </RouterLink>
@@ -469,7 +493,8 @@ const Home = () => {
                             _hover={{ bg: "#f7a8ca" }}
                             w={"400px"}
                             color={"#333333"}
-                            ml={"18px"}>
+                            ml={"18px"}
+                          >
                             Jewellery
                           </Text>
                         </RouterLink>
@@ -484,7 +509,8 @@ const Home = () => {
                             _hover={{ bg: "#f7a8ca" }}
                             w={"400px"}
                             color={"#333333"}
-                            ml={"18px"}>
+                            ml={"18px"}
+                          >
                             Bags and Footwear
                           </Text>
                         </RouterLink>
@@ -501,7 +527,8 @@ const Home = () => {
                         flex="1"
                         textAlign="left"
                         fontSize={19}
-                        h={"38px"}>
+                        h={"38px"}
+                      >
                         Brand
                       </Box>
                       <AccordionIcon fontSize={20} />
@@ -516,7 +543,8 @@ const Home = () => {
                             w={"400px"}
                             fontSize={"18px"}
                             color={"#333333"}
-                            ml={"18px"}>
+                            ml={"18px"}
+                          >
                             Beauty & Health
                           </Text>
                         </RouterLink>
@@ -531,7 +559,8 @@ const Home = () => {
                             _hover={{ bg: "#f7a8ca" }}
                             w={"400px"}
                             color={"#333333"}
-                            ml={"18px"}>
+                            ml={"18px"}
+                          >
                             Womens Wear
                           </Text>
                         </RouterLink>
@@ -546,7 +575,8 @@ const Home = () => {
                             _hover={{ bg: "#f7a8ca" }}
                             w={"400px"}
                             color={"#333333"}
-                            ml={"18px"}>
+                            ml={"18px"}
+                          >
                             Mens Wear
                           </Text>
                         </RouterLink>
@@ -561,7 +591,8 @@ const Home = () => {
                             _hover={{ bg: "#f7a8ca" }}
                             w={"400px"}
                             color={"#333333"}
-                            ml={"18px"}>
+                            ml={"18px"}
+                          >
                             Home & Kitchen
                           </Text>
                         </RouterLink>
@@ -576,7 +607,8 @@ const Home = () => {
                             _hover={{ bg: "#f7a8ca" }}
                             w={"400px"}
                             color={"#333333"}
-                            ml={"18px"}>
+                            ml={"18px"}
+                          >
                             Jewellery
                           </Text>
                         </RouterLink>
@@ -591,7 +623,8 @@ const Home = () => {
                             _hover={{ bg: "#f7a8ca" }}
                             w={"400px"}
                             color={"#333333"}
-                            ml={"18px"}>
+                            ml={"18px"}
+                          >
                             Bags and Footwear
                           </Text>
                         </RouterLink>
@@ -608,7 +641,8 @@ const Home = () => {
                         flex="1"
                         textAlign="left"
                         fontSize={19}
-                        h={"38px"}>
+                        h={"38px"}
+                      >
                         Meesho Mall
                       </Box>
                       <AccordionIcon fontSize={20} />
@@ -623,7 +657,8 @@ const Home = () => {
                             w={"400px"}
                             fontSize={"18px"}
                             color={"#333333"}
-                            ml={"18px"}>
+                            ml={"18px"}
+                          >
                             Beauty & Health
                           </Text>
                         </RouterLink>
@@ -638,7 +673,8 @@ const Home = () => {
                             _hover={{ bg: "#f7a8ca" }}
                             w={"400px"}
                             color={"#333333"}
-                            ml={"18px"}>
+                            ml={"18px"}
+                          >
                             Womens Wear
                           </Text>
                         </RouterLink>
@@ -653,7 +689,8 @@ const Home = () => {
                             _hover={{ bg: "#f7a8ca" }}
                             w={"400px"}
                             color={"#333333"}
-                            ml={"18px"}>
+                            ml={"18px"}
+                          >
                             Mens Wear
                           </Text>
                         </RouterLink>
@@ -668,7 +705,8 @@ const Home = () => {
                             _hover={{ bg: "#f7a8ca" }}
                             w={"400px"}
                             color={"#333333"}
-                            ml={"18px"}>
+                            ml={"18px"}
+                          >
                             Home & Kitchen
                           </Text>
                         </RouterLink>
@@ -683,7 +721,8 @@ const Home = () => {
                             _hover={{ bg: "#f7a8ca" }}
                             w={"400px"}
                             color={"#333333"}
-                            ml={"18px"}>
+                            ml={"18px"}
+                          >
                             Jewellery
                           </Text>
                         </RouterLink>
@@ -698,7 +737,8 @@ const Home = () => {
                             _hover={{ bg: "#f7a8ca" }}
                             w={"400px"}
                             color={"#333333"}
-                            ml={"18px"}>
+                            ml={"18px"}
+                          >
                             Bags and Footwear
                           </Text>
                         </RouterLink>
@@ -715,7 +755,8 @@ const Home = () => {
                         flex="1"
                         textAlign="left"
                         fontSize={19}
-                        h={"38px"}>
+                        h={"38px"}
+                      >
                         Colour
                       </Box>
                       <AccordionIcon fontSize={20} />
@@ -730,7 +771,8 @@ const Home = () => {
                             w={"400px"}
                             fontSize={"18px"}
                             color={"#333333"}
-                            ml={"18px"}>
+                            ml={"18px"}
+                          >
                             Beauty & Health
                           </Text>
                         </RouterLink>
@@ -745,7 +787,8 @@ const Home = () => {
                             _hover={{ bg: "#f7a8ca" }}
                             w={"400px"}
                             color={"#333333"}
-                            ml={"18px"}>
+                            ml={"18px"}
+                          >
                             Womens Wear
                           </Text>
                         </RouterLink>
@@ -760,7 +803,8 @@ const Home = () => {
                             _hover={{ bg: "#f7a8ca" }}
                             w={"400px"}
                             color={"#333333"}
-                            ml={"18px"}>
+                            ml={"18px"}
+                          >
                             Mens Wear
                           </Text>
                         </RouterLink>
@@ -775,7 +819,8 @@ const Home = () => {
                             _hover={{ bg: "#f7a8ca" }}
                             w={"400px"}
                             color={"#333333"}
-                            ml={"18px"}>
+                            ml={"18px"}
+                          >
                             Home & Kitchen
                           </Text>
                         </RouterLink>
@@ -790,7 +835,8 @@ const Home = () => {
                             _hover={{ bg: "#f7a8ca" }}
                             w={"400px"}
                             color={"#333333"}
-                            ml={"18px"}>
+                            ml={"18px"}
+                          >
                             Jewellery
                           </Text>
                         </RouterLink>
@@ -805,7 +851,8 @@ const Home = () => {
                             _hover={{ bg: "#f7a8ca" }}
                             w={"400px"}
                             color={"#333333"}
-                            ml={"18px"}>
+                            ml={"18px"}
+                          >
                             Bags and Footwear
                           </Text>
                         </RouterLink>
@@ -821,7 +868,8 @@ const Home = () => {
                         flex="1"
                         textAlign="left"
                         fontSize={19}
-                        h={"38px"}>
+                        h={"38px"}
+                      >
                         Type
                       </Box>
                       <AccordionIcon fontSize={20} />
@@ -836,7 +884,8 @@ const Home = () => {
                             w={"400px"}
                             fontSize={"18px"}
                             color={"#333333"}
-                            ml={"18px"}>
+                            ml={"18px"}
+                          >
                             Beauty & Health
                           </Text>
                         </RouterLink>
@@ -851,7 +900,8 @@ const Home = () => {
                             _hover={{ bg: "#f7a8ca" }}
                             w={"400px"}
                             color={"#333333"}
-                            ml={"18px"}>
+                            ml={"18px"}
+                          >
                             Womens Wear
                           </Text>
                         </RouterLink>
@@ -866,7 +916,8 @@ const Home = () => {
                             _hover={{ bg: "#f7a8ca" }}
                             w={"400px"}
                             color={"#333333"}
-                            ml={"18px"}>
+                            ml={"18px"}
+                          >
                             Mens Wear
                           </Text>
                         </RouterLink>
@@ -881,7 +932,8 @@ const Home = () => {
                             _hover={{ bg: "#f7a8ca" }}
                             w={"400px"}
                             color={"#333333"}
-                            ml={"18px"}>
+                            ml={"18px"}
+                          >
                             Home & Kitchen
                           </Text>
                         </RouterLink>
@@ -896,7 +948,8 @@ const Home = () => {
                             _hover={{ bg: "#f7a8ca" }}
                             w={"400px"}
                             color={"#333333"}
-                            ml={"18px"}>
+                            ml={"18px"}
+                          >
                             Jewellery
                           </Text>
                         </RouterLink>
@@ -911,7 +964,8 @@ const Home = () => {
                             _hover={{ bg: "#f7a8ca" }}
                             w={"400px"}
                             color={"#333333"}
-                            ml={"18px"}>
+                            ml={"18px"}
+                          >
                             Bags and Footwear
                           </Text>
                         </RouterLink>
@@ -928,7 +982,8 @@ const Home = () => {
                         flex="1"
                         textAlign="left"
                         fontSize={19}
-                        h={"38px"}>
+                        h={"38px"}
+                      >
                         Combo
                       </Box>
                       <AccordionIcon fontSize={20} />
@@ -943,7 +998,8 @@ const Home = () => {
                             w={"400px"}
                             fontSize={"18px"}
                             color={"#333333"}
-                            ml={"18px"}>
+                            ml={"18px"}
+                          >
                             Beauty & Health
                           </Text>
                         </RouterLink>
@@ -958,7 +1014,8 @@ const Home = () => {
                             _hover={{ bg: "#f7a8ca" }}
                             w={"400px"}
                             color={"#333333"}
-                            ml={"18px"}>
+                            ml={"18px"}
+                          >
                             Womens Wear
                           </Text>
                         </RouterLink>
@@ -973,7 +1030,8 @@ const Home = () => {
                             _hover={{ bg: "#f7a8ca" }}
                             w={"400px"}
                             color={"#333333"}
-                            ml={"18px"}>
+                            ml={"18px"}
+                          >
                             Mens Wear
                           </Text>
                         </RouterLink>
@@ -988,7 +1046,8 @@ const Home = () => {
                             _hover={{ bg: "#f7a8ca" }}
                             w={"400px"}
                             color={"#333333"}
-                            ml={"18px"}>
+                            ml={"18px"}
+                          >
                             Home & Kitchen
                           </Text>
                         </RouterLink>
@@ -1003,7 +1062,8 @@ const Home = () => {
                             _hover={{ bg: "#f7a8ca" }}
                             w={"400px"}
                             color={"#333333"}
-                            ml={"18px"}>
+                            ml={"18px"}
+                          >
                             Jewellery
                           </Text>
                         </RouterLink>
@@ -1018,7 +1078,8 @@ const Home = () => {
                             _hover={{ bg: "#f7a8ca" }}
                             w={"400px"}
                             color={"#333333"}
-                            ml={"18px"}>
+                            ml={"18px"}
+                          >
                             Bags and Footwear
                           </Text>
                         </RouterLink>
@@ -1035,7 +1096,8 @@ const Home = () => {
                         flex="1"
                         textAlign="left"
                         fontSize={19}
-                        h={"38px"}>
+                        h={"38px"}
+                      >
                         Meesho Mall
                       </Box>
                       <AccordionIcon fontSize={20} />
@@ -1050,7 +1112,8 @@ const Home = () => {
                             w={"400px"}
                             fontSize={"18px"}
                             color={"#333333"}
-                            ml={"18px"}>
+                            ml={"18px"}
+                          >
                             Beauty & Health
                           </Text>
                         </RouterLink>
@@ -1065,7 +1128,8 @@ const Home = () => {
                             _hover={{ bg: "#f7a8ca" }}
                             w={"400px"}
                             color={"#333333"}
-                            ml={"18px"}>
+                            ml={"18px"}
+                          >
                             Womens Wear
                           </Text>
                         </RouterLink>
@@ -1080,7 +1144,8 @@ const Home = () => {
                             _hover={{ bg: "#f7a8ca" }}
                             w={"400px"}
                             color={"#333333"}
-                            ml={"18px"}>
+                            ml={"18px"}
+                          >
                             Mens Wear
                           </Text>
                         </RouterLink>
@@ -1095,7 +1160,8 @@ const Home = () => {
                             _hover={{ bg: "#f7a8ca" }}
                             w={"400px"}
                             color={"#333333"}
-                            ml={"18px"}>
+                            ml={"18px"}
+                          >
                             Home & Kitchen
                           </Text>
                         </RouterLink>
@@ -1110,7 +1176,8 @@ const Home = () => {
                             _hover={{ bg: "#f7a8ca" }}
                             w={"400px"}
                             color={"#333333"}
-                            ml={"18px"}>
+                            ml={"18px"}
+                          >
                             Jewellery
                           </Text>
                         </RouterLink>
@@ -1125,7 +1192,8 @@ const Home = () => {
                             _hover={{ bg: "#f7a8ca" }}
                             w={"400px"}
                             color={"#333333"}
-                            ml={"18px"}>
+                            ml={"18px"}
+                          >
                             Bags and Footwear
                           </Text>
                         </RouterLink>
@@ -1139,7 +1207,8 @@ const Home = () => {
           <Box
             padding={10}
             width={["95%", "95%", "95%", "65%", "65%", "80%"]}
-            margin={"auto"}>
+            margin={"auto"}
+          >
             <HomeProducts showData={showData} currentPage={currentPage} />
           </Box>
         </Flex>

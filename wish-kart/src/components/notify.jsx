@@ -35,7 +35,8 @@ export function AddProductNotify() {
             },
           });
         }
-      }}>
+      }}
+    >
       Add New Product
     </Text>
   );
@@ -61,7 +62,8 @@ export function AddToCartNotify({ present }) {
             },
           });
         }
-      }}>
+      }}
+    >
       {present ? "Already Added" : "Add to Cart"}
     </Text>
   );
@@ -89,9 +91,8 @@ export function RemoveFromCartNotify() {
             },
           });
         }
-      }}>
-   
-    </Text>
+      }}
+    ></Text>
   );
 }
 export function RemoveProductNotify() {
@@ -114,19 +115,27 @@ export function RemoveProductNotify() {
             },
           });
         }
-      }}>
-
-    </Text>
+      }}
+    ></Text>
   );
 }
 
-export function CheckOutNotify() {
+export function CheckOutNotify({ checkout }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const navigate = useNavigate();
 
   return (
     <Box>
-      <Text onClick={onOpen}>Place Your Order</Text>
+      <Button
+        _hover={{ bg: "none" }}
+        as={"button"}
+        onClick={onOpen}
+        bg="none"
+        fontSize={"large"}
+        isDisabled={checkout === false}
+      >
+        Place Your Order
+      </Button>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
@@ -142,7 +151,8 @@ export function CheckOutNotify() {
               colorScheme="blue"
               mr={3}
               onClick={onClose}
-              fontSize={"12px"}>
+              fontSize={"12px"}
+            >
               Close
             </Button>
             <Button
@@ -150,7 +160,8 @@ export function CheckOutNotify() {
               onClick={() => {
                 navigate("/");
               }}
-              fontSize={"12px"}>
+              fontSize={"12px"}
+            >
               Homepage
             </Button>
           </ModalFooter>

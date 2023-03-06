@@ -20,6 +20,7 @@ import {
   Card,
   Radio,
   RadioGroup,
+  Grid,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
@@ -37,6 +38,7 @@ const Payment = () => {
   const [price, setPrice] = React.useState(0);
   const [cartData, setCartData] = React.useState([]);
   const [cardDetail, setCardDetail] = useState("");
+  const [checkout, setCheckout] = useState(false);
 
   const navigate = useNavigate();
   // redux start
@@ -53,11 +55,9 @@ const Payment = () => {
     setCartData(user.cart);
   }, [cartData, user]);
 
-
   const handlepayment = (e) => {
     setCardDetail(e);
-}
-
+  };
 
   function HandleCheckOut() {
     console.log("in");
@@ -67,7 +67,7 @@ const Payment = () => {
     dispatch(OrderPlacement(NewOrderHistory, userId));
   }
 
-  const gotoaddress = () => {};
+  // const gotoaddress = () => {};
 
   if (isAuth == false) {
     console.log("user not authenticated");
@@ -76,150 +76,155 @@ const Payment = () => {
     return (
       <>
         {/* <Navbar2 /> */}
-        <Box
+        <Grid
+          gridTemplateColumns={{ base: "80%", md: "60% 40%" }}
           w={{ base: "80%", md: "70%", lg: "70%" }}
-          margin={"180px auto"}
+          margin={{ base: "60px auto", md: "180px auto" }}
           padding={{ base: "10px", md: "", lg: "" }}
-          display={{ base: "", md: "", lg: "flex" }}
-          gap={{ base: "", md: "", lg: "20px" }}>
+          gap={{ base: "10px", md: "10px", lg: "20px" }}
+        >
           <Box>
-            <Flex align={"center"} justifyContent={"space-between"}>
-              <Text fontSize={"20px"} fontWeight={"550"} mb={"20px"}>
+            <Grid align={"center"} justifyContent={"space-between"}>
+              <Text
+                fontSize={"20px"}
+                fontWeight={"550"}
+                mb={"20px"}
+                textAlign="left"
+              >
                 Payment Method
-              </Text>
+              </Text>{" "}
+              <RadioGroup onChange={(e) => handlepayment(e)} value={cardDetail}>
+                <Stack direction="row">
+                  <Radio value="cash">
+                    <Text fontSize={20}>Cash</Text>
+                  </Radio>
+                  <Radio value="card">
+                    <Text fontSize={20}>Card</Text>
+                  </Radio>
+                </Stack>
+              </RadioGroup>
+              {/* ==== Card Detail ===== */}
+              {cardDetail === "card" ? (
+                <form
+                  style={{ width: "200%" }}
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    setCheckout(true);
+                  }}
+                >
+                  <Card border="1px" borderColor="blue.500" margin="18px 0">
+                    <CardHeader>
+                      <Heading size="lg"> Card Payment </Heading>
+                    </CardHeader>
 
-    
-              <RadioGroup onChange={(e) => handlepayment(e)} value={cardDetail} >
-                            <Stack direction='row'>
-                                <Radio value='cash' ><Text fontSize={20}>Cash</Text></Radio>
-                                <Radio value='card'><Text fontSize={20}>Card</Text></Radio>
-                            </Stack>
-                        </RadioGroup>
-
-                        {/* ==== Card Detail ===== */}
-                        {cardDetail === "card" ? <Card border="1px" borderColor="blue.500" margin="18px 0">
-                            <CardHeader>
-                                <Heading size="md"> Card Payment </Heading>
-                            </CardHeader>
-
-                            <CardBody>
-                                <Stack spacing="4">
-                                    <Box>
-                                        <Heading
-                                            size="xs"
-                                            textTransform="uppercase"
-                                            textAlign={"left"}
-                                            margin="4px 2px"
-                                        >
-                                            Card Number
-                                        </Heading>
-                                        <Input
-                                            variant="flushed"
-                                            type="number"
-                                            placeholder="Enter Card Number"
-                                        />
-                                    </Box>
-                                    <Box>
-                                        <Heading
-                                            size="xs"
-                                            textTransform="uppercase"
-                                            textAlign={"left"}
-                                            margin="6px 2px"
-                                        >
-                                            Evpiration Date
-                                        </Heading>
-                                        <Input
-                                            placeholder="Select Date and Time"
-                                            size="md"
-                                            type="datetime-local"
-                                        />
-                                    </Box>
-                                    <Box>
-                                        <Heading
-                                            size="xs"
-                                            textTransform="uppercase"
-                                            textAlign={"left"}
-                                            margin="6px 2px"
-                                        >
-                                            CVC code
-                                        </Heading>
-                                        <HStack>
-                                            <PinInput type="alphanumeric">
-                                                <PinInputField />
-                                                <PinInputField />
-                                                <PinInputField />
-                                            </PinInput>
-                                        </HStack>
-                                    </Box>
-                                </Stack>
-                            </CardBody>
-                        </Card> : ""}
-
-
-
-
-
-
-              {/* <Text fontSize={"10px"}>100% SAFE PAYMENT</Text> */}
-            </Flex>
-            <Flex>
-              {/* <Text fontSize={"10px"}>PAY IN CASH</Text> */}
-              <hr />
-            </Flex>
-            <Button
-              justifyContent={"space-between"}
-              gap={{ base: "110px", md: "372px", lg: "280px" }}
-              padding={"25px 14px"}
-              bg={"green.100"}
-              _hover={{ bg: "green.100" }}>
-              <Text fontSize={{ base: "16px" }}>Cash on Delivery</Text>{" "}
-              <Checkbox
-                colorScheme="green"
-                defaultChecked
-                border={"white"}></Checkbox>
-            </Button>
-
-            {/* --------------------------- */}
-            {/* <Box mt={"20px"}>
-              <Accordion
-                allowToggle
-                bg={"white"}
-                borderWidth={"1px"}
-                borderRadius={"5px"}>
-                <AccordionItem>
-                  <h2>
-                    <AccordionButton>
-                      <Box as="span" flex="1" textAlign="left">
-                        <Text fontSize={"20px"} fontWeight={"550"}>
-                          {" "}
-                          Reselling the Order?
-                        </Text>
-                        <Text fontSize={"12px"}>
-                          Click on 'Yes' to add Final Price
-                        </Text>
-                      </Box>
-                      <AccordionIcon />
-                    </AccordionButton>
-                  </h2>
-
-                  <AccordionPanel pb={4}>
-                    <Text>Cash to be Collected</Text>
-
-                    <Input
-                      type="number"
-                      border={"none"}
-                      borderBottom={"1px pink solid"}
-                      _hover={{ bg: "none" }}
-                      placeholder="Order Total"
-                      mt="10px"
-                      color={"pink.500"}
-                    />
-                  </AccordionPanel>
-                </AccordionItem>
-              </Accordion>
-            </Box> */}
+                    <CardBody>
+                      <Stack spacing="4">
+                        <Box>
+                          <Heading
+                            size="md"
+                            textTransform="uppercase"
+                            textAlign={"left"}
+                            margin="4px 2px"
+                          >
+                            Card Number
+                          </Heading>
+                          <Input
+                            variant="flushed"
+                            type="number"
+                            placeholder="Enter Card Number"
+                            isRequired
+                          />
+                        </Box>
+                        <Box>
+                          <Heading
+                            size="md"
+                            textTransform="uppercase"
+                            textAlign={"left"}
+                            margin="6px 2px"
+                          >
+                            Evpiration Date
+                          </Heading>
+                          <Input
+                            placeholder="Select Date and Time"
+                            size="md"
+                            type="datetime-local"
+                            isRequired
+                          />
+                        </Box>
+                        <Box>
+                          <Heading
+                            size="md"
+                            textTransform="uppercase"
+                            textAlign={"left"}
+                            margin="6px 2px"
+                          >
+                            C V V
+                          </Heading>
+                          <HStack>
+                            <PinInput type="alphanumeric">
+                              <PinInputField />
+                              <PinInputField />
+                              <PinInputField />
+                            </PinInput>
+                          </HStack>
+                        </Box>
+                      </Stack>
+                    </CardBody>
+                  </Card>
+                  <Text fontSize={{ base: "14px" }} textAlign="left">
+                    Save Card Details
+                  </Text>{" "}
+                  {/* <Checkbox colorScheme="green" border={"white"}></Checkbox> */}
+                  <Input
+                    cursor={"pointer"}
+                    fontSize={{ base: "16px" }}
+                    bg={"green.100"}
+                    _hover={{ bg: "green.100" }}
+                    type={"submit"}
+                    colorScheme="green"
+                    border={"white"}
+                  />
+                </form>
+              ) : cardDetail === "cash" ? (
+                <Box
+                  style={{
+                    width: "200%",
+                    marginTop: "20px",
+                  }}
+                >
+                  {/* <Button
+                    w="full"
+                    justifyContent={"space-between"}
+                    gap={{ base: "110px", md: "372px", lg: "280px" }}
+                    padding={"25px 14px"}
+                    bg={"green.100"}
+                    _hover={{ bg: "green.100" }}
+                    mb="10px"
+                  >
+                    <Text fontSize={{ base: "16px" }}>Cash on Delivery</Text>{" "}
+          
+                  </Button> */}
+                  <Text fontSize={{ base: "16px" }} textAlign="left" mb="10px">
+                    Cash on Delivery
+                  </Text>
+                  <Button
+                    w="full"
+                    onClick={(e) => {
+                      setCheckout(true);
+                    }}
+                    cursor={"pointer"}
+                    fontSize={{ base: "16px" }}
+                    bg={"green.400"}
+                    colorScheme="green"
+                    border={"white"}
+                  >
+                    Submit
+                  </Button>
+                </Box>
+              ) : null}
+            </Grid>
           </Box>
-          {/* ---------------------------- */}
+
           <Box padding={"10px"}>
             <Text fontWeight={"600"} fontSize={"20px"}>
               Price Details{" "}
@@ -229,7 +234,8 @@ const Payment = () => {
               fontWeight={"600"}
               color={"gray"}
               fontSize="13px"
-              m={"10px auto"}>
+              m={"10px auto"}
+            >
               <Text>Total Product Price</Text>
               <Text>
                 {"₹"}
@@ -241,7 +247,8 @@ const Payment = () => {
               justifyContent={"space-between"}
               fontSize={"17px"}
               fontWeight={"600"}
-              m={"10px auto"}>
+              m={"10px auto"}
+            >
               <Text>Order Total</Text>
               <Text>
                 {"₹"}
@@ -252,42 +259,42 @@ const Payment = () => {
             <Button
               fontSize={"10px"}
               outline={"none"}
-              padding={{ base: "1px 17px", md: "1px 145px", lg: "1px 77px" }}
-              m={"10px auto"}>
-              Clicking on ‘Continue’ will not deduct any money
+              padding={{ base: "1px 17px", md: "1px 95px", lg: "1px 77px" }}
+              m={"10px auto"}
+            >
+              <Text>
+                {cardDetail === ""
+                  ? "Please Select Payment Method"
+                  : "Clicking on ‘Continue’ will not deduct any money"}
+              </Text>
             </Button>
 
             <br />
 
-            <Button
-              fontSize={"15px"}
-              bg={"pink.400"}
-              padding={{
-                base: "20px 78px",
-                md: "20px 205px",
-                lg: "20px 140px",
-              }}
-              color={"white"}
-              borderRadius={"5px"}
-              m={"10px auto"}
-              _hover={{ bg: "pink.450" }}
-              onClick={HandleCheckOut}>
-              <CheckOutNotify />
-            </Button>
+            <Box m="auto">
+              <Button
+                isDisabled={checkout === false}
+                fontSize={"15px"}
+                bg={"pink.400"}
+                padding={{
+                  base: "20px 78px",
+                  md: "20px 130px",
+                  lg: "20px 115px",
+                }}
+                color={"white"}
+                borderRadius={"5px"}
+                m={"10px auto"}
+                _hover={{ bg: "pink.450" }}
+                onClick={HandleCheckOut}
+              >
+                <CheckOutNotify checkout={checkout} />
+              </Button>
+            </Box>
           </Box>
-        </Box>
+        </Grid>
       </>
     );
   }
 };
 
 export default Payment;
-
-
-
-
-
-
-
-
-

@@ -3,7 +3,6 @@ import {
   Flex,
   Text,
   IconButton,
-  // Button,
   Stack,
   Collapse,
   Icon,
@@ -12,11 +11,7 @@ import {
   PopoverTrigger,
   PopoverContent,
   useColorModeValue,
-  useBreakpointValue,
   useDisclosure,
-  PopoverArrow,
-  Heading,
-  Button,
 } from "@chakra-ui/react";
 import {
   HamburgerIcon,
@@ -26,12 +21,8 @@ import {
 } from "@chakra-ui/icons";
 import "../index.css";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
-import { BiShoppingBag } from "react-icons/bi";
-import { BiUser } from "react-icons/bi";
-import { BsCart2 } from "react-icons/bs";
-import { FaMobileAlt } from "react-icons/fa";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { USER_LOGOUT } from "../redux/user/user.type";
 
@@ -41,14 +32,10 @@ export default function MegaMenu() {
   const [value, setValue] = useState("");
   const navigate = useNavigate();
   // redux start
-  let { loading, error, isAuth, user } = useSelector(
-    (store) => store.UserManager
-  );
+  let { isAuth, user } = useSelector((store) => store.UserManager);
   let dispatch = useDispatch();
   // redux end
-  React.useEffect(() => {
-    console.log(isAuth, "navbar");
-  }, [dispatch, user, isAuth]);
+  React.useEffect(() => {}, [dispatch, user, isAuth]);
 
   const onChange = (event) => {
     setValue(event.target.value);

@@ -43,9 +43,7 @@ export default function Navbar() {
   );
   let dispatch = useDispatch();
   // redux end
-  React.useEffect(() => {
-   
-  }, [dispatch, user, isAuth]);
+  React.useEffect(() => {}, [dispatch, user, isAuth]);
 
   const onChange = (event) => {
     setValue(event.target.value);
@@ -194,13 +192,19 @@ export default function Navbar() {
                   <PopoverArrow />
                   <PopoverHeader fontSize={19}>Download From</PopoverHeader>
                   <Image src={google} w={"120px"} h={"40px"} ml={"35px"} />
-                  <Image src={Appstore} w={"123px"} h={"52px"} ml={"35px"} mt={"6px"} />
+                  <Image
+                    src={Appstore}
+                    w={"123px"}
+                    h={"42px"}
+                    ml={"35px"}
+                    mt={"6px"}
+                  />
                 </PopoverContent>
               </Popover>
               <Flex bg={"black"} h="32px" mt={"-18px"}>
                 <Divider orientation="vertical" color={"black"} />
               </Flex>
-              <RouterLink to="/adminsignup">
+              <RouterLink to="/signup">
                 <Text
                   fontSize={["8px", "8x", "15px"]}
                   mt={"-15px"}

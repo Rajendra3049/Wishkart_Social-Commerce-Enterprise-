@@ -2,7 +2,6 @@ import {
   Accordion,
   AccordionButton,
   AccordionItem,
-  AccordionPanel,
   Box,
   Button,
   Flex,
@@ -16,6 +15,7 @@ import {
   Show,
   SimpleGrid,
   Stack,
+  Image,
   Checkbox as ChakraCheckBox,
 } from "@chakra-ui/react";
 import { Checkbox } from "antd";
@@ -27,41 +27,27 @@ import Loader from "../../components/Loader.jsx";
 import { getProducts } from "../../redux/Products/product.action.js";
 
 const Women = () => {
-  let { loading, error, data } = useSelector((store) => store.ProductsManager);
+  let { loading, data } = useSelector((store) => store.ProductsManager);
   let dispatch = useDispatch();
-  let [filtCred, setFiltCred] = useState({});
+  let [filtCred, setFiltCred] = useState("");
+  const [filterData, setFilterData] = useState([]);
+  const [womenData, setWomenData] = useState([]);
 
-  //   console.log(data)
-  let womenData = data.filter(
-    (el) => el.category == ("Sarees" || el.category == "Dresses")
-  );
-  // console.log(womenData);
-
-  let filtData = womenData.filter(
-    (el) =>
-      ((filtCred.above100 ? el.discounted_price > 1000 : "") ||
-        (filtCred.a1000_500
-          ? el.discounted_price < 1000 && el.discounted_price > 500
-          : "") ||
-        (filtCred.a500_300
-          ? el.discounted_price < 500 && el.discounted_price > 300
-          : "") ||
-        (filtCred.below300 ? el.discounted_price < 300 : "")) &&
-      ((filtCred.ratingTop ? el.rating > 4.5 : "") ||
-        (filtCred.ratingTop2 ? el.rating < 4.5 && el.rating > 4 : "") ||
-        (filtCred.a4_3 ? el.rating < 4 && el.rating > 3 : "") ||
-        (filtCred.a3_2 ? el.rating < 3 : "") ||
-        (filtCred.below2 ? el.rating < 2 : ""))
-  );
   useEffect(() => {
-    if (data.length == 0) {
+    if (data.length === 0) {
       getProducts(dispatch);
     }
   }, []);
   useEffect(() => {
+    let Data = data.filter(
+      (el) => el.category === ("Sarees" || el.category === "Dresses")
+    );
+    setWomenData(Data);
+  }, [data.length]);
+
+  useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  // console.log(filtData);
 
   const check = (e) => {
     console.log(e.target);
@@ -71,6 +57,120 @@ const Women = () => {
       [name]: checked,
     });
   };
+
+  useEffect(() => {
+    if (filtCred !== "") {
+      if (
+        (filtCred.above100 &&
+          (filtCred.ratingTop ||
+            filtCred.ratingTop2 ||
+            filtCred.a4_3 ||
+            filtCred.a3_2 ||
+            filtCred.below2)) ||
+        (filtCred.a1000_500 &&
+          (filtCred.ratingTop ||
+            filtCred.ratingTop2 ||
+            filtCred.a4_3 ||
+            filtCred.a3_2 ||
+            filtCred.below2)) ||
+        (filtCred.ratingTop &&
+          (filtCred.ratingTop ||
+            filtCred.ratingTop2 ||
+            filtCred.a4_3 ||
+            filtCred.a3_2 ||
+            filtCred.below2)) ||
+        (filtCred.a500_300 &&
+          (filtCred.ratingTop ||
+            filtCred.ratingTop2 ||
+            filtCred.a4_3 ||
+            filtCred.a3_2 ||
+            filtCred.below2)) ||
+        (filtCred.below300 &&
+          (filtCred.ratingTop ||
+            filtCred.ratingTop2 ||
+            filtCred.a4_3 ||
+            filtCred.a3_2 ||
+            filtCred.below2))
+      ) {
+        let MixData = womenData.filter(
+          (el) =>
+            ((filtCred.above100 ? el.discounted_price >= 1000 : null) &&
+              ((filtCred.ratingTop ? el.rating >= 4.5 : null) ||
+                (filtCred.ratingTop2
+                  ? el.rating < 4.5 && el.rating >= 4
+                  : null) ||
+                (filtCred.a4_3 ? el.rating < 4 && el.rating >= 3 : null) ||
+                (filtCred.a3_2 ? el.rating < 3 : null) ||
+                (filtCred.below2 ? el.rating < 2 : null))) ||
+            ((filtCred.a1000_500
+              ? el.discounted_price < 1000 && el.discounted_price >= 500
+              : null) &&
+              ((filtCred.ratingTop ? el.rating >= 4.5 : null) ||
+                (filtCred.ratingTop2
+                  ? el.rating < 4.5 && el.rating >= 4
+                  : null) ||
+                (filtCred.a4_3 ? el.rating < 4 && el.rating >= 3 : null) ||
+                (filtCred.a3_2 ? el.rating < 3 : null) ||
+                (filtCred.below2 ? el.rating < 2 : null))) ||
+            ((filtCred.a500_300
+              ? el.discounted_price < 500 && el.discounted_price >= 300
+              : null) &&
+              ((filtCred.ratingTop ? el.rating >= 4.5 : null) ||
+                (filtCred.ratingTop2
+                  ? el.rating < 4.5 && el.rating >= 4
+                  : null) ||
+                (filtCred.a4_3 ? el.rating < 4 && el.rating >= 3 : null) ||
+                (filtCred.a3_2 ? el.rating < 3 : null) ||
+                (filtCred.below2 ? el.rating < 2 : null))) ||
+            ((filtCred.below300 ? el.discounted_price < 300 : null) &&
+              ((filtCred.ratingTop ? el.rating >= 4.5 : null) ||
+                (filtCred.ratingTop2
+                  ? el.rating < 4.5 && el.rating >= 4
+                  : null) ||
+                (filtCred.a4_3 ? el.rating < 4 && el.rating >= 3 : null) ||
+                (filtCred.a3_2 ? el.rating < 3 : null) ||
+                (filtCred.below2 ? el.rating < 2 : null)))
+        );
+        setFilterData(MixData);
+      } else if (
+        filtCred.ratingTop ||
+        filtCred.ratingTop2 ||
+        filtCred.a4_3 ||
+        filtCred.a3_2 ||
+        filtCred.below2
+      ) {
+        let RatingData = womenData.filter(
+          (el) =>
+            (filtCred.ratingTop ? el.rating >= 4.5 : null) ||
+            (filtCred.ratingTop2 ? el.rating < 4.5 && el.rating >= 4 : null) ||
+            (filtCred.a4_3 ? el.rating < 4 && el.rating >= 3 : null) ||
+            (filtCred.a3_2 ? el.rating < 3 : null) ||
+            (filtCred.below2 ? el.rating < 2 : null)
+        );
+        setFilterData(RatingData);
+      } else if (
+        filtCred.above100 ||
+        filtCred.a1000_500 ||
+        filtCred.ratingTop ||
+        filtCred.a500_300 ||
+        filtCred.below300
+      ) {
+        let PriceData = womenData.filter(
+          (el) =>
+            (filtCred.above100 ? el.discounted_price >= 1000 : null) ||
+            (filtCred.a1000_500
+              ? el.discounted_price < 1000 && el.discounted_price >= 500
+              : null) ||
+            (filtCred.a500_300
+              ? el.discounted_price < 500 && el.discounted_price >= 300
+              : null) ||
+            (filtCred.below300 ? el.discounted_price < 300 : null)
+        );
+        setFilterData(PriceData);
+      }
+    }
+  }, [filtCred]);
+
   if (loading) {
     return <Loader />;
   } else {
@@ -132,12 +232,7 @@ const Women = () => {
                       size={"lg"}>
                       4 - 3
                     </ChakraCheckBox>
-                    <ChakraCheckBox
-                      onChange={(e) => check(e)}
-                      name="a3-2"
-                      size={"lg"}>
-                      3 - 2
-                    </ChakraCheckBox>
+
                     <ChakraCheckBox
                       onChange={(e) => check(e)}
                       name="below2"
@@ -150,7 +245,6 @@ const Women = () => {
             </Menu>
           </Show>
         </Box>
-
         <Flex>
           <Hide below="md">
             <Box width={"20%"}>
@@ -234,12 +328,7 @@ const Women = () => {
                         size={"lg"}>
                         4 - 3
                       </Checkbox>
-                      <Checkbox
-                        onChange={(e) => check(e)}
-                        name="a3-2"
-                        size={"lg"}>
-                        3 - 2
-                      </Checkbox>
+
                       <Checkbox
                         onChange={(e) => check(e)}
                         name="below2"
@@ -254,8 +343,21 @@ const Women = () => {
             </Box>
           </Hide>
           <Box style={{ width: "90%", margin: "auto" }} border="0px solid red">
+            <Box>
+              {filtCred !== "" && filterData.length === 0 ? (
+                <Image
+                  src="NotFound.jpg"
+                  alt="NotFound"
+                  w="50%"
+                  margin={"auto"}
+                />
+              ) : null}
+            </Box>
             <SimpleGrid columns={[1, 2, 3, 4]} spacing={10}>
-              {(filtData.length == 0 ? womenData : filtData).map((el) => {
+              {(womenData.length > 0 && filtCred === ""
+                ? womenData
+                : filterData
+              ).map((el) => {
                 return <GridProduct key={el.id} props={el} />;
               })}
             </SimpleGrid>

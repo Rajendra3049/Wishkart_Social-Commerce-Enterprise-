@@ -24,7 +24,7 @@ function Update({ singleData, HandleUpdate }) {
   return (
     <>
    
-   <Text ml={5} ><FiEdit fontSize={15}  onClick={onOpen}  color={"#fb2175"} /></Text>
+   <Text ml={5}><FiEdit fontSize={18}  onClick={onOpen}  color={"#fb2175"} /></Text>
       {/* <Button fontSize={"16px"} onClick={onOpen} className="upbtn" m={"5px"}>
         Update
       </Button> */}
