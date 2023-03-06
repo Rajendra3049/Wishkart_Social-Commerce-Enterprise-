@@ -16,6 +16,7 @@ import {
   SimpleGrid,
   Stack,
   Checkbox as ChakraCheckBox,
+  Image,
 } from "@chakra-ui/react";
 import { Checkbox } from "antd";
 
@@ -26,38 +27,25 @@ import Loader from "../../components/Loader.jsx";
 import { getProducts } from "../../redux/Products/product.action.js";
 
 const Men = () => {
-  let { loading, error, data } = useSelector((store) => store.ProductsManager);
+  let { loading, data } = useSelector((store) => store.ProductsManager);
   let dispatch = useDispatch();
-  let [filtCred, setFiltCred] = useState({});
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-  //   console.log(data)
-  let beautyHealth = data.filter((el) => el.category == "Bags and Footwear");
+  let [filtCred, setFiltCred] = useState("");
+  const [filterData, setFilterData] = useState([]);
+  const [bagData, setBagData] = useState([]);
 
-  let filtData = beautyHealth.filter(
-    (el) =>
-      ((filtCred.above100 ? el.discounted_price > 1000 : "") ||
-        (filtCred.a1000_500
-          ? el.discounted_price < 1000 && el.discounted_price > 500
-          : "") ||
-        (filtCred.a500_300
-          ? el.discounted_price < 500 && el.discounted_price > 300
-          : "") ||
-        (filtCred.below300 ? el.discounted_price < 300 : "")) &&
-      ((filtCred.ratingTop ? el.rating > 4.5 : "") ||
-        (filtCred.ratingTop2 ? el.rating < 4.5 && el.rating > 4 : "") ||
-        (filtCred.a4_3 ? el.rating < 4 && el.rating > 3 : "") ||
-        (filtCred.a3_2 ? el.rating < 3 : "") ||
-        (filtCred.below2 ? el.rating < 2 : ""))
-  );
   useEffect(() => {
-    if (data.length == 0) {
+    if (data.length === 0) {
       getProducts(dispatch);
     }
   }, []);
-  // console.log(filtData);
+  useEffect(() => {
+    let Data = data.filter((el) => el.category === "Bags and Footwear");
+    setBagData(Data);
+  }, [data.length]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const check = (e) => {
     console.log(e.target);
 
@@ -67,6 +55,126 @@ const Men = () => {
       [name]: checked,
     });
   };
+
+  useEffect(() => {
+    if (filtCred !== "") {
+      if (
+        (filtCred.above100 &&
+          (filtCred.ratingTop ||
+            filtCred.ratingTop2 ||
+            filtCred.a4_3 ||
+            filtCred.a3_2 ||
+            filtCred.below2)) ||
+        (filtCred.a1000_500 &&
+          (filtCred.ratingTop ||
+            filtCred.ratingTop2 ||
+            filtCred.a4_3 ||
+            filtCred.a3_2 ||
+            filtCred.below2)) ||
+        (filtCred.ratingTop &&
+          (filtCred.ratingTop ||
+            filtCred.ratingTop2 ||
+            filtCred.a4_3 ||
+            filtCred.a3_2 ||
+            filtCred.below2)) ||
+        (filtCred.a500_300 &&
+          (filtCred.ratingTop ||
+            filtCred.ratingTop2 ||
+            filtCred.a4_3 ||
+            filtCred.a3_2 ||
+            filtCred.below2)) ||
+        (filtCred.below300 &&
+          (filtCred.ratingTop ||
+            filtCred.ratingTop2 ||
+            filtCred.a4_3 ||
+            filtCred.a3_2 ||
+            filtCred.below2))
+      ) {
+        let MixData = bagData.filter(
+          (el) =>
+            ((filtCred.above100 ? el.discounted_price >= 1000 : null) &&
+              ((filtCred.ratingTop ? el.rating >= 4.5 : null) ||
+                (filtCred.ratingTop2
+                  ? el.rating < 4.5 && el.rating >= 4
+                  : null) ||
+                (filtCred.a4_3 ? el.rating < 4 && el.rating >= 3 : null) ||
+                (filtCred.a3_2 ? el.rating < 3 : null) ||
+                (filtCred.below2 ? el.rating < 2 : null))) ||
+            ((filtCred.a1000_500
+              ? el.discounted_price < 1000 && el.discounted_price >= 500
+              : null) &&
+              ((filtCred.ratingTop ? el.rating >= 4.5 : null) ||
+                (filtCred.ratingTop2
+                  ? el.rating < 4.5 && el.rating >= 4
+                  : null) ||
+                (filtCred.a4_3 ? el.rating < 4 && el.rating >= 3 : null) ||
+                (filtCred.a3_2 ? el.rating < 3 : null) ||
+                (filtCred.below2 ? el.rating < 2 : null))) ||
+            ((filtCred.a500_300
+              ? el.discounted_price < 500 && el.discounted_price >= 300
+              : null) &&
+              ((filtCred.ratingTop ? el.rating >= 4.5 : null) ||
+                (filtCred.ratingTop2
+                  ? el.rating < 4.5 && el.rating >= 4
+                  : null) ||
+                (filtCred.a4_3 ? el.rating < 4 && el.rating >= 3 : null) ||
+                (filtCred.a3_2 ? el.rating < 3 : null) ||
+                (filtCred.below2 ? el.rating < 2 : null))) ||
+            ((filtCred.below300 ? el.discounted_price < 300 : null) &&
+              ((filtCred.ratingTop ? el.rating >= 4.5 : null) ||
+                (filtCred.ratingTop2
+                  ? el.rating < 4.5 && el.rating >= 4
+                  : null) ||
+                (filtCred.a4_3 ? el.rating < 4 && el.rating >= 3 : null) ||
+                (filtCred.a3_2 ? el.rating < 3 : null) ||
+                (filtCred.below2 ? el.rating < 2 : null)))
+        );
+        setFilterData(MixData);
+      } else if (
+        filtCred.ratingTop ||
+        filtCred.ratingTop2 ||
+        filtCred.a4_3 ||
+        filtCred.a3_2 ||
+        filtCred.below2
+      ) {
+        let RatingData = bagData.filter(
+          (el) =>
+            (filtCred.ratingTop ? el.rating >= 4.5 : null) ||
+            (filtCred.ratingTop2 ? el.rating < 4.5 && el.rating >= 4 : null) ||
+            (filtCred.a4_3 ? el.rating < 4 && el.rating >= 3 : null) ||
+            (filtCred.a3_2 ? el.rating < 3 : null) ||
+            (filtCred.below2 ? el.rating < 2 : null)
+        );
+        setFilterData(RatingData);
+      } else if (
+        filtCred.above100 ||
+        filtCred.a1000_500 ||
+        filtCred.ratingTop ||
+        filtCred.a500_300 ||
+        filtCred.below300
+      ) {
+        let PriceData = bagData.filter(
+          (el) =>
+            (filtCred.above100 ? el.discounted_price >= 1000 : null) ||
+            (filtCred.a1000_500
+              ? el.discounted_price < 1000 && el.discounted_price >= 500
+              : null) ||
+            (filtCred.a500_300
+              ? el.discounted_price < 500 && el.discounted_price >= 300
+              : null) ||
+            (filtCred.below300 ? el.discounted_price < 300 : null)
+        );
+        setFilterData(PriceData);
+      }
+    }
+  }, [filtCred]);
+  useEffect(() => {
+    if (data.length === 0) {
+      getProducts(dispatch);
+    }
+  }, []);
+  // console.log(filtData);
+
   if (loading) {
     <Loader />;
   }
@@ -129,12 +237,7 @@ const Men = () => {
                     size={"lg"}>
                     4 - 3
                   </ChakraCheckBox>
-                  <ChakraCheckBox
-                    onChange={(e) => check(e)}
-                    name="a3-2"
-                    size={"lg"}>
-                    3 - 2
-                  </ChakraCheckBox>
+
                   <ChakraCheckBox
                     onChange={(e) => check(e)}
                     name="below2"
@@ -231,12 +334,7 @@ const Men = () => {
                       size={"lg"}>
                       4 - 3
                     </Checkbox>
-                    <Checkbox
-                      onChange={(e) => check(e)}
-                      name="a3-2"
-                      size={"lg"}>
-                      3 - 2
-                    </Checkbox>
+
                     <Checkbox
                       onChange={(e) => check(e)}
                       name="below2"
@@ -250,11 +348,24 @@ const Men = () => {
             </Box>
           </Box>
         </Hide>
+
         <Box style={{ width: "90%", margin: "auto" }} border="0px solid red">
+          <Box>
+            {filtCred !== "" && filterData.length === 0 ? (
+              <Image
+                src="NotFound.jpg"
+                alt="NotFound"
+                w="50%"
+                margin={"auto"}
+              />
+            ) : null}
+          </Box>
           <SimpleGrid columns={[1, 2, 3, 4]} spacing={10}>
-            {(filtData.length == 0 ? beautyHealth : filtData).map((el) => {
-              return <GridProduct key={el.id} props={el} />;
-            })}
+            {(bagData.length > 0 && filtCred === "" ? bagData : filterData).map(
+              (el) => {
+                return <GridProduct key={el.id} props={el} />;
+              }
+            )}
           </SimpleGrid>
         </Box>
       </Flex>
