@@ -195,7 +195,7 @@ export default function Navbar() {
                   <Image
                     src={Appstore}
                     w={"123px"}
-                    h={"52px"}
+                    h={"42px"}
                     ml={"35px"}
                     mt={"6px"}
                   />
@@ -204,7 +204,7 @@ export default function Navbar() {
               <Flex bg={"black"} h="32px" mt={"-18px"}>
                 <Divider orientation="vertical" color={"black"} />
               </Flex>
-              <RouterLink to="/adminsignup">
+              <RouterLink to="/signup">
                 <Text
                   fontSize={["8px", "8x", "15px"]}
                   mt={"-15px"}

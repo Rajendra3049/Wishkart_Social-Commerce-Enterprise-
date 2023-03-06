@@ -61,8 +61,9 @@ export default function AdminSignUp() {
     return <Loader />;
   } else {
     return (
-     <SimpleGrid  m={"auto"} mt={["65px","","160px"]}  w={"90%"} columns={[1,1,1,2]} border={"0px solid red"}>
-      <Flex minH={["75vh","80vh","70vh"]} mt={"0px"} ml={["0px","","","30px"]} border={"0x solid blue"}>
+      <Box backgroundColor="#fdecef" mt={"-10px"}>
+     <SimpleGrid  m={"auto"} mt={["65px","","160px"]}  w={"90%"} columns={[1,1,1,2]} border={"0px solid red"} >
+      <Flex minH={["75vh","80vh","70vh"]} mt={"0px"} ml={["0px","","","30px"]} border={"0x solid blue"} >
         <Stack spacing={8} mx={"auto"} maxW={["xl","4xl","3xl"]} py={12} px={6} h={["350px","","480px"]} border={"0px solid yellow"}>
           <Stack>
             <Heading fontSize={"4xl"}>Sign in as Admin</Heading>
@@ -73,6 +74,7 @@ export default function AdminSignUp() {
             h={["75vh","","","58vh"]}
             m={"auto"}
          border={"0px solid green"}
+         backgroundColor="white"
             boxShadow={"lg"}
             p={8}
           >
@@ -137,6 +139,7 @@ export default function AdminSignUp() {
         ></Image>
       </Box>
     </SimpleGrid>
+    </Box>
   );
 }
 
