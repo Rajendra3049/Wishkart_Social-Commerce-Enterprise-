@@ -1,6 +1,6 @@
-<b>Project Name</b> - WishKart (Clone of Meesho)<br>
-<b>Team Members-</b>fw21_0737-Rajendra patel , Shalini Singh ,Akshay Kadu ,-Md Jawed Hussain and Yash Satish Bankar <br>
-<b>Deployed Link-</b> https://wish-kart.vercel.app/<br>
+<b>Project Name</b> - WishKart (Clone of Meesho)<br><br>
+<b>Team Members-</b>fw21_0737-Rajendra patel , Shalini Singh ,Akshay Kadu ,-Md Jawed Hussain and Yash Satish Bankar <br><br>
+<b>Deployed Link-</b>https://wishkart-tau.vercel.app/<br><br>
 
 <h1>Tech Stacks</h1>
 React<br>
