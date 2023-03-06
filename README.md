@@ -2,6 +2,16 @@
 <b>Team Members-</b>fw21_0737-Rajendra patel , Shalini Singh ,Akshay Kadu ,-Md Jawed Hussain and Yash Satish Bankar <br>
 <b>Deployed Link-</b> https://wish-kart.vercel.app/<br>
 
+<h1>Tech Stacks</h1>
+React<br>
+Redux<br>
+JavaScript<br>
+HTML<br>
+CSS<br>
+Chakra UI<br>
+
+
+
 <h1 align ="center">Home Page</h1>
 
 
