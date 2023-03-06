@@ -317,7 +317,7 @@ const Home = () => {
                             color={"#333333"}
                             ml={"18px"}
                           >
-                            Beauty & Health
+                            Xtra Small
                           </Text>
                         </RouterLink>
                       </Checkbox>
@@ -333,7 +333,7 @@ const Home = () => {
                             color={"#333333"}
                             ml={"18px"}
                           >
-                            Womens Wear
+                        Small
                           </Text>
                         </RouterLink>
                       </Checkbox>
@@ -349,7 +349,7 @@ const Home = () => {
                             color={"#333333"}
                             ml={"18px"}
                           >
-                            Mens Wear
+                            Medium
                           </Text>
                         </RouterLink>
                       </Checkbox>
@@ -365,7 +365,7 @@ const Home = () => {
                             color={"#333333"}
                             ml={"18px"}
                           >
-                            Home & Kitchen
+                            Large
                           </Text>
                         </RouterLink>
                       </Checkbox>
@@ -381,7 +381,7 @@ const Home = () => {
                             color={"#333333"}
                             ml={"18px"}
                           >
-                            Jewellery
+                            Xtra Large
                           </Text>
                         </RouterLink>
                       </Checkbox>
@@ -397,7 +397,7 @@ const Home = () => {
                             color={"#333333"}
                             ml={"18px"}
                           >
-                            Bags and Footwear
+                            Xtra Xtra Large
                           </Text>
                         </RouterLink>
                       </Checkbox>
@@ -545,7 +545,7 @@ const Home = () => {
                             color={"#333333"}
                             ml={"18px"}
                           >
-                            Beauty & Health
+                            Anouk
                           </Text>
                         </RouterLink>
                       </Checkbox>
@@ -561,7 +561,7 @@ const Home = () => {
                             color={"#333333"}
                             ml={"18px"}
                           >
-                            Womens Wear
+                            Libas
                           </Text>
                         </RouterLink>
                       </Checkbox>
@@ -577,7 +577,7 @@ const Home = () => {
                             color={"#333333"}
                             ml={"18px"}
                           >
-                            Mens Wear
+                            Roadster
                           </Text>
                         </RouterLink>
                       </Checkbox>
@@ -593,7 +593,7 @@ const Home = () => {
                             color={"#333333"}
                             ml={"18px"}
                           >
-                            Home & Kitchen
+                            Levis
                           </Text>
                         </RouterLink>
                       </Checkbox>
@@ -609,7 +609,7 @@ const Home = () => {
                             color={"#333333"}
                             ml={"18px"}
                           >
-                            Jewellery
+                            Biba
                           </Text>
                         </RouterLink>
                       </Checkbox>
@@ -625,7 +625,7 @@ const Home = () => {
                             color={"#333333"}
                             ml={"18px"}
                           >
-                            Bags and Footwear
+                            W
                           </Text>
                         </RouterLink>
                       </Checkbox>
@@ -773,7 +773,7 @@ const Home = () => {
                             color={"#333333"}
                             ml={"18px"}
                           >
-                            Beauty & Health
+                            Black
                           </Text>
                         </RouterLink>
                       </Checkbox>
@@ -789,7 +789,7 @@ const Home = () => {
                             color={"#333333"}
                             ml={"18px"}
                           >
-                            Womens Wear
+                            White
                           </Text>
                         </RouterLink>
                       </Checkbox>
@@ -805,7 +805,7 @@ const Home = () => {
                             color={"#333333"}
                             ml={"18px"}
                           >
-                            Mens Wear
+                            Teal
                           </Text>
                         </RouterLink>
                       </Checkbox>
@@ -821,7 +821,7 @@ const Home = () => {
                             color={"#333333"}
                             ml={"18px"}
                           >
-                            Home & Kitchen
+                            Red
                           </Text>
                         </RouterLink>
                       </Checkbox>
@@ -837,7 +837,7 @@ const Home = () => {
                             color={"#333333"}
                             ml={"18px"}
                           >
-                            Jewellery
+                            Yellow
                           </Text>
                         </RouterLink>
                       </Checkbox>
@@ -853,7 +853,7 @@ const Home = () => {
                             color={"#333333"}
                             ml={"18px"}
                           >
-                            Bags and Footwear
+                            Multi Colour
                           </Text>
                         </RouterLink>
                       </Checkbox>
