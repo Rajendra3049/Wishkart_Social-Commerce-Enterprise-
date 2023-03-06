@@ -38,9 +38,7 @@ export default function Navbar() {
   const [value, setValue] = useState("");
   const navigate = useNavigate();
   // redux start
-  let { loading, error, isAuth, user } = useSelector(
-    (store) => store.UserManager
-  );
+  let { isAuth, user } = useSelector((store) => store.UserManager);
   let dispatch = useDispatch();
   // redux end
   React.useEffect(() => {}, [dispatch, user, isAuth]);
@@ -204,7 +202,7 @@ export default function Navbar() {
               <Flex bg={"black"} h="32px" mt={"-18px"}>
                 <Divider orientation="vertical" color={"black"} />
               </Flex>
-              <RouterLink to="/signup">
+              <RouterLink to="/adminsignup">
                 <Text
                   fontSize={["8px", "8x", "15px"]}
                   mt={"-15px"}
