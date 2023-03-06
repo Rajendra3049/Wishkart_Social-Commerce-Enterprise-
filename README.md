@@ -4,6 +4,7 @@
 
 <h1>Tech Stacks</h1>
 React<br>
+Redux-Thunk<br>
 Redux<br>
 JavaScript<br>
 HTML<br>
