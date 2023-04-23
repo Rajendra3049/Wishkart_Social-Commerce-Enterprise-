@@ -3,12 +3,6 @@ import {
   Text,
   Flex,
   Button,
-  Checkbox,
-  Accordion,
-  AccordionItem,
-  AccordionButton,
-  AccordionIcon,
-  AccordionPanel,
   Input,
   PinInputField,
   HStack,
@@ -24,12 +18,11 @@ import {
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
-import { CheckCircleIcon } from "@chakra-ui/icons";
-import Navbar2 from "../../components/Navbar2/Navbar2";
 
 import { useDispatch, useSelector } from "react-redux";
 import { OrderPlacement } from "../../redux/user/user.action";
 import { CheckOutNotify } from "../../components/notify";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Payment = () => {
   React.useEffect(() => {
@@ -42,10 +35,11 @@ const Payment = () => {
 
   const navigate = useNavigate();
   // redux start
-  let { user, isAuth } = useSelector((store) => store.UserManager);
+  // let { user, isAuth } = useSelector((store) => store.UserManager);
   let dispatch = useDispatch();
   // redux end
-
+  const { user, isAuthenticated, isLoading } = useAuth0();
+  console.log("isAuthenticated", isAuthenticated);
   React.useEffect(() => {
     let newPrice = 0;
     for (let i = 0; i < cartData.length; i++) {
@@ -69,7 +63,7 @@ const Payment = () => {
 
   // const gotoaddress = () => {};
 
-  if (isAuth == false) {
+  if (isAuthenticated === false) {
     console.log("user not authenticated");
     return <Navigate to="/signup" />;
   } else {
@@ -81,16 +75,14 @@ const Payment = () => {
           w={{ base: "80%", md: "70%", lg: "70%" }}
           margin={{ base: "60px auto", md: "180px auto" }}
           padding={{ base: "10px", md: "", lg: "" }}
-          gap={{ base: "10px", md: "10px", lg: "20px" }}
-        >
+          gap={{ base: "10px", md: "10px", lg: "20px" }}>
           <Box>
             <Grid align={"center"} justifyContent={"space-between"}>
               <Text
                 fontSize={"20px"}
                 fontWeight={"550"}
                 mb={"20px"}
-                textAlign="left"
-              >
+                textAlign="left">
                 Payment Method
               </Text>{" "}
               <RadioGroup onChange={(e) => handlepayment(e)} value={cardDetail}>
@@ -110,8 +102,7 @@ const Payment = () => {
                   onSubmit={(e) => {
                     e.preventDefault();
                     setCheckout(true);
-                  }}
-                >
+                  }}>
                   <Card border="1px" borderColor="blue.500" margin="18px 0">
                     <CardHeader>
                       <Heading size="lg"> Card Payment </Heading>
@@ -124,8 +115,7 @@ const Payment = () => {
                             size="md"
                             textTransform="uppercase"
                             textAlign={"left"}
-                            margin="4px 2px"
-                          >
+                            margin="4px 2px">
                             Card Number
                           </Heading>
                           <Input
@@ -140,8 +130,7 @@ const Payment = () => {
                             size="md"
                             textTransform="uppercase"
                             textAlign={"left"}
-                            margin="6px 2px"
-                          >
+                            margin="6px 2px">
                             Evpiration Date
                           </Heading>
                           <Input
@@ -156,8 +145,7 @@ const Payment = () => {
                             size="md"
                             textTransform="uppercase"
                             textAlign={"left"}
-                            margin="6px 2px"
-                          >
+                            margin="6px 2px">
                             C V V
                           </Heading>
                           <HStack>
@@ -190,8 +178,7 @@ const Payment = () => {
                   style={{
                     width: "200%",
                     marginTop: "20px",
-                  }}
-                >
+                  }}>
                   {/* <Button
                     w="full"
                     justifyContent={"space-between"}
@@ -216,8 +203,7 @@ const Payment = () => {
                     fontSize={{ base: "16px" }}
                     bg={"green.400"}
                     colorScheme="green"
-                    border={"white"}
-                  >
+                    border={"white"}>
                     Submit
                   </Button>
                 </Box>
@@ -234,8 +220,7 @@ const Payment = () => {
               fontWeight={"600"}
               color={"gray"}
               fontSize="13px"
-              m={"10px auto"}
-            >
+              m={"10px auto"}>
               <Text>Total Product Price</Text>
               <Text>
                 {"₹"}
@@ -247,8 +232,7 @@ const Payment = () => {
               justifyContent={"space-between"}
               fontSize={"17px"}
               fontWeight={"600"}
-              m={"10px auto"}
-            >
+              m={"10px auto"}>
               <Text>Order Total</Text>
               <Text>
                 {"₹"}
@@ -260,8 +244,7 @@ const Payment = () => {
               fontSize={"10px"}
               outline={"none"}
               padding={{ base: "1px 17px", md: "1px 95px", lg: "1px 77px" }}
-              m={"10px auto"}
-            >
+              m={"10px auto"}>
               <Text>
                 {cardDetail === ""
                   ? "Please Select Payment Method"
@@ -285,8 +268,7 @@ const Payment = () => {
                 borderRadius={"5px"}
                 m={"10px auto"}
                 _hover={{ bg: "pink.450" }}
-                onClick={HandleCheckOut}
-              >
+                onClick={HandleCheckOut}>
                 <CheckOutNotify checkout={checkout} />
               </Button>
             </Box>

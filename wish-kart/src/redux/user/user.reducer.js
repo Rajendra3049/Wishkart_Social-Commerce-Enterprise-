@@ -1,4 +1,3 @@
-
 import {
   USER_LOADING,
   USER_ERROR,
@@ -6,15 +5,20 @@ import {
   USER_LOGOUT,
   USER_ADD_TO_CART,
   USER_DELETE_FROM_CART,
-  USER_ADD_NEW_ADDRESS,
   USER_ORDER,
   ADMIN_LOGIN,
-
+  USER_GET_CART,
+  USER_ADD_NEW_ADDRESS,
+  USER_GET_ADDRESS,
+  USER_UPDATE_ADDRESS,
+  USER_DELETE_ADDRESS,
 } from "./user.type";
 const initialState = {
-  loading: false,
+  loading: true,
   error: false,
   isAuth: false,
+  cart: [],
+  address: [],
   user: {
     id: "",
     mobile_no: "",
@@ -26,15 +30,18 @@ const initialState = {
 };
 
 const UserReducer = (state = initialState, { type, payload }) => {
-
-
   switch (type) {
-  
-
     case USER_LOADING: {
       return {
         ...state,
         loading: true,
+      };
+    }
+    case USER_ERROR: {
+      return {
+        ...state,
+        loading: false,
+        error: true,
       };
     }
     case ADMIN_LOGIN: {
@@ -52,7 +59,7 @@ const UserReducer = (state = initialState, { type, payload }) => {
         user: payload,
       };
     }
- 
+
     case USER_LOGOUT: {
       return {
         ...state,
@@ -68,35 +75,54 @@ const UserReducer = (state = initialState, { type, payload }) => {
         },
       };
     }
+    case USER_GET_CART: {
+      return {
+        ...state,
+        loading: false,
+        cart: payload,
+      };
+    }
 
     case USER_ADD_TO_CART: {
       return {
         ...state,
         loading: false,
-        user: {
-          ...state.user,
-          cart: payload,
-        },
       };
     }
     case USER_DELETE_FROM_CART: {
       return {
         ...state,
         loading: false,
-        user: payload,
       };
     }
 
+    case USER_GET_ADDRESS: {
+      return {
+        ...state,
+        loading: false,
+        address: payload,
+      };
+    }
     case USER_ADD_NEW_ADDRESS: {
       return {
         ...state,
         loading: false,
-        user: {
-          ...state.user,
-          address: payload.address,
-        },
       };
     }
+    case USER_UPDATE_ADDRESS: {
+      return {
+        ...state,
+        loading: false,
+      };
+    }
+
+    case USER_DELETE_ADDRESS: {
+      return {
+        ...state,
+        loading: false,
+      };
+    }
+
     case USER_ORDER: {
       return {
         ...state,
@@ -104,16 +130,6 @@ const UserReducer = (state = initialState, { type, payload }) => {
         user: payload,
       };
     }
-
-    case USER_ERROR: {
-      return {
-        ...state,
-        loading: false,
-        error: true,
-      };
-    }
-
-
 
     default: {
       return {

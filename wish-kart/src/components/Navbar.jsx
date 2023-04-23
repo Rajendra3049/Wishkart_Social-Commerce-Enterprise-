@@ -31,6 +31,9 @@ import "../styles/navbar.css";
 import { SearchIcon } from "@chakra-ui/icons";
 import { useDispatch, useSelector } from "react-redux";
 import { USER_LOGOUT } from "../redux/user/user.type";
+import LoginButton from "./signin/signin";
+import LogoutButton from "./signin/siginout";
+import { useAuth0 } from "@auth0/auth0-react";
 
 var data = require("../input.json");
 
@@ -38,9 +41,12 @@ export default function Navbar() {
   const [value, setValue] = useState("");
   const navigate = useNavigate();
   // redux start
-  let { isAuth, user } = useSelector((store) => store.UserManager);
+  let { isAuth } = useSelector((store) => store.UserManager);
   let dispatch = useDispatch();
+
   // redux end
+  const { user, isAuthenticated, isLoading } = useAuth0();
+
   React.useEffect(() => {}, [dispatch, user, isAuth]);
 
   const onChange = (event) => {
@@ -49,24 +55,13 @@ export default function Navbar() {
 
   const onSearch = (searchTerm) => {
     setValue(searchTerm);
-    // our api to fetch the search result
   };
 
-  // login-logout
-  function HandleLogin() {
-    if (isAuth) {
-      dispatch({ type: USER_LOGOUT });
-      navigate("/");
-    } else {
-      navigate("/signup");
-    }
-  }
   return (
     <>
       <Box top={0} w={"100%"} h={"55px"} zIndex={100} position={"fixed"}>
         <Box
           display={["none", "none", "block"]}
-          width={["1300px", "1300px", "100%"]}
           justifyContent={"center"}
           h={["158x"]}
           bg={"white"}
@@ -215,65 +210,98 @@ export default function Navbar() {
                 <Divider orientation="vertical" color={"black"} />
               </Flex>
             </Box>
+
             {/* profile and cart */}
             <Box display={"flex"} ml={"60px"}>
-              <Box m={10}>
-                <Text
-                  fontSize={28}
-                  mt={"-20px"}
-                  ml={"6px"}
-                  _hover={{ color: "#f43397", fontWeight: 600 }}>
-                  <BiUser />{" "}
-                </Text>
-                <Popover trigger={"hover"}>
-                  <PopoverTrigger>
-                    <Flex>
-                      <Text
-                        fontSize={["8px", "8x", "15px"]}
-                        mt={"5px"}
-                        cursor={"pointer"}
-                        _hover={{ color: "#f43397", fontWeight: 600 }}>
+              {isAuthenticated ? (
+                <Box>
+                  <Popover trigger={"hover"}>
+                    <PopoverTrigger>
+                      <Flex w="60%">
                         {" "}
-                        Profile
+                        <Box
+                          fontSize={["8px", "8x", "15px"]}
+                          mt={"5px"}
+                          cursor={"pointer"}
+                          _hover={{ color: "#f43397", fontWeight: 600 }}
+                          style={{
+                            borderRadius: "50%",
+                            overflow: "hidden",
+                          }}>
+                          <img src={user.picture} alt={user.name} />
+                        </Box>
+                      </Flex>
+                    </PopoverTrigger>
+                    <PopoverContent h={"170px"} w={"240px"}>
+                      <PopoverArrow />
+
+                      <Heading
+                        fontSize={18}
+                        mt={"15px"}
+                        color={"#333333"}
+                        ml={"20px"}>
+                        Hi, {user.name}
+                      </Heading>
+
+                      <LogoutButton />
+
+                      <Flex mt={"10px"} ml={"10px"}>
+                        <BiShoppingBag fontSize={20} />
+                        <p style={{ marginLeft: "10px", fontSize: "15px" }}>
+                          My Orders
+                        </p>
+                      </Flex>
+                    </PopoverContent>
+                  </Popover>
+                </Box>
+              ) : (
+                <Box m={10}>
+                  <Text
+                    fontSize={28}
+                    mt={"-20px"}
+                    ml={"6px"}
+                    _hover={{ color: "#f43397", fontWeight: 600 }}>
+                    <BiUser />
+                  </Text>
+
+                  <Popover trigger={"hover"}>
+                    <PopoverTrigger>
+                      <Flex>
+                        <Text
+                          fontSize={["8px", "8x", "15px"]}
+                          mt={"5px"}
+                          cursor={"pointer"}
+                          _hover={{ color: "#f43397", fontWeight: 600 }}>
+                          {" "}
+                          Profile
+                        </Text>
+                      </Flex>
+                    </PopoverTrigger>
+                    <PopoverContent h={"170px"} w={"240px"}>
+                      <PopoverArrow />
+
+                      <Heading
+                        fontSize={18}
+                        mt={"15px"}
+                        color={"#333333"}
+                        ml={"20px"}>
+                        Hello, User
+                      </Heading>
+                      <Text mt={"5px"} ml={"20px"} fontSize={"10px"}>
+                        Login To access your Meesho account
                       </Text>
-                    </Flex>
-                  </PopoverTrigger>
-                  <PopoverContent h={"170px"} w={"240px"}>
-                    <PopoverArrow />
 
-                    <Heading
-                      fontSize={18}
-                      mt={"15px"}
-                      color={"#333333"}
-                      ml={"20px"}>
-                      {isAuth ? "+91 " + user.mobile_no : "Hello, Users"}
-                    </Heading>
-                    <Text mt={"5px"} ml={"20px"} fontSize={"10px"}>
-                      {isAuth ? "" : " To access your Meesho account"}
-                    </Text>
-                    {/* <RouterLink to="/signup"> */}
-                    <Button
-                      bg={"#f43397"}
-                      color={"white"}
-                      w={"210px"}
-                      ml={"15px"}
-                      mt={"10px"}
-                      h={"45px"}
-                      fontSize={"17px"}
-                      onClick={HandleLogin}>
-                      {isAuth ? "Sign Out" : "Sign Up"}
-                    </Button>
-                    {/* </RouterLink> */}
-
-                    <Flex mt={"10px"} ml={"10px"}>
-                      <BiShoppingBag fontSize={20} />
-                      <p style={{ marginLeft: "10px", fontSize: "15px" }}>
-                        My Orders
-                      </p>
-                    </Flex>
-                  </PopoverContent>
-                </Popover>
-              </Box>
+                      <LoginButton />
+                      <Flex mt={"10px"} ml={"10px"}>
+                        <BiShoppingBag fontSize={20} />
+                        <p style={{ marginLeft: "10px", fontSize: "15px" }}>
+                          My Orders
+                        </p>
+                      </Flex>
+                    </PopoverContent>
+                  </Popover>
+                </Box>
+              )}
 
               <Box m={10}>
                 <RouterLink to="/cart">

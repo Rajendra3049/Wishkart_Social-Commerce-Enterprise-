@@ -355,7 +355,7 @@ const Men = () => {
           <SimpleGrid columns={[1, 2, 3, 4]} spacing={10}>
             {(menData.length > 0 && filtCred === "" ? menData : filterData).map(
               (el) => {
-                return <GridProduct key={el.id} props={el} />;
+                return <GridProduct key={el._id} props={el} />;
               }
             )}
           </SimpleGrid>

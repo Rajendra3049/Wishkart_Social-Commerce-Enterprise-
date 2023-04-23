@@ -9,53 +9,54 @@ import { Navigate } from "react-router-dom";
 import { AddToCartNotify } from "../components/notify";
 import Loader from "../components/Loader";
 import { Box, Flex, Text } from "@chakra-ui/react";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const SingleProduct = () => {
   const [loading, setLoading] = React.useState(false);
   const [data, setData] = useState([]);
   const [productDetails, setproductDetails] = useState({});
   const [mainImage, setMainImage] = React.useState("");
+  const { id, category } = useParams();
 
-  // console.log("mainImage", mainImage);
+  const { user, isAuthenticated, isLoading } = useAuth0();
+
   // redux start
-  let { user, isAuth } = useSelector((store) => store.UserManager);
+  // let { loading } = useSelector((store) => store.UserManager);
   let dispatch = useDispatch();
   // redux end
 
   function HandleAddToCart() {
-    console.log("Handle Add to Cart");
-    let newCartData = user.cart;
-    newCartData.push(productDetails);
-    let userId = user.id;
-    dispatch(AddToCart(newCartData, userId));
+    let userId = user.sub;
+    let productId = productDetails._id;
+    dispatch(AddToCart(userId, productId));
   }
 
-  const { id } = useParams();
-
   const getData = async () => {
-    let res = await fetch("https://meesho-backend-3037.onrender.com/products");
-    let d = await res.json();
-    setData(d);
+    await axios
+      .get(`https://wishkart-server.onrender.com/products?category=${category}`)
+      .then((res) => {
+        setData(res.data.products);
+      })
+      .catch((err) => alert("Someting went wrong"));
   };
 
-  const getProductDetails = () => {
-    axios
-      .get("https://meesho-backend-3037.onrender.com/products")
-      .then(({ data }) => {
-        let product = data.filter((elem) => elem.id == id)[0];
-        setproductDetails(product);
-        setMainImage(product.images[0]);
+  const getProductDetails = async () => {
+    await axios
+      .get(`https://wishkart-server.onrender.com/products/${id}`)
+      .then((res) => {
+        console.log(res.data);
+        setproductDetails(res.data);
+        setMainImage(res.data.images[0]);
         setLoading(true);
       })
       .catch((err) => alert("Someting went wrong"));
   };
   useEffect(() => {
     window.scrollTo(0, 0);
-    getProductDetails();
-    getData();
+    getProductDetails().then(getData());
   }, [user]);
 
-  if (isAuth == false) {
+  if (isAuthenticated == false) {
     console.log("user not authenticated");
     return <Navigate to="/signup" />;
   }
@@ -80,26 +81,27 @@ const SingleProduct = () => {
               <Box
                 width={["25%", "25%", "25%"]}
                 justifyContent={"space-around"}>
-                {productDetails.images.map((el, i) => {
-                  return (
-                    <img
-                      onClick={() => {
-                        setMainImage(el);
-                      }}
-                      key={i}
-                      style={{
-                        width: "60%",
-                        border: "1px solid  #fde9f2",
-                        boxShadow: "rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px",
-                        margin: "auto",
-                        marginBottom: "10px",
-                        marginTop: "10px",
-                      }}
-                      src={el}
-                      alt=""
-                    />
-                  );
-                })}
+                {productDetails &&
+                  productDetails.images.map((el, i) => {
+                    return (
+                      <img
+                        onClick={() => {
+                          setMainImage(el);
+                        }}
+                        key={i}
+                        style={{
+                          width: "60%",
+                          border: "1px solid  #fde9f2",
+                          boxShadow: "rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px",
+                          margin: "auto",
+                          marginBottom: "10px",
+                          marginTop: "10px",
+                        }}
+                        src={el}
+                        alt=""
+                      />
+                    );
+                  })}
               </Box>
               {/* Middle Div */}
               <Box
@@ -352,7 +354,7 @@ const SingleProduct = () => {
             ]}
             gap={"20px"}>
             {data.map((p, i) => {
-              if (i < 10) {
+              if (i < 11 && p._id !== productDetails._id) {
                 return <SingleCard key={i} props={p} />;
               }
             })}

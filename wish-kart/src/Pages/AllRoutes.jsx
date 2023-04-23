@@ -22,7 +22,7 @@ import AdminSignin from "../adminsigin/adminsignup";
 export default function AllRoutes() {
   return (
     <Routes>
-      <Route path="/SingleProduct/:id" element={<SingleProduct />} />
+      <Route path="/SingleProduct/:category/:id" element={<SingleProduct />} />
       <Route path="/" element={<Home />} />
       <Route path="/homeproduct" element={<HomeSingleProduct />} />
       <Route path="/signup" element={<SignUp />} />
@@ -40,7 +40,7 @@ export default function AllRoutes() {
       <Route path="/address" element={<Address />} />
       <Route path="/payment" element={<Payment />} />
       <Route path="/address" element={<Address />} />
-      <Route path="/adminsignup" element={<AdminSignin/>} />
+      <Route path="/adminsignup" element={<AdminSignin />} />
     </Routes>
   );
 }

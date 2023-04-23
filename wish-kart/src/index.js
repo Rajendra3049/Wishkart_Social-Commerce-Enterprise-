@@ -7,16 +7,24 @@ import { ChakraProvider } from "@chakra-ui/react";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
+import { Auth0Provider } from "@auth0/auth0-react";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <ChakraProvider>
-    <BrowserRouter>
-      <Provider store={store}>
-        <App />
-      </Provider>
-    </BrowserRouter>
-  </ChakraProvider>
+  <Auth0Provider
+    domain="dev-rwnybff3qfrg6utl.us.auth0.com"
+    clientId="VdkTgHsPVPT9h0ht065H0khFJ809Pnge"
+    authorizationParams={{
+      redirect_uri: window.location.origin,
+    }}>
+    <ChakraProvider>
+      <BrowserRouter>
+        <Provider store={store}>
+          <App />
+        </Provider>
+      </BrowserRouter>
+    </ChakraProvider>
+  </Auth0Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function

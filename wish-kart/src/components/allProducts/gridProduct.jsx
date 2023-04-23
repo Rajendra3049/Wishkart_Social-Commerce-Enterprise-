@@ -8,7 +8,7 @@ const GridProduct = ({ props }) => {
 
   const handleproductpass = (id) => {
     console.log(id);
-    let path = `/SingleProduct/${id}`;
+    let path = `/SingleProduct/${props.category}/${id}`;
     navigate(path);
   };
 
@@ -24,10 +24,10 @@ const GridProduct = ({ props }) => {
       : "red";
 
   return (
-    <Link to={`/product/${props.id}`} style={{ textDecoration: "none" }}>
+    <Link to={`/product/${props._id}`} style={{ textDecoration: "none" }}>
       <Card backgroundColor={"whitesmoke"}>
         <Box
-          onClick={() => handleproductpass(props.id)}
+          onClick={() => handleproductpass(props._id)}
           margin="0px 15px 0px 15px">
           <Image src={props.images[0]} width="100%" height="300px" />
         </Box>

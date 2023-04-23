@@ -13,28 +13,19 @@ import {
   DrawerContent,
   DrawerCloseButton,
   useDisclosure,
+  Grid,
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { DecreaseCartQty, IncreaseCartQty } from "../../redux/user/user.action";
 
-const CartDrawer = ({ qty, setQty }) => {
-  const [count, setCount] = useState(1);
-  const [price, setPrice] = React.useState(0);
+const CartDrawer = ({ qty, setQty, data }) => {
   const [cartData, setCartData] = React.useState([]);
 
   // redux start
-  let { user, isAuth } = useSelector((store) => store.UserManager);
+  let { isAuth } = useSelector((store) => store.UserManager);
   let dispatch = useDispatch();
   // redux end
-
-  React.useEffect(() => {
-    let newPrice = 0;
-    for (let i = 0; i < cartData.length; i++) {
-      newPrice = newPrice + cartData[i].discounted_price;
-    }
-    setPrice(newPrice);
-    setCartData(user.cart);
-  }, [cartData, user]);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
@@ -65,21 +56,15 @@ const CartDrawer = ({ qty, setQty }) => {
                 boxSize="90%"
                 w={{ base: "40%", md: "15%", lg: "34%" }}
                 padding={"20px"}
-                src={
-                  "https://images.meesho.com/images/products/78591203/akim8_512.jpg"
-                }
+                src={data.productId.images[0]}
               />
               <Box>
                 <Text fontSize={"20px"} mt={"10px"}>
-                  Redmi Go Back cover
+                  {data.productId.title}
                 </Text>
-                <Text m={"10px auto"}>₹2023</Text>
-                <Flex
-                  align={"center"}
-                  justifyContent={"space-between"}
-                  gap={"25px"}
-                  m={"10px auto"}>
-                  <Text>Size: Free size</Text>
+                <Text m={"10px auto"}>₹ {data.productId.discounted_price}</Text>
+                <Grid gap={"25px"} m={"10px auto"}>
+                  <Text>Size: {data.productId.sizes[0]}</Text>
                   <Flex gap={"10px"}>
                     <Text>Qty</Text>
                     <Flex
@@ -88,15 +73,22 @@ const CartDrawer = ({ qty, setQty }) => {
                       borderRadius={"5px"}
                       padding={"0 5px"}>
                       <Button
-                        isDisabled={qty == 1}
-                        onClick={() => setQty(qty - 1)}>
+                        isDisabled={data.quantity === 1}
+                        onClick={() =>
+                          dispatch(DecreaseCartQty(data.userId, data._id))
+                        }>
                         -
                       </Button>
-                      <Text>{qty}</Text>
-                      <Button onClick={() => setQty(qty + 1)}>+</Button>
+                      <Text>{data.quantity}</Text>
+                      <Button
+                        onClick={() =>
+                          dispatch(IncreaseCartQty(data.userId, data._id))
+                        }>
+                        +
+                      </Button>
                     </Flex>
                   </Flex>
-                </Flex>
+                </Grid>
               </Box>
             </Flex>
             <hr />
@@ -106,7 +98,7 @@ const CartDrawer = ({ qty, setQty }) => {
               justifyContent={"space-between"}
               fontWeight={"600"}>
               <Text>Total Price</Text>
-              <Text>₹{parseInt(price) * parseInt(qty)}</Text>
+              <Text>₹ {data.productId.discounted_price * data.quantity}</Text>
             </Flex>
             <hr />
           </DrawerBody>

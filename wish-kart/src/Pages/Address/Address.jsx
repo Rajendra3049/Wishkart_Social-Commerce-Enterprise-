@@ -8,63 +8,63 @@ import {
   Flex,
   Stack,
   Button,
+  VStack,
+  RadioGroup,
+  Grid,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-
-import Navbar2 from "../../components/Navbar2/Navbar2";
+import { AddressComponent } from "../../components/address";
 import "./address.css";
 
-import { AddAddress } from "../../redux/user/user.action";
+import { AddAddress, GetAddress } from "../../redux/user/user.action";
+import { useAuth0 } from "@auth0/auth0-react";
+import { Radio } from "antd";
+import AddressList from "../../components/address/addressList";
 
 const initialData = {
-  user_name: "" ,
+  name: "",
   phone: "",
   house_no: "",
-  area: "",
+  road_name: "",
   pincode: "",
   city: "",
   state: "",
-  nearby: "",
+  near_by_location: "",
 };
 
 function Address() {
-
-  // const [input, setInput] = useState('')
-
-  // const handleInputChange = (e) => setInput(e.target.value)
-
-  // const isError = input === ''
-
-
-  React.useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-  const [price, setPrice] = React.useState(0);
-  const [cartData, setCartData] = React.useState([]);
-  const [formData, setFormData] = React.useState(initialData);
-  const navigate = useNavigate();
-
   // redux start
-  let { user, isAuth } = useSelector((store) => store.UserManager);
+  let { cart, address } = useSelector((store) => store.UserManager);
+  const { user, isAuthenticated } = useAuth0();
   let dispatch = useDispatch();
   // redux end
 
+  const [defaultAddress, setDefaultAddress] = React.useState(address[0] || {});
+  const [price, setPrice] = React.useState(0);
+  const [formData, setFormData] = React.useState(initialData);
+  const [showAddress, setShowAddress] = React.useState(false);
+  const navigate = useNavigate();
+
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+    dispatch(GetAddress());
+  }, []);
+
   React.useEffect(() => {
     let newPrice = 0;
-    for (let i = 0; i < cartData.length; i++) {
-      newPrice = newPrice + cartData[i].discounted_price;
+    for (let i = 0; i < cart.length; i++) {
+      newPrice =
+        newPrice + cart[i].productId.discounted_price * cart[i].quantity;
     }
     setPrice(newPrice);
-    setCartData(user.cart);
-  }, [cartData, user]);
+  }, [cart.length, user]);
 
-  const handlepayment = () => {
-    let userId = user.id;
-
-    dispatch(AddAddress(formData, userId));
-    navigate("/payment");
+  const handlepayment = (e) => {
+    e.preventDefault();
+    console.log(formData);
+    dispatch(AddAddress({ address: formData, userId: user.sub }));
   };
 
   const handleChange = (e) => {
@@ -73,172 +73,88 @@ function Address() {
       [e.target.name]: e.target.value,
     });
   };
-  if (isAuth === false) {
+  if (isAuthenticated === false) {
     console.log("user not authenticated");
     return <Navigate to="/signup" />;
   } else {
     return (
       <>
-        {/* <Navbar2 /> */}
-        <Box
-          w={{ base: "80%", md: "80%", lg: "60%" }}
-          margin={"180px auto"}
-          fontWeight={550}
-          display={{ base: "", md: "", lg: "flex" }}
-          gap={{ base: "", md: "", lg: "15px" }}>
-          <form onSubmit={handlepayment}>
-            <Text fontSize={"25px"}>Select Delivery Address</Text>
-            <Box borderWidth={"1px"} padding={"15px"} borderRadius={"5px"}>
-              <Flex gap="10px" align={"center"} fontSize={"18px"}>
-                <i className="fa-solid fa-phone"></i>
-                <Text>Contact Details</Text>{" "}
-              </Flex>
-              <FormControl id="" isRequired>
-                <FormLabel fontSize={"15px"} mt="8px">
-                  Name
-                </FormLabel>
-                <Input
-                  type="text"
-                  name="user_name"
-                  fontSize={"14px"}
-                  p="18px 10px"
-                  value={formData.user_name}
-                  onChange={handleChange}
+        <Grid
+          w={{ base: "80%", md: "80%", lg: "80%" }}
+          margin={"190px auto"}
+          gridTemplateColumns={"75% 25%"}
+          gap="5">
+          <Box>
+            <Text
+              fontSize={"30px"}
+              bgColor={"#f43397"}
+              color={"white"}
+              padding={"5px"}
+              fontWeight={"600"}>
+              Delivery Address
+            </Text>
+            <Grid
+              gridTemplateColumns={"85% 15%"}
+              fontSize={"16px"}
+              padding={"5px"}
+              fontWeight={"600"}>
+              <Box
+                align="start"
+                spacing={2}
+                display={!showAddress ? "none" : "block"}>
+                <Text>{defaultAddress.name}</Text>
+                <Text>{`${defaultAddress.phone}, ${defaultAddress.house_no}, ${defaultAddress.road_name}, ${defaultAddress.city}, ${defaultAddress.state}, ${defaultAddress.pincode},${defaultAddress.near_by_location}`}</Text>
+              </Box>
+
+              <Button
+                display={!showAddress ? "none" : "block"}
+                fontSize={"16px"}
+                h="full"
+                onClick={() => {
+                  setShowAddress(!showAddress);
+                }}>
+                Change
+              </Button>
+            </Grid>
+
+            <Box display={showAddress ? "none" : "block"} w="100%" p="10px">
+              {address.map((item) => (
+                <AddressList
+                  key={item._id}
+                  item={item}
+                  setDefaultAddress={setDefaultAddress}
+                  showAddress={showAddress}
+                  setShowAddress={setShowAddress}
                 />
-              </FormControl>
-              <FormControl id="" isRequired>
-                <FormLabel fontSize={"15px"} mt="8px">
-                  Phone number
-                </FormLabel>
-                <Input
-                  type="number"
-                  name="phone"
-                  fontSize={"14px"}
-                  p="18px 10px"
-                  value={formData.phone}
-                  onChange={handleChange}
+              ))}
+              <Box mt="10px">
+                <AddressComponent
+                  formData={formData}
+                  setFormData={setFormData}
+                  handlepayment={handlepayment}
+                  handleChange={handleChange}
                 />
-              </FormControl>
-              <Flex
-                gap={"15px"}
-                align={"center"}
-                fontSize={"18px"}
-                m={"15px 0"}>
-                <i className="fa-solid fa-location-dot"></i>{" "}
-                <Text>Address</Text>
-              </Flex>
-              <FormControl id="" isRequired>
-                <FormLabel fontSize={"15px"} mt="8px">
-                  House no./Building Name
-                </FormLabel>
-                <Input
-                  type="text"
-                  name="house_no"
-                  fontSize={"14px"}
-                  p="18px 10px"
-                  value={formData.house_no}
-                  onChange={handleChange}
-                />
-              </FormControl>
-              <FormControl id="" isRequired>
-                <FormLabel fontSize={"15px"} mt="8px">
-                  Road Name/Area/Colony
-                </FormLabel>
-                <Input
-                  type="text"
-                  name="area"
-                  fontSize={"14px"}
-                  p="18px 10px"
-                  value={formData.area}
-                  onChange={handleChange}
-                />
-              </FormControl>
-              <FormControl id="" isRequired>
-                <FormLabel fontSize={"15px"} mt="8px">
-                  Pincode
-                </FormLabel>
-                <Input
-                  type="number"
-                  name="pincode"
-                  fontSize={"14px"}
-                  p="18px 10px"
-                  value={formData.pincode}
-                  onChange={handleChange}
-                />
-              </FormControl>
-              <HStack>
-                <Box>
-                  <FormControl id="" isRequired>
-                    <FormLabel fontSize={"15px"} mt="8px">
-                      City
-                    </FormLabel>
-                    <Input
-                      type="text"
-                      fontSize={"14px"}
-                      name="city"
-                      p="18px 10px"
-                      value={formData.city}
-                      onChange={handleChange}
-                    />
-                  </FormControl>
-                </Box>
-                <Box>
-                  <FormControl id="">
-                    <FormLabel fontSize={"15px"} mt="8px">
-                      State
-                    </FormLabel>
-                    <Input
-                      type="text"
-                      name="state"
-                      fontSize={"14px"}
-                      p="18px 10px"
-                      value={formData.state}
-                      onChange={handleChange}
-                    />
-                  </FormControl>
-                </Box>
-              </HStack>
-              <FormControl id="" >
-                <FormLabel fontSize={"15px"} mt="8px">
-                  Nearby Location(option)
-                </FormLabel>
-                <Input
-                  type="text"
-                  name="nearby"
-                  fontSize={"14px"}
-                  p="18px 10px"
-                  value={formData.nearby}
-                  onChange={handleChange}
-                />
-              </FormControl>
-              <Stack spacing={10} pt={2}>
-                <Button 
-                  loadingText="Submitting"
-                  size="lg"
-                  bg={"pink.400"}
-                  type="submit"
-                  color={"white"}
-                  _hover={{
-                    bg: "pink.500",
-                  }}
-                  p="20px 0"
-                  fontSize={"15px"}
-                  mt="12px"
-                  >
-                  Save Address & Contiune
-                </Button>
-              </Stack>
+              </Box>
             </Box>
-          </form>
+          </Box>
+
           {/* ============================= */}
-          <Box mt={{ base: "", md: "", lg: "28px" }} padding={"10px"}>
-            <Text fontSize={"25px"}>Price Details</Text>
+          <Box>
+            <Text
+              fontSize={"30px"}
+              bgColor={"#f43397"}
+              color={"white"}
+              padding={"5px"}
+              fontWeight={"600"}>
+              Price Details
+            </Text>
             <Flex
               justifyContent={"space-between"}
               margin={"10px 0"}
               align={"center"}
               gap={"80px"}
-              fontSize="15px">
+              fontSize="18px"
+              p="10px">
               {" "}
               <Text>Total Product Price</Text> <Text>₹{price}</Text>
             </Flex>
@@ -247,15 +163,16 @@ function Address() {
               justifyContent={"space-between"}
               align={"center"}
               margin={"10px 0"}
-              fontSize="18px">
+              fontSize="18px"
+              p="10px">
               {" "}
               <Text>Order Total</Text> <Text>₹{price}</Text>
             </Flex>
           </Box>
-        </Box>
+        </Grid>
       </>
     );
-  }}
-
+  }
+}
 
 export default Address;

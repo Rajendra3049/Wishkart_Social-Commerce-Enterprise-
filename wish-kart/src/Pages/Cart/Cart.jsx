@@ -3,77 +3,74 @@ import React from "react";
 import "./cart.css";
 import CartDrawer from "./CartDrawer";
 import { RemoveFromCartNotify } from "../../components/notify";
-
-import { DeleteFromCart } from "../../redux/user/user.action";
+import { DeleteFromCart, getCart } from "../../redux/user/user.action";
 import { Navigate, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { useAuth0 } from "@auth0/auth0-react";
+import Loader from "../../components/Loader";
 
 const Cart = () => {
   const [qty, setQty] = React.useState(1);
   const [price, setPrice] = React.useState(0);
-  const [cartData, setCartData] = React.useState([]);
+  const { user, isAuthenticated, isLoading } = useAuth0();
 
+  const navigate = useNavigate();
   // redux start
-  let { user, isAuth } = useSelector((store) => store.UserManager);
+  let { cart, loading } = useSelector((store) => store.UserManager);
   let dispatch = useDispatch();
   // redux end
 
   React.useEffect(() => {
+    if (isAuthenticated === false) {
+      console.log("user not authenticated");
+      navigate("/");
+    }
     window.scrollTo(0, 0);
-    console.log("cartData", cartData);
-    if (user.cart.length > 0) {
+    dispatch(getCart(user.sub));
+
+    if (cart.length > 0) {
       let newPrice = 0;
-      for (let i = 0; i < cartData.length; i++) {
-        newPrice = newPrice + cartData[i].discounted_price;
+      for (let i = 0; i < cart.length; i++) {
+        newPrice =
+          newPrice + cart[i].productId.discounted_price * cart[i].quantity;
       }
       setPrice(newPrice);
-      setCartData(user.cart);
     }
-  }, [user, cartData]);
-
-  const navigate = useNavigate();
+  }, [cart.length]);
 
   const gotoaddress = () => {
     navigate("/address");
   };
 
-  function handleRemove(product_id) {
-    let userId = user.id;
-    let cartData = user.cart;
-    let updatedCart = [];
-    for (let i = 0; i < cartData.length; i++) {
-      console.log(product_id);
-      if (cartData[i].id !== product_id) {
-        updatedCart.push(cartData[i]);
-      }
-    }
-    // console.log("updated", updatedCart);
-    dispatch(DeleteFromCart(updatedCart, userId));
+  function handleRemove(id) {
+    let userId = user.sub;
+    let productId = id;
+    dispatch(DeleteFromCart(userId, productId));
   }
 
-  if (isAuth == false) {
-    console.log("user not authenticated");
-    return <Navigate to="/signup" />;
+  if (loading) {
+    return (
+      <>
+        <Loader />
+      </>
+    );
+  } else if (cart.length === 0) {
+    return <Navigate to="/cartempty" />;
   } else {
-    if (user.cart.length <= 0) {
-      return <Navigate to="/cartempty" />;
-    }
     return (
       <>
         <Grid
           gridTemplateColumns={{ base: "100%", md: "70% 30%" }}
           w={{ base: "95%", md: "72%", lg: "88%" }}
-          // border={"1px solid red"}
           m={"auto"}
           gap={"10px"}
           display={{ base: "row", md: "row", lg: "flex" }}
           alignItems="center"
-          marginTop={["100px", "180px", "180px"]}
-        >
+          marginTop={["100px", "180px", "180px"]}>
           <Grid p="5px" h={"580px"} overflowY="scroll" gap="0px" w="full">
-            {cartData &&
-              cartData.map((e, i) => (
-                <Box key={e.id} w="100%" border={"0px solid yellow"} p="5px">
+            {cart &&
+              cart.map((e, i) => (
+                <Box key={e._id} w="100%" border={"0px solid yellow"} p="5px">
                   <Text fontWeight={"600"} fontSize={18}>
                     Cart {i + 1} Item
                   </Text>
@@ -81,54 +78,49 @@ const Cart = () => {
                   <Grid
                     border={"0px solid red"}
                     gridTemplateColumns={"20% 75%"}
-                    // direction={{ base: "column", sm: "row" }}
                     overflow="hidden"
                     variant="outline"
                     gap={"20px"}
                     w={"100%"}
-                    borderRadius={"5px 5px 0 0"}
-                    // border={"1px solid black"}
-                  >
+                    borderRadius={"5px 5px 0 0"}>
                     <Box border={"0px solid black"} m="auto">
-                      <Image 
+                      <Image
                         objectFit="cover"
                         m="auto"
-                        // boxSize="90%"
-                        // w={{ base: "40%", md: "30%", lg: "100%" }}
                         w="100%"
                         padding={"10px"}
-                        src={e.images[0]}
+                        src={e.productId.images[0]}
                       />
                     </Box>
                     <Box
                       paddingLeft={["1rem", "1rem", "0rem"]}
-                      border={"0px solid green"}
-                    >
+                      border={"0px solid green"}>
                       <Box
                         fontSize={["18px", "18px", "20px"]}
                         display="flex"
                         alignItems="center"
-                        justifyContent={"space-between"}
-                      >
-                        <Text fontWeight={"600"}>{e.title}</Text>
+                        justifyContent={"space-between"}>
+                        <Text fontWeight={"600"}>{e.productId.title}</Text>
                         <Text color={"pink.400"} fontWeight={"600"}>
-                          <CartDrawer qty={qty} setQty={setQty} />
+                          <CartDrawer
+                            qty={e.quantity}
+                            setQty={setQty}
+                            data={e}
+                          />
                         </Text>
                       </Box>
                       <Flex
                         gap={"20px"}
                         fontWeight={"550"}
-                        fontSize={["13px", "13px", "16px"]}
-                      >
-                        <Text>Size: {e.sizes[0]}</Text>
-                        <Text>Qty: {qty}</Text>
+                        fontSize={["13px", "13px", "16px"]}>
+                        <Text>Size: {e.productId.sizes[0]}</Text>
+                        <Text>Qty: {e.quantity}</Text>
                       </Flex>
                       <Text
                         m={"10px auto"}
                         fontWeight={"500"}
-                        fontSize={["13px", "13px", "15px"]}
-                      >
-                        {"₹"} {e.discounted_price}
+                        fontSize={["13px", "13px", "15px"]}>
+                        {"₹"} {e.productId.discounted_price}
                       </Text>
                       <Button
                         color={"pink.400"}
@@ -138,16 +130,15 @@ const Cart = () => {
                         fontSize={["14px", "14px", "16px"]}
                         _hover={{ bg: "none" }}
                         onClick={() => {
-                          handleRemove(e.id);
+                          handleRemove(e._id);
                         }}
-                        marginBottom={["20px", "20px", "0px"]}
-                      >
+                        marginBottom={["20px", "20px", "0px"]}>
                         <i class="fa-solid fa-xmark"></i>
                         <RemoveFromCartNotify />
                       </Button>
                     </Box>
                   </Grid>
-                  <Flex 
+                  <Flex
                     borderRadius={"0 0 5px 5px"}
                     borderWidth={"1px"}
                     padding={"15px 5px"}
@@ -155,8 +146,7 @@ const Cart = () => {
                     align={"center"}
                     justifyContent={"space-between"}
                     fontWeight={"500"}
-                    color={"gray"}
-                  >
+                    color={"gray"}>
                     <Text>Supplier : Today Enterprises</Text>
                     <Text>Free Delivery</Text>
                   </Flex>
@@ -166,11 +156,8 @@ const Cart = () => {
           <div>
             <Box
               borderLeft={"2px solid rgb(148, 137, 137)"}
-              // marginTop={"-70px"}
               h={"580px"}
-              // border={"1px solid yellow"}
-              padding={"10px"}
-            >
+              padding={"10px"}>
               <Text fontWeight={"600"} fontSize={["16px", "16px", "20px"]}>
                 Price Details{" "}
               </Text>
@@ -178,8 +165,7 @@ const Cart = () => {
                 justifyContent={"space-between"}
                 fontWeight={"600"}
                 color={"gray"}
-                m={"20px auto"}
-              >
+                m={"20px auto"}>
                 <Text fontSize={["10px", "10px", "14px"]}>
                   Total Product Price
                 </Text>
@@ -193,8 +179,7 @@ const Cart = () => {
                 justifyContent={"space-between"}
                 fontSize={["16px", "16px", "20px"]}
                 fontWeight={"600"}
-                m={"10px auto"}
-              >
+                m={"10px auto"}>
                 <Text>Order Total</Text>
                 <Text>
                   {"₹"}
@@ -207,8 +192,7 @@ const Cart = () => {
                 outline={"none"}
                 h={"40px"}
                 padding={{ base: "0 53px", md: "1px 162px", lg: "1px 69px" }}
-                m={"40px auto"}
-              >
+                m={"40px auto"}>
                 Clicking on 'Continue' will not deduct any money
               </Button>
 
@@ -227,8 +211,7 @@ const Cart = () => {
                 marginTop={"20px"}
                 fontSize="17px"
                 _hover={{ bg: "pink.450" }}
-                onClick={gotoaddress}
-              >
+                onClick={gotoaddress}>
                 Continue
               </Button>
               <Image
@@ -242,17 +225,8 @@ const Cart = () => {
                 objectFit={"cover"}
               />
             </Box>
-            {/* <Image
-              src="https://images.meesho.com/images/marketing/1661417516766.webp"
-              h={"180px"}
-              w={{ base: "full", md: "full", lg: "full" }}
-              m={"auto"}
-              mt={"60px"}
-              objectFit={"cover"}
-            /> */}
           </div>
         </Grid>
-        {/* </div> */}
       </>
     );
   }

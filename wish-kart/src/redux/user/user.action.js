@@ -5,11 +5,13 @@ import {
   USER_LOGOUT,
   USER_ADD_TO_CART,
   USER_DELETE_FROM_CART,
-  USER_ADD_NEW_ADDRESS,
   USER_ORDER,
- ADMIN_LOGIN,
- ADMIN_ERROR
-
+  ADMIN_LOGIN,
+  USER_GET_CART,
+  USER_ADD_NEW_ADDRESS,
+  USER_GET_ADDRESS,
+  USER_UPDATE_ADDRESS,
+  USER_DELETE_ADDRESS,
 } from "./user.type";
 
 import axios from "axios";
@@ -65,71 +67,218 @@ export const Get_Users_Data = (input) => async (dispatch) => {
     let data = await res.json();
     dispatch({ type: USER_LOGIN, payload: newUser });
   }
-
-}
+};
 
 //get admin
 export const Get_Admins_Data = (input) => async (dispatch) => {
-  dispatch({ type: ADMIN_LOGIN, });
-
-}
-
-
+  dispatch({ type: ADMIN_LOGIN });
+};
 
 // add into cart
-export const AddToCart = (cart, id) => async (dispatch) => {
-  // console.log(cart, id);
+export const getCart = (userId) => async (dispatch) => {
+  dispatch({ type: USER_LOADING });
+
+  let res = await fetch(`https://wishkart-server.onrender.com/user/cart/`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      user_id: userId,
+    },
+  });
+  let data = await res.json();
+  console.log(data);
+
+  dispatch({ type: USER_GET_CART, payload: data });
+};
+export const AddToCart = (userId, productId) => async (dispatch) => {
+  dispatch({ type: USER_LOADING });
+
   let res = await fetch(
-    `https://meesho-backend-3037.onrender.com/users/${id}`,
+    `https://wishkart-server.onrender.com/user/cart/${productId}`,
     {
-      method: "PATCH",
-      body: JSON.stringify({ cart }),
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
+        user_id: userId,
       },
     }
   );
   let data = await res.json();
-  // console.log("after Added", data);
-  dispatch({ type: USER_ADD_TO_CART, payload: data.cart });
+  console.log(data);
+  dispatch({ type: USER_ADD_TO_CART });
+
+  try {
+    dispatch({ type: USER_LOADING });
+    let res = await fetch(`https://wishkart-server.onrender.com/user/cart/`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        user_id: userId,
+      },
+    });
+    let data = await res.json();
+    console.log(data);
+
+    dispatch({ type: USER_GET_CART, payload: data });
+  } catch (error) {}
+};
+
+export const IncreaseCartQty = (userId, productId) => async (dispatch) => {
+  console.log(userId);
+  console.log(productId);
+  dispatch({ type: USER_LOADING });
+
+  let res = await fetch(
+    `https://wishkart-server.onrender.com/user/cart/increase/${productId}`,
+    {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        user_id: userId,
+      },
+    }
+  );
+  let data = await res.json();
+  console.log(data);
+  dispatch({ type: USER_ADD_TO_CART });
+
+  try {
+    dispatch({ type: USER_LOADING });
+    let res = await fetch(`https://wishkart-server.onrender.com/user/cart/`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        user_id: userId,
+      },
+    });
+    let data = await res.json();
+    console.log(data);
+
+    dispatch({ type: USER_GET_CART, payload: data });
+  } catch (error) {}
+};
+
+export const DecreaseCartQty = (userId, productId) => async (dispatch) => {
+  dispatch({ type: USER_LOADING });
+
+  let res = await fetch(
+    `https://wishkart-server.onrender.com/user/cart/decrease/${productId}`,
+    {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        user_id: userId,
+      },
+    }
+  );
+  let data = await res.json();
+  console.log(data);
+  dispatch({ type: USER_ADD_TO_CART });
+
+  try {
+    dispatch({ type: USER_LOADING });
+    let res = await fetch(`https://wishkart-server.onrender.com/user/cart/`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        user_id: userId,
+      },
+    });
+    let data = await res.json();
+    console.log(data);
+
+    dispatch({ type: USER_GET_CART, payload: data });
+  } catch (error) {}
 };
 
 // delete from cart
-export const DeleteFromCart = (cart, id) => async (dispatch) => {
-  console.log(cart, id);
-  let res = await fetch(
-    `https://meesho-backend-3037.onrender.com/users/${id}`,
-    {
-      method: "PATCH",
-      body: JSON.stringify({ cart }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  );
+export const DeleteFromCart = (userId, productId) => async (dispatch) => {
+  await fetch(`https://wishkart-server.onrender.com/user/cart/${productId}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      user_id: userId,
+    },
+  });
+  dispatch({ type: USER_DELETE_FROM_CART });
+
+  dispatch({ type: USER_LOADING });
+
+  let res = await fetch(`https://wishkart-server.onrender.com/user/cart/`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      user_id: userId,
+    },
+  });
   let data = await res.json();
-  console.log("deleted data", data);
-  dispatch({ type: USER_DELETE_FROM_CART, payload: data });
+  console.log(data);
+
+  dispatch({ type: USER_GET_CART, payload: data });
 };
 
-// add address
-export const AddAddress = (address, id) => async (dispatch) => {
-  console.log("Address in reducer", address, id);
-  let res = await fetch(
-    `https://meesho-backend-3037.onrender.com/users/${id}`,
-    {
-      method: "PATCH",
-      body: JSON.stringify({ address }),
+//address
+
+export const GetAddress = () => async (dispatch) => {
+  dispatch({ type: USER_LOADING });
+  let res = await fetch(`https://wishkart-server.onrender.com/user/address`);
+  let data = await res.json();
+  dispatch({ type: USER_GET_ADDRESS, payload: data });
+};
+
+export const AddAddress =
+  ({ address, userId }) =>
+  async (dispatch) => {
+    console.log(userId);
+    let res = await fetch(`https://wishkart-server.onrender.com/user/address`, {
+      method: "POST",
+      body: JSON.stringify(address),
       headers: {
         "Content-Type": "application/json",
+        user_id: userId,
+        address: address,
       },
-    }
-  );
-  let data = await res.json();
-  // console.log("Address", data);
+    });
+    let data = await res.json();
+    console.log(data);
+    dispatch({ type: USER_ADD_NEW_ADDRESS });
+  };
+export const DeleteAddress =
+  ({ addressId, userId }) =>
+  async (dispatch) => {
+    let res = await fetch(
+      `https://wishkart-server.onrender.com/user/address${addressId}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          user_id: userId,
+        },
+      }
+    );
+    let data = await res.json();
 
-  dispatch({ type: USER_ADD_NEW_ADDRESS, payload: data });
-};
+    dispatch({ type: USER_DELETE_ADDRESS });
+  };
+export const UpdateAddress =
+  ({ address, userId }) =>
+  async (dispatch) => {
+    let id = address._id;
+    let res = await fetch(
+      `https://wishkart-server.onrender.com/user/address${id}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          user_id: userId,
+          address: address,
+        },
+      }
+    );
+    let data = await res.json();
+
+    dispatch({ type: USER_DELETE_ADDRESS });
+  };
 
 export const OrderPlacement = (order, id) => async (dispatch) => {
   let cart = [];
@@ -148,21 +297,3 @@ export const OrderPlacement = (order, id) => async (dispatch) => {
   console.log("orderHistory", data);
   dispatch({ type: USER_ORDER, payload: data });
 };
-
-
-
-
-
-//add admin
-
-// async function CreateAdmin(newAdmin) {
-//   let res = await fetch("https://meesho-backend-3037.onrender.com/admin", {
-//     method: "POST",
-//     body: JSON.stringify(newAdmin),
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//   });
-//   let data = await res.json();
-//   dispatch({ type: ADMIN_LOGIN, payload: newAdmin });
-// }
