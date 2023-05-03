@@ -1,65 +1,52 @@
+import { Box, useColorModeValue } from "@chakra-ui/react";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
-
-import style from "../styles/adminSide.module.css";
-
-import AddProduct from "./addProduct";
-import OrderAccept from "../components/adminSide/orderAccept";
-import ProductManage from "../components/adminSide/productManage";
+import { useNavigate } from "react-router-dom";
+import Dashboard from "../components/adminSide/Dashboard";
+import AddNewProduct from "../components/adminSide/addProduct";
+import ProductManager from "../components/adminSide/productManager";
 import { getProducts } from "../redux/Products/product.action";
-import { Link as RouterLink } from "react-router-dom";
-import { Navigate } from "react-router-dom";
+import AdminNav from "../components/adminSide/adminNav";
+import Orders from "../components/adminSide/orders";
 
 export default function AdminSide() {
-  React.useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-  // redux start
-  let { isAuth } = useSelector((store) => store.UserManager);
-  let { data } = useSelector((store) => store.ProductsManager);
+  const [showPage, setShowPage] = React.useState("Dashboard");
+  const navigate = useNavigate();
   let dispatch = useDispatch();
+  let { adminAuth } = useSelector((store) => store.AdminManager);
+
+  React.useEffect(() => {
+    if (adminAuth === false) {
+      console.log("Admin not authenticated");
+      navigate("/adminsignup");
+    }
+    window.scrollTo(0, 0);
+  }, [adminAuth]);
 
   // redux end
   useEffect(() => {
     getProducts(dispatch);
   }, []);
-  if (isAuth === false) {
-    console.log("user not authenticated");
-    return <Navigate to="/adminsignup" />;
-  } else {
-    return (
-      <div className={style.main}>
-        <Tabs variant="soft-rounded" colorScheme="green">
-          <TabList
-            className={style.list}
-            display="flex"
-            alignItems="center"
-            justifyContent="space-around"
-            paddingLeft="-2rem">
-            <Tab fontSize="2rem" className={style.tab}>
-              Add New Product
-            </Tab>
-            <Tab fontSize="2rem" className={style.tab}>
-              Order Manage
-            </Tab>
-            <Tab fontSize="2rem" className={style.tab}>
-              Product Manage
-            </Tab>
-          </TabList>
-          <TabPanels>
-            <TabPanel>
-              <AddProduct />
-            </TabPanel>
-            <TabPanel>
-              <OrderAccept />
-            </TabPanel>
-            <TabPanel>
-              <ProductManage />
-            </TabPanel>
-          </TabPanels>
-        </Tabs>
-      </div>
-    );
-  }
+
+  return (
+    <>
+      <AdminNav showPage={showPage} setShowPage={setShowPage} />
+      <Box
+        w="80%"
+        minH="710px"
+        ml={"20%"}
+        bg={useColorModeValue("gray.100", "gray.900")}
+        p="5px 10px">
+        {showPage === "Dashboard" ? (
+          <Dashboard />
+        ) : showPage === "Products" ? (
+          <ProductManager />
+        ) : showPage === "Add New Product" ? (
+          <AddNewProduct setShowPage={setShowPage} />
+        ) : showPage === "Orders" ? (
+          <Orders />
+        ) : null}
+      </Box>
+    </>
+  );
 }

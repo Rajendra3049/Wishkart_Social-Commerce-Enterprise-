@@ -1,6 +1,5 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-// import style from "../styles/signup.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import {
   Box,
@@ -12,56 +11,31 @@ import {
   Heading,
   Input,
   Stack,
-  Text,
   Image,
-  useColorModeValue,
   SimpleGrid,
 } from "@chakra-ui/react";
 
-import Loader from "../components/Loader";
-import { Get_Admins_Data } from "../redux/user/user.action";
+import Loader from "../Loader";
+
+import { adminLogin } from "../../redux/admin/admin.action";
 
 export default function AdminSignUp() {
-  let { loading } = useSelector((store) => store.UserManager);
-
   let dispatch = useDispatch();
-  // redux end
+  let { loading, adminAuth } = useSelector((store) => store.AdminManager);
+  const navigate = useNavigate();
+
   React.useEffect(() => {
+    if (adminAuth) {
+      navigate("/admin");
+    }
     window.scrollTo(0, 0);
-  }, []);
+  }, [adminAuth]);
 
   const [email, setEmail] = React.useState("");
   const [pass, setPass] = React.useState("");
 
-  const navigate = useNavigate();
-
   function HandleSubmit() {
-    const payload = {
-      email,
-      password: pass,
-    };
-
-    fetch("https://wishkart-server.onrender.com/admin/login", {
-      method: "POST",
-      body: JSON.stringify(payload),
-      headers: {
-        "Content-type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        localStorage.setItem("token", JSON.stringify(res), console.log(res));
-        if (res.token) {
-          dispatch(Get_Admins_Data(email));
-          navigate("/admin");
-        } else {
-          navigate("/adminsignup");
-          window.alert("You are not authenticated");
-          setEmail("");
-          setPass("");
-        }
-      })
-      .catch((err) => console.log(err));
+    dispatch(adminLogin({ email, password: pass }));
   }
 
   if (loading) {

@@ -17,13 +17,9 @@ const SingleProduct = () => {
   const [productDetails, setproductDetails] = useState({});
   const [mainImage, setMainImage] = React.useState("");
   const { id, category } = useParams();
-
-  const { user, isAuthenticated, isLoading } = useAuth0();
-
-  // redux start
-  // let { loading } = useSelector((store) => store.UserManager);
+  const { user, isAuthenticated } = useAuth0();
+  const { loginWithRedirect } = useAuth0();
   let dispatch = useDispatch();
-  // redux end
 
   function HandleAddToCart() {
     let userId = user.sub;
@@ -33,7 +29,9 @@ const SingleProduct = () => {
 
   const getData = async () => {
     await axios
-      .get(`https://wishkart-server.onrender.com/products?category=${category}`)
+      .get(
+        `https://zany-erin-alligator-boot.cyclic.app/products?category=${category}`
+      )
       .then((res) => {
         setData(res.data.products);
       })
@@ -42,9 +40,8 @@ const SingleProduct = () => {
 
   const getProductDetails = async () => {
     await axios
-      .get(`https://wishkart-server.onrender.com/products/${id}`)
+      .get(`https://zany-erin-alligator-boot.cyclic.app/products/${id}`)
       .then((res) => {
-        console.log(res.data);
         setproductDetails(res.data);
         setMainImage(res.data.images[0]);
         setLoading(true);
@@ -54,11 +51,11 @@ const SingleProduct = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
     getProductDetails().then(getData());
-  }, [user]);
+  }, [user, id, category]);
 
-  if (isAuthenticated == false) {
-    console.log("user not authenticated");
-    return <Navigate to="/signup" />;
+  if (isAuthenticated === false) {
+    window.alert("Please login");
+    loginWithRedirect();
   }
   if (loading) {
     return (

@@ -47,7 +47,6 @@ const Men = () => {
   }, []);
 
   const check = (e) => {
-    console.log(e.target);
     const { name, checked } = e.target;
     setFiltCred({
       ...filtCred,
@@ -169,200 +168,201 @@ const Men = () => {
   }, [filtCred]);
 
   if (loading) {
-    <Loader />;
-  }
-
-  return (
-    <Box mt={["100px", "100px", "200px"]}>
-      <Box mb={"20px"} ml={"20px"}>
-        <Show below="md">
-          <Menu>
-            <MenuButton as={Button} fontSize={"16px"} padding={"10px"}>
-              Filter
-            </MenuButton>
-            <MenuList>
-              <MenuOptionGroup title="Price">
-                <Stack direction={"column"} ml="15%">
-                  <ChakraCheckBox
-                    onChange={(e) => check(e)}
-                    name="above100"
-                    size={"lg"}>
-                    Above 1000
-                  </ChakraCheckBox>
-                  <ChakraCheckBox
-                    onChange={(e) => check(e)}
-                    name="a1000_500"
-                    size={"lg"}>
-                    1000 - 500
-                  </ChakraCheckBox>
-                  <ChakraCheckBox
-                    onChange={(e) => check(e)}
-                    name="a500_300"
-                    size={"lg"}>
-                    500 - 300
-                  </ChakraCheckBox>
-                  <ChakraCheckBox
-                    onChange={(e) => check(e)}
-                    name="below300"
-                    size={"lg"}>
-                    Below 300
-                  </ChakraCheckBox>
-                </Stack>
-              </MenuOptionGroup>
-              <MenuDivider />
-              <MenuOptionGroup title="Category">
-                <Stack direction={"column"} ml="15%">
-                  <ChakraCheckBox
-                    onChange={(e) => check(e)}
-                    name="ratingTop"
-                    size={"lg"}>
-                    Above 4.5
-                  </ChakraCheckBox>
-                  <ChakraCheckBox
-                    onChange={(e) => check(e)}
-                    name="ratingTop2"
-                    size={"lg"}>
-                    4.5 - 4
-                  </ChakraCheckBox>
-                  <ChakraCheckBox
-                    onChange={(e) => check(e)}
-                    name="a4_3"
-                    size={"lg"}>
-                    4 - 3
-                  </ChakraCheckBox>
-
-                  <ChakraCheckBox
-                    onChange={(e) => check(e)}
-                    name="below2"
-                    size={"lg"}>
-                    below 2
-                  </ChakraCheckBox>
-                </Stack>
-              </MenuOptionGroup>
-            </MenuList>
-          </Menu>
-        </Show>
-      </Box>
-
-      <Flex>
-        <Hide below="md">
-          <Box width={"20%"}>
-            <Heading color={"#f43397"} marginLeft="5%">
-              Filter
-            </Heading>
-            <Box>
-              <Accordion>
-                <AccordionItem>
-                  <AccordionButton>
-                    <Box
-                      as="span"
-                      flex="1"
-                      fontSize={20}
-                      textAlign="left"
-                      marginLeft={"7%"}>
-                      {" "}
-                      Price
-                    </Box>
-                  </AccordionButton>
-                  {/* <AccordionPanel> */}
+    return <Loader />;
+  } else {
+    return (
+      <Box mt={["100px", "100px", "200px"]}>
+        <Box mb={"20px"} ml={"20px"}>
+          <Show below="md">
+            <Menu>
+              <MenuButton as={Button} fontSize={"16px"} padding={"10px"}>
+                Filter
+              </MenuButton>
+              <MenuList>
+                <MenuOptionGroup title="Price">
                   <Stack direction={"column"} ml="15%">
-                    <Checkbox
+                    <ChakraCheckBox
                       onChange={(e) => check(e)}
                       name="above100"
-                      size={"lg"}
-                      style={{ marginLeft: "5px" }}>
+                      size={"lg"}>
                       Above 1000
-                    </Checkbox>
-                    <Checkbox
+                    </ChakraCheckBox>
+                    <ChakraCheckBox
                       onChange={(e) => check(e)}
                       name="a1000_500"
                       size={"lg"}>
                       1000 - 500
-                    </Checkbox>
-                    <Checkbox
+                    </ChakraCheckBox>
+                    <ChakraCheckBox
                       onChange={(e) => check(e)}
                       name="a500_300"
                       size={"lg"}>
                       500 - 300
-                    </Checkbox>
-                    <Checkbox
+                    </ChakraCheckBox>
+                    <ChakraCheckBox
                       onChange={(e) => check(e)}
                       name="below300"
                       size={"lg"}>
                       Below 300
-                    </Checkbox>
+                    </ChakraCheckBox>
                   </Stack>
-                  {/* </AccordionPanel> */}
-                </AccordionItem>
-
-                <AccordionItem>
-                  <AccordionButton>
-                    <Box
-                      as="span"
-                      flex="1"
-                      fontSize={20}
-                      textAlign="left"
-                      marginLeft={"7%"}>
-                      {" "}
-                      Category
-                    </Box>
-                  </AccordionButton>
-                  {/* <AccordionPanel> */}
+                </MenuOptionGroup>
+                <MenuDivider />
+                <MenuOptionGroup title="Category">
                   <Stack direction={"column"} ml="15%">
-                    <Checkbox
+                    <ChakraCheckBox
                       onChange={(e) => check(e)}
                       name="ratingTop"
                       size={"lg"}>
                       Above 4.5
-                    </Checkbox>
-                    <Checkbox
+                    </ChakraCheckBox>
+                    <ChakraCheckBox
                       onChange={(e) => check(e)}
                       name="ratingTop2"
                       size={"lg"}>
                       4.5 - 4
-                    </Checkbox>
-                    <Checkbox
+                    </ChakraCheckBox>
+                    <ChakraCheckBox
                       onChange={(e) => check(e)}
                       name="a4_3"
                       size={"lg"}>
                       4 - 3
-                    </Checkbox>
+                    </ChakraCheckBox>
 
-                    <Checkbox
+                    <ChakraCheckBox
                       onChange={(e) => check(e)}
                       name="below2"
                       size={"lg"}>
                       below 2
-                    </Checkbox>
+                    </ChakraCheckBox>
                   </Stack>
-                  {/* </AccordionPanel> */}
-                </AccordionItem>
-              </Accordion>
-            </Box>
-          </Box>
-        </Hide>
-        <Box style={{ width: "90%", margin: "auto" }} border="0px solid red">
-          <Box>
-            {filtCred !== "" && filterData.length === 0 ? (
-              <Image
-                src="NotFound.jpg"
-                alt="NotFound"
-                w="50%"
-                margin={"auto"}
-              />
-            ) : null}
-          </Box>
-          <SimpleGrid columns={[1, 2, 3, 4]} spacing={10}>
-            {(menData.length > 0 && filtCred === "" ? menData : filterData).map(
-              (el) => {
-                return <GridProduct key={el._id} props={el} />;
-              }
-            )}
-          </SimpleGrid>
+                </MenuOptionGroup>
+              </MenuList>
+            </Menu>
+          </Show>
         </Box>
-      </Flex>
-    </Box>
-  );
+
+        <Flex>
+          <Hide below="md">
+            <Box width={"20%"}>
+              <Heading color={"#f43397"} marginLeft="5%">
+                Filter
+              </Heading>
+              <Box>
+                <Accordion>
+                  <AccordionItem>
+                    <AccordionButton>
+                      <Box
+                        as="span"
+                        flex="1"
+                        fontSize={20}
+                        textAlign="left"
+                        marginLeft={"7%"}>
+                        {" "}
+                        Price
+                      </Box>
+                    </AccordionButton>
+                    {/* <AccordionPanel> */}
+                    <Stack direction={"column"} ml="15%">
+                      <Checkbox
+                        onChange={(e) => check(e)}
+                        name="above100"
+                        size={"lg"}
+                        style={{ marginLeft: "5px" }}>
+                        Above 1000
+                      </Checkbox>
+                      <Checkbox
+                        onChange={(e) => check(e)}
+                        name="a1000_500"
+                        size={"lg"}>
+                        1000 - 500
+                      </Checkbox>
+                      <Checkbox
+                        onChange={(e) => check(e)}
+                        name="a500_300"
+                        size={"lg"}>
+                        500 - 300
+                      </Checkbox>
+                      <Checkbox
+                        onChange={(e) => check(e)}
+                        name="below300"
+                        size={"lg"}>
+                        Below 300
+                      </Checkbox>
+                    </Stack>
+                    {/* </AccordionPanel> */}
+                  </AccordionItem>
+
+                  <AccordionItem>
+                    <AccordionButton>
+                      <Box
+                        as="span"
+                        flex="1"
+                        fontSize={20}
+                        textAlign="left"
+                        marginLeft={"7%"}>
+                        {" "}
+                        Category
+                      </Box>
+                    </AccordionButton>
+                    {/* <AccordionPanel> */}
+                    <Stack direction={"column"} ml="15%">
+                      <Checkbox
+                        onChange={(e) => check(e)}
+                        name="ratingTop"
+                        size={"lg"}>
+                        Above 4.5
+                      </Checkbox>
+                      <Checkbox
+                        onChange={(e) => check(e)}
+                        name="ratingTop2"
+                        size={"lg"}>
+                        4.5 - 4
+                      </Checkbox>
+                      <Checkbox
+                        onChange={(e) => check(e)}
+                        name="a4_3"
+                        size={"lg"}>
+                        4 - 3
+                      </Checkbox>
+
+                      <Checkbox
+                        onChange={(e) => check(e)}
+                        name="below2"
+                        size={"lg"}>
+                        below 2
+                      </Checkbox>
+                    </Stack>
+                    {/* </AccordionPanel> */}
+                  </AccordionItem>
+                </Accordion>
+              </Box>
+            </Box>
+          </Hide>
+          <Box style={{ width: "90%", margin: "auto" }} border="0px solid red">
+            <Box>
+              {filtCred !== "" && filterData.length === 0 ? (
+                <Image
+                  src="NotFound.jpg"
+                  alt="NotFound"
+                  w="50%"
+                  margin={"auto"}
+                />
+              ) : null}
+            </Box>
+            <SimpleGrid columns={[1, 2, 3, 4]} spacing={10}>
+              {(menData.length > 0 && filtCred === ""
+                ? menData
+                : filterData
+              ).map((el) => {
+                return <GridProduct key={el._id} props={el} />;
+              })}
+            </SimpleGrid>
+          </Box>
+        </Flex>
+      </Box>
+    );
+  }
 };
 
 export default Men;

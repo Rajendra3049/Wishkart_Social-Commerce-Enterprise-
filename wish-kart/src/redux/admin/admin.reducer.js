@@ -3,26 +3,34 @@ import {
   ADMIN_ERROR,
   ADMIN_LOGIN,
   ADMIN_LOGOUT,
-  ADMIN_GET_PRODUCT,
-  ADMIN_ADD_PRODUCT,
-  ADMIN_DELETE_PRODUCT,
-  ADMIN_UPDATE_PRODUCT,
-  ADMIN_GET_ORDERS,
-} from "./user.type";
-const initialState = {
-  data: [],
-  orders: [],
-  token: "",
-  loading: false,
-  error: false,
-  isAuth: false,
-  admin: {
-    email: "",
-    username: "",
-  },
+  ADMIN_GET_ALL_PRODUCTS,
+  ADMIN_GET_ALL_ORDERS,
+  ADMIN_GET_ALL_USERS,
+  ADMIN_GET_DASHBOARD,
+} from "./admin.type";
+
+let initialQueryParams = {
+  page: 1,
+  category: "",
+  order: "",
+  title: "",
 };
 
-const UserReducer = (state = initialState, { type, payload }) => {
+const initialState = {
+  loading: false,
+  error: false,
+  adminAuth: false,
+  token: "",
+  dashboard: "",
+  products: [],
+  query: initialQueryParams,
+  pagination: "",
+  orders: [],
+  users: [],
+  admin: {},
+};
+
+const AdminReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case ADMIN_LOADING: {
       return {
@@ -41,7 +49,7 @@ const UserReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         loading: false,
-        isAuth: true,
+        adminAuth: true,
         admin: payload.admin,
         token: payload.token,
       };
@@ -51,46 +59,47 @@ const UserReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         loading: false,
-        isAuth: false,
-        user: {
-          email: "",
-          username: "",
-        },
+        error: false,
+        adminAuth: false,
+        token: "",
+        dashboard: "",
+        products: [],
+        query: initialQueryParams,
+        pagination: "",
+        orders: [],
+        users: [],
+        admin: {},
       };
     }
-    case ADMIN_GET_PRODUCT: {
+    case ADMIN_GET_DASHBOARD: {
       return {
         ...state,
         loading: false,
-        data: payload,
+        dashboard: payload,
       };
     }
-    case ADMIN_ADD_PRODUCT: {
+
+    case ADMIN_GET_ALL_PRODUCTS: {
       return {
         ...state,
         loading: false,
-        data: payload,
+        products: payload.products,
+        pagination: payload.pagination,
       };
     }
-    case ADMIN_DELETE_PRODUCT: {
-      return {
-        ...state,
-        loading: false,
-        data: payload,
-      };
-    }
-    case ADMIN_UPDATE_PRODUCT: {
-      return {
-        ...state,
-        loading: false,
-        data: payload,
-      };
-    }
-    case ADMIN_GET_ORDERS: {
+
+    case ADMIN_GET_ALL_ORDERS: {
       return {
         ...state,
         loading: false,
         orders: payload,
+      };
+    }
+    case ADMIN_GET_ALL_USERS: {
+      return {
+        ...state,
+        loading: false,
+        users: payload,
       };
     }
 
@@ -102,4 +111,4 @@ const UserReducer = (state = initialState, { type, payload }) => {
   }
 };
 
-export default UserReducer;
+export default AdminReducer;

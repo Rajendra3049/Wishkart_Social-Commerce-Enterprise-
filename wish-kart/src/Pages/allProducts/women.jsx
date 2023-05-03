@@ -50,7 +50,6 @@ const Women = () => {
   }, []);
 
   const check = (e) => {
-    console.log(e.target);
     const { name, checked } = e.target;
     setFiltCred({
       ...filtCred,

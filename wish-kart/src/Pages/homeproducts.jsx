@@ -25,7 +25,7 @@ export default function HomeProducts({ showData, currentPage }) {
       {/* card */}
       {showData &&
         showData.map((el) => (
-          <Link to="/products">
+          <Link to="/products" key={el.id}>
             <Box
               onClick={() => {
                 StoreInLocal(el);
@@ -34,8 +34,6 @@ export default function HomeProducts({ showData, currentPage }) {
               w={["90%", "100%", "100%", "100%", "100%", "100%"]}
               key={el.id}
               style={{
-                // border: "1px solid red",
-                // boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
                 boxShadow:
                   "rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px",
                 height: "55vh",

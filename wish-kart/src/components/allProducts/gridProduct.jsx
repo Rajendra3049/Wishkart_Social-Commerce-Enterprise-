@@ -7,7 +7,6 @@ const GridProduct = ({ props }) => {
   const navigate = useNavigate();
 
   const handleproductpass = (id) => {
-    console.log(id);
     let path = `/SingleProduct/${props.category}/${id}`;
     navigate(path);
   };

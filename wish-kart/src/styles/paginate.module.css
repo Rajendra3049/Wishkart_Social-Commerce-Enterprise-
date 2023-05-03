@@ -1,0 +1,64 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+
+body {
+  padding-top: 60px;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+}
+:root {
+  --primary-color: #dd4124;
+  --font-size: 16px;
+  --padding-small: 10px;
+  --margin-small: 5px;
+  --box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.flex_container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flex_container > div {
+  padding-top: 10px;
+}
+.paginate_ctn {
+  display: flex;
+}
+.round_effect {
+  color: #dd4124;
+  cursor: pointer;
+  /*   border:1px solid red; */
+
+  font-size: 16px;
+  text-align: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 9px;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  margin: 5px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  text-decoration: none;
+}
+
+.round_effect:hover {
+  text-decoration: none;
+  background: #dd4124;
+  color: #fff;
+}
+.round_effect:hover a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.active {
+  background: #dd4124;
+  color: #fff;
+}
+a:link {
+  text-decoration: none;
+  color: #dd4124;
+}

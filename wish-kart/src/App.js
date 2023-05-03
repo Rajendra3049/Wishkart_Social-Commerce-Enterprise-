@@ -5,9 +5,12 @@ import Navbar from "./components/Navbar";
 import AllRoutes from "./Pages/AllRoutes";
 import Loader from "./components/Loader";
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import AdminNav from "./components/adminSide/adminNav";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
+  let { adminAuth } = useSelector((store) => store.AdminManager);
   useEffect(() => {
     setIsLoading(true);
     let timer = setTimeout(() => {
@@ -19,10 +22,15 @@ function App() {
     <Loader />
   ) : (
     <div>
-      <Navbar />
+      {adminAuth ? null : <Navbar />}
+
       <AllRoutes />
-      <Footer />
-      <Footer2 />
+      {adminAuth ? null : (
+        <>
+          <Footer />
+          <Footer2 />
+        </>
+      )}
     </div>
   );
 }

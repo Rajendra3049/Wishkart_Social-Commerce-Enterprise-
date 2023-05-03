@@ -3,117 +3,199 @@ import {
   ADMIN_ERROR,
   ADMIN_LOGIN,
   ADMIN_LOGOUT,
-  ADMIN_GET_PRODUCT,
+  ADMIN_GET_ALL_PRODUCTS,
+  ADMIN_GET_DASHBOARD,
   ADMIN_ADD_PRODUCT,
-  ADMIN_DELETE_PRODUCT,
+  ADMIN_GET_PRODUCT,
   ADMIN_UPDATE_PRODUCT,
-  ADMIN_GET_ORDERS,
-} from "./product.actionTypes.js";
+  ADMIN_DELETE_PRODUCT,
+  ADMIN_GET_ALL_ORDERS,
+  ADMIN_GET_ALL_USERS,
+} from "./admin.type";
+
 import axios from "axios";
 
-export const adminLogin = (credentials) => async (dispatch) => {
-  dispatch({ type: ADMIN_LOADING });
-  try {
-    const { email, pass } = credentials;
-    const payload = {
-      email,
-      password: pass,
-    };
-
-    let res = await axios
-      .post("https://wishkart-server.onrender.com/admin/login")
+// get users
+export const adminLogin =
+  ({ email, password }) =>
+  async (dispatch) => {
+    dispatch({ type: ADMIN_LOADING });
+    await fetch("https://zany-erin-alligator-boot.cyclic.app/admin/login", {
+      method: "POST",
+      body: JSON.stringify({ email, password }),
+      headers: {
+        "Content-type": "application/json",
+      },
+    })
       .then((res) => res.json())
       .then((res) => {
-        localStorage.setItem("token", JSON.stringify(res), console.log(res));
-        dispatch({ type: ADMIN_LOGIN, payload: res.data });
+        localStorage.setItem("token", JSON.stringify(res.token));
+        dispatch({
+          type: ADMIN_LOGIN,
+          payload: { token: res.token, admin: res.admin[0] },
+        });
       })
       .catch((err) => console.log(err));
-  } catch (error) {
-    dispatch({ type: ADMIN_ERROR, payload: error.message });
-  }
+  };
+export const GetAdminData =
+  ({ email, password }) =>
+  async (dispatch) => {
+    dispatch({ type: ADMIN_LOADING });
+    await fetch("https://zany-erin-alligator-boot.cyclic.app/admin/login", {
+      method: "POST",
+      body: JSON.stringify({ email, password }),
+      headers: {
+        "Content-type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        localStorage.setItem("token", JSON.stringify(res.token));
+        dispatch({
+          type: ADMIN_LOGIN,
+          payload: { token: res.token, admin: res.admin[0] },
+        });
+      })
+      .catch((err) => console.log(err));
+  };
+
+export const adminLogout = () => (dispatch) => {
+  localStorage.removeItem("token");
+  dispatch({ type: ADMIN_LOGOUT });
 };
 
-export const adminLogout = async (dispatch) => {
-  dispatch({ type: ADMIN_LOADING });
-  try {
-    localStorage.removeItem("token");
-    dispatch({ type: ADMIN_LOGOUT });
-  } catch (error) {
-    dispatch({ type: ADMIN_ERROR, payload: error.message });
-  }
-};
-
-export const getProducts = async (dispatch) => {
-  dispatch({ type: ADMIN_LOADING });
-  try {
-    let res = await axios.get("https://wishkart-server.onrender.com/products");
-    dispatch({ type: ADMIN_GET_PRODUCT, payload: res.data.products });
-  } catch (error) {
-    dispatch({ type: ADMIN_ERROR, payload: error.message });
-  }
-};
-
-export const addNewProduct = (state) => async (dispatch) => {
-  await fetch("https://wishkart-server.onrender.com/products", {
-    method: "POST",
-    body: JSON.stringify(state),
+export const adminGetDashboard = (token) => async (dispatch) => {
+  await fetch("https://zany-erin-alligator-boot.cyclic.app/admin/dashboard", {
+    method: "GET",
     headers: {
-      "Content-Type": "application/json",
+      "Content-type": "application/json",
+      Authorization: token,
     },
-  });
-
-  try {
-    let res = await axios.get("https://wishkart-server.onrender.com/products");
-
-    dispatch({ type: ADMIN_GET_PRODUCT, payload: res.data.products });
-  } catch (error) {
-    dispatch({ type: ADMIN_ERROR, payload: error.message });
-  }
+  })
+    .then((res) => res.json())
+    .then((res) =>
+      dispatch({
+        type: ADMIN_GET_DASHBOARD,
+        payload: res,
+      })
+    )
+    .catch((err) => console.log(err));
 };
 
-export const removeProduct = (id) => async (dispatch) => {
-  await fetch(`https://wishkart-server.onrender.com/products/${id}`, {
-    method: "DELETE",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+export const adminGetProducts =
+  ({ token, query }) =>
+  async (dispatch) => {
+    dispatch({ type: ADMIN_LOADING });
+    let url = `https://zany-erin-alligator-boot.cyclic.app/admin/products?page=${
+      query.page === undefined ? 1 : query.page
+    }&`;
 
-  try {
-    let res = await axios.get("https://wishkart-server.onrender.com/products");
+    if (query) {
+      if (query.category !== "#") {
+        url += `category=${query.category}&`;
+      }
+      if (query.title !== "") {
+        url += `title=${query.title}&`;
+      }
+      if (query.order !== "#") {
+        url += `order=${query.order}&`;
+      }
+    }
 
-    dispatch({ type: ADMIN_GET_PRODUCT, payload: res.data.products });
-  } catch (error) {
-    dispatch({ type: ADMIN_ERROR, payload: error.message });
-  }
-};
+    let res = await fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+      },
+    });
+    let data = await res.json();
 
-export const updateProduct = (id, data) => async (dispatch) => {
-  await fetch(`https://wishkart-server.onrender.com/products/${id}`, {
-    method: "PATCH",
-    body: JSON.stringify(data),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-
-  try {
-    let res = await axios.get("https://wishkart-server.onrender.com/products");
-
-    dispatch({ type: ADMIN_GET_PRODUCT, payload: res.data.products });
-  } catch (error) {
-    dispatch({ type: ADMIN_ERROR, payload: error.message });
-  }
-};
-
-export const getOrders = async (dispatch) => {
+    if (data.msg === "Not Found") {
+      dispatch({
+        type: ADMIN_GET_ALL_PRODUCTS,
+        payload: { products: [], pagination: {} },
+      });
+    } else {
+      dispatch({ type: ADMIN_GET_ALL_PRODUCTS, payload: data });
+    }
+  };
+export const adminGetOrders = (token) => async (dispatch) => {
   dispatch({ type: ADMIN_LOADING });
-  try {
-    let res = await axios.get(
-      "https://wishkart-server.onrender.com/admin/orders"
-    );
-    dispatch({ type: ADMIN_GET_PRODUCT, payload: res.data.orders });
-  } catch (error) {
-    dispatch({ type: ADMIN_ERROR, payload: error.message });
-  }
+
+  let res = await fetch(
+    "https://zany-erin-alligator-boot.cyclic.app/admin/orders",
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+      },
+    }
+  );
+  let data = await res.json();
+  console.log("orders", data);
+  dispatch({ type: ADMIN_GET_ALL_ORDERS, payload: data });
 };
+
+export const addNewProduct =
+  ({ token, state }) =>
+  async (dispatch) => {
+    await fetch("https://zany-erin-alligator-boot.cyclic.app/admin/products", {
+      method: "POST",
+      body: JSON.stringify(state),
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+      .then(async () => {
+        let query = { page: 1, category: "#", order: "#", title: "" };
+        dispatch(adminGetProducts({ token, query }));
+      });
+  };
+
+export const removeProduct =
+  ({ token, id }) =>
+  async (dispatch) => {
+    let res = await fetch(
+      `https://zany-erin-alligator-boot.cyclic.app/admin/products/${id}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: token,
+        },
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+      .then(async () => {
+        let query = { page: 1, category: "#", order: "#", title: "" };
+        dispatch(adminGetProducts({ token, query }));
+      });
+  };
+
+export const updateProduct =
+  ({ token, id, data }) =>
+  async (dispatch) => {
+    await fetch(
+      `https://zany-erin-alligator-boot.cyclic.app/admin/products/${id}`,
+      {
+        method: "PATCH",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: token,
+        },
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+      .then(async () => {
+        let query = { page: 1, category: "#", order: "#", title: "" };
+        dispatch(adminGetProducts({ token, query }));
+      });
+  };
