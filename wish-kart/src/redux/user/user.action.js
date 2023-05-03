@@ -333,8 +333,6 @@ export const PlaceOrder =
     );
     let data = await res.json();
 
-    // console.log("🚀 ~ file: user.action.js:403 ~ data:", data);
-
     try {
       dispatch({ type: USER_LOADING });
       let res = await fetch(

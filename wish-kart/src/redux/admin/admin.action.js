@@ -29,11 +29,18 @@ export const adminLogin =
     })
       .then((res) => res.json())
       .then((res) => {
-        localStorage.setItem("token", JSON.stringify(res.token));
-        dispatch({
-          type: ADMIN_LOGIN,
-          payload: { token: res.token, admin: res.admin[0] },
-        });
+        if (res.msg !== "Wrong Credentials") {
+          localStorage.setItem("token", JSON.stringify(res.token));
+          dispatch({
+            type: ADMIN_LOGIN,
+            payload: { token: res.token, admin: res.admin[0] },
+          });
+        } else {
+          window.alert("wrong credentials");
+          dispatch({
+            type: ADMIN_LOGOUT,
+          });
+        }
       })
       .catch((err) => console.log(err));
   };
