@@ -158,11 +158,11 @@ const DesktopNav = () => {
 
   return (
     <Stack direction={"row"} spacing={6}>
-      {NAV_ITEMS.map((navItem) => (
-        <RouterLink to={navItem.href} key={navItem.label}>
-          <Box>
-            <Popover trigger={"hover"} placement={"bottom-end"}>
-              <PopoverTrigger>
+      {NAV_ITEMS.map((navItem, i) => (
+        <Box key={i}>
+          <Popover trigger={"hover"} placement={"bottom-end"}>
+            <PopoverTrigger>
+              <RouterLink to={navItem.href} key={navItem.label}>
                 <Box
                   p={4}
                   _hover={{
@@ -174,30 +174,29 @@ const DesktopNav = () => {
                   color={linkColor}>
                   {navItem.label}
                 </Box>
-              </PopoverTrigger>
+              </RouterLink>
+            </PopoverTrigger>
 
-              {navItem.children && (
-                <PopoverContent
-                  boxShadow={"xl"}
-                  bg={popoverContentBgColor}
-                  p={4}
-                  // bg={"white"}
-                  display={"flex"}
-                  rounded={"xl"}
-                  minW={"1600px"}
-                  minH={"300px"}
-                  pl={"50px"}
-                  pr={"50px"}>
-                  <Flex>
-                    {navItem.children.map((child) => (
-                      <DesktopSubNav key={child.label} {...child} />
-                    ))}
-                  </Flex>
-                </PopoverContent>
-              )}
-            </Popover>
-          </Box>
-        </RouterLink>
+            {navItem.children && (
+              <PopoverContent
+                boxShadow={"xl"}
+                bg={popoverContentBgColor}
+                p={4}
+                display={"flex"}
+                rounded={"xl"}
+                minW={"1600px"}
+                minH={"300px"}
+                pl={"50px"}
+                pr={"50px"}>
+                <Flex>
+                  {navItem.children.map((child) => (
+                    <DesktopSubNav key={child.label} {...child} />
+                  ))}
+                </Flex>
+              </PopoverContent>
+            )}
+          </Popover>
+        </Box>
       ))}
     </Stack>
   );

@@ -20,10 +20,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { DecreaseCartQty, IncreaseCartQty } from "../../redux/user/user.action";
 
 const CartDrawer = ({ qty, setQty, data }) => {
-  const [cartData, setCartData] = React.useState([]);
-
   // redux start
-  let { isAuth } = useSelector((store) => store.UserManager);
+  let { loading } = useSelector((store) => store.UserManager);
   let dispatch = useDispatch();
   // redux end
 
@@ -35,7 +33,8 @@ const CartDrawer = ({ qty, setQty, data }) => {
         ref={btnRef}
         onClick={onOpen}
         bg={"white"}
-        _hover={{ bg: "white" }}>
+        _hover={{ bg: "white" }}
+        size={"xl"}>
         Edit
       </Button>
       <Drawer
@@ -43,7 +42,7 @@ const CartDrawer = ({ qty, setQty, data }) => {
         placement="right"
         onClose={onClose}
         finalFocusRef={btnRef}
-        size={{ base: "xs", md: "sm" }}>
+        size={{ base: "xs", md: "lg" }}>
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton />
@@ -58,20 +57,27 @@ const CartDrawer = ({ qty, setQty, data }) => {
                 padding={"20px"}
                 src={data.productId.images[0]}
               />
-              <Box>
+              <Box fontSize={"14px"}>
                 <Text fontSize={"20px"} mt={"10px"}>
                   {data.productId.title}
                 </Text>
-                <Text m={"10px auto"}>₹ {data.productId.discounted_price}</Text>
-                <Grid gap={"25px"} m={"10px auto"}>
+                <Text m={"10px auto"} fontWeight={"600"}>
+                  ₹ {data.productId.discounted_price} &nbsp;&nbsp;
+                  <span
+                    style={{
+                      color: "grey",
+                      textDecoration: "line-through",
+                      fontWeight: "400",
+                    }}>
+                    ₹ {data.productId.original_price}
+                  </span>
+                </Text>
+
+                <Grid gap={"10px"} m={"10px auto"}>
                   <Text>Size: {data.productId.sizes[0]}</Text>
-                  <Flex gap={"10px"}>
+                  <Flex gap={"10px"} fontSize={"14px"}>
                     <Text>Qty</Text>
-                    <Flex
-                      gap={"10px"}
-                      borderWidth={"1px"}
-                      borderRadius={"5px"}
-                      padding={"0 5px"}>
+                    <Flex gap={"10px"} borderWidth={"1px"} borderRadius={"5px"}>
                       <Button
                         isDisabled={data.quantity === 1}
                         onClick={() =>
@@ -79,7 +85,9 @@ const CartDrawer = ({ qty, setQty, data }) => {
                         }>
                         -
                       </Button>
-                      <Text>{data.quantity}</Text>
+                      <Flex justifyContent="center" alignItems="center">
+                        <Text>{data.quantity}</Text>
+                      </Flex>
                       <Button
                         onClick={() =>
                           dispatch(IncreaseCartQty(data.userId, data._id))
@@ -93,10 +101,13 @@ const CartDrawer = ({ qty, setQty, data }) => {
             </Flex>
             <hr />
             <Flex
+              pl="10px"
+              pr="10px"
               m={"20px 0"}
               align={"center"}
               justifyContent={"space-between"}
-              fontWeight={"600"}>
+              fontWeight={"600"}
+              fontSize={"16px"}>
               <Text>Total Price</Text>
               <Text>₹ {data.productId.discounted_price * data.quantity}</Text>
             </Flex>
@@ -110,7 +121,7 @@ const CartDrawer = ({ qty, setQty, data }) => {
               padding={{
                 base: "20px 50px",
                 md: "20px 100px",
-                lg: "20px 120px",
+                lg: "20px 160px",
               }}
               fontSize="15px">
               Continue

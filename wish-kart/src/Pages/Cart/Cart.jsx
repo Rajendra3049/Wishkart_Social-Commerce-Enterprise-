@@ -1,18 +1,20 @@
-import { Flex, Text, Card, Button, Box, Image, Grid } from "@chakra-ui/react";
+import { Flex, Text, Button, Box, Image, Grid } from "@chakra-ui/react";
 import React from "react";
 import "./cart.css";
 import CartDrawer from "./CartDrawer";
 import { RemoveFromCartNotify } from "../../components/notify";
 import { DeleteFromCart, getCart } from "../../redux/user/user.action";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
 import Loader from "../../components/Loader";
+import CartEmpty from "./CartEmpty";
 
 const Cart = () => {
   const [qty, setQty] = React.useState(1);
   const [price, setPrice] = React.useState(0);
-  const { user, isAuthenticated, isLoading } = useAuth0();
+  const { user, isAuthenticated } = useAuth0();
+  const { loginWithRedirect } = useAuth0();
 
   const navigate = useNavigate();
   // redux start
@@ -22,19 +24,20 @@ const Cart = () => {
 
   React.useEffect(() => {
     if (isAuthenticated === false) {
-      console.log("user not authenticated");
-      navigate("/");
-    }
-    window.scrollTo(0, 0);
-    dispatch(getCart(user.sub));
+      window.alert("You are not authorized Please login");
+      loginWithRedirect();
+    } else {
+      window.scrollTo(0, 0);
+      dispatch(getCart(user.sub));
 
-    if (cart.length > 0) {
-      let newPrice = 0;
-      for (let i = 0; i < cart.length; i++) {
-        newPrice =
-          newPrice + cart[i].productId.discounted_price * cart[i].quantity;
+      if (cart.length > 0) {
+        let newPrice = 0;
+        for (let i = 0; i < cart.length; i++) {
+          newPrice =
+            newPrice + cart[i].productId.discounted_price * cart[i].quantity;
+        }
+        setPrice(newPrice);
       }
-      setPrice(newPrice);
     }
   }, [cart.length]);
 
@@ -49,13 +52,9 @@ const Cart = () => {
   }
 
   if (loading) {
-    return (
-      <>
-        <Loader />
-      </>
-    );
+    return <Loader />;
   } else if (cart.length === 0) {
-    return <Navigate to="/cartempty" />;
+    return <CartEmpty />;
   } else {
     return (
       <>
@@ -84,13 +83,16 @@ const Cart = () => {
                     w={"100%"}
                     borderRadius={"5px 5px 0 0"}>
                     <Box border={"0px solid black"} m="auto">
-                      <Image
-                        objectFit="cover"
-                        m="auto"
-                        w="100%"
-                        padding={"10px"}
-                        src={e.productId.images[0]}
-                      />
+                      <Link
+                        to={`/SingleProduct/${e.productId.category}/${e.productId._id}`}>
+                        <Image
+                          objectFit="cover"
+                          m="auto"
+                          w="100%"
+                          padding={"10px"}
+                          src={e.productId.images[0]}
+                        />
+                      </Link>
                     </Box>
                     <Box
                       paddingLeft={["1rem", "1rem", "0rem"]}
@@ -120,14 +122,22 @@ const Cart = () => {
                         m={"10px auto"}
                         fontWeight={"500"}
                         fontSize={["13px", "13px", "15px"]}>
-                        {"₹"} {e.productId.discounted_price}
+                        ₹ {e.productId.discounted_price} &nbsp;&nbsp;
+                        <span
+                          style={{
+                            color: "grey",
+                            textDecoration: "line-through",
+                            fontWeight: "400",
+                          }}>
+                          ₹ {e.productId.original_price}
+                        </span>
                       </Text>
                       <Button
                         color={"pink.400"}
                         gap={"10px"}
                         fontWeight={"600"}
                         bg={"none"}
-                        fontSize={["14px", "14px", "16px"]}
+                        fontSize={["14px", "14px", "18px"]}
                         _hover={{ bg: "none" }}
                         onClick={() => {
                           handleRemove(e._id);

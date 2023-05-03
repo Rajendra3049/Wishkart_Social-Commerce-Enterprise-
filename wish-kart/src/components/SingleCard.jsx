@@ -6,6 +6,7 @@ export const SingleCard = ({ props }) => {
   React.useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
   return (
     <div
       key={props.id}
@@ -16,7 +17,7 @@ export const SingleCard = ({ props }) => {
         padding: "4%",
         cursor: "pointer",
       }}>
-      <Link to={`/SingleProduct/${props.id}`}>
+      <Link to={`/SingleProduct/${props.category}/${props._id}`}>
         {" "}
         <img
           style={{

@@ -5,20 +5,22 @@ import {
   USER_LOGOUT,
   USER_ADD_TO_CART,
   USER_DELETE_FROM_CART,
-  USER_ORDER,
   ADMIN_LOGIN,
   USER_GET_CART,
   USER_ADD_NEW_ADDRESS,
   USER_GET_ADDRESS,
   USER_UPDATE_ADDRESS,
   USER_DELETE_ADDRESS,
+  USER_GET_ORDER,
+  USER_POST_ORDER,
 } from "./user.type";
 const initialState = {
-  loading: true,
+  loading: false,
   error: false,
   isAuth: false,
   cart: [],
   address: [],
+  order: [],
   user: {
     id: "",
     mobile_no: "",
@@ -123,11 +125,17 @@ const UserReducer = (state = initialState, { type, payload }) => {
       };
     }
 
-    case USER_ORDER: {
+    case USER_GET_ORDER: {
       return {
         ...state,
         loading: false,
-        user: payload,
+        order: payload,
+      };
+    }
+    case USER_POST_ORDER: {
+      return {
+        ...state,
+        loading: false,
       };
     }
 

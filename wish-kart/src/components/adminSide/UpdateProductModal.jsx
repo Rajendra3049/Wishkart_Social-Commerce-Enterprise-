@@ -1,10 +1,9 @@
 import React from "react";
 import btnStyle from "../../styles/update.module.css";
-import styles from "../../styles/addProduct.module.css"
+import styles from "../../styles/addProduct.module.css";
 import style from "../../styles/inputbox.module.css";
-import { addNewProduct, updateProduct } from "../../redux/Products/product.action";
+import { updateProduct } from "../../redux/admin/admin.action";
 import { useDispatch, useSelector } from "react-redux";
-import { AddProductNotify } from "../../components/notify";
 
 const initialData = {
   category: "",
@@ -23,13 +22,19 @@ const initialData = {
   seller_id: 30,
 };
 
-export default function UpdateProduct({singleData,onClose}) {
-  
+export default function UpdateProduct({
+  singleData,
+  onClose,
+  token,
+  query,
+  setQuery,
+}) {
+  console.log(token);
   React.useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
   const [state, setState] = React.useState(singleData);
-  let { loading, error, data } = useSelector((store) => store.ProductsManager);
+
   let dispatch = useDispatch();
 
   const handleChange = (e) => {
@@ -40,7 +45,6 @@ export default function UpdateProduct({singleData,onClose}) {
       [name]: value,
     });
   };
-
 
   const handleChangeDetails = (e) => {
     setState({
@@ -53,15 +57,14 @@ export default function UpdateProduct({singleData,onClose}) {
   };
   function HandleUpdate(e) {
     e.preventDefault();
-  
-    let data = state
-    dispatch(updateProduct(singleData.id, data));
-    onClose()
+    dispatch(updateProduct({ token, id: singleData._id, data: state }));
+    setQuery({ page: 1, category: "#", order: "#", title: "" });
+    onClose();
   }
 
   return (
     <div className={styles.root}>
-      <form  onSubmit={HandleUpdate}>
+      <form onSubmit={HandleUpdate}>
         <div className={styles.main}>
           <hr />
           <div className={styles.rowParent}>
@@ -231,9 +234,11 @@ export default function UpdateProduct({singleData,onClose}) {
             </div>
           </div>
         </div>
-        <div className={styles.row} >
+        <div className={styles.row}>
           {/* <button className={styles.btn}>Add Product</button> */}
-          <button type="submit"  className={`${btnStyle.btn} ${btnStyle.custom_btn}`}>
+          <button
+            type="submit"
+            className={`${btnStyle.btn} ${btnStyle.custom_btn}`}>
             {/* <AddProductNotify /> */}
             Update
           </button>

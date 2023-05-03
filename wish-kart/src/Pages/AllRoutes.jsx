@@ -1,12 +1,10 @@
 import React from "react";
-import { Link, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Address from "./Address/Address.jsx";
 import Cart from "./Cart/Cart.jsx";
-import Payment from "./Payment/Payment.jsx";
 import CartEmpty from "./Cart/CartEmpty.jsx";
 import SingleProduct from "./SingleProduct";
 import { Otp } from "../components/signup/otp";
-import SignUp from "./signup";
 import Products from "./allProducts/Products";
 import Home from "./Home";
 import AdminSide from "./adminSide";
@@ -17,7 +15,8 @@ import HomeKitchen from "./allProducts/homeKitchen";
 import BeauthHealth from "./allProducts/beauty";
 import BagsFootwear from "./allProducts/bagsFootwear";
 import HomeSingleProduct from "../components/homeSingleProduct.jsx";
-import AdminSignin from "../adminsigin/adminsignup";
+import AdminSignin from "../components/adminSide/adminsignup.jsx";
+import Order from "./order.jsx";
 
 export default function AllRoutes() {
   return (
@@ -25,9 +24,8 @@ export default function AllRoutes() {
       <Route path="/SingleProduct/:category/:id" element={<SingleProduct />} />
       <Route path="/" element={<Home />} />
       <Route path="/homeproduct" element={<HomeSingleProduct />} />
-      <Route path="/signup" element={<SignUp />} />
+
       <Route path="/otp" element={<Otp />} />
-      <Route path="/admin" element={<AdminSide />} />
       <Route path="/products" element={<Products />} />
       <Route path="/men" element={<Men />} />
       <Route path="/women" element={<Women />} />
@@ -38,9 +36,9 @@ export default function AllRoutes() {
       <Route path="/cart" element={<Cart />} />
       <Route path="/cartempty" element={<CartEmpty />} />
       <Route path="/address" element={<Address />} />
-      <Route path="/payment" element={<Payment />} />
-      <Route path="/address" element={<Address />} />
       <Route path="/adminsignup" element={<AdminSignin />} />
+      <Route path="/admin" element={<AdminSide />} />
+      <Route path="/order" element={<Order />} />
     </Routes>
   );
 }

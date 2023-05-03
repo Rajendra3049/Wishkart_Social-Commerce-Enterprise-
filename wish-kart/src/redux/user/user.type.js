@@ -18,7 +18,8 @@ export const USER_GET_ADDRESS = "user/get_address";
 export const USER_UPDATE_ADDRESS = "user/update_address";
 export const USER_DELETE_ADDRESS = "user/delete_address";
 // order
-export const USER_ORDER = "user/order";
+export const USER_GET_ORDER = "user/get/order";
+export const USER_POST_ORDER = "user/post/order";
 
 // admin
 export const ADMIN_LOGIN = "admin/login";

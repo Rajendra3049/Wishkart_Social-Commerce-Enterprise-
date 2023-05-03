@@ -25,7 +25,7 @@ const Footer2 = () => {
                 border={"1px solid #dbdbdb"}
                 padding={"18px"}
                 borderRadius={"8px"}>
-                More About Meesho
+                More About Wishkart
               </Box>
               <AccordionIcon />
             </AccordionButton>
@@ -35,7 +35,7 @@ const Footer2 = () => {
               color={"#333333"}
               fontWeight={700}
               fontSize={["15px", "16px", "18px"]}>
-              Meesho: Affordable Online Shopping at Your Fingertips
+              Wishkart: Affordable Online Shopping at Your Fingertips
             </Heading>
 
             <Text
@@ -45,7 +45,7 @@ const Footer2 = () => {
               There are many benefits of shopping online. You can take your time
               and look at different options to find exactly what you want. It's
               easy to compare prices online and find exactly what you are
-              looking for. And now with Meesho, you can shop for anything you
+              looking for. And now with Wishkart, you can shop for anything you
               want at the lowest prices in the market. Even if you want to shop
               for cool gifts for your friends and family, there are many options
               that you can find on the Internet.
@@ -63,12 +63,12 @@ const Footer2 = () => {
               mt={"18px"}>
               We have a vast inventory of products ranging from apparel to
               cosmetics to home utility and kitchen products and more. With over
-              50 lakh products and 650+ product categories, Meesho is sure to
+              50 lakh products and 650+ product categories, Wishkart is sure to
               have everything you need. In our latest collections, you will find
               all the popular items at an affordable price, so you can be
               confident you're getting the best deal. Whether you're in the
               market for new clothes, accessories, or just some daily-use items
-              for home, Meesho has what you need.
+              for home, Wishkart has what you need.
             </Text>
 
             <Heading
@@ -111,11 +111,11 @@ const Footer2 = () => {
               color={"#333333"}
               fontSize={["10px", "12px", "14px"]}
               mt={"18px"}>
-              Meesho is the best place to find fashionable and affordable
+              Wishkart is the best place to find fashionable and affordable
               western wear for women. With a constantly updating inventory of
               casual, formal, and partywear dresses, jeans, tops,
               <b style={{ color: "#f43397" }}>T-shirts</b>, skirts, and more,
-              Meesho has all the latest trending outfits you're looking
+              Wishkart has all the latest trending outfits you're looking
               for--plus funky jewelry and accessories. You'll never have to
               worry about overspending or not being able to find something you
               love!
@@ -135,7 +135,7 @@ const Footer2 = () => {
               really add a sense of style and individuality that make you stand
               out! With so many types of accessories available, it can be
               difficult to find the perfect piece for yourself. Fortunately,
-              Meesho has a wide variety of jewellery sets,{" "}
+              Wishkart has a wide variety of jewellery sets,{" "}
               <b style={{ color: "#f43397" }}>handbags</b>, belts, heels, casual
               footwear, <b style={{ color: "#f43397" }}>watches</b>, etc. With
               so many options, you'll be sure to find the perfect accessories
@@ -318,7 +318,7 @@ const Footer2 = () => {
               It's always a good idea to switch up your home's style every now
               and then - it keeps things fresh and also allows you to try out
               new trends. But of course, you never want to spend more money than
-              you have to. That's where Meesho comes in! We've got amazing
+              you have to. That's where Wishkart comes in! We've got amazing
               prices on all kinds of home furnishing items like bedsheets,
               curtains, cushions, and more. Plus, we have a constantly rotating
               selection of the best home decor items so you can always stay on
@@ -336,7 +336,7 @@ const Footer2 = () => {
               color={"#333333"}
               fontSize={["10px", "12px", "14px"]}
               mt={"18px"}>
-              At Meesho, we give you access to a huge selection of gadgets and
+              At Wishkart, we give you access to a huge selection of gadgets and
               essentials for your electronic devices. Here you'll find
               everything from chargers and headphones to data cables and even
               external battery packs. Every month, we offer different sales and
@@ -390,14 +390,14 @@ const Footer2 = () => {
               fontWeight={700}
               fontSize={["15px", "16px", "18px"]}
               mt={"20px"}>
-              Get the Meesho App for Hassle Free Online Shopping{" "}
+              Get the Wishkart App for Hassle Free Online Shopping{" "}
             </Heading>
             <Text
               color={"#333333"}
               fontSize={["10px", "12px", "14px"]}
               mt={"18px"}>
               If you want a seamless shopping experience, you should also
-              consider downloading Meesho's App. While you may think that it's
+              consider downloading Wishkart's App. While you may think that it's
               unnecessary to have an app for shopping, there are plenty of
               features that will make your life easier. If you find yourself
               preferring to shop from home, this is the app for you. It makes
@@ -407,7 +407,7 @@ const Footer2 = () => {
               friends on social media in just seconds.{" "}
             </Text>
 
-            <Heading color={"#f43397"}>Download Meesho App Now</Heading>
+            <Heading color={"#f43397"}>Download Wishkart App Now</Heading>
 
             <Heading
               color={"#333333"}
@@ -421,44 +421,45 @@ const Footer2 = () => {
               color={"#333333"}
               fontSize={["10px", "12px", "14px"]}
               mt={"18px"}>
-              Now you know all about different categories and products Meesho
-              has to offer. It's time to explore and understand Meesho’s
-              reselling option. Apart from using Meesho as an online shopping
+              Now you know all about different categories and products Wishkart
+              has to offer. It's time to explore and understand wishkart
+              reselling option. Apart from using Wishkart as an online shopping
               platform, you also have the option to start your online business
               with us. Here’s how you can begin your entrepreneurial journey.
               Browse: You can register for a new account or log in to an
-              existing one on the Meesho app or website. Once you're logged in,
-              you can browse through our catalog and select products that you
-              want to purchase at wholesale rates! Share: With a single click,
-              you can share catalogs and product images over Whatsapp, Facebook,
-              or Instagram to your contacts using the share option. Earn: After
-              sharing the products and catalogs with your customers, you will
-              start getting orders from them. You can add a profit margin to
-              Meesho’s prices and quote that to your customers.This will be your
-              profit. You can quote product prices with an added margin, which
-              will include a profit for you. Once you place the orders on your
-              customer’s behalf, Meesho will take care of the delivery process
-              for you.
+              existing one on the Wishkart app or website. Once you're logged
+              in, you can browse through our catalog and select products that
+              you want to purchase at wholesale rates! Share: With a single
+              click, you can share catalogs and product images over Whatsapp,
+              Facebook, or Instagram to your contacts using the share option.
+              Earn: After sharing the products and catalogs with your customers,
+              you will start getting orders from them. You can add a profit
+              margin to wishkart prices and quote that to your customers.This
+              will be your profit. You can quote product prices with an added
+              margin, which will include a profit for you. Once you place the
+              orders on your customer’s behalf, Wishkart will take care of the
+              delivery process for you.
             </Text>
             <Heading
               color={"#333333"}
               fontWeight={700}
               fontSize={["15px", "16px", "18px"]}
               mt={"18px"}>
-              Don't Miss Out! Start Shopping Online on Meesho Now
+              Don't Miss Out! Start Shopping Online on Wishkart Now
             </Heading>
 
             <Text
               color={"#333333"}
               fontSize={["10px", "12px", "14px"]}
               mt={"18px"}>
-              Meesho offers multiple payment options including debit and credit
-              cards, UPI, and COD to help you with a smooth checkout process. If
-              you are unhappy with any of the products you order you can
-              immediately return them and get a full refund with no questions
-              asked. In case you have any queries or concerns, simply send us an
-              email at query@meesho.com. Or you can contact us on social media
-              through Facebook, Instagram, or Twitter. We're here to help you!
+              Wishkart offers multiple payment options including debit and
+              credit cards, UPI, and COD to help you with a smooth checkout
+              process. If you are unhappy with any of the products you order you
+              can immediately return them and get a full refund with no
+              questions asked. In case you have any queries or concerns, simply
+              send us an email at query@meesho.com. Or you can contact us on
+              social media through Facebook, Instagram, or Twitter. We're here
+              to help you!
             </Text>
 
             <Heading

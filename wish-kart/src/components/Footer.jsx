@@ -11,7 +11,7 @@ export default function Footer() {
   return (
     <div className={style.outerBox}>
       <div className={style.first}>
-        <h1>Shop Non-Stop on Meesho</h1>
+        <h1>Shop Non-Stop on Wishkart</h1>
         <p>
           Trusted by more than 1 Crore Indians Cash on Delivery | Free Delivery
         </p>
@@ -53,7 +53,7 @@ export default function Footer() {
           Fashnear Technologies Private Limited, CIN: U74900KA2015PTC082263
           06-105-B, 06-102, (138 Wu) Vaishnavi Signature, No. 78/9, Outer Ring
           Road, Bellandur, Varthur Hobli, Bengaluru-560103, Karnataka, India
-          E-mail address: query@meesho.com © 2015-2022 Meesho.com
+          E-mail address: query@Wishkart.com © 2015-2022 Wishkart.com
         </p>
       </div>
     </div>

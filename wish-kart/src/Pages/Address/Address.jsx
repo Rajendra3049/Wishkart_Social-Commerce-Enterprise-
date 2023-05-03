@@ -13,15 +13,21 @@ import {
   Grid,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { AddressComponent } from "../../components/address";
+import { AddressComponent } from "../../components/address/address";
 import "./address.css";
 
-import { AddAddress, GetAddress } from "../../redux/user/user.action";
+import {
+  AddAddress,
+  DeleteAddress,
+  GetAddress,
+} from "../../redux/user/user.action";
 import { useAuth0 } from "@auth0/auth0-react";
-import { Radio } from "antd";
+
 import AddressList from "../../components/address/addressList";
+import Loader from "../../components/Loader";
+import { PaymentForm } from "../../components/address/payment";
 
 const initialData = {
   name: "",
@@ -36,21 +42,31 @@ const initialData = {
 
 function Address() {
   // redux start
-  let { cart, address } = useSelector((store) => store.UserManager);
+  let { loading, cart, address } = useSelector((store) => store.UserManager);
+
   const { user, isAuthenticated } = useAuth0();
   let dispatch = useDispatch();
   // redux end
 
-  const [defaultAddress, setDefaultAddress] = React.useState(address[0] || {});
+  const [defaultAddress, setDefaultAddress] = React.useState(
+    address.length !== 0 ? address[0] : ""
+  );
   const [price, setPrice] = React.useState(0);
   const [formData, setFormData] = React.useState(initialData);
   const [showAddress, setShowAddress] = React.useState(false);
   const navigate = useNavigate();
 
   React.useEffect(() => {
+    if (isAuthenticated === false) {
+      console.log("user not authenticated");
+      navigate("/");
+    }
     window.scrollTo(0, 0);
-    dispatch(GetAddress());
-  }, []);
+    dispatch(GetAddress(user.sub));
+    if (address.length > 0) {
+      setDefaultAddress(address[0]);
+    }
+  }, [address.length]);
 
   React.useEffect(() => {
     let newPrice = 0;
@@ -63,8 +79,11 @@ function Address() {
 
   const handlepayment = (e) => {
     e.preventDefault();
-    console.log(formData);
+
     dispatch(AddAddress({ address: formData, userId: user.sub }));
+  };
+  const handleDelete = (id) => {
+    dispatch(DeleteAddress({ addressId: id, userId: user.sub }));
   };
 
   const handleChange = (e) => {
@@ -73,9 +92,9 @@ function Address() {
       [e.target.name]: e.target.value,
     });
   };
-  if (isAuthenticated === false) {
-    console.log("user not authenticated");
-    return <Navigate to="/signup" />;
+
+  if (loading) {
+    return <Loader />;
   } else {
     return (
       <>
@@ -93,31 +112,43 @@ function Address() {
               fontWeight={"600"}>
               Delivery Address
             </Text>
-            <Grid
-              gridTemplateColumns={"85% 15%"}
-              fontSize={"16px"}
-              padding={"5px"}
-              fontWeight={"600"}>
-              <Box
-                align="start"
-                spacing={2}
-                display={!showAddress ? "none" : "block"}>
-                <Text>{defaultAddress.name}</Text>
-                <Text>{`${defaultAddress.phone}, ${defaultAddress.house_no}, ${defaultAddress.road_name}, ${defaultAddress.city}, ${defaultAddress.state}, ${defaultAddress.pincode},${defaultAddress.near_by_location}`}</Text>
+
+            {defaultAddress === "" ? (
+              <Box mt="10px">
+                <AddressComponent
+                  formData={formData}
+                  setFormData={setFormData}
+                  handlepayment={handlepayment}
+                  handleChange={handleChange}
+                />
               </Box>
-
-              <Button
-                display={!showAddress ? "none" : "block"}
+            ) : (
+              <Grid
+                gridTemplateColumns={"85% 15%"}
                 fontSize={"16px"}
-                h="full"
-                onClick={() => {
-                  setShowAddress(!showAddress);
-                }}>
-                Change
-              </Button>
-            </Grid>
+                padding={"5px"}
+                fontWeight={"600"}>
+                <Box
+                  align="start"
+                  spacing={2}
+                  display={showAddress ? "none" : "block"}>
+                  <Text>{defaultAddress.name}</Text>
+                  <Text>{`${defaultAddress.phone}, ${defaultAddress.house_no}, ${defaultAddress.road_name}, ${defaultAddress.city}, ${defaultAddress.state}, ${defaultAddress.pincode},${defaultAddress.near_by_location}`}</Text>
+                </Box>
 
-            <Box display={showAddress ? "none" : "block"} w="100%" p="10px">
+                <Button
+                  display={showAddress ? "none" : "block"}
+                  fontSize={"16px"}
+                  h="full"
+                  onClick={() => {
+                    setShowAddress(!showAddress);
+                  }}>
+                  Change
+                </Button>
+              </Grid>
+            )}
+
+            <Box display={showAddress ? "block" : "none"} w="100%" p="10px">
               {address.map((item) => (
                 <AddressList
                   key={item._id}
@@ -125,6 +156,7 @@ function Address() {
                   setDefaultAddress={setDefaultAddress}
                   showAddress={showAddress}
                   setShowAddress={setShowAddress}
+                  handleDelete={handleDelete}
                 />
               ))}
               <Box mt="10px">
@@ -168,6 +200,10 @@ function Address() {
               {" "}
               <Text>Order Total</Text> <Text>₹{price}</Text>
             </Flex>
+          </Box>
+
+          <Box>
+            <PaymentForm price={price} defaultAddress={defaultAddress} />
           </Box>
         </Grid>
       </>

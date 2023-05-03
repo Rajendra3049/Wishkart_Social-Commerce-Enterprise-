@@ -25,29 +25,33 @@ import { BsCart2 } from "react-icons/bs";
 import google from "../images/google.png";
 import Appstore from "../images/Appstore.png";
 import { BiShoppingBag } from "react-icons/bi";
-import { Link, Link as RouterLink, useNavigate } from "react-router-dom";
+import { Link, Link as RouterLink } from "react-router-dom";
 import React, { useState } from "react";
 import "../styles/navbar.css";
 import { SearchIcon } from "@chakra-ui/icons";
 import { useDispatch, useSelector } from "react-redux";
-import { USER_LOGOUT } from "../redux/user/user.type";
+
 import LoginButton from "./signin/signin";
 import LogoutButton from "./signin/siginout";
 import { useAuth0 } from "@auth0/auth0-react";
+import { getCart } from "../redux/user/user.action";
 
 var data = require("../input.json");
 
 export default function Navbar() {
   const [value, setValue] = useState("");
-  const navigate = useNavigate();
+  const { logout } = useAuth0();
   // redux start
-  let { isAuth } = useSelector((store) => store.UserManager);
-  let dispatch = useDispatch();
-
+  let { cart } = useSelector((store) => store.UserManager);
+  const dispatch = useDispatch();
   // redux end
-  const { user, isAuthenticated, isLoading } = useAuth0();
+  const { user, isAuthenticated } = useAuth0();
 
-  React.useEffect(() => {}, [dispatch, user, isAuth]);
+  React.useEffect(() => {
+    if (isAuthenticated) {
+      dispatch(getCart(user.sub));
+    }
+  }, []);
 
   const onChange = (event) => {
     setValue(event.target.value);
@@ -244,13 +248,15 @@ export default function Navbar() {
                       </Heading>
 
                       <LogoutButton />
-
-                      <Flex mt={"10px"} ml={"10px"}>
-                        <BiShoppingBag fontSize={20} />
-                        <p style={{ marginLeft: "10px", fontSize: "15px" }}>
-                          My Orders
-                        </p>
-                      </Flex>
+                      <RouterLink to="/order">
+                        <Flex mt={"20px"} ml={"20px"}>
+                          <BiShoppingBag fontSize={25} />
+                          <Text
+                            style={{ marginLeft: "10px", fontSize: "18px" }}>
+                            My Orders
+                          </Text>
+                        </Flex>
+                      </RouterLink>
                     </PopoverContent>
                   </Popover>
                 </Box>
@@ -292,12 +298,6 @@ export default function Navbar() {
                       </Text>
 
                       <LoginButton />
-                      <Flex mt={"10px"} ml={"10px"}>
-                        <BiShoppingBag fontSize={20} />
-                        <p style={{ marginLeft: "10px", fontSize: "15px" }}>
-                          My Orders
-                        </p>
-                      </Flex>
                     </PopoverContent>
                   </Popover>
                 </Box>
@@ -313,7 +313,7 @@ export default function Navbar() {
                     fontSize={["8px", "8x", "15px"]}
                     mt={"5px"}
                     cursor={"pointer"}>
-                    Cart
+                    Cart ({cart.length})
                   </Text>
                 </RouterLink>
               </Box>
