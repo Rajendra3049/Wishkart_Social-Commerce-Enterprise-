@@ -2,8 +2,8 @@
 <b>Team Members-</b>fw21_0737-Rajendra patel , Shalini Singh ,Akshay Kadu ,-Md Jawed Hussain and Yash Satish Bankar <br><br>
 <b>Deployed Link-</b>https://wishkart-tau.vercel.app/<br><br>
 <b>Admin Credential<br>
-</b>Id- singhparmar1908@gmail.com<br>
-Password - Shalini1908<br><br>
+</b>Id- admin@gmail.com<br>
+Password - admin@123<br><br>
 
 <h1>Tech Stacks</h1>
 React<br>
