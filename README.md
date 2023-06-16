@@ -1,4 +1,5 @@
 # WishKart 
+WishKart is an E-commerce website for clothing and accessories. <br>
 **Responsive | Dynamic**
 ## Contributors:
 **Team Lead**: Rajendra patel *([backend](https://github.com/Rajendra3049/Wishkart_Server), admin pannel, responsiveness, signup/login page, Address page )*
