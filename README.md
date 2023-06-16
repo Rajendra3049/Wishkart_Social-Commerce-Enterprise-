@@ -1,5 +1,12 @@
-<b>Project Name</b> - WishKart (Clone of Meesho)<br><br>
-<b>Team Members-</b>fw21_0737-Rajendra patel , Shalini Singh ,Akshay Kadu ,-Md Jawed Hussain and Yash Satish Bankar <br><br>
+# WishKart 
+**Responsive | Dynamic**
+## Contributors:
+**Team Lead**: Rajendra patel *([backend](https://github.com/Rajendra3049/Wishkart_Server), admin pannel, responsiveness, signup/login page, Address page )*
+* Shalini Singh *(landing page,Navbar, Footer)*
+* Akshay Kadu *(All Product Page, Sorting, Filtering)*
+* Md Jawed Hussain *(Cart,Payment Page)*
+* Yash Satish Bankar *(Single Product Page)*
+
 <b>Deployed Link-</b>https://wishkart-tau.vercel.app/<br><br>
 <b>Backend Server Link-</b>https://github.com/Rajendra3049/Wishkart_Server<br><br>
 <b>Admin Credential<br>
@@ -7,13 +14,22 @@
 Password - admin@123<br><br>
 
 <h1>Tech Stacks</h1>
-React<br>
-Redux-Thunk<br>
-Redux<br>
-JavaScript<br>
-HTML<br>
-CSS<br>
-Chakra UI<br>
+<b>Frontend</b>
+
+![reactJS](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![chakra-reactJS](https://img.shields.io/badge/Chakra--UI-319795?style=for-the-badge&logo=chakra-ui&logoColor=white)
+![javascript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
+![redux](https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white)
+
+<b>Backend</b>
+
+![nodeJS](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
+![mongoDB](https://img.shields.io/badge/MongoDB-000000?style=for-the-badge&logo=mongodb&logoColor=4EA94B)
+![expressJS](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
+![nodemon](https://img.shields.io/badge/Nodemon-000000?style=for-the-badge&logo=Nodemon&logoColor=76D04B)
+![jwt](https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=JSON%20web%20tokens&logoColor=white)
+![mongoose](https://img.shields.io/badge/Mongoose-000000?style=for-the-badge)
+![bcrypt](https://img.shields.io/badge/Bcrypt-000000?style=for-the-badge)
 
 
 
